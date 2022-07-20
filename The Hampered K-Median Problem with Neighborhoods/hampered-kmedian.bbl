@@ -1,0 +1,13 @@
+\begin{thebibliography}{}
+
+\bibitem[\protect\astroncite{Boyd and Vandenberghe}{2004}]{boyd_convex_2004}
+Boyd, S.~P. and Vandenberghe, L. (2004).
+\newblock {\em Convex optimization}.
+\newblock Cambridge University Press, Cambridge, UK ; New York.
+
+\bibitem[\protect\astroncite{Lobo et~al.}{1998}]{lobo_applications_1998}
+Lobo, M.~S., Vandenberghe, L., Boyd, S., and Lebret, H. (1998).
+\newblock Applications of second-order cone programming.
+\newblock {\em Linear Algebra and its Applications}, 284(1):193--228.
+
+\end{thebibliography}
