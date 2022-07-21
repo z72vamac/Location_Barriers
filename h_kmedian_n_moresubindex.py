@@ -332,10 +332,10 @@ def h_kmedian_n(barriers, sources, targets, k, endurance, wE, wL, prepro=True, l
                 model.addConstr(2 * (beta[a, b, c, d, e, f, g, h] + beta[e, f, g, h, a, b, c, d]) >= delta[a, b, c, d, e, f, g, h])
 
         for a, b, c, d in epsilon_index:
-            model.addConstr(gp.quicksum(delta[a, b, c, d, e, f, g, h] for a1, b1, c1, d1, e, f, g, h in delta_index if (a1, b1, c1, d1) == (a, b, c, d)) - len(barriers) + 1 <= epsilon[a, b, c, d])
-            model.addConstr(len(barriers) * epsilon[a, b, c, d] <= gp.quicksum(delta[a1, b1, c1, d1, e, f, g, h] for a1, b1, c1, d1, e, f, g, h in delta_index if (a1==a and b1==b and c1==c and d1==d and (e, f, g, h) in indices_barriers)))
+            model.addConstr(delta.sum(a, b, c, d, '*', '*', '*', '*') - len(barriers) + 1 <= epsilon[a, b, c, d])
+            model.addConstr(len(barriers) * epsilon[a, b, c, d] <= delta.sum(a, b, c, d, '*', '*', '*', '*'))
 
-            model.addConstr(gp.quicksum(flow[a, b, c, d, e, f, g, h] for a1, b1, c1, d1, e, f, g, h in flow_index if (a1, b1, c1, d1) == (a, b, c, d)) <= epsilon[a, b, c, d])
+            model.addConstr(flow.sum(a, b, c, d, '*', '*', '*', '*') <= epsilon[a, b, c, d])
 
         # model.update()
 
@@ -477,14 +477,14 @@ def h_kmedian_n(barriers, sources, targets, k, endurance, wE, wL, prepro=True, l
                 for a, b in vertices_total:
                     if (a, b) in vertices_source:
                         if a == e:
-                            model.addConstr(gp.quicksum(flow[a, b, c, d, e, f, g, h] for c, d in vertices_total if (a, b, c, d, e, f, g, h) in flow_index) == x[e, f, g, h])
+                            model.addConstr(flow.sum(a, b, '*', '*', e, f, g, h) == x[e, f, g, h])
                         # else:
                         #     model.addConstr(gp.quicksum(flow[a, b, c, d, e, f, g, h] for c, d in vertices_total if (a, b, c, d) in edges_total) == 0)
                     elif (a, b) in vertices_barrier:
-                        model.addConstr(gp.quicksum(flow[a, b, c, d, e, f, g, h] for c, d in vertices_total if (a, b, c, d, e, f, g, h) in flow_index) - gp.quicksum(flow[c, d, a, b, e, f, g, h] for c, d in vertices_total if (c, d, a, b, e, f, g, h) in flow_index) == 0)
+                        model.addConstr(flow.sum(a, b, '*', '*', e, f, g, h) - flow.sum('*', '*', a, b, e, f, g, h) == 0)
                     else:
                         if a == g:
-                            model.addConstr(gp.quicksum(flow[c, d, a, b, e, f, g, h] for c, d in vertices_total if (c, d, a, b, e, f, g, h) in flow_index) == x[e, f, g, h])
+                            model.addConstr(flow.sum('*', '*', a, b, e, f, g, h) == x[e, f, g, h])
                         # else:
                         #     model.addConstr(gp.quicksum(flow[a, b, c, d, e, f, g, h] for c, d in vertices_total if (a, b, c, d) in edges_total) == 0)
 
@@ -511,7 +511,7 @@ def h_kmedian_n(barriers, sources, targets, k, endurance, wE, wL, prepro=True, l
         model.update()
 
         model.Params.Threads = 6
-        model.Params.timeLimit = time_limit - time_elapsed
+        model.Params.timeLimit = time_limit #- time_elapsed
         # model.Params.LazyConstraints = 1
         model.Params.NumericFocus = 1
         # model.Params.NonConvex = 2
@@ -541,7 +541,7 @@ def h_kmedian_n(barriers, sources, targets, k, endurance, wE, wL, prepro=True, l
         # model.write('solution.sol')
 
         results[-6] = model.getAttr('MIPGap')
-        results[-5] = model.Runtime + time_elapsed
+        results[-5] = model.Runtime #+ time_elapsed
         results[-4] = model.getAttr('NodeCount')
         results[-3] = model.ObjVal
 
