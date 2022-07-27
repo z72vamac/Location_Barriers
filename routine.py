@@ -18,6 +18,8 @@ import pandas as pd
 from h_kmedian_n import h_kmedian_n
 from neighborhood import Circle
 
+np.random.seed(5)
+
 # Parameters of the model
 instances = range(5)
 n_Ns = [10, 20, 30, 50, 80, 100]
@@ -66,7 +68,8 @@ for instance in instances:
                         print('Lazy mode: ' + str(l))
                         print('Percentage of barriers: 10 %\n\n')
 
-                        barriers = np.random.choice(barriers, size = np.floor(0.1*nB), replace=False)
+                        sublist = np.random.choice(nB, np.floor(0.1*nB))
+                        barriers = barriers[sublist]
 
                         resultados = h_kmedian_n(barriers, sources=N, targets=N, k=k, wL=wL, lazy=l, A4=a,
                                                  time_limit=time_limit)
@@ -83,7 +86,8 @@ for instance in instances:
                         print('Lazy mode: ' + str(l))
                         print('Percentage of barriers: 20 %\n\n')
 
-                        barriers = np.random.choice(barriers, size = np.floor(0.2*nB), replace=False)
+                        sublist = np.random.choice(nB, np.floor(0.25*nB))
+                        barriers = barriers[sublist]
 
                         resultados = h_kmedian_n(barriers, sources=N, targets=N, k=k, wL=wL, lazy=l, A4=a,
                                                  time_limit=time_limit)
@@ -100,7 +104,8 @@ for instance in instances:
                         print('Lazy mode: ' + str(l))
                         print('Percentage of barriers: 50 %\n\n')
 
-                        barriers = np.random.choice(barriers, size = np.floor(0.5*nB), replace=False)
+                        sublist = np.random.choice(nB, np.floor(0.5*nB))
+                        barriers = barriers[sublist]
 
                         resultados = h_kmedian_n(barriers, sources=N, targets=N, k=k, wL=wL, lazy=l, A4=a,
                                                  time_limit=time_limit)
