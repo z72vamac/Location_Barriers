@@ -45,21 +45,80 @@ for instance in instances:
         for k in k_list:
             for a in A4:
                 for l in lazy:
-                    print('\n\nResolviendo la instancia ' + str(instance) + ' con un numero ' + str(nn) + ' de neighbourhoods.\n\n')
 
-                    segments = np.genfromtxt('./instancias/segmentos' + str(nn) + '-' + str(instance) + '.csv', delimiter=',')
-
-                    barriers = []
-                    for lista in segments:
-                        barriers.append([[lista[0], lista[1]], [lista[2], lista[3]]])
 
                     bolas = np.genfromtxt('./instancias/bolas' + str(nn) + '-' + str(instance) + '.csv', delimiter=',')
 
                     N = [Circle(center=[centro1, centro2], radii=radio, col = 'blue') for centro1, centro2, radio in bolas]
 
-                    resultados = h_kmedian_n(barriers, sources=N, targets=N, k = k, wL = wL, lazy = l, A4 = a, time_limit=time_limit)
+                    segments = np.genfromtxt('./instancias/segmentos' + str(nn) + '-' + str(instance) + '.csv', delimiter=',')
 
-                    serie = pd.Series([instance] + resultados, index=dataframe.columns)
+                    barriers = []
 
-                    dataframe = dataframe.append(serie, ignore_index=True)
-                    dataframe.to_csv('./resultados/results.csv')
+                    nB = len(barriers)
+
+                    for lista in segments:
+                        barriers.append([[lista[0], lista[1]], [lista[2], lista[3]]])
+
+                    if not(a):
+                        print('\n\n Solving hampered k-median')
+                        print('Instance: ' + str(instance))
+                        print('Number of neighbourhoods: ' + str(nn))
+                        print('Instances verifying A4: ' + str(a))
+                        print('Lazy mode: ' + str(l))
+                        print('Percentage of barriers: 10 %\n\n')
+
+                        barriers = np.random.choice(barriers, size = np.floor(0.1*nB), replace=False)
+
+                        resultados = h_kmedian_n(barriers, sources=N, targets=N, k=k, wL=wL, lazy=l, A4=a,
+                                                 time_limit=time_limit)
+
+                        serie = pd.Series([instance] + resultados, index=dataframe.columns)
+
+                        dataframe = dataframe.append(serie, ignore_index=True)
+                        dataframe.to_csv('./resultados/results.csv')
+
+                        print('\n\n Solving hampered k-median')
+                        print('Instance: ' + str(instance))
+                        print('Number of neighbourhoods: ' + str(nn))
+                        print('Instances verifying A4: ' + str(a))
+                        print('Lazy mode: ' + str(l))
+                        print('Percentage of barriers: 20 %\n\n')
+
+                        barriers = np.random.choice(barriers, size = np.floor(0.2*nB), replace=False)
+
+                        resultados = h_kmedian_n(barriers, sources=N, targets=N, k=k, wL=wL, lazy=l, A4=a,
+                                                 time_limit=time_limit)
+
+                        serie = pd.Series([instance] + resultados, index=dataframe.columns)
+
+                        dataframe = dataframe.append(serie, ignore_index=True)
+                        dataframe.to_csv('./resultados/results.csv')
+
+                        print('\n\n Solving hampered k-median')
+                        print('Instance: ' + str(instance))
+                        print('Number of neighbourhoods: ' + str(nn))
+                        print('Instances verifying A4: ' + str(a))
+                        print('Lazy mode: ' + str(l))
+                        print('Percentage of barriers: 50 %\n\n')
+
+                        barriers = np.random.choice(barriers, size = np.floor(0.5*nB), replace=False)
+
+                        resultados = h_kmedian_n(barriers, sources=N, targets=N, k=k, wL=wL, lazy=l, A4=a,
+                                                 time_limit=time_limit)
+
+                        serie = pd.Series([instance] + resultados, index=dataframe.columns)
+
+                        dataframe = dataframe.append(serie, ignore_index=True)
+                        dataframe.to_csv('./resultados/results.csv')
+
+                    else:
+                        print('Percentage of barriers: 100 %\n\n')
+
+                        resultados = h_kmedian_n(barriers, sources=N, targets=N, k=k, wL=wL, lazy=l, A4=a,
+                                                 time_limit=time_limit)
+
+                        serie = pd.Series([instance] + resultados, index=dataframe.columns)
+
+                        dataframe = dataframe.append(serie, ignore_index=True)
+                        dataframe.to_csv('./resultados/results.csv')
