@@ -512,7 +512,7 @@ def h_kmedian_n(barriers, sources, targets, k, wL = 50, prepro=True, log=False, 
 
     model.optimize()
 
-    results = [len(barriers), len(sources), len(barriers), k, wL, np.nan, np.nan, np.nan, np.nan, np.nan, np.nan]
+    results = [len(barriers), len(sources), k, wL, np.nan, np.nan, np.nan, np.nan, np.nan, np.nan]
 
     if init:
         try:
