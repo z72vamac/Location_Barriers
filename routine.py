@@ -45,8 +45,6 @@ for instance in instances:
         for k in k_list:
             for a in A4:
                 for l in lazy:
-
-
                     bolas = np.genfromtxt('./instancias/bolas' + str(nn) + '-' + str(instance) + '.csv', delimiter=',')
 
                     N = [Circle(center=[centro1, centro2], radii=radio, col = 'blue') for centro1, centro2, radio in bolas]
@@ -61,7 +59,7 @@ for instance in instances:
                         barriers.append([[lista[0], lista[1]], [lista[2], lista[3]]])
 
                     if not(a):
-                        print('\n\n Solving hampered k-median')
+                        print('\n\nSolving hampered k-median')
                         print('Instance: ' + str(instance))
                         print('Number of neighbourhoods: ' + str(nn))
                         print('Instances verifying A4: ' + str(a))
@@ -78,7 +76,7 @@ for instance in instances:
                         dataframe = dataframe.append(serie, ignore_index=True)
                         dataframe.to_csv('./resultados/results.csv')
 
-                        print('\n\n Solving hampered k-median')
+                        print('\n\nSolving hampered k-median')
                         print('Instance: ' + str(instance))
                         print('Number of neighbourhoods: ' + str(nn))
                         print('Instances verifying A4: ' + str(a))
@@ -95,7 +93,7 @@ for instance in instances:
                         dataframe = dataframe.append(serie, ignore_index=True)
                         dataframe.to_csv('./resultados/results.csv')
 
-                        print('\n\n Solving hampered k-median')
+                        print('\n\nSolving hampered k-median')
                         print('Instance: ' + str(instance))
                         print('Number of neighbourhoods: ' + str(nn))
                         print('Instances verifying A4: ' + str(a))
@@ -113,6 +111,11 @@ for instance in instances:
                         dataframe.to_csv('./resultados/results.csv')
 
                     else:
+                        print('\n\nSolving hampered k-median')
+                        print('Instance: ' + str(instance))
+                        print('Number of neighbourhoods: ' + str(nn))
+                        print('Instances verifying A4: ' + str(a))
+                        print('Lazy mode: ' + str(l))
                         print('Percentage of barriers: 100 %\n\n')
 
                         resultados = h_kmedian_n(barriers, sources=N, targets=N, k=k, wL=wL, lazy=l, A4=a,

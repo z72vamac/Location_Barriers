@@ -621,7 +621,7 @@ def h_kmedian_n(barriers, sources, targets, k, wL=50, lazy=True, A4=True, prepro
 
     model.optimize()
 
-    results = [len(barriers), len(sources), len(barriers), k, wL, lazy, A4, np.nan, np.nan, np.nan, np.nan, np.nan, np.nan]
+    results = [len(sources), len(barriers), k, wL, lazy, A4, np.nan, np.nan, np.nan, np.nan, np.nan, np.nan]
 
     if init:
         try:
