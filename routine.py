@@ -43,7 +43,7 @@ init = False
 dataframe = pd.DataFrame(columns=['Instance', 'n_N', 'n_B', 'k', 'wL', 'Lazy', 'A4', 'Gap', 'Runtime', 'NodeCount', 'ObjVal', 'Runtime_h', 'ObjVal_h'])
 
 for instance in instances:
-    if instance >= 2:
+    if instance >= 4:
         for nn, k_list in zip(n_Ns, ks):
             for k in k_list:
                 for a in A4:
@@ -81,7 +81,7 @@ for instance in instances:
                             serie = pd.Series([instance] + resultados, index=dataframe.columns)
 
                             dataframe = dataframe.append(serie, ignore_index=True)
-                            dataframe.to_csv('./resultados/results3.csv')
+                            dataframe.to_csv('./resultados/results4.csv')
 
                             print('\n\nSolving hampered k-median')
                             print('Instance: ' + str(instance))
@@ -100,7 +100,7 @@ for instance in instances:
                             serie = pd.Series([instance] + resultados, index=dataframe.columns)
 
                             dataframe = dataframe.append(serie, ignore_index=True)
-                            dataframe.to_csv('./resultados/results3.csv')
+                            dataframe.to_csv('./resultados/results4.csv')
 
                             print('\n\nSolving hampered k-median')
                             print('Instance: ' + str(instance))
@@ -119,7 +119,7 @@ for instance in instances:
                             serie = pd.Series([instance] + resultados, index=dataframe.columns)
 
                             dataframe = dataframe.append(serie, ignore_index=True)
-                            dataframe.to_csv('./resultados/results3.csv')
+                            dataframe.to_csv('./resultados/results4.csv')
 
                         else:
                             print('\n\nSolving hampered k-median')
@@ -136,4 +136,4 @@ for instance in instances:
                             serie = pd.Series([instance] + resultados, index=dataframe.columns)
 
                             dataframe = dataframe.append(serie, ignore_index=True)
-                            dataframe.to_csv('./resultados/results3.csv')
+                            dataframe.to_csv('./resultados/results4.csv')
