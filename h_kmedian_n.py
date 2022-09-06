@@ -105,7 +105,7 @@ def h_kmedian_n(barriers, sources, targets, k, wL=50, lazy=True, A4=True, prepro
         print("edges_source = " + str(edges_source))
         print("edges_barrier = " + str(edges_barrier))
         print("edges_free = " + str(edges_target))
-        print("edges_total = " + str(edges_source_target))
+        print("edges_total = " + str(edges_total))
 
     epsilon_index = []  # epsilon(S / T, B, i) = 1 si (P_{S/T}, P_B^i)\in E_{S/T}
 
@@ -589,12 +589,12 @@ def h_kmedian_n(barriers, sources, targets, k, wL=50, lazy=True, A4=True, prepro
 
     model.update()
 
-    objective = gp.quicksum(p[index] for index in edges_source + edges_target) + gp.quicksum(0.5*wL*x[index] for index in x.keys())
+    objective = gp.quicksum(p[index] for index in edges_total) + gp.quicksum(0.5*wL*x[index] for index in x.keys())
 
-    for a, b, c, d in edges_barrier:
-        # for e, f in vertices_source:
-        #     for g, h in vertices_target:
-        objective += dist[a, b, c, d]*x[a, b, c, d]
+    # for a, b, c, d in edges_barrier:
+    #     # for e, f in vertices_source:
+    #     #     for g, h in vertices_target:
+    #     objective += dist[a, b, c, d]*x[a, b, c, d]
 
     model.setObjective(objective, GRB.MINIMIZE)
 
