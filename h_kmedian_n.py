@@ -258,33 +258,79 @@ def h_kmedian_n(barriers, sources, targets, k, wL=50, lazy=True, A4=True, prepro
     if lazy:
         def elimcuts(model, where):
             if where == GRB.Callback.MIPSOL:
-                vals = model.cbGetSolution(model._x)
+                xs = model.cbGetSolution(model._x)
 
-                print(vals)
+                alphas = model.cbGetSolution(model._alpha)
+                betas = model.cbGetSolution(model._beta)
+                gammas = model.cbGetSolution(model._gamma)
 
                 points = model.cbGetSolution(model._point)
 
                 indices = []
 
+                # Alpha constraint
+                L = -100000
+                U = 100000
+
                 # Loop to add constraints
-                x_indices = [index for index in vals.keys() if vals[index] > 0.5]
+                x_indices = [index for index in xs.keys() if xs[index] > 0.5]
 
                 for a, b, c, d in x_indices:
                     if (a, b, c, d) in edges_source:
                         segment = [[points[a, b, 0], points[a, b, 1]], barriers[c - 1000][d]]
 
-                        for barrier in barriers:
-                            if af.intersect(segment, barrier):
-                                indices.append((a, b, c, d))
-                                model.cbLazy(model._x[a, b, c, d] <= 0.5)
+                        for e in range(1000, 1000 + len(barriers)):
+                            det1 = af.determinant([points[a, b, 0], points[a, b, 1]], barriers[e - 1000][0], barriers[e-1000][1])
+                            det2 = af.determinant(barriers[c-1000][d], barriers[e - 1000][0], barriers[e-1000][1])
+
+                            det3 = af.determinant(barriers[e-1000][0], [points[a, b, 0], points[a, b, 1]], barriers[c-1000][d])
+                            det4 = af.determinant(barriers[e-1000][1], [points[a, b, 0], points[a, b, 1]], barriers[c-1000][d])
+
+                            if det1*det2 < 0 and det3*det4 < 0:
+                                # print(af.determinant([model._point[a, b, 0], model._point[a, b, 1]], barriers[e - 1000][0], barriers[e - 1000][1]))
+                                model.cbLazy(
+                                    (1 - model._alpha[a, b, e, 0, e, 1]) * L <= af.determinant([model._point[a, b, 0], model._point[a, b, 1]], barriers[e - 1000][0], barriers[e - 1000][1]))
+                                model.cbLazy(
+                                    -U * model._alpha[a, b, e, 0, e, 1] <= -af.determinant([model._point[a, b, 0], model._point[a, b, 1]], barriers[e - 1000][0], barriers[e - 1000][1]))
+                                model.cbLazy(
+                                    (1 - model._alpha[c, d, e, 0, e, 1]) * L <= af.determinant(barriers[c - 1000][d], barriers[e - 1000][0], barriers[e - 1000][1]))
+                                model.cbLazy(
+                                    -U * model._alpha[c, d, e, 0, e, 1] <= -af.determinant(barriers[c - 1000][d], barriers[e - 1000][0], barriers[e - 1000][1]))
+
+                                for f in range(2):
+                                    model.cbLazy(
+                                        (1 - model._alpha[e, f, a, b, c, d]) * L <= af.determinant(barriers[e - 1000][f], [model._point[a, b, 0], model._point[a, b, 1]], barriers[c - 1000][d]))
+                                    model.cbLazy(
+                                        - U * model._alpha[e, f, a, b, c, d] <= - af.determinant(barriers[e - 1000][f], [model._point[a, b, 0], model._point[a, b, 1]], barriers[c - 1000][d]))
+
 
                     elif (a, b, c, d) in edges_target:
                         segment = [barriers[a - 1000][b], [points[c, d, 0], points[c, d, 1]]]
 
-                        for barrier in barriers:
-                            if af.intersect(segment, barrier):
-                                indices.append((a, b, c, d))
-                                model.cbLazy(model._x[a, b, c, d] <= 0.5)
+                        for e in range(1000, 1000 + len(barriers)):
+                            det1 = af.determinant(barriers[a - 1000][b], barriers[e - 1000][0], barriers[e - 1000][1])
+                            det2 = af.determinant([points[c, d, 0], points[c, d, 1]], barriers[e - 1000][0], barriers[e - 1000][1])
+
+                            det3 = af.determinant(barriers[e - 1000][0], barriers[a - 1000][b], [points[c, d, 0], points[c, d, 1]])
+                            det4 = af.determinant(barriers[e - 1000][1], barriers[a - 1000][b], [points[c, d, 0], points[c, d, 1]])
+
+                            if det1 * det2 < 0 and det3 * det4 < 0:
+                                model.cbLazy(
+                                    (1 - model._alpha[a, b, e, 0, e, 1]) * L <= af.determinant(barriers[a - 1000][b], barriers[e - 1000][0], barriers[e - 1000][1]))
+                                model.cbLazy(
+                                    -U * model._alpha[a, b, e, 0, e, 1] <= -af.determinant(barriers[a - 1000][b], barriers[e - 1000][0], barriers[e - 1000][1]))
+                                model.cbLazy(
+                                    (1 - model._alpha[c, d, e, 0, e, 1]) * L <= af.determinant([model._point[c, d, 0], model._point[c, d, 1]], barriers[e - 1000][0], barriers[e - 1000][1]))
+                                model.cbLazy(
+                                    -U * model._alpha[c, d, e, 0, e, 1] <= -af.determinant([model._point[c, d, 0], model._point[c, d, 1]], barriers[e - 1000][0], barriers[e - 1000][1]))
+
+                                for f in range(2):
+                                    model.cbLazy(
+                                        (1 - model._alpha[e, f, a, b, c, d]) * L <= af.determinant(barriers[e - 1000][f], barriers[a - 1000][b], [model._point[c, d, 0], model._point[c, d, 1]]))
+                                    model.cbLazy(
+                                        - U * model._alpha[e, f, a, b, c, d] <= - af.determinant(barriers[e - 1000][f], barriers[a - 1000][b], [model._point[c, d, 0], model._point[c, d, 1]]))
+
+                            # print("Llega hasta aqui")
 
                     elif (a, b, c, d) in edges_source_target:
                         segment = [[points[a, b, 0], points[a, b, 1]], [points[c, d, 0], points[c, d, 1]]]
@@ -293,6 +339,26 @@ def h_kmedian_n(barriers, sources, targets, k, wL=50, lazy=True, A4=True, prepro
                             if af.intersect(segment, barrier):
                                 indices.append((a, b, c, d))
                                 model.cbLazy(model._x[a, b, c, d] <= 0.5)
+
+                    model.cbLazy(
+                        model._beta[a, b, c, d, e, 0, e, 1] == 2 * model._gamma[a, b, c, d, e, 0, e, 1] - model._alpha[
+                            a, b, e, 0, e, 1] - model._alpha[c, d, e, 0, e, 1] + 1)
+                    model.cbLazy(
+                        model._beta[e, 0, e, 1, a, b, c, d] == 2 * model._gamma[e, 0, e, 1, a, b, c, d] - model._alpha[
+                            e, 0, a, b, c, d] - model._alpha[e, 1, a, b, c, d] + 1)
+
+                    model.cbLazy(model._gamma[a, b, c, d, e, 0, e, 1] <= model._alpha[a, b, e, 0, e, 1])
+                    model.cbLazy(model._gamma[a, b, c, d, e, 0, e, 1] <= model._alpha[c, d, e, 0, e, 1])
+                    model.cbLazy(model._gamma[a, b, c, d, e, 0, e, 1] >= model._alpha[a, b, e, 0, e, 1] +
+                                 model._alpha[c, d, e, 0, e, 1] - 1)
+
+                    model.cbLazy(model._gamma[e, 0, e, 1, a, b, c, d] <= model._alpha[e, 0, a, b, c, d])
+                    model.cbLazy(model._gamma[e, 0, e, 1, a, b, c, d] <= model._alpha[e, 1, a, b, c, d])
+                    model.cbLazy(model._gamma[e, 0, e, 1, a, b, c, d] >= model._alpha[e, 0, a, b, c, d] +
+                                 model._alpha[e, 1, a, b, c, d] - 1)
+
+                    model.cbLazy(
+                        model._beta[a, b, c, d, e, 0, e, 1] + model._beta[e, 0, e, 1, a, b, c, d] >= 1)
 
     model = gp.Model('Model: H-KMedian-N')
 
@@ -307,14 +373,13 @@ def h_kmedian_n(barriers, sources, targets, k, wL=50, lazy=True, A4=True, prepro
 
     # beta = model.addVars(beta_index, vtype = GRB.BINARY, name = 'beta')
     # alpha = model.addVars(alpha_index, vtype = GRB.BINARY, name = 'alpha')
+    alpha = model.addVars(alpha_index, vtype=GRB.BINARY, name='alpha')
+    beta = model.addVars(beta_index, vtype=GRB.BINARY, name='beta')
+    gamma = model.addVars(gamma_index, vtype=GRB.BINARY, name='gamma')
 
     if not (lazy):
-        alpha = model.addVars(alpha_index, vtype=GRB.BINARY, name='alpha')
-
-        beta = model.addVars(beta_index, vtype=GRB.BINARY, name='beta')
 
         delta = model.addVars(delta_index, vtype=GRB.BINARY, name='delta')
-        gamma = model.addVars(gamma_index, vtype=GRB.BINARY, name='gamma')
         epsilon = model.addVars(epsilon_index, vtype=GRB.BINARY, name='epsilon')
 
     # point = model.addVars(p_index, vtype = GRB.CONTINUOUS, lb = 0.1, ub = 99.9, name = 'point')
@@ -332,9 +397,7 @@ def h_kmedian_n(barriers, sources, targets, k, wL=50, lazy=True, A4=True, prepro
     if init:
         time_h, objval_h = heuristic(barriers, neighborhoods)
 
-    # Alpha constraint
-    L = -100000
-    U = 100000
+
 
     if not (lazy):
         # alpha-C
@@ -611,6 +674,9 @@ def h_kmedian_n(barriers, sources, targets, k, wL=50, lazy=True, A4=True, prepro
     if lazy:
         model._x = x
         model._point = point
+        model._alpha = alpha
+        model._beta = beta
+        model._gamma = gamma
         model.Params.LazyConstraints = 1
 
     if not (A4):
@@ -618,8 +684,10 @@ def h_kmedian_n(barriers, sources, targets, k, wL=50, lazy=True, A4=True, prepro
 
     # model.write('prueba.lp')
     # model.write('prueba.mps')
-
-    model.optimize()
+    if lazy:
+        model.optimize(elimcuts)
+    else:
+        model.optimize()
 
     results = [len(sources), len(barriers), k, wL, lazy, A4, np.nan, np.nan, np.nan, np.nan, np.nan, np.nan]
 

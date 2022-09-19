@@ -471,7 +471,9 @@ def determinant(P, Q, R):
     a21 = Q[1] - P[1]
     a22 = R[1] - P[1]
 
-    return a11 * a22 - a12 * a21
+    # return a11 * a22 - a12 * a21
+
+    return Q[0] * R[1] - Q[0] * P[1] - P[0] * R[1] - R[0] * Q[1] + R[0] * P[1] + P[0] * Q[1]
 
 
 def intersect(barrier1, barrier2):

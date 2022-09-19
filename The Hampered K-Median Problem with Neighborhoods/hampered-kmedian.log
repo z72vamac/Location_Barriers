@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (MiKTeX 21.2) (preloaded format=pdflatex 2021.10.7)  19 JUL 2022 12:55
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (MiKTeX 21.2) (preloaded format=pdflatex 2021.10.7)  7 SEP 2022 10:35
 entering extended mode
 **./hampered-kmedian.tex
 (hampered-kmedian.tex
@@ -1060,7 +1060,7 @@ LaTeX Warning: There were undefined references.
 Here is how much of TeX's memory you used:
  28371 strings out of 479334
  695189 string characters out of 2853721
- 1175275 words of memory out of 3000000
+ 1176275 words of memory out of 3000000
  45320 multiletter control sequences out of 15000+200000
  414865 words of font info for 57 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -1086,7 +1086,7 @@ ams/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/Justo Puerto/App
 Data/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy5.pfb><C:/Users/J
 usto Puerto/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy7.
 pfb>
-Output written on hampered-kmedian.pdf (8 pages, 195581 bytes).
+Output written on hampered-kmedian.pdf (8 pages, 195585 bytes).
 PDF statistics:
  299 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)

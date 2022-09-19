@@ -22,7 +22,7 @@ np.random.seed(5)
 
 # Parameters of the model
 instances = range(5)
-n_Ns = [10, 20, 30, 50, 80]
+n_Ns = [10, 15, 20]
 ks = []
 
 for nn in n_Ns:
@@ -36,7 +36,8 @@ wE = 1
 wLs = [50, 100]
 
 lazy = [False, True]
-A4 = [True, False]
+# A4 = [True, False]
+A4 = [True]
 
 init = False
 
