@@ -323,9 +323,9 @@ def h_kmedian_n(barriers, sources, targets, k, wL=50, lazy=True, A4=True, prepro
                             det4 = af.determinant(barriers[e - 1000][1], barriers[a - 1000][b], [points[c, d, 0], points[c, d, 1]])
 
                             if det1 * det2 < 0 and det3 * det4 < 0:
-                                L2= af.determinant(barriers[c - 1000][d], barriers[e - 1000][0], barriers[e - 1000][1])
+                                L2= af.determinant(barriers[a - 1000][d], barriers[e - 1000][0], barriers[e - 1000][1])
                                 U2 = L2
-                                L1, U1 = eM.estima_M_alpha1(targets[abs(a) - 1], barriers[e - 1000][0], barriers[e - 1000][1])
+                                L1, U1 = eM.estima_M_alpha1(targets[abs(c) - 1], barriers[e - 1000][0], barriers[e - 1000][1])
                                 model.cbLazy(
                                     (1 - model._alpha[a, b, e, 0, e, 1]) * L2 <= af.determinant(barriers[a - 1000][b], barriers[e - 1000][0], barriers[e - 1000][1]))
                                 model.cbLazy(
