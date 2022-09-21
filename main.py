@@ -75,4 +75,5 @@ wE = 1
 
 wL = 0
 
+# 279.88
 resultados = h_kmedian_n(barriers, sources=sources, targets=targets, k=k, wL=wL, lazy=False, A4=1, time_limit=3600, picture=True)
