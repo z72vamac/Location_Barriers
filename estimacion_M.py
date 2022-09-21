@@ -119,8 +119,8 @@ def estima_M_alpha1(entorno, punto1, punto2):
 
         determinantes = [af.determinant([x[i], y[i]], punto1, punto2) for i in range(100)]
 
-        m = -5*abs(min(determinantes))
-        M = 5*abs(max(determinantes))
+        m = -10*abs(min(determinantes))
+        M = 10*abs(max(determinantes))
 
         return m, M
 
@@ -139,8 +139,8 @@ def estima_M_alpha2(punto1, entorno, punto2):
 
         determinantes = [af.determinant(punto1, [x[i], y[i]], punto2) for i in range(100)]
 
-        m = -5*abs(min(determinantes))
-        M = 5*abs(max(determinantes))
+        m = -10*abs(min(determinantes))
+        M = 10*abs(max(determinantes))
 
         return m, M
 
@@ -159,8 +159,8 @@ def estima_M_alpha3(punto1, punto2, entorno):
 
         determinantes = [af.determinant(punto1, punto2, [x[i], y[i]]) for i in range(100)]
 
-        m = -5*abs(min(determinantes))
-        M = 5*abs(max(determinantes))
+        m = -10*abs(min(determinantes))
+        M = 10*abs(max(determinantes))
 
         return m, M
 
@@ -185,7 +185,7 @@ def estima_M_alpha4(punto1, entorno1, entorno2):
 
         determinantes = [af.determinant(punto1, [x1[i], y1[i]], [x2[j], y2[j]]) for i in range(100) for j in range(100)]
 
-        m = -5*abs(min(determinantes))
-        M = 5*abs(max(determinantes))
+        m = -10*abs(min(determinantes))
+        M = 10*abs(max(determinantes))
 
         return m, M
