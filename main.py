@@ -75,4 +75,4 @@ wE = 1
 
 wL = 0
 
-resultados = h_kmedian_n(barriers, sources=sources, targets=targets, k=k, wL=wL, lazy=True, A4=1, time_limit=3600, picture=True)
+resultados = h_kmedian_n(barriers, sources=sources, targets=targets, k=k, wL=wL, lazy=False, A4=1, time_limit=3600, picture=True)

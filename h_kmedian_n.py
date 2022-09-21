@@ -6,6 +6,7 @@ import time
 from gurobipy import GRB
 from matplotlib.patches import Circle
 
+import estimacion_M as eM
 import auxiliar_functions as af
 import neighborhood as neigh
 from data import *
@@ -279,6 +280,8 @@ def h_kmedian_n(barriers, sources, targets, k, wL=50, lazy=True, A4=True, prepro
                     if (a, b, c, d) in edges_source:
                         segment = [[points[a, b, 0], points[a, b, 1]], barriers[c - 1000][d]]
 
+
+
                         for e in range(1000, 1000 + len(barriers)):
                             det1 = af.determinant([points[a, b, 0], points[a, b, 1]], barriers[e - 1000][0], barriers[e-1000][1])
                             det2 = af.determinant(barriers[c-1000][d], barriers[e - 1000][0], barriers[e-1000][1])
@@ -288,16 +291,21 @@ def h_kmedian_n(barriers, sources, targets, k, wL=50, lazy=True, A4=True, prepro
 
                             if det1*det2 < 0 and det3*det4 < 0:
                                 # print(af.determinant([model._point[a, b, 0], model._point[a, b, 1]], barriers[e - 1000][0], barriers[e - 1000][1]))
+                                L1, U1 = eM.estima_M_alpha1(sources[a - 1], barriers[c - 1000][0], barriers[e - 1000][1])
+                                L2= af.determinant(barriers[c - 1000][d], barriers[e - 1000][0], barriers[e - 1000][1])
+                                U2 = L2
                                 model.cbLazy(
-                                    (1 - model._alpha[a, b, e, 0, e, 1]) * L <= af.determinant([model._point[a, b, 0], model._point[a, b, 1]], barriers[e - 1000][0], barriers[e - 1000][1]))
+                                    (1 - model._alpha[a, b, e, 0, e, 1]) * L1 <= af.determinant([model._point[a, b, 0], model._point[a, b, 1]], barriers[e - 1000][0], barriers[e - 1000][1]))
                                 model.cbLazy(
-                                    -U * model._alpha[a, b, e, 0, e, 1] <= -af.determinant([model._point[a, b, 0], model._point[a, b, 1]], barriers[e - 1000][0], barriers[e - 1000][1]))
+                                    -U1 * model._alpha[a, b, e, 0, e, 1] <= -af.determinant([model._point[a, b, 0], model._point[a, b, 1]], barriers[e - 1000][0], barriers[e - 1000][1]))
                                 model.cbLazy(
-                                    (1 - model._alpha[c, d, e, 0, e, 1]) * L <= af.determinant(barriers[c - 1000][d], barriers[e - 1000][0], barriers[e - 1000][1]))
+                                    (1 - model._alpha[c, d, e, 0, e, 1]) * L2 <= af.determinant(barriers[c - 1000][d], barriers[e - 1000][0], barriers[e - 1000][1]))
                                 model.cbLazy(
-                                    -U * model._alpha[c, d, e, 0, e, 1] <= -af.determinant(barriers[c - 1000][d], barriers[e - 1000][0], barriers[e - 1000][1]))
+                                    -U2 * model._alpha[c, d, e, 0, e, 1] <= -af.determinant(barriers[c - 1000][d], barriers[e - 1000][0], barriers[e - 1000][1]))
 
                                 for f in range(2):
+                                    L, U = eM.estima_M_alpha2(barriers[e - 1000][f], sources[a - 1], barriers[c - 1000][d])
+
                                     model.cbLazy(
                                         (1 - model._alpha[e, f, a, b, c, d]) * L <= af.determinant(barriers[e - 1000][f], [model._point[a, b, 0], model._point[a, b, 1]], barriers[c - 1000][d]))
                                     model.cbLazy(
@@ -315,16 +323,20 @@ def h_kmedian_n(barriers, sources, targets, k, wL=50, lazy=True, A4=True, prepro
                             det4 = af.determinant(barriers[e - 1000][1], barriers[a - 1000][b], [points[c, d, 0], points[c, d, 1]])
 
                             if det1 * det2 < 0 and det3 * det4 < 0:
+                                L2= af.determinant(barriers[c - 1000][d], barriers[e - 1000][0], barriers[e - 1000][1])
+                                U2 = L2
+                                L1, U1 = eM.estima_M_alpha1(targets[abs(a) - 1], barriers[e - 1000][0], barriers[e - 1000][1])
                                 model.cbLazy(
-                                    (1 - model._alpha[a, b, e, 0, e, 1]) * L <= af.determinant(barriers[a - 1000][b], barriers[e - 1000][0], barriers[e - 1000][1]))
+                                    (1 - model._alpha[a, b, e, 0, e, 1]) * L2 <= af.determinant(barriers[a - 1000][b], barriers[e - 1000][0], barriers[e - 1000][1]))
                                 model.cbLazy(
-                                    -U * model._alpha[a, b, e, 0, e, 1] <= -af.determinant(barriers[a - 1000][b], barriers[e - 1000][0], barriers[e - 1000][1]))
+                                    -U2 * model._alpha[a, b, e, 0, e, 1] <= -af.determinant(barriers[a - 1000][b], barriers[e - 1000][0], barriers[e - 1000][1]))
                                 model.cbLazy(
-                                    (1 - model._alpha[c, d, e, 0, e, 1]) * L <= af.determinant([model._point[c, d, 0], model._point[c, d, 1]], barriers[e - 1000][0], barriers[e - 1000][1]))
+                                    (1 - model._alpha[c, d, e, 0, e, 1]) * L1 <= af.determinant([model._point[c, d, 0], model._point[c, d, 1]], barriers[e - 1000][0], barriers[e - 1000][1]))
                                 model.cbLazy(
-                                    -U * model._alpha[c, d, e, 0, e, 1] <= -af.determinant([model._point[c, d, 0], model._point[c, d, 1]], barriers[e - 1000][0], barriers[e - 1000][1]))
+                                    -U1 * model._alpha[c, d, e, 0, e, 1] <= -af.determinant([model._point[c, d, 0], model._point[c, d, 1]], barriers[e - 1000][0], barriers[e - 1000][1]))
 
                                 for f in range(2):
+                                    L, U = eM.estima_M_alpha3(barriers[e - 1000][f], barriers[a - 1000][b], targets[abs(c) - 1])
                                     model.cbLazy(
                                         (1 - model._alpha[e, f, a, b, c, d]) * L <= af.determinant(barriers[e - 1000][f], barriers[a - 1000][b], [model._point[c, d, 0], model._point[c, d, 1]]))
                                     model.cbLazy(
@@ -408,6 +420,11 @@ def h_kmedian_n(barriers, sources, targets, k, wL=50, lazy=True, A4=True, prepro
             U = 100000
             if (c, d, e, f) in indices_barriers:
                 if (a, b) in vertices_source + vertices_target:
+                    if (a, b) in vertices_source:
+                        L, U = eM.estima_M_alpha1(sources[a-1], barriers[c-1000][0], barriers[e-1000][1])
+
+                    elif (a, b) in vertices_target:
+                        L, U = eM.estima_M_alpha1(targets[abs(a)-1], barriers[c-1000][0], barriers[e-1000][1])
                     # L, U = af.estima_det(sources[a - 1], [barriers[c - 1000][0], barriers[c - 1000][1], barriers[e - 1000][0], barriers[e - 1000][1]])
                     model.addConstr(
                         (1 - alpha[a, b, c, d, e, f]) * L <= af.determinant([point[a, b, 0], point[a, b, 1]],
@@ -417,6 +434,8 @@ def h_kmedian_n(barriers, sources, targets, k, wL=50, lazy=True, A4=True, prepro
                                                                                     barriers[c - 1000][d],
                                                                                     barriers[e - 1000][f]))
                 elif (a, b) in vertices_barrier:
+                    L = af.determinant(barriers[a-1000][b], barriers[c-1000][0], barriers[e-1000][1])
+                    U = L
                     model.addConstr((1 - alpha[a, b, c, d, e, f]) * L <= af.determinant(barriers[a - 1000][b],
                                                                                         barriers[c - 1000][d],
                                                                                         barriers[e - 1000][f]))
@@ -430,6 +449,7 @@ def h_kmedian_n(barriers, sources, targets, k, wL=50, lazy=True, A4=True, prepro
 
             else:
                 if (c, d, e, f) in edges_source:
+                    L, U = eM.estima_M_alpha2(barriers[a-1000][b], sources[c-1], barriers[e-1000][f])
                     model.addConstr((1 - alpha[a, b, c, d, e, f]) * L <= af.determinant(barriers[a - 1000][b],
                                                                                         [point[c, d, 0],
                                                                                          point[c, d, 1]],
@@ -437,6 +457,8 @@ def h_kmedian_n(barriers, sources, targets, k, wL=50, lazy=True, A4=True, prepro
                     model.addConstr(af.determinant(barriers[a - 1000][b], [point[c, d, 0], point[c, d, 1]],
                                                    barriers[e - 1000][f]) <= U * alpha[a, b, c, d, e, f])
                 elif (c, d, e, f) in edges_barrier:
+                    L = af.determinant(barriers[a-1000][b], barriers[c-1000][d], barriers[e-1000][f])
+                    U = L
                     model.addConstr((1 - alpha[a, b, c, d, e, f]) * L <= af.determinant(barriers[a - 1000][b],
                                                                                         barriers[c - 1000][d],
                                                                                         barriers[e - 1000][f]))
@@ -444,6 +466,7 @@ def h_kmedian_n(barriers, sources, targets, k, wL=50, lazy=True, A4=True, prepro
                         U * alpha[a, b, c, d, e, f] >= af.determinant(barriers[a - 1000][b], barriers[c - 1000][d],
                                                                       barriers[e - 1000][f]))
                 elif (c, d, e, f) in edges_target:
+                    L, U = eM.estima_M_alpha3(barriers[a-1000][b], barriers[c-1000][d], targets[abs(e)-1])
                     model.addConstr((1 - alpha[a, b, c, d, e, f]) * L <= af.determinant(barriers[a - 1000][b],
                                                                                         barriers[c - 1000][d],
                                                                                         [point[e, f, 0],
@@ -451,6 +474,7 @@ def h_kmedian_n(barriers, sources, targets, k, wL=50, lazy=True, A4=True, prepro
                     model.addConstr(af.determinant(barriers[a - 1000][b], barriers[c - 1000][d],
                                                    [point[e, f, 0], point[e, f, 1]]) <= U * alpha[a, b, c, d, e, f])
                 elif (c, d, e, f) in edges_source_target:
+                    L, U = eM.estima_M_alpha4(barriers[a-1000][b], sources[c-1], targets[abs(e)-1])
                     model.addConstr((1 - alpha[a, b, c, d, e, f]) * L <= af.determinant(barriers[a - 1000][b],
                                                                                         [point[c, d, 0],
                                                                                          point[c, d, 1]],
