@@ -10,6 +10,7 @@ import estimacion_M as eM
 import auxiliar_functions as af
 import neighborhood as neigh
 from data import *
+from matheuristic import matheuristic
 
 
 def h_kmedian_n(barriers, sources, targets, k, wL=50, lazy=True, A4=True, prepro=True, log=False, picture=False,
@@ -373,6 +374,16 @@ def h_kmedian_n(barriers, sources, targets, k, wL=50, lazy=True, A4=True, prepro
                     model.cbLazy(
                         model._beta[a, b, c, d, e, 0, e, 1] + model._beta[e, 0, e, 1, a, b, c, d] >= 1)
 
+
+    def callback(model, where):
+        if where == GRB.Callback.MIPSOL:
+            if model.cbGet(GRB.Callback.MIPSOL_SOLCNT) == 0:
+                # creates new model attribute '_startobjval'
+                model._startobjval = model.cbGet(GRB.Callback.MIPSOL_OBJ)
+                model._starttime = model.cbGet(GRB.Callback.RUNTIME)
+
+                # model.terminate()
+
     model = gp.Model('Model: H-KMedian-N')
 
     p = model.addVars(p_index, vtype=GRB.CONTINUOUS, lb=0.0, name='p')
@@ -408,8 +419,20 @@ def h_kmedian_n(barriers, sources, targets, k, wL=50, lazy=True, A4=True, prepro
     model.update()
 
     if init:
-        time_h, objval_h = heuristic(barriers, neighborhoods)
+        time_h, objval_h = matheuristic(barriers, sources, targets, k, wL, time_limit = 100, picture = False)
 
+        model.read('solution.sol')
+
+        # print(x_start)
+        # for index in x_start.keys():
+        #     print(x_start[index])
+        #     x[index].start = x_start[index]
+        #
+        # for index in y_start.keys():
+        #     y[index].start = y_start[index]
+        #
+        # for index in z_start.keys():
+        #     z[index].start = z_start[index]
 
 
     if not (lazy):
@@ -711,15 +734,23 @@ def h_kmedian_n(barriers, sources, targets, k, wL=50, lazy=True, A4=True, prepro
     # model.write('prueba.mps')
     if lazy:
         model.optimize(elimcuts)
+    elif init:
+        model.optimize(callback)
     else:
         model.optimize()
 
-    results = [len(sources), len(barriers), k, wL, lazy, A4, np.nan, np.nan, np.nan, np.nan, np.nan, np.nan]
+    second_time = time.time()
+
+    time_elapsed = second_time - first_time
+
+    results = [len(sources), len(barriers), k, wL, lazy, A4, np.nan, np.nan, np.nan, np.nan, np.nan, np.nan, np.nan, np.nan]
 
     if init:
         try:
-            results[-2] = time_h
-            results[-1] = objval_h
+            results[-4] = time_h
+            results[-3] = model._starttime
+            results[-2] = objval_h
+            results[-1] = model._startobjval
         except:
             print('No solution obtained by the heuristic')
 
@@ -733,10 +764,10 @@ def h_kmedian_n(barriers, sources, targets, k, wL=50, lazy=True, A4=True, prepro
 
     # model.write('solution.sol')
 
-    results[-6] = model.getAttr('MIPGap')
-    results[-5] = model.Runtime + time_elapsed
-    results[-4] = model.getAttr('NodeCount')
-    results[-3] = model.ObjVal
+    results[6] = model.getAttr('MIPGap')
+    results[7] = model.getAttr('Runtime')
+    results[8] = model.getAttr('NodeCount')
+    results[9] = model.ObjVal
 
     x_indices = [(index, x[index].X) for index in x.keys() if x[index].X > 0.5]
     dist_indices = [(index, dist[index].X) for index in x.keys() if x[index].X > 0.5]

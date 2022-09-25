@@ -810,10 +810,16 @@ Note that, once a point is fixed in each neighbourhood, the problem that results
 	The difference between the set of edges in the \KMPN \ with respect to the graph in \KMPVN \ is that, in the former case, the edges that join each pair of neighbourhoods must be considered. This fact leads to include product of continuous variables in the $\alpha$ constraints of the model that represent the determinants. These products make the problem to become non-convex.
 %	that determine if the segment joining the two variable points in the neighbourhoods cross any barrier or not. 
 
-\subsubsection{Lower and upper bounds when the neighbourhoods are ellipses}\label{subsection:bounds}		
+%\subsubsection{Lower and upper bounds when the neighbourhoods are ellipses}\label{subsection:bounds}	
+
+\CV{
+\section{Matheuristic Algorithm}
+
+In this section, an mathheuristic based in the formulations above is presented to handle larger instances of the problem. This mathheuristic will give a solution of \KMPN or \KMPVN, that can be used to initialize the formulation of these models.
+
+The basic idea of this procedure is to consider only the centers of each neighbourhoods as the points selected in each one. By fixing these points, the graphs induced $\GKMPN$ and $\GKMPVN$ are also fixed, their respective edges can be preprocessed and the problems obtained are linear.
 		
-		
-		
+}
 		
 		
 		

@@ -19,13 +19,13 @@ from h_kmedian_n import h_kmedian_n
 # from HTSPS_without_prepro import HTSPS_without_prepro
 # 50-3
 
-segments = np.genfromtxt('./instancias/segmentos10-4.csv', delimiter = ',')
+segments = np.genfromtxt('./instancias/segmentos50-3.csv', delimiter = ',')
 
 barriers = []
 for lista in segments:
     barriers.append([[lista[0], lista[1]], [lista[2], lista[3]]])
 
-bolas = np.genfromtxt('./instancias/bolas10-4.csv', delimiter = ',')
+bolas = np.genfromtxt('./instancias/bolas50-3.csv', delimiter = ',')
 sources = [neigh.Circle(center = [centro1, centro2], radii = radio, col = 'blue') for centro1, centro2, radio in bolas]
 
 targets = [neigh.Circle(center = [centro1, centro2], radii = radio, col = 'red') for centro1, centro2, radio in bolas]
@@ -76,4 +76,6 @@ wE = 1
 wL = 0
 
 # 279.88
-resultados = h_kmedian_n(barriers, sources=sources, targets=targets, k=k, wL=wL, lazy=False, A4=1, time_limit=3600, picture=True)
+resultados = h_kmedian_n(barriers, sources=sources, targets=targets, k=k, wL=wL, lazy=False, A4=1, time_limit=1800, picture=False, init = True)
+
+print(resultados)

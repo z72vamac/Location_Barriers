@@ -1095,3 +1095,25 @@ def dominant_point(neighborhood, point1, point2, barriers):
         model.update()
 
     return [point[0].X, point[1].X]
+
+
+def preprocess_neighborhoods(neighborhoods):
+
+    neighborhoods_auxiliar = []
+
+    for neigh in neighborhoods:
+        neigh_new = copy.copy(neigh)
+        change_radii(neigh_new)
+        neighborhoods_auxiliar.append(neigh_new)
+
+    return neighborhoods_auxiliar
+
+def change_radii(neighborhood):
+
+    if type(neighborhood) is neigh.Circle:
+        neighborhood.radii = 1e-5
+
+    if type(neighborhood) is neigh.Poligonal:
+        neighborhood.V = [neighborhood.V[0], neighborhood.V[0]]
+
+

@@ -3,7 +3,7 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 
 
-datos = pd.read_csv('all_results.csv')
+datos = pd.read_csv('resultados_buenos.csv')
 
 datos = datos[datos['n_N'] <= 80]
 
