@@ -22,7 +22,8 @@ np.random.seed(5)
 
 # Parameters of the model
 instances = range(5)
-n_Ns = [10, 15, 20]
+# n_Ns = [10, 15, 20]
+n_Ns = [25, 30]
 ks = []
 
 for nn in n_Ns:
