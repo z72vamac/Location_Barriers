@@ -743,7 +743,7 @@ def h_kmedian_n(barriers, sources, targets, k, wL=50, lazy=True, A4=True, prepro
 
     time_elapsed = second_time - first_time
 
-    results = [len(sources), len(barriers), k, wL, lazy, A4, np.nan, np.nan, np.nan, np.nan, np.nan, np.nan, np.nan, np.nan]
+    results = [len(sources), len(barriers), k, wL, lazy, A4, init, np.nan, np.nan, np.nan, np.nan, np.nan, np.nan, np.nan, np.nan]
 
     if init:
         try:
@@ -764,10 +764,10 @@ def h_kmedian_n(barriers, sources, targets, k, wL=50, lazy=True, A4=True, prepro
 
     # model.write('solution.sol')
 
-    results[6] = model.getAttr('MIPGap')
-    results[7] = model.getAttr('Runtime')
-    results[8] = model.getAttr('NodeCount')
-    results[9] = model.ObjVal
+    results[7] = model.getAttr('MIPGap')
+    results[8] = model.getAttr('Runtime')
+    results[9] = model.getAttr('NodeCount')
+    results[10] = model.ObjVal
 
     x_indices = [(index, x[index].X) for index in x.keys() if x[index].X > 0.5]
     dist_indices = [(index, dist[index].X) for index in x.keys() if x[index].X > 0.5]
