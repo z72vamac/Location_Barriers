@@ -6,6 +6,7 @@ import gurobipy as gp
 import itertools
 import time
 from gurobipy import GRB
+import numpy as np
 from matplotlib.patches import Circle
 
 import estimacion_M as eM
@@ -377,6 +378,6 @@ def matheuristic(barriers, sources_auxiliar, targets_auxiliar, k, wL=50, A4 = Tr
         ax.set_aspect('equal')
         plt.show()
 
-    return time_h, objval_h
+    return time_h, objval_h, x_indices, y_indices, z_indices
 
 
