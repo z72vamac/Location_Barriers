@@ -382,7 +382,7 @@ def h_kmedian_n(barriers, sources, targets, k, wL=50, lazy=True, A4=True, prepro
                 model._startobjval = model.cbGet(GRB.Callback.MIPSOL_OBJ)
                 model._starttime = model.cbGet(GRB.Callback.RUNTIME)
 
-                # model.terminate()
+                model.terminate()
 
     model = gp.Model('Model: H-KMedian-N')
 
