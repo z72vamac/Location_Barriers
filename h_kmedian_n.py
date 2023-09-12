@@ -418,8 +418,7 @@ def h_kmedian_n(barriers, sources, targets, k, single = False, wL=50, lazy=True,
     p = model.addVars(p_index, vtype=GRB.CONTINUOUS, lb=0.0, name='p')
     paux = model.addVars(paux_index, vtype=GRB.CONTINUOUS, lb=0.0, name='paux')
     x = model.addVars(x_index, vtype=GRB.BINARY, name='x')
-    if single:
-        aux = model.addVars(aux_index, vtype=GRB.BINARY, name='aux')
+    aux = model.addVars(aux_index, vtype=GRB.BINARY, name='aux')
 
     y = model.addVars(y_index, vtype=GRB.BINARY, name='y')
     if single:
@@ -453,7 +452,7 @@ def h_kmedian_n(barriers, sources, targets, k, single = False, wL=50, lazy=True,
     model.update()
 
     if init:
-        time_h, objval_h, x_start, y_start, z_start = matheuristic(barriers, sources, targets, k, wL, time_limit = 100, picture = False)
+        time_h, objval_h, x_start, y_start, flow_start = matheuristic(barriers, sources, targets, k, single = single, wL = wL, time_limit = 100, picture = False)
 
         # print((time_h, objval_h))
 
@@ -902,8 +901,8 @@ def h_kmedian_n(barriers, sources, targets, k, single = False, wL=50, lazy=True,
     # print("p_indices:")
     # print(p_indices)
     #
-    print("dist_indices:")
-    print(dist_indices)
+    # print("dist_indices:")
+    # print(dist_indices)
 
     x_indices = [index for index in x.keys() if x[index].X > 0.5]
 

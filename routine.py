@@ -43,7 +43,9 @@ lazy = [False]
 A4 = [True, False]
 
 inits = [False, True]
-inits = [True]
+# inits = [True]
+
+singles = [False, True]
 time_limit = 300
 
 dataframe = pd.DataFrame(columns=['Instance', 'n_N', 'n_B', 'k', 'wL', 'Lazy', 'A4', 'Init', 'Gap', 'Runtime', 'NodeCount', 'ObjVal', 'Runtime_h', 'Runtime_h2', 'ObjVal_h', 'ObjVal_h2'])

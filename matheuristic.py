@@ -15,7 +15,7 @@ import neighborhood as neigh
 from data import *
 
 
-def matheuristic(barriers, sources_auxiliar, targets_auxiliar, k, wL=50, A4 = True, log=False, picture=False,
+def matheuristic(barriers, sources_auxiliar, targets_auxiliar, k, single = False, wL=50, A4 = True, log=False, picture=False,
                 time_limit=7200, init=False):
 
     print('Iniciando matheuristico')
@@ -150,7 +150,11 @@ def matheuristic(barriers, sources_auxiliar, targets_auxiliar, k, wL=50, A4 = Tr
                     edges_source_target.append((a, b, c, d))
 
     vertices_total = vertices_source + vertices_barrier + vertices_target
-    edges_total = edges_source + edges_barrier + edges_target + edges_source_target
+    
+    if not(A4):
+        edges_total = edges_source + edges_barrier + edges_target + edges_source_target
+    else:
+        edges_total = edges_source + edges_barrier + edges_target
 
     if log:
         print("vertices_source = " + str(vertices_source))
@@ -171,38 +175,48 @@ def matheuristic(barriers, sources_auxiliar, targets_auxiliar, k, wL=50, A4 = Tr
     #     for dim in range(2):
     #         point_index.append((a, b, dim))
 
-    x_index = edges_total
-
-    aux_index = []
-
-    for a, b, c, d in edges_total:
-        for e, f in vertices_target:
-            aux_index.append((a, b, c, d, e, f))
-
-
-    y_index = vertices_source
-
-
-    z_index = []
+    # Assignment variables
+    x_index = []
 
     for a, b in vertices_source:
         for c, d in vertices_target:
-            z_index.append((a, b, c, d))
+            x_index.append((a, b, c, d))
+
+    # Allocating variables
+    y_index = vertices_source
+
+    # Flow variables
+
+    flow_index = []
+    aux_index = []
+
+    if single:
+
+        for a, b, c, d in edges_total:
+            flow_index.append((a, b, c, d))
+            for e, f in vertices_target:
+                aux_index.append((a, b, c, d, e, f))
+        
+        p_index = edges_total
+
+    else:
+
+        for a, b, c, d in edges_total:
+            for e, f in vertices_source:
+                for g, h in vertices_target:
+                    if ((a, b, c, d) in edges_source and a == e) or ((a, b, c, d) in edges_target and c == g) or ((a, b, c, d) in edges_barrier) or ((a, b, c, d) in edges_source_target and a == e and c == g):
+                        flow_index.append((a, b, c, d, e, f, g, h))
+
+        aux_index = flow_index
+
+        p_index = x_index
+
+    paux_index = aux_index
 
     if log:
         print("x_index = " + str(x_index))
         print("y_index = " + str(y_index))
-        print("z_index = " + str(z_index))
-
-    # P_S and P_T: indices of the points in the neighborhoods
-    # p_index = []
-    # for a, b, c, d in edges_total:
-    #     for e, f in vertices_neighborhood:
-    #         p_index.append((a, b, c, d, e))
-
-    # for index in vertices_neighborhood:
-    #     for dim in range(2):
-    #         p_index.append((index[0], index[1], dim))
+        print("z_index = " + str(flow_index))
 
 
 
@@ -247,37 +261,58 @@ def matheuristic(barriers, sources_auxiliar, targets_auxiliar, k, wL=50, A4 = Tr
 
     model = gp.Model('Model: H-KMedian-N')
 
-    x = model.addVars(x_index, vtype=GRB.INTEGER, lb=0.0, ub=len(targets), name='x')
+    x = model.addVars(x_index, vtype=GRB.BINARY, name='x')
     aux = model.addVars(aux_index, vtype=GRB.BINARY, name='aux')
+
     y = model.addVars(y_index, vtype=GRB.BINARY, name='y')
-    z = model.addVars(z_index, vtype=GRB.BINARY, name='z')
+    if single:
+        flow = model.addVars(flow_index, vtype=GRB.INTEGER, lb=0.0, ub=T, name='flow')
+    else:
+        flow = model.addVars(flow_index, vtype=GRB.BINARY, name='flow')
 
     model.update()
 
-    # We only open k facilities
-    model.addConstr(y.sum('*') == k)
+   # We only open k facilities
+    model.addConstr(y.sum('*', '*') == k)
 
     # All the targets must be associated to one facility
-    model.addConstrs(z.sum('*', '*', c, d) == 1 for c, d in vertices_target)
+    model.addConstrs(x.sum('*', '*', c, d) == 1 for c, d in vertices_target)
 
     # If a facility is not open in S, we can not launch capacity from this source.
-    model.addConstrs(z[a, b, c, d] <= y[a, b] for a, b, c, d in z_index)
+    model.addConstrs(x[a, b, c, d] <= y[a, b] for a, b, c, d in x_index)
 
     # Binarying an integer variable
-    model.addConstrs(x[a, b, c, d] == gp.quicksum((abs(e))*aux[a, b, c, d, e, f] for e, f in vertices_target) for a, b, c, d in edges_total)
+    if single:
+        model.addConstrs(flow[a, b, c, d] == gp.quicksum((abs(e))*aux[a, b, c, d, e, f] for e, f in vertices_target if (a, b, c, d, e, f) in aux_index) for a, b, c, d in edges_total)
+    
     # model.addConstrs(aux.sum(a, b, c, d, '*', '*') == 1 for a, b, c, d in edges_total)
 
-    for a, b in vertices_total:
-        if (a, b) in vertices_source:
-            model.addConstr(x.sum(a, b, '*', '*') == z.sum(a, b, '*', '*'))
-        elif (a, b) in vertices_barrier:
-            model.addConstr(x.sum(a, b, '*', '*') - x.sum('*', '*', a, b) == 0)
-        else:
-            model.addConstr(x.sum('*', '*', a, b) == 1)
+    if single:
+        for a, b in vertices_total:
+            if (a, b) in vertices_source:
+                model.addConstr(flow.sum(a, b, '*', '*') == x.sum(a, b, '*', '*'))
+            elif (a, b) in vertices_barrier:
+                model.addConstr(flow.sum(a, b, '*', '*') - flow.sum('*', '*', a, b) == 0)
+            else:
+                model.addConstr(flow.sum('*', '*', a, b) == 1)
+    else:
+        for e, f in vertices_source:
+            for g, h in vertices_target:
+                for a, b in vertices_total:
+                    if (a, b) in vertices_source:
+                        model.addConstr(flow.sum(e, f, '*', '*', e, f, g, h) == x[e, f, g, h])
+                    elif (a, b) in vertices_barrier:
+                        model.addConstr(flow.sum(a, b, '*', '*', e, f, g, h) - flow.sum('*', '*', a, b, e, f, g, h) == 0)
+                    else:
+                        model.addConstr(flow.sum('*', '*', g, h, e, f, g, h) == x[e, f, g, h])
 
     model.update()
 
-    objective = gp.quicksum(dist[index]*x[index] for index in edges_total) + gp.quicksum(0.5*wL*x[index] for index in x.keys())
+    if single:
+        objective = gp.quicksum(dist[index]*flow[index] for index in edges_total) + gp.quicksum(0.5*wL*flow[index] for index in flow.keys())
+    else:
+        objective = gp.quicksum(dist[a, b, c, d]*flow[a, b, c, d, e, f, g, h] for a, b, c, d, e, f, g, h in flow_index) + gp.quicksum(0.5*wL*flow[index] for index in flow.keys())
+
 
     # for a, b, c, d in edges_barrier:
     #     # for e, f in vertices_source:
@@ -302,16 +337,19 @@ def matheuristic(barriers, sources_auxiliar, targets_auxiliar, k, wL=50, A4 = Tr
 
     time_elapsed = second_time - first_time
 
-    model.write('solution.sol')
     results = [np.nan, np.nan]
 
     if model.Status == 3:
         model.computeIIS()
         model.write('infeasible_constraints.ilp')
+        
+        
         return results
 
     if model.SolCount == 0:
         return results
+
+    model.write('solution.sol')
 
     # model.write('solution.sol')
 
@@ -322,12 +360,12 @@ def matheuristic(barriers, sources_auxiliar, targets_auxiliar, k, wL=50, A4 = Tr
 
     y_indices = [index for index in y.keys() if y[index].X > 0.5]
 
-    z_indices = [index for index in z.keys() if z[index].X > 0.5]
+    flow_indices = [index for index in flow.keys() if flow[index].X > 0.5]
 
     if log:
         print(x_indices)
         print(y_indices)
-        print(z_indices)
+        print(flow_indices)
 
     # g_indices = []
     #
@@ -378,6 +416,6 @@ def matheuristic(barriers, sources_auxiliar, targets_auxiliar, k, wL=50, A4 = Tr
         ax.set_aspect('equal')
         plt.show()
 
-    return time_h, objval_h, x_indices, y_indices, z_indices
+    return time_h, objval_h, x_indices, y_indices, flow_indices
 
 
