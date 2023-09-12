@@ -26,7 +26,7 @@ def h_kmedian_n(barriers, sources, targets, k, wL=50, lazy=True, A4=True, prepro
     # Indices of the vertices identified with the vertices of the barriers
     vertices_barrier = list(itertools.product(range(1000, 1000 + len(barriers)), range(2)))
 
-    # Indices of the vertices identified with the sources
+    # Indices of the vertices identified with the targets
     vertices_target = list(itertools.product(range(-len(targets), 0), range(1)))
     vertices_target = vertices_target[::-1]
 
@@ -843,6 +843,10 @@ def h_kmedian_n(barriers, sources, targets, k, wL=50, lazy=True, A4=True, prepro
 
             if (a, b, c, d) in edges_target:
                 segments.append([barriers[a-1000][b][0], point[c, d, 0].X, barriers[a-1000][b][1], point[c, d, 1].X])
+
+            if (a, b, c, d) in edges_source_target:
+                segments.append([point[a, b, 0].X, point[c, d, 0].X, point[a, b, 1].X, point[c, d, 1].X])
+
 
 
         # print(segments)

@@ -1,143 +1,158 @@
-	\documentclass[a4paper,  review, authoryear, 1p.]{elsarticle}
-	\usepackage[utf8]{inputenc}
-	\usepackage[T1]{fontenc}
-	%\usepackage[spanish]{babel}
-	\usepackage{amsmath}
-	\usepackage{amsfonts}
-	\usepackage[normalem]{ulem}
-	\usepackage{amssymb}
-	\usepackage{graphicx}
-	\usepackage{mathtools,amssymb}
-	\usepackage{subfigure}
-	\usepackage{optidef}
-	\usepackage{xcolor}
-	\usepackage[normalem]{ulem}
-	\usepackage{amsthm}
-	\usepackage{comment}
-	%\usepackage[numbers]{natbib}
-	\usepackage{tikz}
-	\usepackage{pgfplots}
-	\usepackage{mathrsfs}
-	\usepackage{float}
-	\usepackage{bm}
-	%\usepackage{booktabs}
-	\usepackage{bigstrut}
-	\usepackage[linesnumbered,ruled,vlined]{algorithm2e}
-	%\usepackage[noend]{algpseudocode}
-	%\usepackage{ulem}
-	\usepackage[margin=1in]{geometry}
-	\usepackage{enumitem}
-	\usepackage{mathrsfs}
-	\usepackage{xspace}
-	\usepackage{array}
-	\usepackage{multirow}
-	\usepackage{colortbl}
-	\setlength{\extrarowheight}{.5ex}
+\documentclass[a4paper,  review, authoryear, 1p.]{elsarticle}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+%\usepackage[spanish]{babel}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage[normalem]{ulem}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{mathtools,amssymb}
+\usepackage{subfigure}
+\usepackage{optidef}
+\usepackage{xcolor}
+\usepackage[normalem]{ulem}
+\usepackage{amsthm}
+\usepackage{comment}
+\usepackage{booktabs}
+%\usepackage[numbers]{natbib}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usepackage{mathrsfs}
+\usepackage{float}
+\usepackage{bm}
+%\usepackage{booktabs}
+\usepackage{bigstrut}
+\usepackage[linesnumbered,ruled,vlined]{algorithm2e}
+%\usepackage[noend]{algpseudocode}
+%\usepackage{ulem}
+\usepackage[margin=1in]{geometry}
+\usepackage{enumitem}
+\usepackage{mathrsfs}
+\usepackage{xspace}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{colortbl}
+\setlength{\extrarowheight}{.5ex}
+% \usepackage[style=apa]{biblatex} %Imports biblatex package
+% \addbibresource{location_barrier_bibliography.bib} %Import the bibliography file
+
+\usepackage{threeparttable}
+
+\usepackage[utf8]{inputenc}
+
+
+
+\DeclareMathOperator*{\argmax}{arg\,max}
+\DeclareMathOperator*{\argmin}{arg\,min}
+
+
+\newcommand{\KMPHN}{{\sf{H-KMPHN}}}
+\newcommand{\KMPN}{{\sf{H-KMPN}\xspace }}
+\newcommand{\SPPN}{{\sf{H-SPPN}\xspace }}
+\newcommand{\TSPN}{{\sf{H-TSPN}\xspace }}
+\newcommand{\TSPVN}{{\sf{H-TSPVN}\xspace }}
+\newcommand{\B}{{\mathcal B}}
+\newcommand{\VB}{{V^{}_{\mathcal B}}}
+\newcommand{\EB}{{E^{}_{\mathcal B}}}
+\newcommand{\VS}{{V^{}_{\mathcal S}}}
+\newcommand{\ES}{{E^{}_{\mathcal S}}}
+\newcommand{\VT}{{V^{}_{\mathcal T}}}
+\newcommand{\ET}{{E^{}_{\mathcal T}}}
+\newcommand{\VN}{{V^{}_{\mathcal N}}}
+\newcommand{\EN}{{E^{}_{\mathcal N}}}
+\newcommand{\EST}{{E^{}_{\mathcal S\mathcal T}}}
+\newcommand{\GSPP}{{G_{\text{SPP}}}}
+\newcommand{\VSPP}{{V_{\text{SPP}}}}
+\newcommand{\ESPP}{{E_{\text{SPP}}}}
+\newcommand{\GTSP}{{G_{\text{TSP}}}}
+\newcommand{\VTSP}{{V_{\text{TSP}}}}
+\newcommand{\ETSP}{{E_{\text{TSP}}}}
+\newcommand{\GKMPHN}{{G_{\text{KMPHN}}}}
+\newcommand{\VKMPHN}{{V_{\text{KMPHN}}}}
+\newcommand{\EKMPHN}{{E_{\text{KMPHN}}}}
+\newcommand{\GKMPN}{{G_{\text{KMPN}}}}
+\newcommand{\VKMPN}{{V_{\text{KMPN}}}}
+\newcommand{\EKMPN}{{E_{\text{KMPN}}}}
+\newcommand{\VSS}{{V^*_S}}
+\newcommand{\ESS}{{E^*_S}}
+\newcommand{\VTS}{{V^*_T}}
+\newcommand{\ETS}{{E^*_T}}
+\newcommand{\VNS}{{V^*_{\mathcal N}}}
+\newcommand{\ENS}{{E^*_{\mathcal N}}}
+\newcommand{\GSPPS}{{G^{*}_{\text{SPP}}}}
+\newcommand{\VSPPS}{{V^{*}_{\text{SPP}}}}
+\newcommand{\ESPPS}{{E^{*}_{\text{SPP}}}}
+\newcommand{\GTSPS}{{G^{*}_{\text{TSP}}}}
+\newcommand{\VTSPS}{{V^{*}_{\text{TSP}}}}
+\newcommand{\ETSPS}{{E^{*}_{\text{TSP}}}}
+
+\newtheorem{remark}{Remark}
+\newtheorem{notation}{Notation}
+
+\newtheorem{prop}{Proposition}
+
+\definecolor{armygreen}{rgb}{0.19, 0.53, 0.43}
+\definecolor{atomictangerine}{rgb}{1.0, 0.6, 0.4}
+\newcommand{\JP}[1]{{\color{armygreen}#1}}
+\newcommand{\CV}[1]{{\color{atomictangerine}#1}}
+\newcommand{\segment}[2]{\overline{#1#2}}
+\newcommand{\determinant}[3]{\det({#1|#2#3})}
+
+\begin{document}
 	
-	
-	\usepackage{threeparttable}
-	
-	\usepackage[utf8]{inputenc}
-	
-	
-	
-	\DeclareMathOperator*{\argmax}{arg\,max}
-	\DeclareMathOperator*{\argmin}{arg\,min}
-	
-	
-	\newcommand{\KMPN}{{\sf{H-KMPN}}}
-	\newcommand{\KMPVN}{{\sf{H-KMPVN}\xspace }}
-	\newcommand{\SPPN}{{\sf{H-SPPN}\xspace }}
-	\newcommand{\TSPN}{{\sf{H-TSPN}\xspace }}
-	\newcommand{\TSPVN}{{\sf{H-TSPVN}\xspace }}
-	\newcommand{\B}{{\mathcal B}}
-	\newcommand{\VB}{{V^{}_{\mathcal B}}}
-	\newcommand{\EB}{{E^{}_{\mathcal B}}}
-	\newcommand{\VS}{{V^{}_{\mathcal S}}}
-	\newcommand{\ES}{{E^{}_{\mathcal S}}}
-	\newcommand{\VT}{{V^{}_{\mathcal T}}}
-	\newcommand{\ET}{{E^{}_{\mathcal T}}}
-	\newcommand{\VN}{{V^{}_{\mathcal N}}}
-	\newcommand{\EN}{{E^{}_{\mathcal N}}}
-	\newcommand{\EST}{{E^{}_{\mathcal S\mathcal T}}}
-	\newcommand{\GSPP}{{G_{\text{SPP}}}}
-	\newcommand{\VSPP}{{V_{\text{SPP}}}}
-	\newcommand{\ESPP}{{E_{\text{SPP}}}}
-	\newcommand{\GTSP}{{G_{\text{TSP}}}}
-	\newcommand{\VTSP}{{V_{\text{TSP}}}}
-	\newcommand{\ETSP}{{E_{\text{TSP}}}}
-	\newcommand{\GKMPN}{{G_{\text{KMPN}}}}
-	\newcommand{\VKMPN}{{V_{\text{KMPN}}}}
-	\newcommand{\EKMPN}{{E_{\text{KMPN}}}}
-	\newcommand{\GKMPVN}{{G_{\text{KMPVN}}}}
-	\newcommand{\VKMPVN}{{V_{\text{KMPVN}}}}
-	\newcommand{\EKMPVN}{{E_{\text{KMPVN}}}}
-	\newcommand{\VSS}{{V^*_S}}
-	\newcommand{\ESS}{{E^*_S}}
-	\newcommand{\VTS}{{V^*_T}}
-	\newcommand{\ETS}{{E^*_T}}
-	\newcommand{\VNS}{{V^*_{\mathcal N}}}
-	\newcommand{\ENS}{{E^*_{\mathcal N}}}
-	\newcommand{\GSPPS}{{G^{*}_{\text{SPP}}}}
-	\newcommand{\VSPPS}{{V^{*}_{\text{SPP}}}}
-	\newcommand{\ESPPS}{{E^{*}_{\text{SPP}}}}
-	\newcommand{\GTSPS}{{G^{*}_{\text{TSP}}}}
-	\newcommand{\VTSPS}{{V^{*}_{\text{TSP}}}}
-	\newcommand{\ETSPS}{{E^{*}_{\text{TSP}}}}
-	
-	\newtheorem{remark}{Remark}
-	\newtheorem{notation}{Notation}
-	
-	\newtheorem{prop}{Proposition}
-	
-	\definecolor{armygreen}{rgb}{0.19, 0.53, 0.43}
-	\definecolor{atomictangerine}{rgb}{1.0, 0.6, 0.4}
-	\newcommand{\JP}[1]{{\color{armygreen}#1}}
-	\newcommand{\CV}[1]{{\color{atomictangerine}#1}}
-	\newcommand{\segment}[2]{\overline{#1#2}}
-	\newcommand{\determinant}[3]{\det({#1|#2#3})}
-	
-	\begin{document}
+	\begin{frontmatter}
 		
-%		\begin{frontmatter}
-%			
-%			\title{The Hampered K-Median Problem with Neighbourhoods}
-%			
-%			\author[1]{Justo Puerto\corref{cor1}}%
-%			\ead{puerto@us.es}
-%			\author[2]{Carlos Valverde\corref{cor1}}
-%			\ead{cvalverde@us.es}
-%			
-%			\address[1]{Department of Statistics and Operations Research, University of Seville, Seville, 41012, Spain}
-%			\address[2]{Department of Statistics and Operations Research, University of Seville, Seville, 41012, Spain}
-%			
-%			\cortext[cor1]{Equally contributing authors}
-%			
-%			\date{\today}
-%			
-%			
-%			\begin{abstract}
-%				This paper deals with two different route design problems in a continuous space with neighbours and barriers: the shortest path and the traveling salesman problems with neighbours and barriers. Each one of these two elements, neighbours and barriers, make the problems harder than their standard counterparts. Therefore, mixing both together results in a new challenging problem that, as far as we know, has not been addressed before but that has applications for inspection and surveillance activities and the delivery industry assuming uniformly distributed demand in some regions.
-%				We provide exact mathematical programming formulations for both problems assuming polygonal barriers and neighbours that are second-order cone (SOC) representable. These hypotheses give rise to mixed integer SOC formulations that we preprocess and strengthen with valid inequalities. The paper also reports computational experiments showing that our exact method can solve instances with 80 neighbourhoods and a range between 125-145 barriers.
-%			\end{abstract}
-%			
-%			\begin{keyword}
-%				Routing \sep Traveling salesman \sep Networks \sep Conic programming and interior point methods
-%			\end{keyword}
-%			
-%		\end{frontmatter}
+		\title{The Hampered K-Median Problem with Neighbourhoods}
 		
-%		\section{Introduction}
+		\author[1]{Justo Puerto\corref{cor1}}%
+		\ead{puerto@us.es}
+		\author[2]{Carlos Valverde\corref{cor1}}
+		\ead{cvalverde@us.es}
+		
+		\address[1]{Institute of Mathematics (IMUS) and Department of Statistics and Operations Research, University of Seville, Seville, 41012, Spain}
+		\address[2]{Institute of Mathematics (IMUS) and Department of Statistics and Operations Research, University of Seville, Seville, 41012, Spain}
+		
+		\cortext[cor1]{Equally contributing authors}
+		
+		\date{\today}
+		
+		
+		\begin{abstract}
+			This paper deals with facility location  problems in a continuous space with neighbours and barriers. Each one of these two elements, neighbours and barriers, make the problems harder than their standard counterparts. Therefore, mixing both together results in a new challenging problem that, as far as we know, has not been addressed before but that has applications for inspection and surveillance activities and the delivery industry assuming uniformly distributed demand in some regions. Specifically, we analyze the $K$-Median  problem with neighbours and polygonal barriers under two different situations. As a first building block, we deal with the problem assuming that neighbourhoods are not visible from one another and therefore there are no rectilinear paths joining any two of them without crossing barriers. Under this hypothesis we derive a valid mixed integer, linear formulation. Removing that hypothesis leads to the more general, realistic problem but at the price of making it more challenging. Adapting the elements of the first formulation, we also develop another valid mixed integer, bilinear formulation.  Both formulations handle polygonal barriers and neighbours that are second-order cone (SOC) representable, that we preprocess and strengthen with valid inequalities. These mathematical programming formulations are also instrumental to derive an adapted matheuristic algorithm that provides good quality solutions for both problems in short computing time. The paper also reports an extensive computational experience showing that our exact and heuristic approaches are useful: the exact approach can solve to optimality instances with up to 50 neighbourhoods and different number of barriers within one hour of CPU time, whereas the matheuristic always returns good feasible solutions in less than 100 seconds.
+		\end{abstract}
+		
+		\begin{keyword}
+			Facility location \sep Continuous Location \sep Barriers \sep Mixed integer Conic programming 
+		\end{keyword}
+	\end{frontmatter}
+	
+	%		\section{Introduction}
+	\section{Introduction}\label{section:introduction}
+	
+	Location analysis is a classical branch of operations research that studies the best way to place some facilities to satisfy the demand of customers. In location analysis, problems are usually classified in discrete or continuous facility location problems. The first class is considered when there is a finite number of candidates to allocate facilities (see \citet{ulukan_survey_2015} for a survey). Continuous facility location problems arise if facilities can be placed anywhere in some continuous regions. Both versions are widely investigated in the literature (see \citet{drezner_facility_2004} or \citet{nickel_s_2007} for more details) by their many applications in transportation, logistics or telecommunication. For these problems, lot of variants have been studied in terms of the objective functions to be optimized, the number of facilities that must be allocated or the maximum capacity that facilities can supply, among many other respects (we refer the reader to \citet{kuehn_heuristic_1963} and \citet{puerto_new_2008}).
+	
+	In \cite{blanco_ordered_2019}, the Ordered k-Median Problem with Neighbourhoods is presented as a single source uncapacitated continuous facility location problem that extends its respective underlying discrete location problem. In this problem, facilities are allowed to be allocated in certain regions called neighbourhoods. If those are points, the problem reduces to the single source uncapacitated facility discrete location problem, that have been already studied in the literature. Otherwise, the continuous version is considered. In this version, different shapes and sizes for the neighbourhoods allow one to model how imprecise the provided locational information is. This problem also has interest on drone delivery and inspection problems. Neighbourhoods can represent regions that the drone must reach and where the customers are willing to pick up the orders (they can be seen as uniform probability densities) in the delivery industry. Moreover, they can be also used for modelling some areas that must be inspected by the drone (whenever visiting a point of these areas is enough to consider them as inspected). This framework will be called Facility Location with Neighbourhoods, a terminology borrowed from the neighbourhood versions of the Minimum Spanning Tree problem, described in \citet{blanco_minimum_2017} and the Traveling Salesman problem, studied in \citet{gentilini_travelling_2013}, \citet{yuan_towards_2017} or \citet{puerto_routing_2022}.
+	
+	
+	This paper extends the k-Median Problem with Neighbourhoods by including a set of barriers, represented by line segments, that the trips between demand points and service facilities cannot cross. These barriers simulate buildings in urban areas that vehicles (drones) cannot cross. The resulting problem keeps geometric components from the p-median problem with neighbourhoods that must be exploited to partially overcome the difficulties of the solution approaches and algorithms in the network design among neighbourhoods with barriers. The use of barriers in location problems has been studied (see \citet{klamroth_single-facility_2002}). However, the combination of both elements has attracted less attention in the Operations Research literature. 
+	
+	Our goal in this paper is to deal with the k-median problem with neighbourhoods and barriers that we call the Hampered k-Median problem with Neighbourhoods (\KMPN). We present exact mathematical programming formulations assuming linear barriers and second-order cone (SOC) representable neighbourhoods. These formulations are modeled by using a geodesic shortest-path representation, based on problems studied in \citet{mitchell_shortest_2017}. These assumptions lead to quadratically-constrained mixed-integer formulations. Solving this family of formulations in addition to the classic k-median, that is NP-hard, makes the solution of the problem under study a hard challenge. On-the-shelf solvers can deal only with small-size instances. This fact motivates the design of a matheuristic that provides good quality solutions for medium-size instances.
+	
+	The paper is organized in six sections. In Section \ref{section:description} the problem and its variant are introduced and described. Section \ref{section:formulations} is devoted to provide quadratically-constrained mixed-integer programming formulations of the problems. In Section \ref{section:matheuristic} the matheuristic approach is described. The results of some computational experiments are reported in Section \ref{section:experiments}. Finally, some conclusions are presented in Section \ref{section:conclusion}.
+	
 	
 	\section{Description of the Problem}\label{section:description}
-	In this section, the framework of the two versions of the problem considered in the manuscript are analyzed: the Hampered $k$-Median Problem with Neighbourhoods \CV{and limited endurance} \KMPN\xspace and the Hampered $k$-Median Problem with Visible Neighbourhoods \CV{and limited endurance} \KMPVN. Since we have in mind their applications to the drone delivery problem with uniformly distributed demand in regions and inspection problems, at times, we will refer to the moving object as the \textit{drone}.
+	In this section, the framework of the two versions of the problem considered in the manuscript are analyzed: the Hampered $k$-Median Problem with Hidden Neighbourhoods \KMPHN\xspace and the Hampered $k$-Median Problem with Neighbourhoods \KMPN. Since we have in mind their applications to the drone delivery problem with uniformly distributed demand in regions and inspection problems, at times, we will refer to the moving object as the \textit{drone}.
+	
+	First of all, we state the sets that describe the main elements of the problems. Second, we set the assumptions that barriers must verify. Finally, the goal and the sets of  parameters used in the following are defined in order to give valid formulations for these problems.
 	
 	\subsection{Parameters and Assumptions of the Problem}
 	The sets describing both versions of the problem are:
 	\begin{itemize}
-		\item $\mathcal S$: Set of neighbourhoods describing the possible sources where a facility can be allocated. It is assumed, wlog, that one facility can be allocated in each source at most.
+		\item $\mathcal S$: Set of neighbourhoods describing the possible sources where a facility can be allocated. It is assumed, wlog, that one facility can be allocated to each source at most once.
 		\item $\mathcal T$: Set of neighbourhoods representing the targets that must be served by a facility. It is assumed, wlog, that each target is served when it has been assigned to a facility.
-		\item $\mathcal B$: Set of barriers that can not be crossed when a facility is joined with a target. The assumptions made for this set of line segments are the following:
+		\item $\mathcal B$: Set of barriers (line segments) that can not be crossed when a facility is joined with a target. The assumptions made for this set of line segments are the following:
 		
 		\begin{enumerate}[label=\textbf{A\arabic*},ref=\textbf{A\arabic*}]
 			\item \label{A1}The line segments of $\mathcal B$ are located in general position, i.e., the endpoints of these segments are not aligned. Although it is possible to model the most general case, one can always  slightly modify one of the endpoints so that the segments are in general position.
@@ -147,152 +162,137 @@
 		\end{enumerate}
 		
 	\end{itemize}
-
-	The \KMPVN\xspace is the relaxed version of the \KMPN\xspace without imposing assumption \ref{A4}. In this case, it is not required that the barriers separate neighbourhoods completely, i.e., when moving from one neighbourhood to another one it is possible to go following a straight line without crossing any barrier. Figure \ref{fig:initialdata} shows an example of each version of the problem that is being considered. The left picture shows an instance of the \KMPN, where green neighbourhoods represent possible sources to allocate the facilities, blue neighbourhoods represent targets to be assigned to the sources and the red line segments show the barriers that the drone cannot cross. The right picture illustrates an instance of the \KMPVN \ where some sources and targets can be joined by a rectilinear path.
+	
+	The \KMPN\xspace is the relaxed version of the \KMPHN\xspace without imposing assumption \ref{A4}. In this case, it is not required that the barriers separate neighbourhoods completely, i.e., when moving from one neighbourhood to another one it is possible to go following a straight line without crossing any barrier. Figure \ref{fig:initialdata} shows an example of each version of the problem that is being considered. The left picture shows an instance of the \KMPHN, where green neighbourhoods represent possible sources to allocate the facilities, blue neighbourhoods represent targets to be assigned to the sources and the red line segments show the barriers that the drone cannot cross. The right picture illustrates an instance of the \KMPN \ where some sources and targets can be joined by a rectilinear path.
 	
 	\pgfplotsset{compat=1.15}
-
+	
 	\usetikzlibrary{arrows}
 	\definecolor{ffqqqq}{rgb}{1,0,0}
 	\definecolor{qqwuqq}{rgb}{0,0.39215686274509803,0}
 	\definecolor{qqqqff}{rgb}{0,0,1}
 	\definecolor{ududff}{rgb}{0.30196078431372547,0.30196078431372547,1}
 	\begin{figure}[h!]
-	\centering
+		\centering
 		\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=0.1cm,y=0.1cm, scale = 0.65]
-		\begin{axis}[
-			x=0.1cm,y=0.1cm,
-			axis lines=middle,
-			xmin=-5,
-			xmax=105,
-			ymin=-5,
-			ymax=105,
-			xtick={0,10,...,100},
-			ytick={0,10,...,100},]
-			\draw [rotate around={0:(10,15)},line width=2pt,color=qqqqff,fill=qqqqff,fill opacity=0.25] (10,15) ellipse (0.6cm and 0.6cm);
-			\draw [rotate around={0:(70,55)},line width=2pt,color=qqwuqq,fill=qqwuqq,fill opacity=0.25] (70,55) ellipse (0.4cm and 0.4cm);
-			\draw [rotate around={0:(50,70)},line width=2pt,color=qqwuqq,fill=qqwuqq,fill opacity=0.25] (50,70) ellipse (0.8cm and 0.8cm);
-			\draw [rotate around={0:(65,10)},line width=2pt,color=qqqqff,fill=qqqqff,fill opacity=0.25] (65,10) ellipse (0.7cm and 0.7cm);
-			\draw [rotate around={0:(10,65)},line width=2pt,color=qqqqff,fill=qqqqff,fill opacity=0.25] (10,65) ellipse (0.5cm and 0.5cm);
-			\draw [rotate around={0:(30,35)},line width=2pt,color=qqwuqq,fill=qqwuqq,fill opacity=0.25] (30,35) ellipse (1cm and 1cm);
-			\draw [rotate around={0:(90,35)},line width=2pt,color=qqqqff,fill=qqqqff,fill opacity=0.25] (90,35) ellipse (0.6cm and 0.6cm);
-			\draw [rotate around={0:(90,85)},line width=2pt,color=qqqqff,fill=qqqqff,fill opacity=0.25] (90,85) ellipse (0.6cm and 0.6cm);
-			\draw [rotate around={0:(30,90)},line width=2pt,color=qqqqff,fill=qqqqff,fill opacity=0.25] (30,90) ellipse (1cm and 1cm);
-			\draw [line width=2pt,color=ffqqqq] (0,90)-- (30,60);
-			\draw [line width=2pt,color=ffqqqq] (40,50)-- (10,50);
-			\draw [line width=2pt,color=ffqqqq] (0,30)-- (10,40);
-			\draw [line width=2pt,color=ffqqqq] (10,30)-- (30,5);
-			\draw [line width=2pt,color=ffqqqq] (40,10)-- (70,40);
-			\draw [line width=2pt,color=ffqqqq] (60,20)-- (100,10);
-			\draw [line width=2pt,color=ffqqqq] (30,70)-- (70,95);
-			\draw [line width=2pt,color=ffqqqq] (70,90)-- (60,50);
-			\draw [line width=2pt,color=ffqqqq] (70,80)-- (90,60);
-			\draw [line width=2pt,color=ffqqqq] (74,33)-- (98,60);
-			\begin{scriptsize}
-				\draw [color=ffqqqq] (0,90) circle (2.5pt);
-				\draw [color=ffqqqq] (30,60) circle (2.5pt);
-				\draw [color=ffqqqq] (40,50) circle (2.5pt);
-				\draw [color=ffqqqq] (10,50) circle (2.5pt);
-				\draw [color=ffqqqq] (0,30) circle (2.5pt);
-				\draw [color=ffqqqq] (10,40) circle (2.5pt);
-				\draw [color=ffqqqq] (10,30) circle (2.5pt);
-				\draw [color=ffqqqq] (30,5) circle (2.5pt);
-				\draw [color=ffqqqq] (40,10) circle (2.5pt);
-				\draw [color=ffqqqq] (70,40) circle (2.5pt);
-				\draw [color=ffqqqq] (60,20) circle (2.5pt);
-				\draw [color=ffqqqq] (100,10) circle (2.5pt);
-				\draw [color=ffqqqq] (30,70) circle (2.5pt);
-				\draw [color=ffqqqq] (70,95) circle (2.5pt);
-				\draw [color=ffqqqq] (70,90) circle (2.5pt);
-				\draw [color=ffqqqq] (60,50) circle (2.5pt);
-				\draw [color=ffqqqq] (70,80) circle (2.5pt);
-				\draw [color=ffqqqq] (90,60) circle (2.5pt);
-				\draw [color=ffqqqq] (74,33) circle (2.5pt);
-				\draw [color=ffqqqq] (98,60) circle (2.5pt);
-			\end{scriptsize}
-		\end{axis}
-	\end{tikzpicture}
-	\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=0.1cm,y=0.1cm, scale = 0.65]
-		\begin{axis}[
-			x=0.1cm,y=0.1cm,
-			axis lines=middle,
-			xmin=-5,
-			xmax=105,
-			ymin=-5,
-			ymax=105,
-			xtick={0,10,...,100},
-			ytick={0,10,...,100},]
-		\draw [rotate around={0:(10,15)},line width=2pt,color=qqqqff,fill=qqqqff,fill opacity=0.25] (10,15) ellipse (0.6cm and 0.6cm);
-		\draw [rotate around={0:(70,55)},line width=2pt,color=qqwuqq,fill=qqwuqq,fill opacity=0.25] (70,55) ellipse (0.4cm and 0.4cm);
-		\draw [rotate around={0:(50,70)},line width=2pt,color=qqwuqq,fill=qqwuqq,fill opacity=0.25] (50,70) ellipse (0.8cm and 0.8cm);
-		\draw [rotate around={0:(65,10)},line width=2pt,color=qqqqff,fill=qqqqff,fill opacity=0.25] (65,10) ellipse (0.7cm and 0.7cm);
-		\draw [rotate around={0:(10,65)},line width=2pt,color=qqqqff,fill=qqqqff,fill opacity=0.25] (10,65) ellipse (0.5cm and 0.5cm);
-		\draw [rotate around={0:(30,35)},line width=2pt,color=qqwuqq,fill=qqwuqq,fill opacity=0.25] (30,35) ellipse (1cm and 1cm);
-		\draw [rotate around={0:(90,35)},line width=2pt,color=qqqqff,fill=qqqqff,fill opacity=0.25] (90,35) ellipse (0.6cm and 0.6cm);
-		\draw [rotate around={0:(90,85)},line width=2pt,color=qqqqff,fill=qqqqff,fill opacity=0.25] (90,85) ellipse (0.6cm and 0.6cm);
-		\draw [rotate around={0:(30,90)},line width=2pt,color=qqqqff,fill=qqqqff,fill opacity=0.25] (30,90) ellipse (1cm and 1cm);
-		\draw [line width=2pt,color=ffqqqq] (0,90)-- (30,60);
-		\draw [line width=2pt,color=ffqqqq] (40,50)-- (10,50);
-		\draw [line width=2pt,color=ffqqqq] (0,30)-- (10,40);
-%		\draw [line width=2pt,color=ffqqqq] (10,30)-- (30,5);
-%		\draw [line width=2pt,color=ffqqqq] (40,10)-- (70,40);
-		\draw [line width=2pt,color=ffqqqq] (60,20)-- (100,10);
-		\draw [line width=2pt,color=ffqqqq] (30,70)-- (70,95);
-%		\draw [line width=2pt,color=ffqqqq] (70,90)-- (60,50);
-		\draw [line width=2pt,color=ffqqqq] (70,80)-- (90,60);
-		\draw [line width=2pt,color=ffqqqq] (74,33)-- (98,60);
-		\begin{scriptsize}
-			\draw [color=ffqqqq] (0,90) circle (2.5pt);
-			\draw [color=ffqqqq] (30,60) circle (2.5pt);
-			\draw [color=ffqqqq] (40,50) circle (2.5pt);
-			\draw [color=ffqqqq] (10,50) circle (2.5pt);
-			\draw [color=ffqqqq] (0,30) circle (2.5pt);
-			\draw [color=ffqqqq] (10,40) circle (2.5pt);
-%			\draw [color=ffqqqq] (10,30) circle (2.5pt);
-%			\draw [color=ffqqqq] (30,5) circle (2.5pt);
-%			\draw [color=ffqqqq] (40,10) circle (2.5pt);
-%			\draw [color=ffqqqq] (70,40) circle (2.5pt);
-			\draw [color=ffqqqq] (60,20) circle (2.5pt);
-			\draw [color=ffqqqq] (100,10) circle (2.5pt);
-			\draw [color=ffqqqq] (30,70) circle (2.5pt);
-			\draw [color=ffqqqq] (70,95) circle (2.5pt);
-%			\draw [color=ffqqqq] (70,90) circle (2.5pt);
-%			\draw [color=ffqqqq] (60,50) circle (2.5pt);
-			\draw [color=ffqqqq] (70,80) circle (2.5pt);
-			\draw [color=ffqqqq] (90,60) circle (2.5pt);
-			\draw [color=ffqqqq] (74,33) circle (2.5pt);
-			\draw [color=ffqqqq] (98,60) circle (2.5pt);
-		\end{scriptsize}
-	\end{axis}
-	\end{tikzpicture}
-	\caption{Problem data of the \KMPN \ and \KMPVN}
-	\label{fig:initialdata}
+			\begin{axis}[
+				x=0.1cm,y=0.1cm,
+				axis lines=middle,
+				xmin=-5,
+				xmax=105,
+				ymin=-5,
+				ymax=105,
+				xtick={0,10,...,100},
+				ytick={0,10,...,100},]
+				\draw [rotate around={0:(10,15)},line width=2pt,color=qqqqff,fill=qqqqff,fill opacity=0.25] (10,15) ellipse (0.6cm and 0.6cm);
+				\draw [rotate around={0:(70,55)},line width=2pt,color=qqwuqq,fill=qqwuqq,fill opacity=0.25] (70,55) ellipse (0.4cm and 0.4cm);
+				\draw [rotate around={0:(50,70)},line width=2pt,color=qqwuqq,fill=qqwuqq,fill opacity=0.25] (50,70) ellipse (0.8cm and 0.8cm);
+				\draw [rotate around={0:(65,10)},line width=2pt,color=qqqqff,fill=qqqqff,fill opacity=0.25] (65,10) ellipse (0.7cm and 0.7cm);
+				\draw [rotate around={0:(10,65)},line width=2pt,color=qqqqff,fill=qqqqff,fill opacity=0.25] (10,65) ellipse (0.5cm and 0.5cm);
+				\draw [rotate around={0:(30,35)},line width=2pt,color=qqwuqq,fill=qqwuqq,fill opacity=0.25] (30,35) ellipse (1cm and 1cm);
+				\draw [rotate around={0:(90,35)},line width=2pt,color=qqqqff,fill=qqqqff,fill opacity=0.25] (90,35) ellipse (0.6cm and 0.6cm);
+				\draw [rotate around={0:(90,85)},line width=2pt,color=qqqqff,fill=qqqqff,fill opacity=0.25] (90,85) ellipse (0.6cm and 0.6cm);
+				\draw [rotate around={0:(30,90)},line width=2pt,color=qqqqff,fill=qqqqff,fill opacity=0.25] (30,90) ellipse (1cm and 1cm);
+				\draw [line width=2pt,color=ffqqqq] (0,90)-- (30,60);
+				\draw [line width=2pt,color=ffqqqq] (40,50)-- (10,50);
+				\draw [line width=2pt,color=ffqqqq] (0,30)-- (10,40);
+				\draw [line width=2pt,color=ffqqqq] (10,30)-- (30,5);
+				\draw [line width=2pt,color=ffqqqq] (40,10)-- (70,40);
+				\draw [line width=2pt,color=ffqqqq] (60,20)-- (100,10);
+				\draw [line width=2pt,color=ffqqqq] (30,70)-- (70,95);
+				\draw [line width=2pt,color=ffqqqq] (70,90)-- (60,50);
+				\draw [line width=2pt,color=ffqqqq] (70,80)-- (90,60);
+				\draw [line width=2pt,color=ffqqqq] (74,33)-- (98,60);
+				\begin{scriptsize}
+					\draw [color=ffqqqq] (0,90) circle (2.5pt);
+					\draw [color=ffqqqq] (30,60) circle (2.5pt);
+					\draw [color=ffqqqq] (40,50) circle (2.5pt);
+					\draw [color=ffqqqq] (10,50) circle (2.5pt);
+					\draw [color=ffqqqq] (0,30) circle (2.5pt);
+					\draw [color=ffqqqq] (10,40) circle (2.5pt);
+					\draw [color=ffqqqq] (10,30) circle (2.5pt);
+					\draw [color=ffqqqq] (30,5) circle (2.5pt);
+					\draw [color=ffqqqq] (40,10) circle (2.5pt);
+					\draw [color=ffqqqq] (70,40) circle (2.5pt);
+					\draw [color=ffqqqq] (60,20) circle (2.5pt);
+					\draw [color=ffqqqq] (100,10) circle (2.5pt);
+					\draw [color=ffqqqq] (30,70) circle (2.5pt);
+					\draw [color=ffqqqq] (70,95) circle (2.5pt);
+					\draw [color=ffqqqq] (70,90) circle (2.5pt);
+					\draw [color=ffqqqq] (60,50) circle (2.5pt);
+					\draw [color=ffqqqq] (70,80) circle (2.5pt);
+					\draw [color=ffqqqq] (90,60) circle (2.5pt);
+					\draw [color=ffqqqq] (74,33) circle (2.5pt);
+					\draw [color=ffqqqq] (98,60) circle (2.5pt);
+				\end{scriptsize}
+			\end{axis}
+		\end{tikzpicture}
+		\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=0.1cm,y=0.1cm, scale = 0.65]
+			\begin{axis}[
+				x=0.1cm,y=0.1cm,
+				axis lines=middle,
+				xmin=-5,
+				xmax=105,
+				ymin=-5,
+				ymax=105,
+				xtick={0,10,...,100},
+				ytick={0,10,...,100},]
+				\draw [rotate around={0:(10,15)},line width=2pt,color=qqqqff,fill=qqqqff,fill opacity=0.25] (10,15) ellipse (0.6cm and 0.6cm);
+				\draw [rotate around={0:(70,55)},line width=2pt,color=qqwuqq,fill=qqwuqq,fill opacity=0.25] (70,55) ellipse (0.4cm and 0.4cm);
+				\draw [rotate around={0:(50,70)},line width=2pt,color=qqwuqq,fill=qqwuqq,fill opacity=0.25] (50,70) ellipse (0.8cm and 0.8cm);
+				\draw [rotate around={0:(65,10)},line width=2pt,color=qqqqff,fill=qqqqff,fill opacity=0.25] (65,10) ellipse (0.7cm and 0.7cm);
+				\draw [rotate around={0:(10,65)},line width=2pt,color=qqqqff,fill=qqqqff,fill opacity=0.25] (10,65) ellipse (0.5cm and 0.5cm);
+				\draw [rotate around={0:(30,35)},line width=2pt,color=qqwuqq,fill=qqwuqq,fill opacity=0.25] (30,35) ellipse (1cm and 1cm);
+				\draw [rotate around={0:(90,35)},line width=2pt,color=qqqqff,fill=qqqqff,fill opacity=0.25] (90,35) ellipse (0.6cm and 0.6cm);
+				\draw [rotate around={0:(90,85)},line width=2pt,color=qqqqff,fill=qqqqff,fill opacity=0.25] (90,85) ellipse (0.6cm and 0.6cm);
+				\draw [rotate around={0:(30,90)},line width=2pt,color=qqqqff,fill=qqqqff,fill opacity=0.25] (30,90) ellipse (1cm and 1cm);
+				\draw [line width=2pt,color=ffqqqq] (0,30)-- (10,40);
+				\draw [line width=2pt,color=ffqqqq] (40,10)-- (70,40);
+				\draw [line width=2pt,color=ffqqqq] (60,20)-- (100,10);
+				\draw [line width=2pt,color=ffqqqq] (30,70)-- (70,95);
+				\draw [line width=2pt,color=ffqqqq] (70,90)-- (60,50);				
+				\begin{scriptsize}
+					\draw [color=ffqqqq] (0,30) circle (2.5pt);
+					\draw [color=ffqqqq] (10,40) circle (2.5pt);
+					\draw [color=ffqqqq] (40,10) circle (2.5pt);
+					\draw [color=ffqqqq] (70,40) circle (2.5pt);
+					\draw [color=ffqqqq] (60,20) circle (2.5pt);
+					\draw [color=ffqqqq] (100,10) circle (2.5pt);
+					\draw [color=ffqqqq] (30,70) circle (2.5pt);
+					\draw [color=ffqqqq] (70,95) circle (2.5pt);
+					\draw [color=ffqqqq] (70,90) circle (2.5pt);
+					\draw [color=ffqqqq] (60,50) circle (2.5pt);
+				\end{scriptsize}
+			\end{axis}
+		\end{tikzpicture}
+		\caption{Problem data of the \KMPHN \ and \KMPN}
+		\label{fig:initialdata}
 	\end{figure}
-
-		\subsection{Description of the Hampered $k$-Median Problem with Neighbourhoods}\label{subsection:descriptionKMPN}
 	
-	The goal of the \KMPN \ is to find a subset of $k$ points in the source set $\mathcal S$ and one point in each target set $\mathcal T$ that minimize the weighted length of the path\CV{, that is limited by the drone endurance,} joining each target point with its associated source point \CV{and the weighted link distance} without crossing any barrier of $\mathcal B$ assuming \ref{A1}-\ref{A4}. To state the model, we define the following sets:
+	\subsection{Description of the Hampered $k$-Median Problem with Neighbourhoods}\label{subsection:descriptionKMPN}
+	
+	The goal of the \KMPHN \ is to find a subset of $k$ points in the source set $\mathcal S$, at most one in each neighbourhood, and one point in each target set $\mathcal T$ that minimize the weighted length of the path joining each target point with its associated source point and the weighted link distance without crossing any barrier of $\mathcal B$ assuming \ref{A1}-\ref{A4}. Recall that the link distance accounts for the numbers of edges of the path joining two points in the underlying graph. The interested reader is referred to \citet{de_berg_finding_1990,daescu_experimental_2008} for further details. To state the model, we define the following sets:
 	\begin{itemize}
-		\item $\VS=\{P_S:S\in\mathcal S\}$. Set of the points selected in the sources $\mathcal S$.
+		\item $\VS=\{P_S:S\in\mathcal S\}$. Set of the points selected in the sources of $\mathcal S$.
 		\item $\VB=\{P^1_B, P^2_B:B=\overline{P^1_B P^2_B}\in \mathcal B\}$. Set of vertices that come from the endpoints of barriers in the problem.
-		\item $\VT=\{P^{}_T:T\in\mathcal T\}$. Set of the points selected in the targets $\mathcal T$.
-		\item $\ES=\{(P_S, P^i_{B}):P_S\in\VS, P^i_B\in V_\B\text{ and } \overline{P_SP^i_B}\cap B''=\emptyset,\forall B''\in\B,\:i=1,2\}$. Set of edges formed by the line segments that join the point selected in the source neighbourhood $S$ and every endpoint in the barriers that do not cross any other barrier in $\B$.
+		\item $\VT=\{P^{}_T:T\in\mathcal T\}$. Set of the points selected in the targets of $\mathcal T$.
+		\item $\ES=\{(P_S, P^i_{B}):P_S\in\VS, P^i_B\in V_\B\text{ and } \overline{P_SP^i_B}\cap B''=\emptyset,\forall B''\in\B,\:i=1,2\}$. Set of edges formed by the line segments that join the point selected in any source neighbourhood $S\in \mathcal{S}$ and every endpoint in the barriers that do not cross any other barrier in $\B$.
 		\item $\EB=\{(P^{i}_B, P^{j}_{B'}):P^i_B, P^j_{B'}\in \VB \text{ and } \overline{P^i_B P^j_{B'}}\cap B''=\emptyset,\:\forall B''\in\mathcal B,\:i, j=1,2\}$. Set of edges formed by the line segments that join two vertices of $V_{\mathcal B}$ and do not cross any other barrier in $\B$.
-		\item $\ET=\{(P^i_{B}, P^{}_T):P^i_B\in V_\B, P_T\in\VT\text{ and } \overline{P^i_BP^{}_T}\cap B''=\emptyset,\forall B''\in\B,\:i=1,2\}$. Set of edges formed by the line segments that join the point selected in the target neighbourhood $T$ and every endpoint in the barriers that do not cross any other barrier in $\B$.
+		\item $\ET=\{(P^i_{B}, P^{}_T):P^i_B\in V_\B, P_T\in\VT\text{ and } \overline{P^i_BP^{}_T}\cap B''=\emptyset,\forall B''\in\B,\:i=1,2\}$. Set of edges formed by the line segments that join the point selected in any target neighbourhood $T\in \mathcal{T}$ and every endpoint in the barriers that do not cross any other barrier in $\B$.
 	\end{itemize} 
-
-	The above sets allow us to define the graph $\GKMPN= (\VKMPN, \EKMPN)$ induced by the barriers and neighbourhoods, where $\VKMPN=\VS\cup \VB\cup\VT$ and $\EKMPN=\ES\cup\EB \cup\ET$. 
 	
-	By taking the same approach, the graph induced for the relaxed version \KMPVN \ can be described as $\GKMPVN= (\VKMPVN, \EKMPVN)$, $\VKMPVN= \VKMPN$ and $\EKMPVN=\EKMPN\cup \EST$, where:
+	The above sets allow us to define the graph $\GKMPHN= (\VKMPHN, \EKMPHN)$ induced by the barriers and neighbourhoods, where $\VKMPHN=\VS\cup \VB\cup\VT$ and $\EKMPHN=\ES\cup\EB \cup\ET$. 
+	
+	By taking the same approach, the graph induced for the relaxed version \KMPN \ can be described as $\GKMPN= (\VKMPN, \EKMPN)$, $\VKMPN= \VKMPHN$ and $\EKMPN=\EKMPHN\cup \EST$, where:
 	\begin{itemize}
-		\item $\EST=\{(P_S, P_T):P_S\in\VS, P_T\in\VT \text{ and } \overline{P_SP_T}\cap B''=\emptyset,\forall B''\in\B,\:i=1,2\}$. Set of edges formed by the line segments that join the point selected in the source neighbourhood $S$ and the point selected in the target neighbourhood $T$.
+		\item $\EST=\{(P_S, P_T):P_S\in\VS, P_T\in\VT \text{ and } \overline{P_SP_T}\cap B''=\emptyset,\forall B''\in\B,\:i=1,2\}$. Set of edges formed by the line segments that join the point selected in any source neighbourhood $S\in \mathcal{S}$ and the point selected in any target neighbourhood $T\in \mathcal{T}$.
 	\end{itemize}
-
-	\section{MINLP Formulations}\label{section:formulations}
-
-	This section proposes a mixed-integer NonLinear Programming formulation for the problem described in Section \ref{section:description}. First of all, the conic programming representation of the neighbourhoods and distance is presented. Then, the constraints that check if a segment is included in the set of edges $E_X$ with $X\in \{\rm KMPN, \rm KMPVN\}$ are set. Finally, the formulations for the \KMPN \ and \KMPVN \ are described.
 	
-	First of all, we introduce the decision variables that represent the problem. These are summarized in Table \ref{table:variables}.
+	\section{MINLP Formulations}\label{section:formulations}
+	
+	This section proposes a mixed-integer non-linear programming formulation (MINLP) for the problem described in Section \ref{section:description}. First of all, the conic programming representation of the neighbourhoods and distance is presented. Then, the constraints that check if a segment is included in the set of edges $E_X$ with $X\in \{\rm KMPHN, \rm KMPN\}$ are set. Finally, the formulations for the \KMPHN \ and \KMPN \ are described and compared.
+	
+	First of all, we introduce the decision variables that represent the problem. They are summarized in Table \ref{table:variables}.
 	
 	\begin{table}[h!]
 		\centering
@@ -314,534 +314,1738 @@
 			\multicolumn{1}{|l|}{\textbf{Name}} & \textbf{Description} &  \\ \cline{1-2}
 			\multicolumn{1}{|c|}{$P_N$} & Coordinates representing the point selected in the neighbourhood $N\in \mathcal S\cup\mathcal T$. &  \\ \cline{1-2}
 			\multicolumn{1}{|c|}{$d(PQ)$} & Euclidean distance between the points $P$ and $Q$. &  \\ \cline{1-2}
-%			\multicolumn{1}{|c|}{$g(PQ)$} & Amount of commodity passing through the edge $(P, Q)$. &  \\ \cline{1-2}
+			%			\multicolumn{1}{|c|}{$g(PQ)$} & Amount of commodity passing through the edge $(P, Q)$. &  \\ \cline{1-2}
 		\end{tabular}
 	\end{table}
-
+	
 	\subsection{Conic programming constraints in the models}
-		For problems in consideration, namely \KMPN \ and \KMPVN, there exist two typologies of second-order cone constraints. One models the distance between each pair of points $P$ and $Q$ in $V_X$, $X\in\{\rm KMPN, \rm KMPVN\}$, and the other, the representation of source and target neighbourhoods, where points are selected.
-		
-		\newcommand{\dvar}[2]{d(#1#2)}
-		
-		Firstly, we define the non-negative continuous variable $\dvar{PQ}$ that represents the distance between $P$ and $Q$:
-		
-		
-		\begin{equation*}\tag{$d$-C}\label{eq:dC}
-			\|P - Q\|\leq \dvar{P}{Q},\quad\forall (P,Q)\in E_X,
-		\end{equation*}
-		
-		where $E_X$ is the set of edges $\EKMPN$ or $\EKMPVN$.
-		
-		Secondly, since we are assuming that the neighbourhoods are second-order cone (SOC) representable, they can be expressed by means of the constraints:
-		
-		\begin{equation*}\tag{$N$-C}\label{eq:nC}
-			P_N\in N \Longleftrightarrow
-			\|A_N^i P_N + b_N^i\| \leq (c_N^i)^T P_N + d_N^i,\quad i=1,\ldots,n(N), \\
-		\end{equation*}
-		%\begin{equation}\label{C-C}\tag{$\mathcal{C}$-C}
-		%    \|B_ix + b_i\|\leq c_i^Tx + d_i,\quad i=1,\ldots,N,
-		%\end{equation}
-		where $A_N^i, b_N^i, c_N^i$ and $d_N^i$ are parameters of the constraint $i$ and $n(N)$ denotes the number of constraints that appear in the block associated with the neighbourhood $N\in \mathcal S\cup \mathcal T$. 
-		
-		These inequalities can model the special case of linear constraints (for $A_N^{i}, b_N^i\equiv 0$), ellipsoids and hyperbolic constraints (see \citet{lobo_applications_1998} and \citet{boyd_convex_2004} for more information).
-		
-		\subsection{Checking whether a segment is an edge of the induced graph}
-		
-		The goal of this subsection is to represent by linear constraints a test to check whether given two arbitrary vertices $P, Q\in V_X$, the edge $(P, Q)\in E_X$, with $X\in\{\rm KMPN, \rm KMPVN\}$, i.e., whether the line segment $\overline{PQ}$ does not intersect with any barrier of $\mathcal B$. Although this representation was firstly introduced in (nos citamos), it is again described in this paper to be self-content. The following well-known computational geometry result can be used to check if two line segments intersect.
-		
-		\begin{remark}\label{rem:determinants}
-	Let $\overline{PQ}$ and $B=\overline{P_B^1P_B^2}\in\mathcal B$ be two different line segments. 
-	%		Let also denote 
-	%		$$
-	%		\determinant{P}{P_B^1}{P_B^2}=\det\left(\begin{array}{c|c} \overrightarrow{PP_B^1} & \overrightarrow{PP_B^2}\end{array}\right):=\det\left( \begin{array}{cc}  P_{B_x}^1-P_x & P_{B_x}^2-P_x \\ P_{B_y}^1-P_y & P_{B_y}^2-P_y \end{array}\right)$$ 
-	%		the determinant whose arguments are $P=(P_x,P_y)$, $P_B^1=(P_{B_x}^1,P_{B_y}^1)$ and $P_B^2=(P_{B_x}^2,P_{B_y}^2)$. 
-	If
-	\begin{equation*}
-		\normalfont{\text{sign}}\left(\determinant{P}{P_B^1}{P_B^2}\right) = \normalfont{\text{sign}}\left(\determinant{Q}{P_B^1}{P_B^2}\right)
-		\quad
-		\text{or}
-		\quad
-		\normalfont{\text{sign}}\left(\determinant{P_B^1}{P}{Q}\right) = \normalfont{\text{sign}}\left(\determinant{P_B^2}{P}{Q}\right)
-		,
+	For the two problems considered in this paper,  namely \KMPHN \ and \KMPN, there exist two typologies of second-order cone constraints. One of them models the distance between each pair of points $P$ and $Q$ in $V_X$, $X\in\{\rm KMPHN, \rm KMPN\}$, and the other, the representation of source and target neighbourhoods, where the points are chosen.
+	
+	\newcommand{\dvar}[2]{d(#1#2)}
+	
+	Firstly, we define the non-negative continuous variable $\dvar{PQ}$ that represents the distance between $P$ and $Q$:
+	
+	
+	\begin{equation*}\tag{$d$-C}\label{eq:dC}
+		\|P - Q\|\leq \dvar{P}{Q},\quad\forall (P,Q)\in E_X,
 	\end{equation*}
-	then $\overline{PQ}$ and $B$ do not intersect.
-\end{remark}
-
-
-%	\input{figures/Example_ H-SPP-S_ Second Figure B}
-
-
-Let $P,Q\in V_X$, where $V_X$ can be the set of vertices $\VKMPN$ or $\VKMPVN$. Let $P_B^1, P_B^2\in\VB$ also be points determining barrier $B\in\mathcal B$. To model the conditions of the Remark \ref{rem:determinants}, the use of binary variables that verify the sign of determinants, the equality of signs, and the disjunctive condition is needed, since these determinants depend on the location of $P$ and $Q$.
-
-\newcommand{\LS}[3]{L(#1|#2#3)}
-\newcommand{\US}[3]{U(#1|#2#3)}
-\newcommand{\alphamas}[3]{\alpha(#1|#2#3)}
-\newcommand{\alphamenos}[3]{\alpha^{-}(#1|#2#3)}
-%\newcommand{\alphacero}[3]{\alpha^{0\,}(#1|#2#3)}
-\newcommand{\alphapunto}[3]{\alpha^{\cdotp}(#1|#2#3)}
-
-Firstly, the sign of each determinant in Remark \ref{rem:determinants} is modelled. The binary variable $\alpha$ is introduced and assumes the value one if the determinant is non-negative and zero, otherwise. Note that determinants can not be null, because the barriers are located in general position.
-
-The following constraints represent the sign condition:
-\begin{align*}\tag{$\alpha$-C}\label{eq:alphaC}
-	\left[1-\alphamas{P}{P_B^1}{P_B^2}\right]\LS{P}{P_B^1}{P_B^2}&\leq\determinant{P}{P_B^1}{P_B^2}\leq \US{P}{P_B^1}{P_B^2}\:\alphamas{P}{P_B^1}{P_B^2},\\
-	\left[1-\alphamas{Q}{P_B^1}{P_B^2}\right]\LS{Q}{P_B^1}{P_B^2}&\leq\determinant{Q}{P_B^1}{P_B^2}\leq \US{Q}{P_B^1}{P_B^2}\:\alphamas{Q}{P_B^1}{P_B^2},\\
-	\left[1-\alphamas{P_B^1}{P}{Q}\right]\LS{P_B^1}{P}{Q}&\leq\determinant{P_B^1}{P}{Q}\leq \US{P_B^1}{P}{Q}\:\alphamas{P_B^1}{P}{Q},\\		\left[1-\alphamas{P_B^2}{P}{Q}\right]\LS{P_B^2}{P}{Q}&\leq\determinant{P_B^2}{P}{Q}\leq \US{P_B^2}{P}{Q}\:\alphamas{P_B^2}{P}{Q},
-\end{align*}
-
-\noindent where $L$ and $U$ are lower and upper bounds for the value of corresponding determinants, respectively. These bounds are later tightened in Section \ref{subsection:bounds}. If a determinant is non-negative, then $\alpha$ must be one to make the second inequality feasible. Analogously, if the determinant is not positive, $\alpha$ must be zero to satisfy the correct condition.
-
-\newcommand{\betamas}[4]{\beta(#1#2|#3#4)}
-%\newcommand{\betamenos}[4]{\beta^{-}(#1#2|#3#4)}
-%\newcommand{\betacero}[4]{\beta^{0\,}(#1#2|#3#4)}
-%\newcommand{\betapunto}[4]{\beta^{\cdotp}(#1#2|#3#4)}
-
-Secondly, to check whether the sign of any pair
-\begin{equation}\label{eq:pair}
-	\determinant{P}{P_B^1}{P_B^2},\: \determinant{Q}{P_B^1}{P_B^2}\quad \text{or} \quad \determinant{P_B^1}{P}{Q},\:	 \determinant{P_B^2}{P}{Q}
-\end{equation} 
-of determinants is the same, the binary variable $\beta$ is defined, that is one if the corresponding pair has the same sign, and zero otherwise.
-
-\newcommand{\gammaprod}[4]{\gamma(#1#2|#3#4)}
-
-Hence, the correct value of $\beta$ variable can be expressed by the following constraint of the $\alpha$ variables
-\begin{align*}%\tag{$\beta$-C}\label{eq:betaC}
-	\betamas{P}{Q}{P_B^1}{P_B^2}&=\alphamas{P}{P_B^1}{P_B^2}\alphamas{Q}{P_B^1}{P_B^2} + \left[1-\alphamas{P}{P_B^1}{P_B^2}\right]\left[1-\alphamas{Q}{P_B^1}{P_B^2}\right],\\
-	\betamas{P_B^1}{P_B^2}{P}{Q}&=\alphamas{P_B^1}{P}{Q}\alphamas{P_B^2}{P}{Q} + \left[1-\alphamas{P_B^1}{P}{Q}\right]\left[1-\alphamas{P_B^2}{P}{Q}\right].
-\end{align*}
-This condition can be equivalently written by means of an auxiliary binary variable $\gamma$ that models the product of the $\alpha$ variables:
-\begin{align*}\tag{$\beta$-C}\label{eq:betaC}
-	\betamas{P}{Q}{P_B^1}{P_B^2}&=2\gammaprod{P}{Q}{P_B^1}{P_B^2} -\alphamas{P}{P_B^1}{P_B^2}-\alphamas{Q}{P_B^1}{P_B^2}+1,\\
-	\betamas{P_B^1}{P_B^2}{P}{Q}&=2\gammaprod{P_B^1}{P_B^2}{P}{Q} -\alphamas{P_B^1}{P}{Q}-\alphamas{P_B^2}{P}{Q}+1,
-\end{align*}
-These $\gamma$ variables can be linearized by using the following constraints:
-
-\begin{minipage}{.5\linewidth}
-	\begin{align*}
-		\gammaprod{P}{Q}{P_B^1}{P_B^2} & \leq \alphamas{P}{P_B^1}{P_B^2},\\
-		\gammaprod{P}{Q}{P_B^1}{P_B^2} & \leq \alphamas{Q}{P_B^1}{P_B^2},\\
-		\gammaprod{P}{Q}{P_B^1}{P_B^2} & \geq \alphamas{P}{P_B^1}{P_B^2} + \alphamas{Q}{P_B^1}{P_B^2} - 1,
+	
+	where $E_X$ is the set of edges $\EKMPHN$ or $\EKMPN$, depending on the considered problem.
+	
+	Secondly, since we are assuming that the neighbourhoods are second-order cone (SOC) representable, they can be expressed by means of the constraints:
+	
+	\begin{equation*}\tag{$N$-C}\label{eq:nC}
+		P_N\in N \Longleftrightarrow
+		\|A_N^i P_N + b_N^i\| \leq (c_N^i)^T P_N + d_N^i,\quad i=1,\ldots,n(N), \\
+	\end{equation*}
+	%\begin{equation}\label{C-C}\tag{$\mathcal{C}$-C}
+	%    \|B_ix + b_i\|\leq c_i^Tx + d_i,\quad i=1,\ldots,N,
+	%\end{equation}
+	where $A_N^i, b_N^i, c_N^i$ and $d_N^i$ are parameters of the constraint $i$ and $n(N)$ denotes the number of constraints that appear in the block associated with the neighbourhood $N\in \mathcal S\cup \mathcal T$. 
+	
+	These inequalities can model the special case of linear constraints (for $A_N^{i}, b_N^i\equiv 0$), ellipsoids and hyperbolic constraints (see \citet{lobo_applications_1998} and \citet{boyd_convex_2004} for more information).
+	
+	\subsection{Checking whether a segment is an edge of the induced graph}
+	
+	The goal of this subsection is to represent by linear constraints a test to check whether given two arbitrary vertices $P, Q\in V_X$, the edge $(P, Q)\in E_X$, with $X\in\{\rm KMPHN, \rm KMPN\}$, i.e., whether the line segment $\overline{PQ}$ does not intersect with any barrier of $\mathcal B$. The following well-known computational geometry result can be used to check if two line segments intersect.
+	
+	\begin{remark}\label{rem:determinants}
+		Let $\overline{PQ}$ and $B=\overline{P_B^1P_B^2}\in\mathcal B$ be two different line segments. 
+		%		Let also denote 
+		%		$$
+		%		\determinant{P}{P_B^1}{P_B^2}=\det\left(\begin{array}{c|c} \overrightarrow{PP_B^1} & \overrightarrow{PP_B^2}\end{array}\right):=\det\left( \begin{array}{cc}  P_{B_x}^1-P_x & P_{B_x}^2-P_x \\ P_{B_y}^1-P_y & P_{B_y}^2-P_y \end{array}\right)$$ 
+		%		the determinant whose arguments are $P=(P_x,P_y)$, $P_B^1=(P_{B_x}^1,P_{B_y}^1)$ and $P_B^2=(P_{B_x}^2,P_{B_y}^2)$. 
+		If
+		\begin{equation*}
+			\normalfont{\text{sign}}\left(\determinant{P}{P_B^1}{P_B^2}\right) = \normalfont{\text{sign}}\left(\determinant{Q}{P_B^1}{P_B^2}\right)
+			\quad
+			\text{or}
+			\quad
+			\normalfont{\text{sign}}\left(\determinant{P_B^1}{P}{Q}\right) = \normalfont{\text{sign}}\left(\determinant{P_B^2}{P}{Q}\right)
+			,
+		\end{equation*}
+		then $\overline{PQ}$ and $B$ do not intersect.
+	\end{remark}
+	
+	
+	%	\input{figures/Example_ H-SPP-S_ Second Figure B}
+	
+	
+	Let $P,Q\in V_X$, where $V_X$ can be the set of vertices $\VKMPHN$ or $\VKMPN$. Let $P_B^1, P_B^2\in\VB$ also be the two extreme points determining the barrier $B\in\mathcal B$. To model the conditions of the Remark \ref{rem:determinants}, the use of binary variables that verify the sign of determinants, the equality of signs, and the disjunctive condition are required, since these determinants depend on the location of $P$ and $Q$.
+	
+	\newcommand{\LS}[3]{L(#1|#2#3)}
+	\newcommand{\US}[3]{U(#1|#2#3)}
+	\newcommand{\alphamas}[3]{\alpha(#1|#2#3)}
+	\newcommand{\alphamenos}[3]{\alpha^{-}(#1|#2#3)}
+	%\newcommand{\alphacero}[3]{\alpha^{0\,}(#1|#2#3)}
+	\newcommand{\alphapunto}[3]{\alpha^{\cdotp}(#1|#2#3)}
+	
+	Firstly, the sign of each determinant in Remark \ref{rem:determinants} is modelled. The binary variable $\alpha$ is introduced and assumes the value one if the determinant is non-negative and zero, otherwise. Note that determinants can not be null, because the barriers are located in general position.
+	
+	The following constraints represent the sign condition:
+	\begin{align*}\tag{$\alpha$-C}\label{eq:alphaC}
+		\left[1-\alphamas{P}{P_B^1}{P_B^2}\right]\LS{P}{P_B^1}{P_B^2}&\leq\determinant{P}{P_B^1}{P_B^2}\leq \US{P}{P_B^1}{P_B^2}\:\alphamas{P}{P_B^1}{P_B^2},\\
+		\left[1-\alphamas{Q}{P_B^1}{P_B^2}\right]\LS{Q}{P_B^1}{P_B^2}&\leq\determinant{Q}{P_B^1}{P_B^2}\leq \US{Q}{P_B^1}{P_B^2}\:\alphamas{Q}{P_B^1}{P_B^2},\\
+		\left[1-\alphamas{P_B^1}{P}{Q}\right]\LS{P_B^1}{P}{Q}&\leq\determinant{P_B^1}{P}{Q}\leq \US{P_B^1}{P}{Q}\:\alphamas{P_B^1}{P}{Q},\\		\left[1-\alphamas{P_B^2}{P}{Q}\right]\LS{P_B^2}{P}{Q}&\leq\determinant{P_B^2}{P}{Q}\leq \US{P_B^2}{P}{Q}\:\alphamas{P_B^2}{P}{Q},
 	\end{align*}
-\end{minipage}
-\begin{minipage}{.5\linewidth}
-	\begin{align*}\tag{$\gamma$-C}\label{eq:gammaC}
-		\gammaprod{P_B^1}{P_B^2}{P}{Q} & \leq \alphamas{P_B^1}{P}{Q},\\
-		\gammaprod{P_B^1}{P_B^2}{P}{Q} & \leq \alphamas{P_B^2}{P}{Q},\\
-		\gammaprod{P_B^1}{P_B^2}{P}{Q} & \geq \alphamas{P_B^1}{P}{Q} + \alphamas{P_B^2}{P}{Q} - 1.
+	
+	\noindent where $L$ and $U$ are lower and upper bounds for the value of the corresponding determinants, respectively. If a determinant is non-negative, then $\alpha$ must be one to make the second inequality feasible. Analogously, if the determinant is not positive, $\alpha$ must be zero to satisfy the correct condition.
+	
+	\newcommand{\betamas}[4]{\beta(#1#2|#3#4)}
+	%\newcommand{\betamenos}[4]{\beta^{-}(#1#2|#3#4)}
+	%\newcommand{\betacero}[4]{\beta^{0\,}(#1#2|#3#4)}
+	%\newcommand{\betapunto}[4]{\beta^{\cdotp}(#1#2|#3#4)}
+	
+	Secondly, to check whether the sign of any pair
+	\begin{equation}\label{eq:pair}
+		\determinant{P}{P_B^1}{P_B^2},\: \determinant{Q}{P_B^1}{P_B^2}\quad \text{or} \quad \determinant{P_B^1}{P}{Q},\:	 \determinant{P_B^2}{P}{Q}
+	\end{equation} 
+	of determinants is the same, the binary variable $\beta$ is defined, that is one if the corresponding pair has the same sign, and zero otherwise.
+	
+	\newcommand{\gammaprod}[4]{\gamma(#1#2|#3#4)}
+	
+	Hence, the correct value of $\beta$ variable can be expressed by the following constraint of the $\alpha$ variables
+	\begin{align*}%\tag{$\beta$-C}\label{eq:betaC}
+		\betamas{P}{Q}{P_B^1}{P_B^2}&=\alphamas{P}{P_B^1}{P_B^2}\alphamas{Q}{P_B^1}{P_B^2} + \left[1-\alphamas{P}{P_B^1}{P_B^2}\right]\left[1-\alphamas{Q}{P_B^1}{P_B^2}\right],\\
+		\betamas{P_B^1}{P_B^2}{P}{Q}&=\alphamas{P_B^1}{P}{Q}\alphamas{P_B^2}{P}{Q} + \left[1-\alphamas{P_B^1}{P}{Q}\right]\left[1-\alphamas{P_B^2}{P}{Q}\right].
 	\end{align*}
-\end{minipage}
-
-\bigskip
-
-\newcommand{\deltacheck}[4]{\delta(#1#2|#3#4)}
-
-Thirdly, verifying whether there exists any coincidence of the sign of determinants is required, so the binary variable $\delta$ is defined that assumes one if segments do not intersect and zero, otherwise. This condition can be modelled by adopting the following disjunctive constraints:
-\begin{equation*}\tag{$\delta$-C}\label{eq:deltaC}
-	\frac{1}{2}\left[\betamas{P}{Q}{P_B^1}{P_B^2}+\betamas{P_B^1}{P_B^2}{P}{Q}\right]\leq\deltacheck{P}{Q}{P_B^1}{P_B^2}\leq \betamas{P}{Q}{P_B^1}{P_B^2}+\betamas{P_B^1}{P_B^2}{P}{Q}.
-\end{equation*}
-Indeed, the above restrictions state that if there exists a sign coincidence in any of the two pairs of determinants in \eqref{eq:pair} , then $\delta$ is one to satisfy the left constraint, and the right one is always fulfilled. However, if none of the signs of any pairs of determinants is the same, then the second constraint is zero and $\delta$ must be null.
-
-\newcommand{\varepsilonvar}[2]{\varepsilon(#1#2)}
-
-Finally, to check whether
-$$\overline{PQ}\cap B''=\emptyset,\quad \forall B''\in\B,\quad\Longleftrightarrow\quad \deltacheck{P}{Q}{P_{B''}^1}{P_{B''}^2}=1,\quad\forall B''\in\B,$$
-
-the binary variable $\varepsilonvar{P}{Q}$ is introduced, and it is one if this condition is verified for all $B''\in\B$. This variable can be expressed as: 
-\begin{equation*}\tag{$\varepsilon$-C}\label{eq:varepsilonC}
-	\left[\sum_{B''\in\mathcal B}\deltacheck{P}{Q}{P^1_{B''}}{P^2_{B''}}-|\mathcal B|\right] + 1\leq \varepsilonvar{P}{Q}\leq \frac{1}{|\B|}\sum_{B''\in\mathcal B}\deltacheck{P}{Q}{P^1_{B''}}{P^2_{B''}}.
-\end{equation*}
-
-If there exists, at least, a barrier $B''\in\B$ that intersects the segment $\overline{PQ}$, then $\deltacheck{P}{Q}{P^1_{B''}}{P^2_{B''}}$ is zero and the second inequality enforces $\varepsilon$ to be zero because the right hand side is fractional and the first inequality is non-positive. However, if no barrier intersects the segment $\segment{P}{Q}$, then $\varepsilon$ is equals to one, because the left hand side of the first inequality is one and the right hand side of the second inequality too.
-
-It is possible to identify the set of actual edges of graph $G_X$ by using the $\varepsilon$ variables based on the above description, as follows:
-$$ E_X = \{(P, Q):P,Q\in V_X\wedge\varepsilonvar{P}{Q}=1, P\neq Q\}, \quad X\in \{\rm KMPN, \rm KMPVN\}.$$
-
-This representation of $E_X$ with $X\in \{\rm KMPN, \rm KMPVN\}$ will be applied in the formulations that are presented in the following subsections. 
-
-It is interesting to note that $\EB$ is a fixed set whose edges can be computed by using the Remark \ref{rem:determinants}. Then, $\varepsilon$ variables can be prefixed in advance. However, edges in $E_X\setminus \EB$ depend on the points selected in the neighbourhoods. A special case that can be highlighted happens when the set of neighbourhoods, $\mathcal S$ and $\mathcal T$, are represented by points. In that case, the induced graph is completely fixed and it is only necessary to find which edges are included by keeping in mind that the graph must be planar, i.e., without crossings. This idea is later exploited in Subsection \ref{section:reformulation}.
-
-\subsection{A formulation for the \KMPN}
-
-The formulation of the \KMPN \ is based on the structure of the well-known $k$-median problem where distances between each pair of source-target neighbourhoods are represented by the shortest path joining them without traversing any barrier.
-
-Note that, although computing the shortest paths between every pair of neighbourhoods is possible, converting an instance of the \KMPN \ into an instance of the standard $k$-median is not, since the points in neighbourhoods are not fixed. However, this simplification can be applied to produce an approximation to generate lower bounds for the \KMPN.
-
-%\newcommand{\gvar}[2]{g(#1#2)}
-\newcommand{\xvar}[2]{x(#1#2)}
-
-Firstly, it is necessary to define the binary variables inherited from the $k$-median:
-\begin{itemize}
-	\item $y(S)$, that assumes one if the source neighbourhood $S\in\mathcal S$ is selected.
-	\item $x(ST)$, that is one if the target neighbourhood $T\in\mathcal T$ is assigned to the selected source $S\in\mathcal S$.
-\end{itemize}
+	This condition can be equivalently written by means of an auxiliary binary variable $\gamma$ that models the product of the $\alpha$ variables:
+	\begin{align*}\tag{$\beta$-C}\label{eq:betaC}
+		\betamas{P}{Q}{P_B^1}{P_B^2}&=2\gammaprod{P}{Q}{P_B^1}{P_B^2} -\alphamas{P}{P_B^1}{P_B^2}-\alphamas{Q}{P_B^1}{P_B^2}+1,\\
+		\betamas{P_B^1}{P_B^2}{P}{Q}&=2\gammaprod{P_B^1}{P_B^2}{P}{Q} -\alphamas{P_B^1}{P}{Q}-\alphamas{P_B^2}{P}{Q}+1,
+	\end{align*}
+	These $\gamma$ variables can be linearized by using the following constraints:
 	
-Secondly, adjusting a single-commodity flow formulation to ensure connectivity is required. The idea is that the model must deliver one unit of commodity from the selected source neighbourhood to each of the required target neighbourhoods. Then, for each edge $(P, Q)\in \EKMPN$, the binary variable $f(PQ|ST)$ is defined, and takes the value of one when edge $(P, Q)$ is traversed in the path to go from the source $S$ to the target $T$. 
-
-
-
-
-Then, the inequalities 
-\textcolor{red}{
-\begin{equation*}\tag{$f$-C}\label{eq:fC}
-	f(PQ)\leq  |\mathcal T|\varepsilonvar{P}{Q},
-\end{equation*}
-are needed to assure that the drone can go from $P$ to $Q$ only if the segment $\segment{P}{Q}$ does not cross any barrier. 
-}
-
-Hence, we can adjust the flow formulation to the induced graph $\GKMPN$ as follows:
-
-%\textcolor{red}{
-%\begin{mini*}
-%	{}{\sum_{(P,Q)\in \EKMPN}\dvar{P}{Q}f(PQ)}
-%	{}{}\label{form:H-KMPN}\tag{H-KMPN}
-%	\addConstraint{\sum_{S\in\mathcal S}y(S)}{=k}{}
-%	\addConstraint{x(ST)}{\leq y(S),}{\quad\forall S\in\mathcal S,\quad\forall T\in\mathcal T}
-%	\addConstraint{\sum_{S\in\mathcal S} x(ST)}{=1,}{\quad\forall T\in\mathcal T}
-%	\addConstraint{\sum_{\{Q\in \VKMPN:(P,Q)\in \EKMPN\}}f(PQ)-\sum_{\{Q\in \VKMPN:(Q,P)\in \EKMPN\}}f(PQ)}	{=\left\{
-%		\begin{array}{rl} 
-%			\sum_{T\in\mathcal T} x(ST), & \text{if } P\in\VS, \\
-%			0, & \text{if } P\in \VB, \\
-%			-1, & \text{if }P\in\VT.
-%		\end{array}
-%		\right.}{}
-%	\addConstraint{\eqref{eq:alphaC},\eqref{eq:betaC},\eqref{eq:gammaC},\eqref{eq:deltaC}}{\quad\forall P, Q\in \VKMPN,\quad\forall P_B^1, P_B^2\in \VB}
-%	\addConstraint{\eqref{eq:varepsilonC}, \eqref{eq:fC}, \eqref{eq:dC}}{\quad\forall P, Q\in \VKMPN}
-%	\addConstraint{\eqref{eq:nC}}{\quad\forall P\in \VS\cup \VT.}
-%\end{mini*}}
-
-\CV{
-\begin{mini*}[2]
-	{}{\alpha_E\sum_{(P,Q)\in \EKMPN}\sum_{S\in\mathcal S}\sum_{T\in\mathcal T}\dvar{P}{Q}f(PQ|ST) + \frac{\alpha_L}{2}\sum_{(P,Q)\in \EKMPN}\sum_{S\in\mathcal S}\sum_{T\in\mathcal T}f(PQ|ST)}
-	{}{}\label{form:H-KMPN}\tag{H-KMPN}
-	\addConstraint{\sum_{S\in\mathcal S}y(S)}{=k}{}
-	\addConstraint{x(ST)}{\leq y(S),}{\quad\forall S\in\mathcal S,\quad\forall T\in\mathcal T}
-	\addConstraint{\sum_{S\in\mathcal S} x(ST)}{=1,}{\quad\forall T\in\mathcal T}
-	\addConstraint{\sum_{\{Q\in \VKMPN:(P,Q)\in \EKMPN\}}f(PQ|ST)-\sum_{\{Q\in \VKMPN:(Q,P)\in \EKMPN\}}f(PQ|ST)}	{=\left\{
-		\begin{array}{rl} 
-			x(ST), & \text{if } P\in S, \\
-			0, & \text{if } P\in \VB, \\
-			-x(ST), & \text{if }P\in T.
-		\end{array}
-		\right.}{\quad\forall S\in\mathcal S,\forall T\in\mathcal T}
-	\addConstraint{\sum_{(P,Q)\in \EKMPN}\dvar{P}{Q}f(PQ|ST)}{\leq \text{endurance}\,x(ST),}{\quad\forall S\in\mathcal S,\forall T\in\mathcal T}
-	\addConstraint{\eqref{eq:alphaC},\eqref{eq:betaC},\eqref{eq:gammaC},\eqref{eq:deltaC}}{\quad\forall P, Q\in \VKMPN,\quad\forall P_B^1, P_B^2\in \VB}
-	\addConstraint{\eqref{eq:varepsilonC}, \eqref{eq:fC}, \eqref{eq:dC}}{\quad\forall P, Q\in \VKMPN}
-	\addConstraint{\eqref{eq:nC}}{\quad\forall P\in \VS\cup \VT.}
-\end{mini*}}
-
-\CV{Deberiamos quitar parte de las aristas en la distancia link?}
-%	\addConstraint{\sum_{\{Q:(P_N, Q)\in \EN\}}\yvar{P_N}{Q}}{\geq 1,}{\quad\forall P_N\in \VN}
-%\addConstraint{\sum_{\{Q:(P, Q)\in \ETSP\}}\yvar{P}{Q}}{= \sum_{\{Q:(Q, P)\in \ETSP\}}\yvar{Q}{P},}{\quad\forall P\in \VTSP}
-%\addConstraint{\sum_{\{Q:(Q, P_N)\in \EN\}}\gvar{Q}{P_N}-\sum_{\{Q:(P_N, Q)\in \EN\}}\gvar{P_N}{Q}}{= 1,}{\quad\forall P_N\in \VN\setminus\{P_{N_1}\}}
-%\addConstraint{\sum_{\{Q:(Q, P_B^i)\in \ETSP\}}\gvar{Q}{P_B^i}-\sum_{\{Q:(P_B^i, Q)\in \ETSP\}}\gvar{P_B^i}{Q}}{= 0,}{\quad\forall P_B^i\in \VB}
-%\addConstraint{\gvar{P}{Q}}{\leq (|\mathcal N|-1)\yvar{P}{Q},}{\quad\forall (P,Q)\in \ETSP}
-%\addConstraint{\eqref{eq:alphaC},\eqref{eq:betaC},\eqref{eq:gammaC},\eqref{eq:deltaC}}{\quad\forall P, Q\in \VTSP,\quad\forall P_B^1, P_B^2\in \VB}
-%\addConstraint{\eqref{eq:varepsilonC}, \eqref{eq:yC}, \eqref{eq:dC}}{\quad\forall P, Q\in \VTSP}
-%\addConstraint{\eqref{eq:nC}}{\quad\forall P_N\in \VN.}
-
-The objective function takes into account \CV{both the euclidean and link weighted distances} to join the selected sources with their assigned targets. The first group of constraints imposes that a subset of $k$ sources is selected in $\mathcal S$. The second constraints ensure that one target $T$ is assigned to a source $S$ only if it is selected. The third inequalities ensure that every target is assigned to one source. The fourth ones are the flow conservation constraints, where the units of commodity launched from the source must be the number of targets that are assigned to that source. \CV{The fifth group of inequalities ensures that the drone can reach, in endurance terms, the target $T$ when it is launched from the source $S$.} Constraints \eqref{eq:alphaC}, \eqref{eq:betaC}, \eqref{eq:gammaC}, \eqref{eq:deltaC}, \eqref{eq:varepsilonC}, \eqref{eq:fC}, \eqref{eq:dC}, \eqref{eq:nC} enforce the variables of the problem to be well-defined. 
-
-\CV{
-To deal with the bilinear terms that appear in the objective function, the McCormick's envelope is used to linearize them by including variables $p(PQ|ST)\geq 0$ that represent the products and introducing the following constraints:
-\begin{align*}
-%	p(PQ|ST) & \leq  M f(PQ|ST), \\
-%	p(PQ|ST) & \leq  d(PQ), \\
-	p(PQ|ST) & \geq m(PQ) f(PQ|ST), \\
-	p(PQ|ST) & \geq d(PQ) - M(PQ)(1 - f(PQ|ST)),
-\end{align*}
-where $m(PQ)$ and $M(PQ)$ are, respectively, the lower and upper bounds of the distance variable $d(PQ)$.
-}
-
-%the drone departs from each neighbourhood. The second block of constraints are the flow conservation constraints. The third inequalities ensure that one unit of commodity is delivered to each of the required neighbourhood. The fourth ones ensure that the ficticious nodes at the end of the barriers do not consume commodity. Finally, the last inequalities enforce that some commodity goes throughout an edge only if this edge is used in the tour. Inequalities \eqref{eq:alphaC}, \eqref{eq:betaC}, \eqref{eq:gammaC}, \eqref{eq:deltaC}, \eqref{eq:varepsilonC}, \eqref{eq:xC}, \eqref{eq:dC}, \eqref{eq:nC} enforce the variables of the problem to be well-defined.
-
-%\input{figures/Example_ H-TSP-S_ Solution}
-
-\begin{prop}
-	The \KMPN \ is NP-complete.
-\end{prop}
-
-Note that, once a point is fixed in each neighbourhood, the problem that results in the induced graph $\GKMPN$ is the $k$-median with geodesic distances, that is NP-complete. Figure \ref{fig:optimalsolution_kmpn} shows the solutions of the problem data in Figure \ref{fig:initialdata} for $k=1,2,3$, respectively.
-
-	\begin{figure}[h!]
-	\centering
-	\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=0.1cm,y=0.1cm, scale = 0.45]
-		\begin{axis}[
-			x=0.1cm,y=0.1cm,
-			axis lines=middle,
-			xmin=-5,
-			xmax=105,
-			ymin=-5,
-			ymax=105,
-			xtick={0,10,...,100},
-			ytick={0,10,...,100},]
-			\draw [rotate around={0:(10,15)},line width=2pt,color=qqqqff,fill=qqqqff,fill opacity=0.25] (10,15) ellipse (0.6cm and 0.6cm);
-			\draw [rotate around={0:(70,55)},line width=2pt,color=qqwuqq,fill=qqwuqq,fill opacity=0.25] (70,55) ellipse (0.4cm and 0.4cm);
-			\draw [rotate around={0:(50,70)},line width=2pt,color=qqwuqq,fill=qqwuqq,fill opacity=0.25] (50,70) ellipse (0.8cm and 0.8cm);
-			\draw [rotate around={0:(65,10)},line width=2pt,color=qqqqff,fill=qqqqff,fill opacity=0.25] (65,10) ellipse (0.7cm and 0.7cm);
-			\draw [rotate around={0:(10,65)},line width=2pt,color=qqqqff,fill=qqqqff,fill opacity=0.25] (10,65) ellipse (0.5cm and 0.5cm);
-			\draw [rotate around={0:(30,35)},line width=2pt,color=qqwuqq,fill=qqwuqq,fill opacity=0.25] (30,35) ellipse (1cm and 1cm);
-			\draw [rotate around={0:(90,35)},line width=2pt,color=qqqqff,fill=qqqqff,fill opacity=0.25] (90,35) ellipse (0.6cm and 0.6cm);
-			\draw [rotate around={0:(90,85)},line width=2pt,color=qqqqff,fill=qqqqff,fill opacity=0.25] (90,85) ellipse (0.6cm and 0.6cm);
-			\draw [rotate around={0:(30,90)},line width=2pt,color=qqqqff,fill=qqqqff,fill opacity=0.25] (30,90) ellipse (1cm and 1cm);
-			\draw [line width=2pt,color=ffqqqq] (0,90)-- (30,60);
-			\draw [line width=2pt,color=ffqqqq] (40,50)-- (10,50);
-			\draw [line width=2pt,color=ffqqqq] (0,30)-- (10,40);
-			\draw [line width=2pt,color=ffqqqq] (10,30)-- (30,5);
-			\draw [line width=2pt,color=ffqqqq] (40,10)-- (70,40);
-			\draw [line width=2pt,color=ffqqqq] (60,20)-- (100,10);
-			\draw [line width=2pt,color=ffqqqq] (30,70)-- (70,95);
-			\draw [line width=2pt,color=ffqqqq] (70,90)-- (60,50);
-			\draw [line width=2pt,color=ffqqqq] (70,80)-- (90,60);
-			\draw [line width=2pt,color=ffqqqq] (74,33)-- (98,60);
-			\draw [->,line width=2pt] (47.6,62.37) -- (70,90);
-			\draw [->,line width=2pt] (70,90) -- (84.18,86.46);
-			\draw [->,line width=2pt] (47.6,62.37) -- (30,70);
-			\draw [->,line width=2pt] (30,70) -- (30,80);
-			\draw [->,line width=2pt] (47.6,62.37) -- (30,60);
-			\draw [->,line width=2pt] (30,60) -- (14.85,63.78);
-			\draw [->,line width=2pt] (47.6,62.37) -- (40,50);
-			\draw [->,line width=2pt] (40,50) -- (10,30);
-			\draw [->,line width=2pt] (10,30) -- (10,21);
-			\draw [->,line width=2pt] (47.6,62.37) -- (60,50);
-			\draw [->,line width=2pt] (60,50) -- (70,40);
-			\draw [->,line width=2pt] (70,40) -- (74,33);
-			\draw [->,line width=2pt] (74,33) -- (84.05,34.25);
-			\draw [->,line width=2pt] (70,40) -- (60,20);
-			\draw [->,line width=2pt] (60,20) -- (61.87,16.26);
-			\begin{scriptsize}
-				\draw [color=ffqqqq] (0,90) circle (2.5pt);
-				\draw [color=ffqqqq] (30,60) circle (2.5pt);
-				\draw [color=ffqqqq] (40,50) circle (2.5pt);
-				\draw [color=ffqqqq] (10,50) circle (2.5pt);
-				\draw [color=ffqqqq] (0,30) circle (2.5pt);
-				\draw [color=ffqqqq] (10,40) circle (2.5pt);
-				\draw [color=ffqqqq] (10,30) circle (2.5pt);
-				\draw [color=ffqqqq] (30,5) circle (2.5pt);
-				\draw [color=ffqqqq] (40,10) circle (2.5pt);
-				\draw [color=ffqqqq] (70,40) circle (2.5pt);
-				\draw [color=ffqqqq] (60,20) circle (2.5pt);
-				\draw [color=ffqqqq] (100,10) circle (2.5pt);
-				\draw [color=ffqqqq] (30,70) circle (2.5pt);
-				\draw [color=ffqqqq] (70,95) circle (2.5pt);
-				\draw [color=ffqqqq] (70,90) circle (2.5pt);
-				\draw [color=ffqqqq] (60,50) circle (2.5pt);
-				\draw [color=ffqqqq] (70,80) circle (2.5pt);
-				\draw [color=ffqqqq] (90,60) circle (2.5pt);
-				\draw [color=ffqqqq] (74,33) circle (2.5pt);
-				\draw [color=ffqqqq] (98,60) circle (2.5pt);
-				\draw [fill=qqwuqq] (47.6,62.37) circle (2.5pt);
-				\draw [fill=ududff] (10,21) circle (2.5pt);
-				\draw [fill=ududff] (61.87,16.26) circle (2.5pt);
-				\draw [fill=ududff] (14.85,63.78) circle (2.5pt);
-				\draw [fill=ududff] (84.05,34.25) circle (2.5pt);
-				\draw [fill=ududff] (84.18,86.46) circle (2.5pt);
-				\draw [fill=ududff] (30,80) circle (2.5pt);
-			\end{scriptsize}
-		\end{axis}
-	\end{tikzpicture}
-	\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=0.1cm,y=0.1cm, scale = 0.45]
-		\begin{axis}[
-			x=0.1cm,y=0.1cm,
-			axis lines=middle,
-			xmin=-5,
-			xmax=105,
-			ymin=-5,
-			ymax=105,
-			xtick={0,10,...,100},
-			ytick={0,10,...,100},]
-			\draw [rotate around={0:(10,15)},line width=2pt,color=qqqqff,fill=qqqqff,fill opacity=0.25] (10,15) ellipse (0.6cm and 0.6cm);
-			\draw [rotate around={0:(70,55)},line width=2pt,color=qqwuqq,fill=qqwuqq,fill opacity=0.25] (70,55) ellipse (0.4cm and 0.4cm);
-			\draw [rotate around={0:(50,70)},line width=2pt,color=qqwuqq,fill=qqwuqq,fill opacity=0.25] (50,70) ellipse (0.8cm and 0.8cm);
-			\draw [rotate around={0:(65,10)},line width=2pt,color=qqqqff,fill=qqqqff,fill opacity=0.25] (65,10) ellipse (0.7cm and 0.7cm);
-			\draw [rotate around={0:(10,65)},line width=2pt,color=qqqqff,fill=qqqqff,fill opacity=0.25] (10,65) ellipse (0.5cm and 0.5cm);
-			\draw [rotate around={0:(30,35)},line width=2pt,color=qqwuqq,fill=qqwuqq,fill opacity=0.25] (30,35) ellipse (1cm and 1cm);
-			\draw [rotate around={0:(90,35)},line width=2pt,color=qqqqff,fill=qqqqff,fill opacity=0.25] (90,35) ellipse (0.6cm and 0.6cm);
-			\draw [rotate around={0:(90,85)},line width=2pt,color=qqqqff,fill=qqqqff,fill opacity=0.25] (90,85) ellipse (0.6cm and 0.6cm);
-			\draw [rotate around={0:(30,90)},line width=2pt,color=qqqqff,fill=qqqqff,fill opacity=0.25] (30,90) ellipse (1cm and 1cm);
-			\draw [line width=2pt,color=ffqqqq] (0,90)-- (30,60);
-			\draw [line width=2pt,color=ffqqqq] (40,50)-- (10,50);
-			\draw [line width=2pt,color=ffqqqq] (0,30)-- (10,40);
-			\draw [line width=2pt,color=ffqqqq] (10,30)-- (30,5);
-			\draw [line width=2pt,color=ffqqqq] (40,10)-- (70,40);
-			\draw [line width=2pt,color=ffqqqq] (60,20)-- (100,10);
-			\draw [line width=2pt,color=ffqqqq] (30,70)-- (70,95);
-			\draw [line width=2pt,color=ffqqqq] (70,90)-- (60,50);
-			\draw [line width=2pt,color=ffqqqq] (70,80)-- (90,60);
-			\draw [line width=2pt,color=ffqqqq] (74,33)-- (98,60);
-			\draw [->,line width=2pt] (21.67,40.53) -- (10,50);
-			\draw [->,line width=2pt] (10,50) -- (10,60);
-			\draw [->,line width=2pt] (21.67,40.53) -- (10,30);
-			\draw [->,line width=2pt] (10,30) -- (10,21);
-			\draw [->,line width=2pt] (21.67,40.53) -- (40,50);
-			\draw [->,line width=2pt] (40,50) -- (30,70);
-			\draw [->,line width=2pt] (30,70) -- (30,80);
-			\draw [->,line width=2pt] (71.92,51.49) -- (70,40);
-			\draw [->,line width=2pt] (70,40) -- (60,20);
-			\draw [->,line width=2pt] (60,20) -- (61.86,16.26);
-			\draw [->,line width=2pt] (71.92,51.49) -- (74,33);
-			\draw [->,line width=2pt] (74,33) -- (84.04,34.26);
-			\draw [->,line width=2pt] (71.92,51.49) -- (90,60);
-			\draw [->,line width=2pt] (90,60) -- (90,79);
-			\begin{scriptsize}
-				\draw [color=ffqqqq] (0,90) circle (2.5pt);
-				\draw [color=ffqqqq] (30,60) circle (2.5pt);
-				\draw [color=ffqqqq] (40,50) circle (2.5pt);
-				\draw [color=ffqqqq] (10,50) circle (2.5pt);
-				\draw [color=ffqqqq] (0,30) circle (2.5pt);
-				\draw [color=ffqqqq] (10,40) circle (2.5pt);
-				\draw [color=ffqqqq] (10,30) circle (2.5pt);
-				\draw [color=ffqqqq] (30,5) circle (2.5pt);
-				\draw [color=ffqqqq] (40,10) circle (2.5pt);
-				\draw [color=ffqqqq] (70,40) circle (2.5pt);
-				\draw [color=ffqqqq] (60,20) circle (2.5pt);
-				\draw [color=ffqqqq] (100,10) circle (2.5pt);
-				\draw [color=ffqqqq] (30,70) circle (2.5pt);
-				\draw [color=ffqqqq] (70,95) circle (2.5pt);
-				\draw [color=ffqqqq] (70,90) circle (2.5pt);
-				\draw [color=ffqqqq] (60,50) circle (2.5pt);
-				\draw [color=ffqqqq] (70,80) circle (2.5pt);
-				\draw [color=ffqqqq] (90,60) circle (2.5pt);
-				\draw [color=ffqqqq] (74,33) circle (2.5pt);
-				\draw [color=ffqqqq] (98,60) circle (2.5pt);
-				\draw [fill=qqwuqq] (71.92,51.49) circle (2.5pt);
-				\draw [fill=qqwuqq] (21.67,40.53) circle (2.5pt);
-				\draw [fill=ududff] (10,21) circle (2.5pt);
-				\draw [fill=ududff] (61.86,16.26) circle (2.5pt);
-				\draw [fill=ududff] (10,60) circle (2.5pt);
-				\draw [fill=ududff] (84.04,34.26) circle (2.5pt);
-				\draw [fill=ududff] (90,79) circle (2.5pt);
-				\draw [fill=ududff] (30,80) circle (2.5pt);
-			\end{scriptsize}
-		\end{axis}
-	\end{tikzpicture}
-		\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=0.1cm,y=0.1cm, scale = 0.45]
-	\begin{axis}[
-		x=0.1cm,y=0.1cm,
-		axis lines=middle,
-		xmin=-5,
-		xmax=105,
-		ymin=-5,
-		ymax=105,
-		xtick={0,10,...,100},
-		ytick={0,10,...,100},]
-		\draw [rotate around={0:(10,15)},line width=2pt,color=qqqqff,fill=qqqqff,fill opacity=0.25] (10,15) ellipse (0.6cm and 0.6cm);
-		\draw [rotate around={0:(70,55)},line width=2pt,color=qqwuqq,fill=qqwuqq,fill opacity=0.25] (70,55) ellipse (0.4cm and 0.4cm);
-		\draw [rotate around={0:(50,70)},line width=2pt,color=qqwuqq,fill=qqwuqq,fill opacity=0.25] (50,70) ellipse (0.8cm and 0.8cm);
-		\draw [rotate around={0:(65,10)},line width=2pt,color=qqqqff,fill=qqqqff,fill opacity=0.25] (65,10) ellipse (0.7cm and 0.7cm);
-		\draw [rotate around={0:(10,65)},line width=2pt,color=qqqqff,fill=qqqqff,fill opacity=0.25] (10,65) ellipse (0.5cm and 0.5cm);
-		\draw [rotate around={0:(30,35)},line width=2pt,color=qqwuqq,fill=qqwuqq,fill opacity=0.25] (30,35) ellipse (1cm and 1cm);
-		\draw [rotate around={0:(90,35)},line width=2pt,color=qqqqff,fill=qqqqff,fill opacity=0.25] (90,35) ellipse (0.6cm and 0.6cm);
-		\draw [rotate around={0:(90,85)},line width=2pt,color=qqqqff,fill=qqqqff,fill opacity=0.25] (90,85) ellipse (0.6cm and 0.6cm);
-		\draw [rotate around={0:(30,90)},line width=2pt,color=qqqqff,fill=qqqqff,fill opacity=0.25] (30,90) ellipse (1cm and 1cm);
-		\draw [line width=2pt,color=ffqqqq] (0,90)-- (30,60);
-		\draw [line width=2pt,color=ffqqqq] (40,50)-- (10,50);
-		\draw [line width=2pt,color=ffqqqq] (0,30)-- (10,40);
-		\draw [line width=2pt,color=ffqqqq] (10,30)-- (30,5);
-		\draw [line width=2pt,color=ffqqqq] (40,10)-- (70,40);
-		\draw [line width=2pt,color=ffqqqq] (60,20)-- (100,10);
-		\draw [line width=2pt,color=ffqqqq] (30,70)-- (70,95);
-		\draw [line width=2pt,color=ffqqqq] (70,90)-- (60,50);
-		\draw [line width=2pt,color=ffqqqq] (70,80)-- (90,60);
-		\draw [line width=2pt,color=ffqqqq] (74,33)-- (98,60);
-		\draw [->,line width=2pt] (71.92,51.49) -- (90,60);
-		\draw [->,line width=2pt] (90,60) -- (90,79);
-		\draw [->,line width=2pt] (71.92,51.49) -- (74,33);
-		\draw [->,line width=2pt] (74,33) -- (84.04,34.26);
-		\draw [->,line width=2pt] (71.92,51.49) -- (70,40);
-		\draw [->,line width=2pt] (70,40) -- (60,20);
-		\draw [->,line width=2pt] (60,20) -- (61.87,16.26);
-		\draw [->,line width=2pt] (20.14,36.67) -- (10,50);
-		\draw [->,line width=2pt] (10,50) -- (10,60);
-		\draw [->,line width=2pt] (20.14,36.67) -- (10,30);
-		\draw [->,line width=2pt] (10,30) -- (10,21);
-		\draw [->,line width=2pt] (42,70) -- (30,70);
-		\draw [->,line width=2pt] (30,70) -- (30,80);
-		\begin{scriptsize}
-			\draw [color=ffqqqq] (0,90) circle (2.5pt);
-			\draw [color=ffqqqq] (30,60) circle (2.5pt);
-			\draw [color=ffqqqq] (40,50) circle (2.5pt);
-			\draw [color=ffqqqq] (10,50) circle (2.5pt);
-			\draw [color=ffqqqq] (0,30) circle (2.5pt);
-			\draw [color=ffqqqq] (10,40) circle (2.5pt);
-			\draw [color=ffqqqq] (10,30) circle (2.5pt);
-			\draw [color=ffqqqq] (30,5) circle (2.5pt);
-			\draw [color=ffqqqq] (40,10) circle (2.5pt);
-			\draw [color=ffqqqq] (70,40) circle (2.5pt);
-			\draw [color=ffqqqq] (60,20) circle (2.5pt);
-			\draw [color=ffqqqq] (100,10) circle (2.5pt);
-			\draw [color=ffqqqq] (30,70) circle (2.5pt);
-			\draw [color=ffqqqq] (70,95) circle (2.5pt);
-			\draw [color=ffqqqq] (70,90) circle (2.5pt);
-			\draw [color=ffqqqq] (60,50) circle (2.5pt);
-			\draw [color=ffqqqq] (70,80) circle (2.5pt);
-			\draw [color=ffqqqq] (90,60) circle (2.5pt);
-			\draw [color=ffqqqq] (74,33) circle (2.5pt);
-			\draw [color=ffqqqq] (98,60) circle (2.5pt);
-			\draw [fill=qqwuqq] (71.92,51.49) circle (2.5pt);
-			\draw [fill=qqwuqq] (42,70) circle (2.5pt);
-			\draw [fill=qqwuqq] (20.14,36.67) circle (2.5pt);
-			\draw [fill=ududff] (10,21) circle (2.5pt);
-			\draw [fill=ududff] (61.87,16.26) circle (2.5pt);
-			\draw [fill=ududff] (10,60) circle (2.5pt);
-			\draw [fill=ududff] (84.04,34.26) circle (2.5pt);
-			\draw [fill=ududff] (90,79) circle (2.5pt);
-			\draw [fill=ududff] (30,80) circle (2.5pt);
-		\end{scriptsize}
-	\end{axis}
-	\end{tikzpicture}
-
-	\caption{Optimal solution for the \KMPN}
-	\label{fig:optimalsolution_kmpn}
-	\end{figure}
-
-	\subsection{Relaxing the assumptions of the problem: The \KMPVN}
-
-	In this subsection, we analyze the differences between the \KMPN \ and the \KMPVN, where there exists a rectilinear path joining a source neighbourhood with a target neighbourhood. The main difference lies in the description of the edges of the graph induced by the neighbourhoods and the endpoints of the barriers, as shown in Subsection \ref{subsection:descriptionKMPN}.
+	\begin{minipage}{.5\linewidth}
+		\begin{align*}
+			\gammaprod{P}{Q}{P_B^1}{P_B^2} & \leq \alphamas{P}{P_B^1}{P_B^2},\\
+			\gammaprod{P}{Q}{P_B^1}{P_B^2} & \leq \alphamas{Q}{P_B^1}{P_B^2},\\
+			\gammaprod{P}{Q}{P_B^1}{P_B^2} & \geq \alphamas{P}{P_B^1}{P_B^2} + \alphamas{Q}{P_B^1}{P_B^2} - 1,
+		\end{align*}
+	\end{minipage}
+	\begin{minipage}{.5\linewidth}
+		\begin{align*}\tag{$\gamma$-C}\label{eq:gammaC}
+			\gammaprod{P_B^1}{P_B^2}{P}{Q} & \leq \alphamas{P_B^1}{P}{Q},\\
+			\gammaprod{P_B^1}{P_B^2}{P}{Q} & \leq \alphamas{P_B^2}{P}{Q},\\
+			\gammaprod{P_B^1}{P_B^2}{P}{Q} & \geq \alphamas{P_B^1}{P}{Q} + \alphamas{P_B^2}{P}{Q} - 1.
+		\end{align*}
+	\end{minipage}
 	
-%	By taking the same approach as before, the sets that describe the graph in the new case are $\VN$, $\VB$, $V_{\rm TSPV}$ and $E_{\rm TSPV}$, as described in Subsection \ref{ssec:TSPN}.
+	\bigskip
 	
-	%		\begin{itemize}
-		%			\item $\VN=\{P_N:N\in\mathcal N\}$: set of points in the neighbourhoods $\mathcal N$ that must be visited.
-		%			\item $\VB=\{P^1_B, P^2_B:B=\overline{P^1_B P^2_B}\in \mathcal B\}$: set of endpoints of the barriers in the problem.
-		%			\item $V = \VN \cup \VB$.
-		%			\item $E=\{(P, P'):P, P' \in V \text{ and } \overline{PP'}\cap B''=\emptyset,\forall B''\in\B\}$: set of edges formed by the line segments that join every pair of points in $V$ and that do not cross any barrier.
-		%		\end{itemize} 
+	\newcommand{\deltacheck}[4]{\delta(#1#2|#3#4)}
 	
-	The difference between the set of edges in the \KMPN \ with respect to the graph in \KMPVN \ is that, in the former case, the edges that join each pair of neighbourhoods must be considered. This fact leads to include product of continuous variables in the $\alpha$ constraints of the model that represent the determinants. These products make the problem to become non-convex.
-%	that determine if the segment joining the two variable points in the neighbourhoods cross any barrier or not. 
-
-%\subsubsection{Lower and upper bounds when the neighbourhoods are ellipses}\label{subsection:bounds}	
-
-\CV{
-\section{Matheuristic Algorithm}
-
-In this section, an mathheuristic based in the formulations above is presented to handle larger instances of the problem. This mathheuristic will give a solution of \KMPN or \KMPVN, that can be used to initialize the formulation of these models.
-
-The basic idea of this procedure is to consider only the centers of each neighbourhoods as the points selected in each one. By fixing these points, the graphs induced $\GKMPN$ and $\GKMPVN$ are also fixed, their respective edges can be preprocessed and the problems obtained are linear.
-		
-}
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-	\bibliographystyle{apa}
-	\bibliography{bibliography.bib}
+	Thirdly, verifying whether there exists any coincidence of the sign of determinants is required, so a binary variable $\delta$ is defined  assuming the value one if segments do not intersect and zero, otherwise. This condition can be modelled by adopting the following disjunctive constraints:
+	\begin{equation*}\tag{$\delta$-C}\label{eq:deltaC}
+		\frac{1}{2}\left[\betamas{P}{Q}{P_B^1}{P_B^2}+\betamas{P_B^1}{P_B^2}{P}{Q}\right]\leq\deltacheck{P}{Q}{P_B^1}{P_B^2}\leq \betamas{P}{Q}{P_B^1}{P_B^2}+\betamas{P_B^1}{P_B^2}{P}{Q}.
+	\end{equation*}
+	Indeed, the above restrictions state that if there exists a sign coincidence in any of the two pairs of determinants in \eqref{eq:pair}, then $\delta$ is one to satisfy the left constraint, and the right one is always fulfilled. However, if none of the signs of any pairs of determinants is the same, then the second constraint is zero and $\delta$ must be null.
 	
+	\newcommand{\varepsilonvar}[2]{\varepsilon(#1#2)}
+	
+	Finally, to check whether
+	$$\overline{PQ}\cap B''=\emptyset,\quad \forall B''\in\B,\quad\Longleftrightarrow\quad \deltacheck{P}{Q}{P_{B''}^1}{P_{B''}^2}=1,\quad\forall B''\in\B,$$
+	
+	the binary variable $\varepsilonvar{P}{Q}$ is introduced, and it is one if this condition is verified for all $B''\in\B$. This variable can be expressed as: 
+	\begin{equation*}\tag{$\varepsilon$-C}\label{eq:varepsilonC}
+		\left[\sum_{B''\in\mathcal B}\deltacheck{P}{Q}{P^1_{B''}}{P^2_{B''}}-|\mathcal B|\right] + 1\leq \varepsilonvar{P}{Q}\leq \frac{1}{|\B|}\sum_{B''\in\mathcal B}\deltacheck{P}{Q}{P^1_{B''}}{P^2_{B''}}.
+	\end{equation*}
+	
+	If there exists, at least, a barrier $B''\in\B$ that intersects the segment $\overline{PQ}$, then $\deltacheck{P}{Q}{P^1_{B''}}{P^2_{B''}}$ is zero and the second inequality enforces $\varepsilon$ to be zero because the right hand side is fractional and the first inequality is non-positive. However, if no barrier intersects the segment $\segment{P}{Q}$, then $\varepsilon$ is equals to one, because the left hand side of the first inequality is one and the right hand side of the second inequality too.
+	
+	It is possible to identify the set of actual edges of graph $G_X$ by using the $\varepsilon$ variables based on the above description, as follows:
+	$$ E_X = \{(P, Q):P,Q\in V_X\wedge\varepsilonvar{P}{Q}=1, P\neq Q\}, \quad X\in \{\rm KMPHN, \rm KMPN\}.$$
+	
+	This representation of $E_X$ with $X\in \{\rm KMPHN, \rm KMPN\}$ will be applied in the formulations that are presented in the following subsections. 
+	
+	It is interesting to note that $\EB$ is a fixed set whose edges can be computed by using the Remark \ref{rem:determinants}. Then, $\varepsilon$ variables can be prefixed in advance. However, edges in $E_X\setminus \EB$ depend on the points selected in the neighbourhoods. A special case that can be highlighted happens when the set of neighbourhoods, $\mathcal S$ and $\mathcal T$, are represented by points. In that case, the induced graph is completely fixed and it is only necessary to find which edges are included by keeping in mind that the graph must be planar, i.e., without crossings.
+	
+	\subsection{A formulation for the \KMPHN}\label{ssec:KMPHN}
+	
+	The formulation of the \KMPHN \ is based on the structure of the well-known $k$-Median Problem where distances between each pair of source-target neighbourhoods are represented by the shortest path joining them without traversing any barrier.
+	
+	Note that, although computing the shortest paths between every pair of neighbourhoods is possible, converting an instance of the \KMPHN \ into an instance of the standard $k$-median is not, since the points in neighbourhoods are not fixed. However, this simplification can be applied to produce an approximation to generate lower bounds for the \KMPHN.
+	
+	%\newcommand{\gvar}[2]{g(#1#2)}
+	\newcommand{\xvar}[2]{x(#1#2)}
+	
+	Firstly, it is necessary to define the binary variables inherited from the $k$-median:
+	\begin{itemize}
+		\item $y(S)$, that assumes value one if the source neighbourhood $S\in\mathcal S$ is selected.
+		\item $x(ST)$, that is one if the target neighbourhood $T\in\mathcal T$ is assigned to the selected source $S\in\mathcal S$.
+	\end{itemize}
+	
+	Secondly, adjusting a single-commodity flow formulation to ensure connectivity will also be used. The idea is that the model must deliver one unit of commodity from the selected source neighbourhood to each of the required target neighbourhoods. Then, for each edge $(P, Q)\in \EKMPHN$, a binary variable $f(PQ|ST)$ is defined, and takes the value of one when edge $(P, Q)$ is traversed in the path to go from the source $S$ to the target $T$. 
+	
+	
+	
+	
+	Then, the inequalities 
+	
+	\begin{equation*}\tag{$f$-C}\label{eq:fC}
+		f(PQ)\leq  |\mathcal T|\varepsilonvar{P}{Q},
+	\end{equation*}
+	are included to assure that the delivery can go from $P$ to $Q$ only if the segment $\segment{P}{Q}$ does not cross any barrier. 
+	
+	
+	Hence, we can adjust the flow formulation to the induced graph $\GKMPHN$ as follows:
+	
+	%\textcolor{red}{
+		%\begin{mini*}
+		%	{}{\sum_{(P,Q)\in \EKMPHN}\dvar{P}{Q}f(PQ)}
+		%	{}{}\label{form:H-KMPN}\tag{H-KMPN}
+		%	\addConstraint{\sum_{S\in\mathcal S}y(S)}{=k}{}
+		%	\addConstraint{x(ST)}{\leq y(S),}{\quad\forall S\in\mathcal S,\quad\forall T\in\mathcal T}
+		%	\addConstraint{\sum_{S\in\mathcal S} x(ST)}{=1,}{\quad\forall T\in\mathcal T}
+		%	\addConstraint{\sum_{\{Q\in \VKMPHN:(P,Q)\in \EKMPHN\}}f(PQ)-\sum_{\{Q\in \VKMPHN:(Q,P)\in \EKMPHN\}}f(PQ)}	{=\left\{
+			%		\begin{array}{rl} 
+				%			\sum_{T\in\mathcal T} x(ST), & \text{if } P\in\VS, \\
+				%			0, & \text{if } P\in \VB, \\
+				%			-1, & \text{if }P\in\VT.
+				%		\end{array}
+			%		\right.}{}
+		%	\addConstraint{\eqref{eq:alphaC},\eqref{eq:betaC},\eqref{eq:gammaC},\eqref{eq:deltaC}}{\quad\forall P, Q\in \VKMPHN,\quad\forall P_B^1, P_B^2\in \VB}
+		%	\addConstraint{\eqref{eq:varepsilonC}, \eqref{eq:fC}, \eqref{eq:dC}}{\quad\forall P, Q\in \VKMPHN}
+		%	\addConstraint{\eqref{eq:nC}}{\quad\forall P\in \VS\cup \VT.}
+		%\end{mini*}}
+		
+		{\tiny
+			\begin{mini*}[2]
+				{}{\alpha_E\sum_{(P,Q)\in \EKMPHN}\sum_{S\in\mathcal S}\sum_{T\in\mathcal T}\dvar{P}{Q}f(PQ|ST) + \frac{\alpha_L}{2}\sum_{(P,Q)\in \EKMPHN}\sum_{S\in\mathcal S}\sum_{T\in\mathcal T}f(PQ|ST)}
+				{}{}\label{form:H-KMPHN}\tag{H-KMPHN}
+				\addConstraint{\sum_{S\in\mathcal S}y(S)}{=k}{}
+				\addConstraint{x(ST)}{\leq y(S),}{\quad\forall S\in\mathcal S,\quad\forall T\in\mathcal T}
+				\addConstraint{\sum_{S\in\mathcal S} x(ST)}{=1,}{\quad\forall T\in\mathcal T}
+				\addConstraint{\sum_{\{Q\in \VKMPHN:(P,Q)\in \EKMPHN\}}f(PQ|ST)-\sum_{\{Q\in \VKMPHN:(Q,P)\in \EKMPHN\}}f(PQ|ST)}	{=\left\{
+					\begin{array}{rl} 
+						x(ST), & \text{if } P\in S, \\
+						0, & \text{if } P\in \VB, \\
+						-x(ST), & \text{if }P\in T.
+					\end{array}
+					\right.}{\quad\forall S\in\mathcal S,\forall T\in\mathcal T}
+				\addConstraint{\eqref{eq:alphaC},\eqref{eq:betaC},\eqref{eq:gammaC},\eqref{eq:deltaC}}{\quad\forall P, Q\in \VKMPHN,\quad\forall P_B^1, P_B^2\in \VB}
+				\addConstraint{\eqref{eq:varepsilonC}, \eqref{eq:fC}, \eqref{eq:dC}}{\quad\forall P, Q\in \VKMPHN}
+				\addConstraint{\eqref{eq:nC}}{\quad\forall P\in \VS\cup \VT.}
+		\end{mini*}}
+		
+		%	\addConstraint{\sum_{(P,Q)\in \EKMPHN}\dvar{P}{Q}f(PQ|ST)}{\leq \text{endurance}\,x(ST),}{\quad\forall S\in\mathcal S,\forall T\in\mathcal T}
+		
+		%	\addConstraint{\sum_{\{Q:(P_N, Q)\in \EN\}}\yvar{P_N}{Q}}{\geq 1,}{\quad\forall P_N\in \VN}
+		%\addConstraint{\sum_{\{Q:(P, Q)\in \ETSP\}}\yvar{P}{Q}}{= \sum_{\{Q:(Q, P)\in \ETSP\}}\yvar{Q}{P},}{\quad\forall P\in \VTSP}
+		%\addConstraint{\sum_{\{Q:(Q, P_N)\in \EN\}}\gvar{Q}{P_N}-\sum_{\{Q:(P_N, Q)\in \EN\}}\gvar{P_N}{Q}}{= 1,}{\quad\forall P_N\in \VN\setminus\{P_{N_1}\}}
+		%\addConstraint{\sum_{\{Q:(Q, P_B^i)\in \ETSP\}}\gvar{Q}{P_B^i}-\sum_{\{Q:(P_B^i, Q)\in \ETSP\}}\gvar{P_B^i}{Q}}{= 0,}{\quad\forall P_B^i\in \VB}
+		%\addConstraint{\gvar{P}{Q}}{\leq (|\mathcal N|-1)\yvar{P}{Q},}{\quad\forall (P,Q)\in \ETSP}
+		%\addConstraint{\eqref{eq:alphaC},\eqref{eq:betaC},\eqref{eq:gammaC},\eqref{eq:deltaC}}{\quad\forall P, Q\in \VTSP,\quad\forall P_B^1, P_B^2\in \VB}
+		%\addConstraint{\eqref{eq:varepsilonC}, \eqref{eq:yC}, \eqref{eq:dC}}{\quad\forall P, Q\in \VTSP}
+		%\addConstraint{\eqref{eq:nC}}{\quad\forall P_N\in \VN.}
+		
+		The objective function takes into account both the Euclidean and link weighted distances to join the selected sources with their assigned targets. The first group of constraints imposes that a subset of $k$ sources is selected in $\mathcal S$. The second constraints ensure that one target $T$ is assigned to a source $S$ only if it is selected. The third inequalities ensure that every target is assigned to one source. The fourth ones are the flow conservation constraints, where the units of commodity launched from the source must be the number of targets that are assigned to that source. The fifth group of inequalities ensures that the trip can reach, in endurance terms, the target $T$ when it starts from the source $S$. Constraints \eqref{eq:alphaC}, \eqref{eq:betaC}, \eqref{eq:gammaC}, \eqref{eq:deltaC}, \eqref{eq:varepsilonC}, \eqref{eq:fC}, \eqref{eq:dC}, \eqref{eq:nC} enforce the variables of the problem to be well-defined. 
+		
+		
+		To deal with the bilinear terms that appear in the objective function, the McCormick's envelope are used to linearize them by including variables $p(PQ|ST)\geq 0$ that represent the products and introducing the following constraints:
+		\begin{align*}
+			%	p(PQ|ST) & \leq  M f(PQ|ST), \\
+			%	p(PQ|ST) & \leq  d(PQ), \\
+			p(PQ|ST) & \geq m(PQ) f(PQ|ST), \\
+			p(PQ|ST) & \geq d(PQ) - M(PQ)(1 - f(PQ|ST)),
+		\end{align*}
+		where $m(PQ)$ and $M(PQ)$ are, respectively, lower and upper bounds of the distance variable $d(PQ)$.
+		
+		
+		%the drone departs from each neighbourhood. The second block of constraints are the flow conservation constraints. The third inequalities ensure that one unit of commodity is delivered to each of the required neighbourhood. The fourth ones ensure that the ficticious nodes at the end of the barriers do not consume commodity. Finally, the last inequalities enforce that some commodity goes throughout an edge only if this edge is used in the tour. Inequalities \eqref{eq:alphaC}, \eqref{eq:betaC}, \eqref{eq:gammaC}, \eqref{eq:deltaC}, \eqref{eq:varepsilonC}, \eqref{eq:xC}, \eqref{eq:dC}, \eqref{eq:nC} enforce the variables of the problem to be well-defined.
+		
+		%\input{figures/Example_ H-TSP-S_ Solution}
+		
+		\begin{prop}
+			The \KMPHN \ is NP-complete.
+		\end{prop}
+		
+		Note that, once a point is fixed in each neighbourhood, the problem that results in the induced graph $\GKMPHN$ is the $k$-median with geodesic distances, that is NP-complete. Figure \ref{fig:optimalsolution_kmphn} shows the solutions of the problem data in Figure \ref{fig:initialdata} for $k=1,2,3$, respectively.
+		
+		\begin{figure}[h!]
+			\centering
+			\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=0.1cm,y=0.1cm, scale = 0.45]
+				\begin{axis}[
+					x=0.1cm,y=0.1cm,
+					axis lines=middle,
+					xmin=-5,
+					xmax=105,
+					ymin=-5,
+					ymax=105,
+					xtick={0,10,...,100},
+					ytick={0,10,...,100},]
+					\draw [rotate around={0:(10,15)},line width=2pt,color=qqqqff,fill=qqqqff,fill opacity=0.25] (10,15) ellipse (0.6cm and 0.6cm);
+					\draw [rotate around={0:(70,55)},line width=2pt,color=qqwuqq,fill=qqwuqq,fill opacity=0.25] (70,55) ellipse (0.4cm and 0.4cm);
+					\draw [rotate around={0:(50,70)},line width=2pt,color=qqwuqq,fill=qqwuqq,fill opacity=0.25] (50,70) ellipse (0.8cm and 0.8cm);
+					\draw [rotate around={0:(65,10)},line width=2pt,color=qqqqff,fill=qqqqff,fill opacity=0.25] (65,10) ellipse (0.7cm and 0.7cm);
+					\draw [rotate around={0:(10,65)},line width=2pt,color=qqqqff,fill=qqqqff,fill opacity=0.25] (10,65) ellipse (0.5cm and 0.5cm);
+					\draw [rotate around={0:(30,35)},line width=2pt,color=qqwuqq,fill=qqwuqq,fill opacity=0.25] (30,35) ellipse (1cm and 1cm);
+					\draw [rotate around={0:(90,35)},line width=2pt,color=qqqqff,fill=qqqqff,fill opacity=0.25] (90,35) ellipse (0.6cm and 0.6cm);
+					\draw [rotate around={0:(90,85)},line width=2pt,color=qqqqff,fill=qqqqff,fill opacity=0.25] (90,85) ellipse (0.6cm and 0.6cm);
+					\draw [rotate around={0:(30,90)},line width=2pt,color=qqqqff,fill=qqqqff,fill opacity=0.25] (30,90) ellipse (1cm and 1cm);
+					\draw [line width=2pt,color=ffqqqq] (0,90)-- (30,60);
+					\draw [line width=2pt,color=ffqqqq] (40,50)-- (10,50);
+					\draw [line width=2pt,color=ffqqqq] (0,30)-- (10,40);
+					\draw [line width=2pt,color=ffqqqq] (10,30)-- (30,5);
+					\draw [line width=2pt,color=ffqqqq] (40,10)-- (70,40);
+					\draw [line width=2pt,color=ffqqqq] (60,20)-- (100,10);
+					\draw [line width=2pt,color=ffqqqq] (30,70)-- (70,95);
+					\draw [line width=2pt,color=ffqqqq] (70,90)-- (60,50);
+					\draw [line width=2pt,color=ffqqqq] (70,80)-- (90,60);
+					\draw [line width=2pt,color=ffqqqq] (74,33)-- (98,60);
+					\draw [->,line width=2pt] (47.6,62.37) -- (70,90);
+					\draw [->,line width=2pt] (70,90) -- (84.18,86.46);
+					\draw [->,line width=2pt] (47.6,62.37) -- (30,70);
+					\draw [->,line width=2pt] (30,70) -- (30,80);
+					\draw [->,line width=2pt] (47.6,62.37) -- (30,60);
+					\draw [->,line width=2pt] (30,60) -- (14.85,63.78);
+					\draw [->,line width=2pt] (47.6,62.37) -- (40,50);
+					\draw [->,line width=2pt] (40,50) -- (10,30);
+					\draw [->,line width=2pt] (10,30) -- (10,21);
+					\draw [->,line width=2pt] (47.6,62.37) -- (60,50);
+					\draw [->,line width=2pt] (60,50) -- (70,40);
+					\draw [->,line width=2pt] (70,40) -- (74,33);
+					\draw [->,line width=2pt] (74,33) -- (84.05,34.25);
+					\draw [->,line width=2pt] (70,40) -- (60,20);
+					\draw [->,line width=2pt] (60,20) -- (61.87,16.26);
+					\begin{scriptsize}
+						\draw [color=ffqqqq] (0,90) circle (2.5pt);
+						\draw [color=ffqqqq] (30,60) circle (2.5pt);
+						\draw [color=ffqqqq] (40,50) circle (2.5pt);
+						\draw [color=ffqqqq] (10,50) circle (2.5pt);
+						\draw [color=ffqqqq] (0,30) circle (2.5pt);
+						\draw [color=ffqqqq] (10,40) circle (2.5pt);
+						\draw [color=ffqqqq] (10,30) circle (2.5pt);
+						\draw [color=ffqqqq] (30,5) circle (2.5pt);
+						\draw [color=ffqqqq] (40,10) circle (2.5pt);
+						\draw [color=ffqqqq] (70,40) circle (2.5pt);
+						\draw [color=ffqqqq] (60,20) circle (2.5pt);
+						\draw [color=ffqqqq] (100,10) circle (2.5pt);
+						\draw [color=ffqqqq] (30,70) circle (2.5pt);
+						\draw [color=ffqqqq] (70,95) circle (2.5pt);
+						\draw [color=ffqqqq] (70,90) circle (2.5pt);
+						\draw [color=ffqqqq] (60,50) circle (2.5pt);
+						\draw [color=ffqqqq] (70,80) circle (2.5pt);
+						\draw [color=ffqqqq] (90,60) circle (2.5pt);
+						\draw [color=ffqqqq] (74,33) circle (2.5pt);
+						\draw [color=ffqqqq] (98,60) circle (2.5pt);
+						\draw [fill=qqwuqq] (47.6,62.37) circle (2.5pt);
+						\draw [fill=ududff] (10,21) circle (2.5pt);
+						\draw [fill=ududff] (61.87,16.26) circle (2.5pt);
+						\draw [fill=ududff] (14.85,63.78) circle (2.5pt);
+						\draw [fill=ududff] (84.05,34.25) circle (2.5pt);
+						\draw [fill=ududff] (84.18,86.46) circle (2.5pt);
+						\draw [fill=ududff] (30,80) circle (2.5pt);
+					\end{scriptsize}
+				\end{axis}
+			\end{tikzpicture}
+			\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=0.1cm,y=0.1cm, scale = 0.45]
+				\begin{axis}[
+					x=0.1cm,y=0.1cm,
+					axis lines=middle,
+					xmin=-5,
+					xmax=105,
+					ymin=-5,
+					ymax=105,
+					xtick={0,10,...,100},
+					ytick={0,10,...,100},]
+					\draw [rotate around={0:(10,15)},line width=2pt,color=qqqqff,fill=qqqqff,fill opacity=0.25] (10,15) ellipse (0.6cm and 0.6cm);
+					\draw [rotate around={0:(70,55)},line width=2pt,color=qqwuqq,fill=qqwuqq,fill opacity=0.25] (70,55) ellipse (0.4cm and 0.4cm);
+					\draw [rotate around={0:(50,70)},line width=2pt,color=qqwuqq,fill=qqwuqq,fill opacity=0.25] (50,70) ellipse (0.8cm and 0.8cm);
+					\draw [rotate around={0:(65,10)},line width=2pt,color=qqqqff,fill=qqqqff,fill opacity=0.25] (65,10) ellipse (0.7cm and 0.7cm);
+					\draw [rotate around={0:(10,65)},line width=2pt,color=qqqqff,fill=qqqqff,fill opacity=0.25] (10,65) ellipse (0.5cm and 0.5cm);
+					\draw [rotate around={0:(30,35)},line width=2pt,color=qqwuqq,fill=qqwuqq,fill opacity=0.25] (30,35) ellipse (1cm and 1cm);
+					\draw [rotate around={0:(90,35)},line width=2pt,color=qqqqff,fill=qqqqff,fill opacity=0.25] (90,35) ellipse (0.6cm and 0.6cm);
+					\draw [rotate around={0:(90,85)},line width=2pt,color=qqqqff,fill=qqqqff,fill opacity=0.25] (90,85) ellipse (0.6cm and 0.6cm);
+					\draw [rotate around={0:(30,90)},line width=2pt,color=qqqqff,fill=qqqqff,fill opacity=0.25] (30,90) ellipse (1cm and 1cm);
+					\draw [line width=2pt,color=ffqqqq] (0,90)-- (30,60);
+					\draw [line width=2pt,color=ffqqqq] (40,50)-- (10,50);
+					\draw [line width=2pt,color=ffqqqq] (0,30)-- (10,40);
+					\draw [line width=2pt,color=ffqqqq] (10,30)-- (30,5);
+					\draw [line width=2pt,color=ffqqqq] (40,10)-- (70,40);
+					\draw [line width=2pt,color=ffqqqq] (60,20)-- (100,10);
+					\draw [line width=2pt,color=ffqqqq] (30,70)-- (70,95);
+					\draw [line width=2pt,color=ffqqqq] (70,90)-- (60,50);
+					\draw [line width=2pt,color=ffqqqq] (70,80)-- (90,60);
+					\draw [line width=2pt,color=ffqqqq] (74,33)-- (98,60);
+					\draw [->,line width=2pt] (21.67,40.53) -- (10,50);
+					\draw [->,line width=2pt] (10,50) -- (10,60);
+					\draw [->,line width=2pt] (21.67,40.53) -- (10,30);
+					\draw [->,line width=2pt] (10,30) -- (10,21);
+					\draw [->,line width=2pt] (21.67,40.53) -- (40,50);
+					\draw [->,line width=2pt] (40,50) -- (30,70);
+					\draw [->,line width=2pt] (30,70) -- (30,80);
+					\draw [->,line width=2pt] (71.92,51.49) -- (70,40);
+					\draw [->,line width=2pt] (70,40) -- (60,20);
+					\draw [->,line width=2pt] (60,20) -- (61.86,16.26);
+					\draw [->,line width=2pt] (71.92,51.49) -- (74,33);
+					\draw [->,line width=2pt] (74,33) -- (84.04,34.26);
+					\draw [->,line width=2pt] (71.92,51.49) -- (90,60);
+					\draw [->,line width=2pt] (90,60) -- (90,79);
+					\begin{scriptsize}
+						\draw [color=ffqqqq] (0,90) circle (2.5pt);
+						\draw [color=ffqqqq] (30,60) circle (2.5pt);
+						\draw [color=ffqqqq] (40,50) circle (2.5pt);
+						\draw [color=ffqqqq] (10,50) circle (2.5pt);
+						\draw [color=ffqqqq] (0,30) circle (2.5pt);
+						\draw [color=ffqqqq] (10,40) circle (2.5pt);
+						\draw [color=ffqqqq] (10,30) circle (2.5pt);
+						\draw [color=ffqqqq] (30,5) circle (2.5pt);
+						\draw [color=ffqqqq] (40,10) circle (2.5pt);
+						\draw [color=ffqqqq] (70,40) circle (2.5pt);
+						\draw [color=ffqqqq] (60,20) circle (2.5pt);
+						\draw [color=ffqqqq] (100,10) circle (2.5pt);
+						\draw [color=ffqqqq] (30,70) circle (2.5pt);
+						\draw [color=ffqqqq] (70,95) circle (2.5pt);
+						\draw [color=ffqqqq] (70,90) circle (2.5pt);
+						\draw [color=ffqqqq] (60,50) circle (2.5pt);
+						\draw [color=ffqqqq] (70,80) circle (2.5pt);
+						\draw [color=ffqqqq] (90,60) circle (2.5pt);
+						\draw [color=ffqqqq] (74,33) circle (2.5pt);
+						\draw [color=ffqqqq] (98,60) circle (2.5pt);
+						\draw [fill=qqwuqq] (71.92,51.49) circle (2.5pt);
+						\draw [fill=qqwuqq] (21.67,40.53) circle (2.5pt);
+						\draw [fill=ududff] (10,21) circle (2.5pt);
+						\draw [fill=ududff] (61.86,16.26) circle (2.5pt);
+						\draw [fill=ududff] (10,60) circle (2.5pt);
+						\draw [fill=ududff] (84.04,34.26) circle (2.5pt);
+						\draw [fill=ududff] (90,79) circle (2.5pt);
+						\draw [fill=ududff] (30,80) circle (2.5pt);
+					\end{scriptsize}
+				\end{axis}
+			\end{tikzpicture}
+			\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=0.1cm,y=0.1cm, scale = 0.45]
+				\begin{axis}[
+					x=0.1cm,y=0.1cm,
+					axis lines=middle,
+					xmin=-5,
+					xmax=105,
+					ymin=-5,
+					ymax=105,
+					xtick={0,10,...,100},
+					ytick={0,10,...,100},]
+					\draw [rotate around={0:(10,15)},line width=2pt,color=qqqqff,fill=qqqqff,fill opacity=0.25] (10,15) ellipse (0.6cm and 0.6cm);
+					\draw [rotate around={0:(70,55)},line width=2pt,color=qqwuqq,fill=qqwuqq,fill opacity=0.25] (70,55) ellipse (0.4cm and 0.4cm);
+					\draw [rotate around={0:(50,70)},line width=2pt,color=qqwuqq,fill=qqwuqq,fill opacity=0.25] (50,70) ellipse (0.8cm and 0.8cm);
+					\draw [rotate around={0:(65,10)},line width=2pt,color=qqqqff,fill=qqqqff,fill opacity=0.25] (65,10) ellipse (0.7cm and 0.7cm);
+					\draw [rotate around={0:(10,65)},line width=2pt,color=qqqqff,fill=qqqqff,fill opacity=0.25] (10,65) ellipse (0.5cm and 0.5cm);
+					\draw [rotate around={0:(30,35)},line width=2pt,color=qqwuqq,fill=qqwuqq,fill opacity=0.25] (30,35) ellipse (1cm and 1cm);
+					\draw [rotate around={0:(90,35)},line width=2pt,color=qqqqff,fill=qqqqff,fill opacity=0.25] (90,35) ellipse (0.6cm and 0.6cm);
+					\draw [rotate around={0:(90,85)},line width=2pt,color=qqqqff,fill=qqqqff,fill opacity=0.25] (90,85) ellipse (0.6cm and 0.6cm);
+					\draw [rotate around={0:(30,90)},line width=2pt,color=qqqqff,fill=qqqqff,fill opacity=0.25] (30,90) ellipse (1cm and 1cm);
+					\draw [line width=2pt,color=ffqqqq] (0,90)-- (30,60);
+					\draw [line width=2pt,color=ffqqqq] (40,50)-- (10,50);
+					\draw [line width=2pt,color=ffqqqq] (0,30)-- (10,40);
+					\draw [line width=2pt,color=ffqqqq] (10,30)-- (30,5);
+					\draw [line width=2pt,color=ffqqqq] (40,10)-- (70,40);
+					\draw [line width=2pt,color=ffqqqq] (60,20)-- (100,10);
+					\draw [line width=2pt,color=ffqqqq] (30,70)-- (70,95);
+					\draw [line width=2pt,color=ffqqqq] (70,90)-- (60,50);
+					\draw [line width=2pt,color=ffqqqq] (70,80)-- (90,60);
+					\draw [line width=2pt,color=ffqqqq] (74,33)-- (98,60);
+					\draw [->,line width=2pt] (71.92,51.49) -- (90,60);
+					\draw [->,line width=2pt] (90,60) -- (90,79);
+					\draw [->,line width=2pt] (71.92,51.49) -- (74,33);
+					\draw [->,line width=2pt] (74,33) -- (84.04,34.26);
+					\draw [->,line width=2pt] (71.92,51.49) -- (70,40);
+					\draw [->,line width=2pt] (70,40) -- (60,20);
+					\draw [->,line width=2pt] (60,20) -- (61.87,16.26);
+					\draw [->,line width=2pt] (20.14,36.67) -- (10,50);
+					\draw [->,line width=2pt] (10,50) -- (10,60);
+					\draw [->,line width=2pt] (20.14,36.67) -- (10,30);
+					\draw [->,line width=2pt] (10,30) -- (10,21);
+					\draw [->,line width=2pt] (42,70) -- (30,70);
+					\draw [->,line width=2pt] (30,70) -- (30,80);
+					\begin{scriptsize}
+						\draw [color=ffqqqq] (0,90) circle (2.5pt);
+						\draw [color=ffqqqq] (30,60) circle (2.5pt);
+						\draw [color=ffqqqq] (40,50) circle (2.5pt);
+						\draw [color=ffqqqq] (10,50) circle (2.5pt);
+						\draw [color=ffqqqq] (0,30) circle (2.5pt);
+						\draw [color=ffqqqq] (10,40) circle (2.5pt);
+						\draw [color=ffqqqq] (10,30) circle (2.5pt);
+						\draw [color=ffqqqq] (30,5) circle (2.5pt);
+						\draw [color=ffqqqq] (40,10) circle (2.5pt);
+						\draw [color=ffqqqq] (70,40) circle (2.5pt);
+						\draw [color=ffqqqq] (60,20) circle (2.5pt);
+						\draw [color=ffqqqq] (100,10) circle (2.5pt);
+						\draw [color=ffqqqq] (30,70) circle (2.5pt);
+						\draw [color=ffqqqq] (70,95) circle (2.5pt);
+						\draw [color=ffqqqq] (70,90) circle (2.5pt);
+						\draw [color=ffqqqq] (60,50) circle (2.5pt);
+						\draw [color=ffqqqq] (70,80) circle (2.5pt);
+						\draw [color=ffqqqq] (90,60) circle (2.5pt);
+						\draw [color=ffqqqq] (74,33) circle (2.5pt);
+						\draw [color=ffqqqq] (98,60) circle (2.5pt);
+						\draw [fill=qqwuqq] (71.92,51.49) circle (2.5pt);
+						\draw [fill=qqwuqq] (42,70) circle (2.5pt);
+						\draw [fill=qqwuqq] (20.14,36.67) circle (2.5pt);
+						\draw [fill=ududff] (10,21) circle (2.5pt);
+						\draw [fill=ududff] (61.87,16.26) circle (2.5pt);
+						\draw [fill=ududff] (10,60) circle (2.5pt);
+						\draw [fill=ududff] (84.04,34.26) circle (2.5pt);
+						\draw [fill=ududff] (90,79) circle (2.5pt);
+						\draw [fill=ududff] (30,80) circle (2.5pt);
+					\end{scriptsize}
+				\end{axis}
+			\end{tikzpicture}
+			
+			\caption{Optimal solution for the \KMPHN}
+			\label{fig:optimalsolution_kmphn}
+		\end{figure}
+		
+		\subsection{Relaxing the assumptions of the problem: The \KMPN}
+		
+		In this subsection, we analyze the differences between the \KMPHN \ and the \KMPN, where it is allowed that rectilinear paths joining a source neighbourhood with a target neighbourhood may exist. The main difference lies in the description of the edges of the graph induced by the neighbourhoods and the endpoints of the barriers, as shown in Subsection \ref{subsection:descriptionKMPN}.
+		
+		%	By taking the same approach as before, the sets that describe the graph in the new case are $\VN$, $\VB$, $V_{\rm TSPV}$ and $E_{\rm TSPV}$, as described in Subsection \ref{ssec:TSPN}.
+		
+		%		\begin{itemize}
+			%			\item $\VN=\{P_N:N\in\mathcal N\}$: set of points in the neighbourhoods $\mathcal N$ that must be visited.
+			%			\item $\VB=\{P^1_B, P^2_B:B=\overline{P^1_B P^2_B}\in \mathcal B\}$: set of endpoints of the barriers in the problem.
+			%			\item $V = \VN \cup \VB$.
+			%			\item $E=\{(P, P'):P, P' \in V \text{ and } \overline{PP'}\cap B''=\emptyset,\forall B''\in\B\}$: set of edges formed by the line segments that join every pair of points in $V$ and that do not cross any barrier.
+			%		\end{itemize} 
+		
+		By taking the same approach as before, the sets that describe the graph in the new case are $\VKMPN$ and $\EKMPN$, as described in Subsection \ref{ssec:KMPHN}. The formulation for the \KMPN \ is as follows:
+		
+		{\tiny
+			\begin{mini*}[2]
+				{}{\alpha_E\sum_{(P,Q)\in \EKMPN}\sum_{S\in\mathcal S}\sum_{T\in\mathcal T}\dvar{P}{Q}f(PQ|ST) + \frac{\alpha_L}{2}\sum_{(P,Q)\in \EKMPN}\sum_{S\in\mathcal S}\sum_{T\in\mathcal T}f(PQ|ST)}
+				{}{}\label{form:H-KMPN}\tag{H-KMPN}
+				\addConstraint{\sum_{S\in\mathcal S}y(S)}{=k}{}
+				\addConstraint{x(ST)}{\leq y(S),}{\quad\forall S\in\mathcal S,\quad\forall T\in\mathcal T}
+				\addConstraint{\sum_{S\in\mathcal S} x(ST)}{=1,}{\quad\forall T\in\mathcal T}
+				\addConstraint{\sum_{\{Q\in \VKMPN:(P,Q)\in \EKMPN\}}f(PQ|ST)-\sum_{\{Q\in \VKMPN:(Q,P)\in \EKMPN\}}f(PQ|ST)}	{=\left\{
+					\begin{array}{rl} 
+						x(ST), & \text{if } P\in S, \\
+						0, & \text{if } P\in \VB, \\
+						-x(ST), & \text{if }P\in T.
+					\end{array}
+					\right.}{\quad\forall S\in\mathcal S,\forall T\in\mathcal T}
+				\addConstraint{\eqref{eq:alphaC},\eqref{eq:betaC},\eqref{eq:gammaC},\eqref{eq:deltaC}}{\quad\forall P, Q\in \VKMPN,\quad\forall P_B^1, P_B^2\in \VB}
+				\addConstraint{\eqref{eq:varepsilonC}, \eqref{eq:fC}, \eqref{eq:dC}}{\quad\forall P, Q\in \VKMPN}
+				\addConstraint{\eqref{eq:nC}}{\quad\forall P\in \VS\cup \VT.}
+		\end{mini*}}
+		
+		The difference between the set of edges in the \KMPHN \xspace with respect to the graph in \KMPN \ is that, in the former case, the edges that join each pair of neighbourhoods must be considered. This fact leads to include product of continuous variables in the $\alpha$ constraints of the model that represent the determinants. These products make the problem to become non-convex. Alternatively, in the \KMPHN, since two of the three arguments of the determinant are fixed, the $\alpha$ constraints become linear.
+		
+		Again, the problem data in Figure \ref{fig:initialdata}, with a smaller number of barriers, is used to illustrate the solutions of the \KMPN \ for $k=1,2,3$, respectively.
+		
+		\begin{figure}[h!]
+			\centering
+			\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=0.1cm,y=0.1cm, scale = 0.45]
+				\begin{axis}[
+					x=0.1cm,y=0.1cm,
+					axis lines=middle,
+					xmin=-5,
+					xmax=105,
+					ymin=-5,
+					ymax=105,
+					xtick={0,10,...,100},
+					ytick={0,10,...,100},]
+					\draw [rotate around={0:(10,15)},line width=2pt,color=qqqqff,fill=qqqqff,fill opacity=0.25] (10,15) ellipse (0.6cm and 0.6cm);
+					\draw [rotate around={0:(70,55)},line width=2pt,color=qqwuqq,fill=qqwuqq,fill opacity=0.25] (70,55) ellipse (0.4cm and 0.4cm);
+					\draw [rotate around={0:(50,70)},line width=2pt,color=qqwuqq,fill=qqwuqq,fill opacity=0.25] (50,70) ellipse (0.8cm and 0.8cm);
+					\draw [rotate around={0:(65,10)},line width=2pt,color=qqqqff,fill=qqqqff,fill opacity=0.25] (65,10) ellipse (0.7cm and 0.7cm);
+					\draw [rotate around={0:(10,65)},line width=2pt,color=qqqqff,fill=qqqqff,fill opacity=0.25] (10,65) ellipse (0.5cm and 0.5cm);
+					\draw [rotate around={0:(30,35)},line width=2pt,color=qqwuqq,fill=qqwuqq,fill opacity=0.25] (30,35) ellipse (1cm and 1cm);
+					\draw [rotate around={0:(90,35)},line width=2pt,color=qqqqff,fill=qqqqff,fill opacity=0.25] (90,35) ellipse (0.6cm and 0.6cm);
+					\draw [rotate around={0:(90,85)},line width=2pt,color=qqqqff,fill=qqqqff,fill opacity=0.25] (90,85) ellipse (0.6cm and 0.6cm);
+					\draw [rotate around={0:(30,90)},line width=2pt,color=qqqqff,fill=qqqqff,fill opacity=0.25] (30,90) ellipse (1cm and 1cm);
+					\draw [line width=2pt,color=ffqqqq] (0,30)-- (10,40);
+					\draw [line width=2pt,color=ffqqqq] (40,10)-- (70,40);
+					\draw [line width=2pt,color=ffqqqq] (60,20)-- (100,10);
+					\draw [line width=2pt,color=ffqqqq] (30,70)-- (70,95);
+					\draw [line width=2pt,color=ffqqqq] (70,90)-- (60,50);
+					\draw [->,line width=2pt] (37.59, 41.51) -- (14.34, 19.14);
+					\draw [->,line width=2pt] (37.59, 41.51) -- (13.8,61.76);
+					\draw [->,line width=2pt] (37.59, 41.51) -- (30,70);
+					\draw [->,line width=2pt] (37.59, 41.51) -- (60,50);
+					\draw [->,line width=2pt] (37.59, 41.51) -- (70,40);
+					\draw [->,line width=2pt] (37.59, 41.51) -- (40,10);
+					\draw [->,line width=2pt] (30,70) -- (30,80);
+					\draw [->,line width=2pt] (60,50) -- (86.09,80.45);
+					\draw [->,line width=2pt] (70,40) -- (84.18,36.44);
+					\draw [->,line width=2pt] (40,10) -- (58,10);				
+					\begin{scriptsize}
+						\draw [color=ffqqqq] (0,30) circle (2.5pt);
+						\draw [color=ffqqqq] (10,40) circle (2.5pt);
+						\draw [color=ffqqqq] (40,10) circle (2.5pt);
+						\draw [color=ffqqqq] (70,40) circle (2.5pt);
+						\draw [color=ffqqqq] (60,20) circle (2.5pt);
+						\draw [color=ffqqqq] (100,10) circle (2.5pt);
+						\draw [color=ffqqqq] (30,70) circle (2.5pt);
+						\draw [color=ffqqqq] (70,95) circle (2.5pt);
+						\draw [color=ffqqqq] (70,90) circle (2.5pt);
+						\draw [color=ffqqqq] (60,50) circle (2.5pt);
+						\draw [fill=qqwuqq] (37.59, 41.51) circle (2.5pt);
+						\draw [fill=ududff] (14.34, 19.14) circle (2.5pt);
+						\draw [fill=ududff] (58,10) circle (2.5pt);
+						\draw [fill=ududff] (13.8,61.76) circle (2.5pt);
+						\draw [fill=ududff] (84.18,36.44) circle (2.5pt);
+						\draw [fill=ududff] (86.09,80.45) circle (2.5pt);
+						\draw [fill=ududff] (30,80) circle (2.5pt);
+					\end{scriptsize}
+				\end{axis}
+			\end{tikzpicture}
+			\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=0.1cm,y=0.1cm, scale = 0.45]
+				\begin{axis}[
+					x=0.1cm,y=0.1cm,
+					axis lines=middle,
+					xmin=-5,
+					xmax=105,
+					ymin=-5,
+					ymax=105,
+					xtick={0,10,...,100},
+					ytick={0,10,...,100},]
+					\draw [rotate around={0:(10,15)},line width=2pt,color=qqqqff,fill=qqqqff,fill opacity=0.25] (10,15) ellipse (0.6cm and 0.6cm);
+					\draw [rotate around={0:(70,55)},line width=2pt,color=qqwuqq,fill=qqwuqq,fill opacity=0.25] (70,55) ellipse (0.4cm and 0.4cm);
+					\draw [rotate around={0:(50,70)},line width=2pt,color=qqwuqq,fill=qqwuqq,fill opacity=0.25] (50,70) ellipse (0.8cm and 0.8cm);
+					\draw [rotate around={0:(65,10)},line width=2pt,color=qqqqff,fill=qqqqff,fill opacity=0.25] (65,10) ellipse (0.7cm and 0.7cm);
+					\draw [rotate around={0:(10,65)},line width=2pt,color=qqqqff,fill=qqqqff,fill opacity=0.25] (10,65) ellipse (0.5cm and 0.5cm);
+					\draw [rotate around={0:(30,35)},line width=2pt,color=qqwuqq,fill=qqwuqq,fill opacity=0.25] (30,35) ellipse (1cm and 1cm);
+					\draw [rotate around={0:(90,35)},line width=2pt,color=qqqqff,fill=qqqqff,fill opacity=0.25] (90,35) ellipse (0.6cm and 0.6cm);
+					\draw [rotate around={0:(90,85)},line width=2pt,color=qqqqff,fill=qqqqff,fill opacity=0.25] (90,85) ellipse (0.6cm and 0.6cm);
+					\draw [rotate around={0:(30,90)},line width=2pt,color=qqqqff,fill=qqqqff,fill opacity=0.25] (30,90) ellipse (1cm and 1cm);
+					\draw [line width=2pt,color=ffqqqq] (0,30)-- (10,40);
+					\draw [line width=2pt,color=ffqqqq] (40,10)-- (70,40);
+					\draw [line width=2pt,color=ffqqqq] (60,20)-- (100,10);
+					\draw [line width=2pt,color=ffqqqq] (30,70)-- (70,95);
+					\draw [line width=2pt,color=ffqqqq] (70,90)-- (60,50);
+					\draw [->,line width=2pt] (73.01, 52.36) -- (87.23, 79.68);
+					\draw [->,line width=2pt] (73.01, 52.36) -- (85.64,39.13);
+					\draw [->,line width=2pt] (73.01, 52.36) -- (70,40);
+					\draw [->,line width=2pt] (70, 40) -- (60,20);
+					\draw [->,line width=2pt] (60, 20) -- (61.87,16.26);
+					\draw [->,line width=2pt] (23.44, 42.55) -- (28.52,80.11);
+					\draw [->,line width=2pt] (23.44,42.55) -- (12.57,60.71);
+					\draw [->,line width=2pt] (23.44,42.55) -- (12.63,20.39);				
+					\begin{scriptsize}
+						\draw [color=ffqqqq] (0,30) circle (2.5pt);
+						\draw [color=ffqqqq] (10,40) circle (2.5pt);
+						\draw [color=ffqqqq] (40,10) circle (2.5pt);
+						\draw [color=ffqqqq] (70,40) circle (2.5pt);
+						\draw [color=ffqqqq] (60,20) circle (2.5pt);
+						\draw [color=ffqqqq] (100,10) circle (2.5pt);
+						\draw [color=ffqqqq] (30,70) circle (2.5pt);
+						\draw [color=ffqqqq] (70,95) circle (2.5pt);
+						\draw [color=ffqqqq] (70,90) circle (2.5pt);
+						\draw [color=ffqqqq] (60,50) circle (2.5pt);
+						\draw [fill=qqwuqq] (73.01, 52.36) circle (2.5pt);
+						\draw [fill=qqwuqq] (23.44, 42.55) circle (2.5pt);
+						\draw [fill=ududff] (12.63, 20.39) circle (2.5pt);
+						\draw [fill=ududff] (61.87,16.26) circle (2.5pt);
+						\draw [fill=ududff] (12.57,60.71) circle (2.5pt);
+						\draw [fill=ududff] (85.64,39.13) circle (2.5pt);
+						\draw [fill=ududff] (87.22,79.68) circle (2.5pt);
+						\draw [fill=ududff] (28.52,80.11) circle (2.5pt);
+					\end{scriptsize}
+				\end{axis}
+			\end{tikzpicture}
+			\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=0.1cm,y=0.1cm, scale = 0.45]
+				\begin{axis}[
+					x=0.1cm,y=0.1cm,
+					axis lines=middle,
+					xmin=-5,
+					xmax=105,
+					ymin=-5,
+					ymax=105,
+					xtick={0,10,...,100},
+					ytick={0,10,...,100},]
+					\draw [rotate around={0:(10,15)},line width=2pt,color=qqqqff,fill=qqqqff,fill opacity=0.25] (10,15) ellipse (0.6cm and 0.6cm);
+					\draw [rotate around={0:(70,55)},line width=2pt,color=qqwuqq,fill=qqwuqq,fill opacity=0.25] (70,55) ellipse (0.4cm and 0.4cm);
+					\draw [rotate around={0:(50,70)},line width=2pt,color=qqwuqq,fill=qqwuqq,fill opacity=0.25] (50,70) ellipse (0.8cm and 0.8cm);
+					\draw [rotate around={0:(65,10)},line width=2pt,color=qqqqff,fill=qqqqff,fill opacity=0.25] (65,10) ellipse (0.7cm and 0.7cm);
+					\draw [rotate around={0:(10,65)},line width=2pt,color=qqqqff,fill=qqqqff,fill opacity=0.25] (10,65) ellipse (0.5cm and 0.5cm);
+					\draw [rotate around={0:(30,35)},line width=2pt,color=qqwuqq,fill=qqwuqq,fill opacity=0.25] (30,35) ellipse (1cm and 1cm);
+					\draw [rotate around={0:(90,35)},line width=2pt,color=qqqqff,fill=qqqqff,fill opacity=0.25] (90,35) ellipse (0.6cm and 0.6cm);
+					\draw [rotate around={0:(90,85)},line width=2pt,color=qqqqff,fill=qqqqff,fill opacity=0.25] (90,85) ellipse (0.6cm and 0.6cm);
+					\draw [rotate around={0:(30,90)},line width=2pt,color=qqqqff,fill=qqqqff,fill opacity=0.25] (30,90) ellipse (1cm and 1cm);
+					\draw [line width=2pt,color=ffqqqq] (0,30)-- (10,40);
+					\draw [line width=2pt,color=ffqqqq] (40,10)-- (70,40);
+					\draw [line width=2pt,color=ffqqqq] (60,20)-- (100,10);
+					\draw [line width=2pt,color=ffqqqq] (30,70)-- (70,95);
+					\draw [line width=2pt,color=ffqqqq] (70,90)-- (60,50);
+					\draw [->,line width=2pt] (73.98, 55.36) -- (87.13,79.73);
+					\draw [->,line width=2pt] (73.98, 55.36) -- (86.37,39.78);
+					\draw [->,line width=2pt] (42.01, 69.58) -- (14.94,65.75);
+					\draw [->,line width=2pt] (42.01, 69.58) -- (30,70);
+					\draw [->,line width=2pt] (30, 70) -- (30,80);
+					\draw [->,line width=2pt] (28.03, 25.2) -- (15.15,18.07);
+					\draw [->,line width=2pt] (28.03, 25.2) -- (40,10);
+					\draw [->,line width=2pt] (40,10) -- (58,10);
+					\begin{scriptsize}
+						\draw [color=ffqqqq] (0,30) circle (2.5pt);
+						\draw [color=ffqqqq] (10,40) circle (2.5pt);
+						\draw [color=ffqqqq] (40,10) circle (2.5pt);
+						\draw [color=ffqqqq] (70,40) circle (2.5pt);
+						\draw [color=ffqqqq] (60,20) circle (2.5pt);
+						\draw [color=ffqqqq] (100,10) circle (2.5pt);
+						\draw [color=ffqqqq] (30,70) circle (2.5pt);
+						\draw [color=ffqqqq] (70,95) circle (2.5pt);
+						\draw [color=ffqqqq] (70,90) circle (2.5pt);
+						\draw [color=ffqqqq] (60,50) circle (2.5pt);
+						\draw [fill=qqwuqq] (73.98, 55.36) circle (2.5pt);
+						\draw [fill=qqwuqq] (42.01, 69.58) circle (2.5pt);
+						\draw [fill=qqwuqq] (28.03, 25.2) circle (2.5pt);
+						\draw [fill=ududff] (15.15,18.07) circle (2.5pt);
+						\draw [fill=ududff] (58,10) circle (2.5pt);
+						\draw [fill=ududff] (14.94,65.75) circle (2.5pt);
+						\draw [fill=ududff] (86.37,39.78) circle (2.5pt);
+						\draw [fill=ududff] (87.13,79.73) circle (2.5pt);
+						\draw [fill=ududff] (30,80) circle (2.5pt);
+					\end{scriptsize}
+				\end{axis}
+			\end{tikzpicture}
+			\caption{Optimal solution for the \KMPN}
+			\label{fig:optimalsolution_kmpn}
+		\end{figure}
+		%	that determine if the segment joining the two variable points in the neighbourhoods cross any barrier or not. 
+		
+		%\subsubsection{Lower and upper bounds when the neighbourhoods are ellipses}\label{subsection:bounds}	
+		
+		
+		
+		\section{Matheuristic Algorithm}\label{section:matheuristic}
+		
+		The two considered problems are computationally very hard, and, at times, finding even feasible solutions becomes a challenge for large-size instances. In order to provide initial solutions to our algorithms, we have developed an easy procedure based on a reduction to the classical $K$-median problem with barriers.
+		
+		In this section, we describe a matheuristic approach based on the formulations presented above, which is able to handle larger instances of the problem. This matheuristic provides  solutions of \KMPHN \xspace or \KMPN, that can be used to initialise the solver for any of the formulations of these models proposed above.
+		
+		The basic idea of this procedure is to consider only the centres of each neighbourhood as the points chosen in each of them. By fixing those points, the graphs $\GKMPHN$ and $\GKMPN$ induced in our construction are also fixed, their respective edges can be preprocessed, and the resulting problems become mixed-integer linear. This reduction allows us to obtain feasible solutions for them using any of the available solvers for mixed-integer programming. Furthermore, since the sizes we can handle for the general problems \KMPHN \xspace and \KMPN \ are in the range of 50 to 80 neighbourhoods, solving the point-wise versions takes a short time.
+		
+		
+		\section{Computational Experiments}\label{section:experiments}
+		This section is dedicated to evaluating the performance of the formulations \KMPHN \ and \KMPN \ and the behaviour of the matheuristic applied to the two problems considered. First, we present details of the data generation. Second, the design of the experiments is stated. Finally, we report the results obtained in our computational experiments.
+		
+		
+		\subsection{Data generation}\label{subsection:datageneration}
+		Assumptions \ref{A1}-\ref{A4} stated in Section \ref{section:description} are assumed to generate the instances of the experiments. In this case, w.l.o.g., the neighbourhoods generated are circles. The sketch of the procedure is as follows. 
+		
+		\begin{enumerate}
+			\item Random sampling of points in a square.
+			\item Generation of bisectors that separate any pair of points.
+			\item Generation of neighbourhoods that satisfy \ref{A4}.
+		\end{enumerate}
+		
+		The following pseudocode describes the details of the construction of the instances.
+		
+		\begin{algorithm}[H]
+			\caption{Generation of instances of \KMPHN}
+			\label{alg:Algorithm3}
+			\SetKwInOut{Input}{Initialization}\SetKwInOut{Output}{output}
+			
+			\Input{Let $|\mathcal N|$ be the number of neighbourhoods to generate. Let $r_{\text{init}}=10$ be half of the initial length of the barriers.
+				Set $\mathcal N = \{\}$; $points=\{\}$; $\mathcal B=\{\overline{(0, 0)(100, 0)}, \overline{(100, 0)(100, 100)}, \overline{(100, 100)(0, 100)}, \overline{(0, 100)(0, 0)}\}$.}
+			% Set $LB=0$, $UB=+\infty$, $\bar z=z^0$.
+			Generate $|\mathcal N|$ points uniformly distributed in the square $[0, 100]^2$ and include them in $points$. \\
+			%\While{There does not exist a barrier that separates each pair of points}{
+				\For{$P, P'\in points$}{
+					\If{$\overline{PP'}\cap B=\emptyset,\;\forall B\in\mathcal B$}{
+						Compute $\overrightarrow{d}=\overrightarrow{PP'}$.\\
+						Compute $M = P + \frac 1 2 \overrightarrow{d}$.\\
+						Compute the unitary vector $\overrightarrow{n_u}$ perpendicular to $\overrightarrow{d}$.\\
+						Set $r = r_{\text{init}}$. \\
+						Generate the barrier $B(r)=\overline{P_B^{+} P_B^{-}}$ where
+						$P_B^{\pm}=M \pm r\overrightarrow{n_u}.$\\
+						\While{$B(r)\cap B'\neq\emptyset$ for some $B'\in\mathcal B$}{
+							Set $r := r / 2$. \\
+							Generate the barrier $B(r)$.
+						}
+						
+						Include $B(r)$ in $\mathcal B$.
+						
+						
+					}
+				}
+				\For{$P\in points$}{
+					Set $r_{\text{max}}=\min_{\{P_B\in B: B \in\mathcal B\}} d(P, P_B).$\\
+					Generate a random $radii$ uniformly distributed in the interval $\left[\frac 1 2 r_{\text{max}}, r_{\text{max}}\right]$.\\
+					Set the ball $N$ whose centre is $P$ and radii is $radii$. \\
+					Include $N$ in $\mathcal N$.
+				}
+				%}
+		\end{algorithm}
+		Lines 9-11 ensure that neighbourhoods are not enclosed inside of the bisectors so that paths can exit from any neighbourhood to visit another one. Lines 13-17 set a maximum radii for the balls that ensure that they are hidden behind barriers.
+		
+		%The line segments instances are generated by randomly selecting two diametrically opposite points in the boundary of the balls instances obtained with Algorithm \ref{alg:Algorithm3}.
+		
+		Note that, since \KMPN \ does not assume \ref{A4}, it is only required to remove some bisectors for the instances generated before to ensure that it is possible to go directly from one neighbourhood to another.
+		
+		\subsection{Configuration of the experiments}
+		To explore the behaviour of the formulations described in the paper, we report on a series of experiments that vary most of the parameters that describe the models. Once they are solved, it is important to give some measures that make them comparable with any others that may be available in the literature. First, the experimental parameters are reported. Then, the computer framework where the experiments were performed is described. Finally, the reported solution values are explained in detail. 
+		
+		Since there are no benchmark instances available for this problem in the literature, five instances for each $|\mathcal N|\in\{10, 20, 30, 50, 80\}$ have been generated following Algorithm \ref{alg:Algorithm3}. For each instance, both sources and targets are the whole $\mathcal N$ set, i.e., each neighbourhood can be chosen as a source and each one must be associated with a facility. Furthermore, the number of neighbourhood facilities $k$, for each problem, is 1 and a percentage $\text{perc}_k$, for $\text{perc}_k\in\{10, 25\}$ of the whole set $\mathcal N$. To avoid \ref{A4}, a percentage $\text{perc}_{|\mathcal B|}$ of all barriers is selected for $\text{perc}_{|\mathcal B|}\in\{10, 20, 50\}$. Finally, we set  $\alpha_E=1$ and $\alpha_L=50$ to take into account both terms of the distances considered in the objective function.
+		
+		For each combination of the above factors, both \KMPHN \ and \KMPN \ formulations are tested without and with the initial solution provided by the matheuristic described in Section \ref{section:matheuristic}. A time limit of 3600 seconds was set in the experiments for the formulation and 100 seconds for the matheuristic.
+		
+		Formulations were coded in Python 3.9.2 (\citet{g_van_rossum_guido_python_1995}) and solved in Gurobi 9.1.2 (\citet{gurobi_optimization_llc_gurobi_2022}) on an AMD® Epyc 7402p 8-core processor. 
+		
+		The values obtained by Gurobi that are reported in our tables are:
+		\begin{itemize}
+			\item $\#Found$: number of instances in which the solver could find a solution.
+			\item $Gap$: gap between the best incumbent solution with respect to the best bound found by the solver.
+			\item $Runtime$: time spent by the solver to obtain the best solution found.
+			\item $Gap_{math}$: relative gap between the best incumbent solution given by the matheuristic and the best solution found by the solver after the time limit.
+			\item $Runtime_{math}$: time spent by the matheuristic to obtain the best solution.
+			\item $Gap_{build}$: relative gap between the value of the first incumbent solution built by the solver and the solution provided by the matheuristic.
+			\item $Runtime_{build}$: time spent by the solver to build the initial solution provided by the matheuristic.
+		\end{itemize}
+		
+		The above information allows us to compare the difficulty of the problem, and, in addition, to test the matheuristic performance to obtain solutions for instances generated as stated in Subsection \ref{subsection:datageneration}.
+		
+		\subsection{Results of the experiments}
+		Analysing the results in Tables \ref{tab:results1} and \ref{tab:results2}, we first note that the solver is capable of finding feasible solutions up to 80 neighbourhoods when the formulation \KMPHN \ is considered. Furthermore, these solutions are optimal up to a number of 30 neighbourhoods. Moreover, the solver reports maximum gaps of $14,46\%$ and $31,4\%$ for a number of 50 and 80 neighbourhoods, respectively. It is noteworthy that these gaps are obtained when a $10\%$ of the entire set must be chosen as facilities. For $k=1$, the maximum gap reported by the solver is $7,84\%$ after the time limit. In addition, this case is considerably the fastest (and the easiest)  one to obtain the optimal solution with Gurobi, whenever it is found. Finally, one can remark that the initial solution found by the matheuristic helps to certify optimality in less time and also to get better gaps whenever the optimal solution is not found within the time limit. Note that the maximum gap between the best incumbent solution obtained by the matheuristic in a time limit of 100 seconds and the best by the exact formulation after an hour is $5.96\%$.  This is an indication that the mathheuristic is a good alternative to the exact method whenever the problem size grows.
+		
+		With regard to the more general problem modelled with formulation \KMPN, the non-convex nature of the model makes the problem even harder. This can be seen in terms of the resulting gap after the time limit (see Figure \ref{fig:finalgap}). The solver starts to not close this gap already for 20 neighbourhoods and half of the original barriers considered. In addition, for instances with 50 and 80 neighbourhoods, the solver cannot find even a feasible solution when it is not initialised. Moreover, Gurobi cannot even build, in some cases, the solution provided by the matheuristic. The case where only one neighbourhood is selected ($k=1$, e.g., the single facility case) is the hardest one to be solved. This is counterintuitive and is the opposite of the behaviour shown by the formulation \KMPHN. This case has become the hardest, in our computational experience, because choosing only one point to serve all the required neighbourhoods implies to jointly satisfy a large bunch of non-convex constraints with the same point. This seems to be very difficult for the solver. Another remarkable fact is that the higher the percentage of barriers that are set, the greater the difficulty of the problem, taking into account that the location of the neighbourhood remains the same for all cases. It can be explained in terms of constraints and variables that depend on the number of barriers that are considered. Finally, we can conclude that the matheuristic works well for medium to large-size instances. For those, the matheuristic algorithm always finds a feasible solution that can not be improved by the solver, as can be observed in terms of the relative gap. In addition, in all cases the feasible solutions given by the matheuristic are obtained in a maximum computing time of 100 seconds. This makes the matheuristic an efficient method to provide good-quality solutions in short computing time.
+		
+		\usetikzlibrary{patterns,shapes.arrows}
+		\pgfplotsset{compat=newest}
+		
+		% This file was created with tikzplotlib v0.10.1.
+		\begin{figure}[h!]
+			\centering
+			\begin{tikzpicture}[scale=0.8]
+				
+				\definecolor{darkslategray38}{RGB}{38,38,38}
+				\definecolor{darkslategray76}{RGB}{76,76,76}
+				\definecolor{lavender234234242}{RGB}{234,234,242}
+				\definecolor{peru20313699}{RGB}{203,136,99}
+				\definecolor{steelblue88116163}{RGB}{88,116,163}
+				\definecolor{color0}{rgb}{0.917647058823529,0.917647058823529,0.949019607843137}
+				
+				\begin{axis}[
+					axis background/.style={fill=color0},
+					axis line style={white},
+					tick align=outside,
+					%		title={Final gap},
+					x grid style={white},
+					xtick pos = left,
+					ytick pos = left,
+					xlabel={$|\mathcal N|$},
+					% xmajorticks=false,
+					xmin=-0.5, xmax=4.5,
+					xtick style={color=white!15!black},
+					xtick={0,1,2,3,4},
+					xticklabels={10, 20, 30, 50, 80},
+					y grid style={white},
+					ylabel={Gap},
+					ymajorgrids,
+					% ymajorticks=false,
+					ymin=-0.05, ymax= 100,
+					ytick style={color=white!15!black},
+					%ytick={-0.2,0,0.2,0.4,0.6,0.8,1,1.2},
+					%yticklabels={−0.2,0.0,0.2,0.4,0.6,0.8,1.0,1.2},
+					legend pos = north west
+					]
+					\path [draw=darkslategray76, fill=steelblue88116163, semithick]
+					(axis cs:-0.396,0)
+					--(axis cs:-0.004,0)
+					--(axis cs:-0.004,0.01)
+					--(axis cs:-0.396,0.01)
+					--(axis cs:-0.396,0)
+					--cycle;
+					\path [draw=darkslategray76, fill=peru20313699, semithick]
+					(axis cs:0.004,0)
+					--(axis cs:0.396,0)
+					--(axis cs:0.396,0)
+					--(axis cs:0.004,0)
+					--(axis cs:0.004,0)
+					--cycle;
+					\path [draw=darkslategray76, fill=steelblue88116163, semithick]
+					(axis cs:0.604,0)
+					--(axis cs:0.996,0)
+					--(axis cs:0.996,0.1025)
+					--(axis cs:0.604,0.1025)
+					--(axis cs:0.604,0)
+					--cycle;
+					\path [draw=darkslategray76, fill=peru20313699, semithick]
+					(axis cs:1.004,0)
+					--(axis cs:1.396,0)
+					--(axis cs:1.396,0)
+					--(axis cs:1.004,0)
+					--(axis cs:1.004,0)
+					--cycle;
+					\path [draw=darkslategray76, fill=steelblue88116163, semithick]
+					(axis cs:1.604,0)
+					--(axis cs:1.996,0)
+					--(axis cs:1.996,22.5675)
+					--(axis cs:1.604,22.5675)
+					--(axis cs:1.604,0)
+					--cycle;
+					\path [draw=darkslategray76, fill=peru20313699, semithick]
+					(axis cs:2.004,0)
+					--(axis cs:2.396,0)
+					--(axis cs:2.396,0)
+					--(axis cs:2.004,0)
+					--(axis cs:2.004,0)
+					--cycle;
+					\path [draw=darkslategray76, fill=steelblue88116163, semithick]
+					(axis cs:2.604,0.99)
+					--(axis cs:2.996,0.99)
+					--(axis cs:2.996,100)
+					--(axis cs:2.604,100)
+					--(axis cs:2.604,0.99)
+					--cycle;
+					\path [draw=darkslategray76, fill=peru20313699, semithick]
+					(axis cs:3.004,0.3525)
+					--(axis cs:3.396,0.3525)
+					--(axis cs:3.396,9.5125)
+					--(axis cs:3.004,9.5125)
+					--(axis cs:3.004,0.3525)
+					--cycle;
+					\path [draw=darkslategray76, fill=steelblue88116163, semithick]
+					(axis cs:3.604,100)
+					--(axis cs:3.996,100)
+					--(axis cs:3.996,100)
+					--(axis cs:3.604,100)
+					--(axis cs:3.604,100)
+					--cycle;
+					\path [draw=darkslategray76, fill=peru20313699, semithick]
+					(axis cs:4.004,4.115)
+					--(axis cs:4.396,4.115)
+					--(axis cs:4.396,19.495)
+					--(axis cs:4.004,19.495)
+					--(axis cs:4.004,4.115)
+					--cycle;
+					\draw[draw=darkslategray76,fill=steelblue88116163,line width=0.3pt] (axis cs:0,0) rectangle (axis cs:0,0);
+					\addlegendimage{ybar,ybar legend,draw=darkslategray76,fill=steelblue88116163,line width=0.3pt}
+					\addlegendentry{\footnotesize\KMPN}
+					
+					\draw[draw=darkslategray76,fill=peru20313699,line width=0.3pt] (axis cs:0,0) rectangle (axis cs:0,0);
+					\addlegendimage{ybar,ybar legend,draw=darkslategray76,fill=peru20313699,line width=0.3pt}
+					\addlegendentry{\footnotesize\KMPHN}
+					
+					\addplot [semithick, darkslategray76]
+					table {%
+						-0.2 0
+						-0.2 0
+					};
+					\addplot [semithick, darkslategray76]
+					table {%
+						-0.2 0.01
+						-0.2 0.02
+					};
+					\addplot [semithick, darkslategray76]
+					table {%
+						-0.298 0
+						-0.102 0
+					};
+					\addplot [semithick, darkslategray76]
+					table {%
+						-0.298 0.02
+						-0.102 0.02
+					};
+					\addplot [semithick, darkslategray76]
+					table {%
+						0.2 0
+						0.2 0
+					};
+					\addplot [semithick, darkslategray76]
+					table {%
+						0.2 0
+						0.2 0
+					};
+					\addplot [semithick, darkslategray76]
+					table {%
+						0.102 0
+						0.298 0
+					};
+					\addplot [semithick, darkslategray76]
+					table {%
+						0.102 0
+						0.298 0
+					};
+					\addplot [semithick, darkslategray76]
+					table {%
+						0.8 0
+						0.8 0
+					};
+					\addplot [semithick, darkslategray76]
+					table {%
+						0.8 0.1025
+						0.8 0.19
+					};
+					\addplot [semithick, darkslategray76]
+					table {%
+						0.702 0
+						0.898 0
+					};
+					\addplot [semithick, darkslategray76]
+					table {%
+						0.702 0.19
+						0.898 0.19
+					};
+					\addplot [black, mark=diamond*, mark size=2.5, mark options={solid,fill=darkslategray76}, only marks]
+					table {%
+						0.8 9.73
+						0.8 20.07
+						0.8 40
+					};
+					\addplot [semithick, darkslategray76]
+					table {%
+						1.2 0
+						1.2 0
+					};
+					\addplot [semithick, darkslategray76]
+					table {%
+						1.2 0
+						1.2 0
+					};
+					\addplot [semithick, darkslategray76]
+					table {%
+						1.102 0
+						1.298 0
+					};
+					\addplot [semithick, darkslategray76]
+					table {%
+						1.102 0
+						1.298 0
+					};
+					\addplot [semithick, darkslategray76]
+					table {%
+						1.8 0
+						1.8 0
+					};
+					\addplot [semithick, darkslategray76]
+					table {%
+						1.8 22.5675
+						1.8 40.85
+					};
+					\addplot [semithick, darkslategray76]
+					table {%
+						1.702 0
+						1.898 0
+					};
+					\addplot [semithick, darkslategray76]
+					table {%
+						1.702 40.85
+						1.898 40.85
+					};
+					\addplot [black, mark=diamond*, mark size=2.5, mark options={solid,fill=darkslategray76}, only marks]
+					table {%
+						1.8 100
+						1.8 80.75
+					};
+					\addplot [semithick, darkslategray76]
+					table {%
+						2.2 0
+						2.2 0
+					};
+					\addplot [semithick, darkslategray76]
+					table {%
+						2.2 0
+						2.2 0
+					};
+					\addplot [semithick, darkslategray76]
+					table {%
+						2.102 0
+						2.298 0
+					};
+					\addplot [semithick, darkslategray76]
+					table {%
+						2.102 0
+						2.298 0
+					};
+					\addplot [black, mark=diamond*, mark size=2.5, mark options={solid,fill=darkslategray76}, only marks]
+					table {%
+						2.2 0.6
+					};
+					\addplot [semithick, darkslategray76]
+					table {%
+						2.8 0.99
+						2.8 0
+					};
+					\addplot [semithick, darkslategray76]
+					table {%
+						2.8 100
+						2.8 100
+					};
+					\addplot [semithick, darkslategray76]
+					table {%
+						2.702 0
+						2.898 0
+					};
+					\addplot [semithick, darkslategray76]
+					table {%
+						2.702 100
+						2.898 100
+					};
+					\addplot [semithick, darkslategray76]
+					table {%
+						3.2 0.3525
+						3.2 0.03
+					};
+					\addplot [semithick, darkslategray76]
+					table {%
+						3.2 9.5125
+						3.2 14.46
+					};
+					\addplot [semithick, darkslategray76]
+					table {%
+						3.102 0.03
+						3.298 0.03
+					};
+					\addplot [semithick, darkslategray76]
+					table {%
+						3.102 14.46
+						3.298 14.46
+					};
+					\addplot [semithick, darkslategray76]
+					table {%
+						3.8 100
+						3.8 100
+					};
+					\addplot [semithick, darkslategray76]
+					table {%
+						3.8 100
+						3.8 100
+					};
+					\addplot [semithick, darkslategray76]
+					table {%
+						3.702 100
+						3.898 100
+					};
+					\addplot [semithick, darkslategray76]
+					table {%
+						3.702 100
+						3.898 100
+					};
+					\addplot [semithick, darkslategray76]
+					table {%
+						4.2 4.115
+						4.2 0.19
+					};
+					\addplot [semithick, darkslategray76]
+					table {%
+						4.2 19.495
+						4.2 31.4
+					};
+					\addplot [semithick, darkslategray76]
+					table {%
+						4.102 0.19
+						4.298 0.19
+					};
+					\addplot [semithick, darkslategray76]
+					table {%
+						4.102 31.4
+						4.298 31.4
+					};
+					\addplot [semithick, darkslategray76]
+					table {%
+						-0.396 0
+						-0.004 0
+					};
+					\addplot [semithick, darkslategray76]
+					table {%
+						0.004 0
+						0.396 0
+					};
+					\addplot [semithick, darkslategray76]
+					table {%
+						0.604 0
+						0.996 0
+					};
+					\addplot [semithick, darkslategray76]
+					table {%
+						1.004 0
+						1.396 0
+					};
+					\addplot [semithick, darkslategray76]
+					table {%
+						1.604 0
+						1.996 0
+					};
+					\addplot [semithick, darkslategray76]
+					table {%
+						2.004 0
+						2.396 0
+					};
+					\addplot [semithick, darkslategray76]
+					table {%
+						2.604 100
+						2.996 100
+					};
+					\addplot [semithick, darkslategray76]
+					table {%
+						3.004 1.355
+						3.396 1.355
+					};
+					\addplot [semithick, darkslategray76]
+					table {%
+						3.604 100
+						3.996 100
+					};
+					\addplot [semithick, darkslategray76]
+					table {%
+						4.004 7.755
+						4.396 7.755
+					};
+				\end{axis}
+				
+			\end{tikzpicture}
+			\begin{tikzpicture}[scale=0.8]
+				
+				\definecolor{darkslategray38}{RGB}{38,38,38}
+				\definecolor{darkslategray76}{RGB}{76,76,76}
+				\definecolor{lavender234234242}{RGB}{234,234,242}
+				\definecolor{peru20313699}{RGB}{203,136,99}
+				\definecolor{steelblue88116163}{RGB}{88,116,163}
+				\definecolor{color0}{rgb}{0.917647058823529,0.917647058823529,0.949019607843137}
+				
+				\begin{axis}[
+					axis background/.style={fill=color0},
+					axis line style={white},
+					tick align=outside,
+					%			title={Runtime},
+					x grid style={white},
+					xtick pos = left,
+					ytick pos = left,
+					xlabel={$|\mathcal N|$},
+					% xmajorticks=false,
+					xmin=-0.5, xmax=4.5,
+					xtick style={color=white!15!black},
+					xtick={0,1,2,3,4},
+					xticklabels={10, 20, 30, 50, 80},
+					y grid style={white},
+					ylabel={Runtime},
+					ymajorgrids,
+					% ymajorticks=false,
+					ymin=-0.05, ymax= 3600,
+					ytick style={color=white!15!black},
+					%ytick={-0.2,0,0.2,0.4,0.6,0.8,1,1.2},
+					%yticklabels={−0.2,0.0,0.2,0.4,0.6,0.8,1.0,1.2},
+					legend pos = south east
+					]
+					\path [draw=darkslategray76, fill=steelblue88116163, semithick]
+					(axis cs:-0.396,23.325)
+					--(axis cs:-0.004,23.325)
+					--(axis cs:-0.004,400.8)
+					--(axis cs:-0.396,400.8)
+					--(axis cs:-0.396,23.325)
+					--cycle;
+					\path [draw=darkslategray76, fill=peru20313699, semithick]
+					(axis cs:0.004,5.6675)
+					--(axis cs:0.396,5.6675)
+					--(axis cs:0.396,22.9225)
+					--(axis cs:0.004,22.9225)
+					--(axis cs:0.004,5.6675)
+					--cycle;
+					\path [draw=darkslategray76, fill=steelblue88116163, semithick]
+					(axis cs:0.604,224.2675)
+					--(axis cs:0.996,224.2675)
+					--(axis cs:0.996,2364.83)
+					--(axis cs:0.604,2364.83)
+					--(axis cs:0.604,224.2675)
+					--cycle;
+					\path [draw=darkslategray76, fill=peru20313699, semithick]
+					(axis cs:1.004,80.7675)
+					--(axis cs:1.396,80.7675)
+					--(axis cs:1.396,160.86)
+					--(axis cs:1.004,160.86)
+					--(axis cs:1.004,80.7675)
+					--cycle;
+					\path [draw=darkslategray76, fill=steelblue88116163, semithick]
+					(axis cs:1.604,638.0375)
+					--(axis cs:1.996,638.0375)
+					--(axis cs:1.996,3520.7575)
+					--(axis cs:1.604,3520.7575)
+					--(axis cs:1.604,638.0375)
+					--cycle;
+					\path [draw=darkslategray76, fill=peru20313699, semithick]
+					(axis cs:2.004,468.975)
+					--(axis cs:2.396,468.975)
+					--(axis cs:2.396,1478.49)
+					--(axis cs:2.004,1478.49)
+					--(axis cs:2.004,468.975)
+					--cycle;
+					\path [draw=darkslategray76, fill=steelblue88116163, semithick]
+					(axis cs:2.604,3569.5725)
+					--(axis cs:2.996,3569.5725)
+					--(axis cs:2.996,3600)
+					--(axis cs:2.604,3600)
+					--(axis cs:2.604,3569.5725)
+					--cycle;
+					\path [draw=darkslategray76, fill=peru20313699, semithick]
+					(axis cs:3.004,2328.025)
+					--(axis cs:3.396,2328.025)
+					--(axis cs:3.396,3600)
+					--(axis cs:3.004,3600)
+					--(axis cs:3.004,2328.025)
+					--cycle;
+					\path [draw=darkslategray76, fill=steelblue88116163, semithick]
+					(axis cs:3.604,3600)
+					--(axis cs:3.996,3600)
+					--(axis cs:3.996,3600)
+					--(axis cs:3.604,3600)
+					--(axis cs:3.604,3600)
+					--cycle;
+					\path [draw=darkslategray76, fill=peru20313699, semithick]
+					(axis cs:4.004,3600)
+					--(axis cs:4.396,3600)
+					--(axis cs:4.396,3600)
+					--(axis cs:4.004,3600)
+					--(axis cs:4.004,3600)
+					--cycle;
+					\draw[draw=darkslategray76,fill=steelblue88116163,line width=0.3pt] (axis cs:0,0) rectangle (axis cs:0,0);
+					\addlegendimage{ybar,ybar legend,draw=darkslategray76,fill=steelblue88116163,line width=0.3pt}
+					\addlegendentry{\footnotesize\KMPN}
+					
+					\draw[draw=darkslategray76,fill=peru20313699,line width=0.3pt] (axis cs:0,0) rectangle (axis cs:0,0);
+					\addlegendimage{ybar,ybar legend,draw=darkslategray76,fill=peru20313699,line width=0.3pt}
+					\addlegendentry{\footnotesize\KMPHN}
+					
+					\addplot [semithick, darkslategray76]
+					table {%
+						-0.2 23.325
+						-0.2 2.94
+					};
+					\addplot [semithick, darkslategray76]
+					table {%
+						-0.2 400.8
+						-0.2 783.8
+					};
+					\addplot [semithick, darkslategray76]
+					table {%
+						-0.298 2.94
+						-0.102 2.94
+					};
+					\addplot [semithick, darkslategray76]
+					table {%
+						-0.298 783.8
+						-0.102 783.8
+					};
+					\addplot [semithick, darkslategray76]
+					table {%
+						0.2 5.6675
+						0.2 4.19
+					};
+					\addplot [semithick, darkslategray76]
+					table {%
+						0.2 22.9225
+						0.2 25.72
+					};
+					\addplot [semithick, darkslategray76]
+					table {%
+						0.102 4.19
+						0.298 4.19
+					};
+					\addplot [semithick, darkslategray76]
+					table {%
+						0.102 25.72
+						0.298 25.72
+					};
+					\addplot [semithick, darkslategray76]
+					table {%
+						0.8 224.2675
+						0.8 127.18
+					};
+					\addplot [semithick, darkslategray76]
+					table {%
+						0.8 2364.83
+						0.8 3387.96
+					};
+					\addplot [semithick, darkslategray76]
+					table {%
+						0.702 127.18
+						0.898 127.18
+					};
+					\addplot [semithick, darkslategray76]
+					table {%
+						0.702 3387.96
+						0.898 3387.96
+					};
+					\addplot [semithick, darkslategray76]
+					table {%
+						1.2 80.7675
+						1.2 38.96
+					};
+					\addplot [semithick, darkslategray76]
+					table {%
+						1.2 160.86
+						1.2 164.02
+					};
+					\addplot [semithick, darkslategray76]
+					table {%
+						1.102 38.96
+						1.298 38.96
+					};
+					\addplot [semithick, darkslategray76]
+					table {%
+						1.102 164.02
+						1.298 164.02
+					};
+					\addplot [black, mark=diamond*, mark size=2.5, mark options={solid,fill=darkslategray76}, only marks]
+					table {%
+						1.2 310.58
+					};
+					\addplot [semithick, darkslategray76]
+					table {%
+						1.8 638.0375
+						1.8 444.33
+					};
+					\addplot [semithick, darkslategray76]
+					table {%
+						1.8 3520.7575
+						1.8 3600
+					};
+					\addplot [semithick, darkslategray76]
+					table {%
+						1.702 444.33
+						1.898 444.33
+					};
+					\addplot [semithick, darkslategray76]
+					table {%
+						1.702 3600
+						1.898 3600
+					};
+					\addplot [semithick, darkslategray76]
+					table {%
+						2.2 468.975
+						2.2 181.53
+					};
+					\addplot [semithick, darkslategray76]
+					table {%
+						2.2 1478.49
+						2.2 1606.06
+					};
+					\addplot [semithick, darkslategray76]
+					table {%
+						2.102 181.53
+						2.298 181.53
+					};
+					\addplot [semithick, darkslategray76]
+					table {%
+						2.102 1606.06
+						2.298 1606.06
+					};
+					\addplot [semithick, darkslategray76]
+					table {%
+						2.8 3569.5725
+						2.8 3559.43
+					};
+					\addplot [semithick, darkslategray76]
+					table {%
+						2.8 3600
+						2.8 3600
+					};
+					\addplot [semithick, darkslategray76]
+					table {%
+						2.702 3559.43
+						2.898 3559.43
+					};
+					\addplot [semithick, darkslategray76]
+					table {%
+						2.702 3600
+						2.898 3600
+					};
+					\addplot [black, mark=diamond*, mark size=2.5, mark options={solid,fill=darkslategray76}, only marks]
+					table {%
+						2.8 3429.18
+						2.8 2914.82
+						2.8 3461.54
+						2.8 3305.34
+					};
+					\addplot [semithick, darkslategray76]
+					table {%
+						3.2 2328.025
+						3.2 1174.67
+					};
+					\addplot [semithick, darkslategray76]
+					table {%
+						3.2 3600
+						3.2 3600
+					};
+					\addplot [semithick, darkslategray76]
+					table {%
+						3.102 1174.67
+						3.298 1174.67
+					};
+					\addplot [semithick, darkslategray76]
+					table {%
+						3.102 3600
+						3.298 3600
+					};
+					\addplot [semithick, darkslategray76]
+					table {%
+						3.8 3600
+						3.8 3600
+					};
+					\addplot [semithick, darkslategray76]
+					table {%
+						3.8 3600
+						3.8 3600
+					};
+					\addplot [semithick, darkslategray76]
+					table {%
+						3.702 3600
+						3.898 3600
+					};
+					\addplot [semithick, darkslategray76]
+					table {%
+						3.702 3600
+						3.898 3600
+					};
+					\addplot [semithick, darkslategray76]
+					table {%
+						4.2 3600
+						4.2 3600
+					};
+					\addplot [semithick, darkslategray76]
+					table {%
+						4.2 3600
+						4.2 3600
+					};
+					\addplot [semithick, darkslategray76]
+					table {%
+						4.102 3600
+						4.298 3600
+					};
+					\addplot [semithick, darkslategray76]
+					table {%
+						4.102 3600
+						4.298 3600
+					};
+					\addplot [semithick, darkslategray76]
+					table {%
+						-0.396 108.765
+						-0.004 108.765
+					};
+					\addplot [semithick, darkslategray76]
+					table {%
+						0.004 14.075
+						0.396 14.075
+					};
+					\addplot [semithick, darkslategray76]
+					table {%
+						0.604 758.125
+						0.996 758.125
+					};
+					\addplot [semithick, darkslategray76]
+					table {%
+						1.004 137.82
+						1.396 137.82
+					};
+					\addplot [semithick, darkslategray76]
+					table {%
+						1.604 3024.27
+						1.996 3024.27
+					};
+					\addplot [semithick, darkslategray76]
+					table {%
+						2.004 1050.06
+						2.396 1050.06
+					};
+					\addplot [semithick, darkslategray76]
+					table {%
+						2.604 3600
+						2.996 3600
+					};
+					\addplot [semithick, darkslategray76]
+					table {%
+						3.004 3394.55
+						3.396 3394.55
+					};
+					\addplot [semithick, darkslategray76]
+					table {%
+						3.604 3600
+						3.996 3600
+					};
+					\addplot [semithick, darkslategray76]
+					table {%
+						4.004 3600
+						4.396 3600
+					};
+				\end{axis}
+				
+			\end{tikzpicture}
+			\caption{Gap and Runtime reported by Gurobi when the model is initialised by the matheuristic}
+			\label{fig:finalgap}
+		\end{figure}
+		
+		
+		
+		% Table generated by Excel2LaTeX from sheet '10-30'
+		\begin{table}[h!]
+			\centering
+			\setlength\extrarowheight{-5pt}
+			\resizebox{\textwidth}{!}{
+				\begin{tabular}{cccccccccccc}
+					\boldsymbol{$|\mathcal N|$} & \boldsymbol{$A_4$} & \boldsymbol{$\textbf{perc}_{|\mathcal B|}$} & \textbf{Initialization} & \boldsymbol{$k$} & \boldsymbol{$\#Found$} & \boldsymbol{$Gap$} & \boldsymbol{$Runtime$} & \boldsymbol{$Gap_{math}$} & \boldsymbol{$Runtime_{math}$} & \boldsymbol{$Gap_{build}$} & \boldsymbol{$Runtime_{build}$} \bigstrut[b]\\
+					\hline
+					\multirow{16}[16]{*}{10} & \multirow{12}[12]{*}{no} & \multirow{4}[4]{*}{10} & \multirow{2}[2]{*}{no} & 1 & 5 & 0 & 362,95 & - & - & - & - \bigstrut[t]\\
+					&   &   &   & 25\% & 5 & 0 & 6,97 & - & - & - & - \bigstrut[b]\\
+					\cline{4-12}      &   &   & \multirow{2}[2]{*}{yes} & 1 & 5 & 0 & 2,94 & 40,72 & 0,01 & 27,94 & 0,61 \bigstrut[t]\\
+					&   &   &   & 25\% & 5 & 0 & 9,54 & 54,76 & 0,01 & 39,15 & 0,88 \bigstrut[b]\\
+					\cline{3-12}      &   & \multirow{4}[4]{*}{20} & \multirow{2}[2]{*}{no} & 1 & 5 & 0 & 387,67 & - & - & - & - \bigstrut[t]\\
+					&   &   &   & 25\% & 5 & 0 & 27,96 & - & - & - & - \bigstrut[b]\\
+					\cline{4-12}      &   &   & \multirow{2}[2]{*}{yes} & 1 & 5 & 0,01 & 440,19 & 32,44 & 0,01 & 18,99 & 10,14 \bigstrut[t]\\
+					&   &   &   & 25\% & 5 & 0 & 27,92 & 46,2 & 0,02 & 13,09 & 17,97 \bigstrut[b]\\
+					\cline{3-12}      &   & \multirow{4}[4]{*}{50} & \multirow{2}[2]{*}{no} & 1 & 5 & 0,02 & 452,6 & - & - & - & - \bigstrut[t]\\
+					&   &   &   & 25\% & 5 & 0 & 103,53 & - & - & - & - \bigstrut[b]\\
+					\cline{4-12}      &   &   & \multirow{2}[2]{*}{yes} & 1 & 5 & 0,01 & 783,8 & 28,97 & 0,02 & 13,19 & 70,59 \bigstrut[t]\\
+					&   &   &   & 25\% & 5 & 0,01 & 114 & 37,36 & 0,04 & 29,09 & 19,08 \bigstrut[b]\\
+					\cline{2-12}      & \multirow{4}[4]{*}{yes} & \multirow{4}[4]{*}{100} & \multirow{2}[2]{*}{no} & 1 & 5 & 0 & 6,16 & - & - & - & - \bigstrut[t]\\
+					&   &   &   & 25\% & 5 & 0 & 25,72 & - & - & - & - \bigstrut[b]\\
+					\cline{4-12}      &   &   & \multirow{2}[2]{*}{yes} & 1 & 5 & 0 & 4,19 & 5,28 & 0,03 & 2,97 & 0,8 \bigstrut[t]\\
+					&   &   &   & 25\% & 5 & 0 & 21,99 & 4,7 & 0,26 & 1,83 & 1,01 \bigstrut[b]\\
+					\hline
+					\multirow{24}[16]{*}{20} & \multirow{18}[12]{*}{no} & \multirow{6}[4]{*}{10} & \multirow{3}[2]{*}{no} & 1 & 5 & 0 & 127,18 & - & - & - & - \bigstrut[t]\\
+					&   &   &   & 10\% & 5 & 0,01 & 132,99 & - & - & - & - \\
+					&   &   &   & 25\% & 5 & 0 & 175,68 & - & - & - & - \bigstrut[b]\\
+					\cline{4-12}      &   &   & \multirow{3}[2]{*}{yes} & 1 & 5 & 0,02 & 775,61 & 36,23 & 0,04 & 8,82 & 57,03 \bigstrut[t]\\
+					&   &   &   & 10\% & 5 & 0 & 173,2 & 42,66 & 0,18 & 28,25 & 18,98 \\
+					&   &   &   & 25\% & 5 & 0 & 150,86 & 56,08 & 0,03 & 24,36 & 60,94 \bigstrut[b]\\
+					\cline{3-12}      &   & \multirow{6}[4]{*}{20} & \multirow{3}[2]{*}{no} & 1 & 5 & 0 & 740,64 & - & - & - & - \bigstrut[t]\\
+					&   &   &   & 10\% & 5 & 0 & 659,85 & - & - & - & - \\
+					&   &   &   & 25\% & 5 & 0 & 370,03 & - & - & - & - \bigstrut[b]\\
+					\cline{4-12}      &   &   & \multirow{3}[2]{*}{yes} & 1 & 5 & 0 & 776,45 & 25,36 & 0,06 & 20,65 & 42,9 \bigstrut[t]\\
+					&   &   &   & 10\% & 5 & 0 & 1039,52 & 37,39 & 0,65 & 28,61 & 268,46 \\
+					&   &   &   & 25\% & 5 & 0 & 667,29 & 50,57 & 0,15 & 20,16 & 257,77 \bigstrut[b]\\
+					\cline{3-12}      &   & \multirow{6}[4]{*}{50} & \multirow{3}[2]{*}{no} & 1 & 5 & 0,19 & 3044,11 & - & - & - & - \bigstrut[t]\\
+					&   &   &   & 10\% & 5 & 0,13 & 2804,13 & - & - & - & - \\
+					&   &   &   & 25\% & 5 & 0,01 & 1747,37 & - & - & - & - \bigstrut[b]\\
+					\cline{4-12}      &   &   & \multirow{3}[2]{*}{yes} & 1 & 5 & 9,73 & 3387,96 & 12,4 & 0,12 & 12,4 & 62,52 \bigstrut[t]\\
+					&   &   &   & 10\% & 5 & 20,07 & 2852,9 & 21,62 & 1,32 & 20,11 & 87,53 \\
+					&   &   &   & 25\% & 5 & 40 & 2570,65 & 25,72 & 1,06 & 25,4 & 41,2 \bigstrut[b]\\
+					\cline{2-12}      & \multirow{6}[4]{*}{yes} & \multirow{6}[4]{*}{100} & \multirow{3}[2]{*}{no} & 1 & 5 & 0 & 66,27 & - & - & - & - \bigstrut[t]\\
+					&   &   &   & 10\% & 5 & 0 & 310,58 & - & - & - & - \\
+					&   &   &   & 25\% & 5 & 0 & 151,38 & - & - & - & - \bigstrut[b]\\
+					\cline{4-12}      &   &   & \multirow{3}[2]{*}{yes} & 1 & 5 & 0 & 38,96 & 5,31 & 0,16 & 4,45 & 3,79 \bigstrut[t]\\
+					&   &   &   & 10\% & 5 & 0 & 164,02 & 5,96 & 3,03 & 4,64 & 2,92 \\
+					&   &   &   & 25\% & 5 & 0 & 124,26 & 3,97 & 4,5 & 1,77 & 3,05 \bigstrut[b]\\
+					\hline
+					\multirow{24}[16]{*}{30} & \multirow{18}[12]{*}{no} & \multirow{6}[4]{*}{10} & \multirow{3}[2]{*}{no} & 1 & 5 & 0 & 611,18 & - & - & - & - \bigstrut[t]\\
+					&   &   &   & 10\% & 5 & 0 & 560,1 & - & - & - & - \\
+					&   &   &   & 25\% & 5 & 0 & 454,2 & - & - & - & - \bigstrut[b]\\
+					\cline{4-12}      &   &   & \multirow{3}[2]{*}{yes} & 1 & 5 & 0 & 552 & 30,3 & 0,2 & 28,55 & 35,12 \bigstrut[t]\\
+					&   &   &   & 10\% & 5 & 0 & 718,61 & 43,19 & 0,43 & 33,02 & 172,55 \\
+					&   &   &   & 25\% & 5 & 0 & 444,33 & 54,66 & 0,03 & 37,28 & 113,71 \bigstrut[b]\\
+					\cline{3-12}      &   & \multirow{6}[4]{*}{20} & \multirow{3}[2]{*}{no} & 1 & 3 & 0,01 & 3472,27 & - & - & - & - \bigstrut[t]\\
+					&   &   &   & 10\% & 3 & 0 & 3024,87 & - & - & - & - \\
+					&   &   &   & 25\% & 4 & 0 & 2208,42 & - & - & - & - \bigstrut[b]\\
+					\cline{4-12}      &   &   & \multirow{3}[2]{*}{yes} & 1 & 5 & 23,01 & 3240,75 & 15,44 & 0,25 & 13,11 & 104,78 \bigstrut[t]\\
+					&   &   &   & 10\% & 5 & 21,24 & 3023,67 & 29,52 & 7,01 & 25,05 & 230,37 \\
+					&   &   &   & 25\% & 5 & 0 & 1933,3 & 47,09 & 0,58 & 47,09 & 194,12 \bigstrut[b]\\
+					\cline{3-12}      &   & \multirow{6}[4]{*}{50} & \multirow{3}[2]{*}{no} & 1 & 1 & 27,7 & 3600 & - & - & - & - \bigstrut[t]\\
+					&   &   &   & 10\% & 1 & 10,59 & 3600 & - & - & - & - \\
+					&   &   &   & 25\% & 1 & 0 & 3451,41 & - & - & - & - \bigstrut[b]\\
+					\cline{4-12}      &   &   & \multirow{3}[2]{*}{yes} & 1 & 5 & 100 & 3600 & 0 & 0,37 & 0 & - \bigstrut[t]\\
+					&   &   &   & 10\% & 5 & 80,75 & 3600 & 5,6 & 22,04 & 5,6 & - \\
+					&   &   &   & 25\% & 5 & 40,85 & 3536,92 & 22,57 & 3,98 & 22,57 & - \bigstrut[b]\\
+					\cline{2-12}      & \multirow{6}[4]{*}{yes} & \multirow{6}[4]{*}{100} & \multirow{3}[2]{*}{no} & 1 & 5 & 0 & 324,44 & - & - & - & - \bigstrut[t]\\
+					&   &   &   & 10\% & 5 & 0 & 1572,14 & - & - & - & - \\
+					&   &   &   & 25\% & 5 & 0,6 & 1606,06 & - & - & - & - \bigstrut[b]\\
+					\cline{4-12}      &   &   & \multirow{3}[2]{*}{yes} & 1 & 5 & 0 & 181,53 & 2,54 & 0,37 & 2,26 & 8,01 \bigstrut[t]\\
+					&   &   &   & 10\% & 5 & 0 & 902,58 & 2,93 & 69,94 & 2,29 & 11,44 \\
+					&   &   &   & 25\% & 5 & 0 & 1197,54 & 2,76 & 46,68 & 2,08 & 12,13 \bigstrut[b]\\
+					\hline
+			\end{tabular}}%
+			%
+			\caption{Computational results for 10, 20 and 30 neighbourhoods\label{tab:results1}}
+		\end{table}%
+		
+		
+		
+		
+		
+		% Table generated by Excel2LaTeX from sheet '50-80'
+		\begin{table}[h!]
+			\centering
+			\setlength\extrarowheight{-4pt}
+			\resizebox{\textwidth}{!}{
+				\begin{tabular}{cccccccccccc}
+					\boldsymbol{$|\mathcal N|$} & \boldsymbol{$A_4$} & \boldsymbol{$\textbf{perc}_{|\mathcal B|}$} & \textbf{Initialization} & \boldsymbol{$k$} & \boldsymbol{$\#Found$} & \boldsymbol{$Gap$} & \boldsymbol{$Runtime$} & \boldsymbol{$Gap_{math}$} & \boldsymbol{$Runtime_{math}$} & \boldsymbol{$Gap_{build}$} & \boldsymbol{$Runtime_{build}$} \bigstrut[b]\\
+					\hline
+					\multirow{24}[16]{*}{50} & \multirow{18}[12]{*}{no} & \multirow{6}[4]{*}{10} & \multirow{3}[2]{*}{no} & 1     & 1     & 0     & 3559,43 & -     & -     & -     & - \bigstrut[t]\\
+					&       &       &       & 10\%  & 1     & 0     & 3429,18 & -     & -     & -     & - \\
+					&       &       &       & 25\%  & 4     & 0     & 2914,82 & -     & -     & -     & - \bigstrut[b]\\
+					\cline{4-12}          &       &       & \multirow{3}[2]{*}{yes} & 1     & 5     & 100   & 3600  & 0     & 1,43  & 0     & - \bigstrut[t]\\
+					&       &       &       & 10\%  & 5     & 80,01 & 3600  & 8,78  & 7,16  & 8,78  & - \\
+					&       &       &       & 25\%  & 5     & 40,07 & 3461,54 & 32,39 & 0,12  & 32,39 & - \bigstrut[b]\\
+					\cline{3-12}          &       & \multirow{6}[4]{*}{20} & \multirow{3}[2]{*}{no} & 1     & 0     & -     & 3600  & -     & -     & -     & - \bigstrut[t]\\
+					&       &       &       & 10\%  & 0     & -     & 3600  & -     & -     & -     & - \\
+					&       &       &       & 25\%  & 2     & 0,99  & 3305,34 & -     & -     & -     & - \bigstrut[b]\\
+					\cline{4-12}          &       &       & \multirow{3}[2]{*}{yes} & 1     & 5     & 100   & 3600  & 0     & 1,67  & 0     & - \bigstrut[t]\\
+					&       &       &       & 10\%  & 5     & 100   & 3600  & 0     & 100   & 0     & - \\
+					&       &       &       & 25\%  & 5     & 100   & 3600  & 0     & 3,76  & 0     & - \bigstrut[b]\\
+					\cline{3-12}          &       & \multirow{6}[4]{*}{50} & \multirow{3}[2]{*}{no} & 1     & 0     & -     & 3600  & -     & -     & -     & - \bigstrut[t]\\
+					&       &       &       & 10\%  & 0     & -     & 3600  & -     & -     & -     & - \\
+					&       &       &       & 25\%  & 0     & -     & 3600  & -     & -     & -     & - \bigstrut[b]\\
+					\cline{4-12}          &       &       & \multirow{3}[2]{*}{yes} & 1     & 5     & 100   & 3600  & 0     & 1,94  & 0     & - \bigstrut[t]\\
+					&       &       &       & 10\%  & 5     & 100   & 3600  & 0     & 100   & 0     & - \\
+					&       &       &       & 25\%  & 5     & 100   & 3600  & 0     & 56,46 & 0     & - \bigstrut[b]\\
+					\cline{2-12}          & \multirow{6}[4]{*}{yes} & \multirow{6}[4]{*}{100} & \multirow{3}[2]{*}{no} & 1     & 5     & 0,03  & 2041  & -     & -     & -     & - \bigstrut[t]\\
+					&       &       &       & 10\%  & 5     & 14,46 & 3600  & -     & -     & -     & - \\
+					&       &       &       & 25\%  & 5     & 1,39  & 3600  & -     & -     & -     & - \bigstrut[b]\\
+					\cline{4-12}          &       &       & \multirow{3}[2]{*}{yes} & 1     & 5     & 0,03  & 1174,67 & 2,73  & 2,54  & 2,67  & 26,62 \bigstrut[t]\\
+					&       &       &       & 10\%  & 5     & 12,22 & 3600  & 5,15  & 100   & 4,77  & 16,7 \\
+					&       &       &       & 25\%  & 5     & 1,32  & 3189,1 & 1,44  & 100   & 1     & 26,51 \bigstrut[b]\\
+					\hline
+					\multirow{24}[16]{*}{80} & \multirow{18}[12]{*}{no} & \multirow{6}[4]{*}{10} & \multirow{3}[2]{*}{no} & 1     & 0     & -     & 3600  & -     & -     & -     & - \bigstrut[t]\\
+					&       &       &       & 10\%  & 0     & -     & 3600  & -     & -     & -     & - \\
+					&       &       &       & 25\%  & 0     & -     & 3600  & -     & -     & -     & - \bigstrut[b]\\
+					\cline{4-12}          &       &       & \multirow{3}[2]{*}{yes} & 1     & 5     & 100   & 3600  & 0     & 8,55  & 0     & - \bigstrut[t]\\
+					&       &       &       & 10\%  & 5     & 100   & 3600  & 0     & 82,05 & 0     & - \\
+					&       &       &       & 25\%  & 5     & 100   & 3600  & 0     & 0,42  & 0     & - \bigstrut[b]\\
+					\cline{3-12}          &       & \multirow{6}[4]{*}{20} & \multirow{3}[2]{*}{no} & 1     & 0     & -     & 3600  & -     & -     & -     & - \bigstrut[t]\\
+					&       &       &       & 10\%  & 0     & -     & 3600  & -     & -     & -     & - \\
+					&       &       &       & 25\%  & 0     & -     & 3600  & -     & -     & -     & - \bigstrut[b]\\
+					\cline{4-12}          &       &       & \multirow{3}[2]{*}{yes} & 1     & 5     & 100   & 3600  & 0     & 8,43  & 0     & - \bigstrut[t]\\
+					&       &       &       & 10\%  & 5     & 100   & 3600  & 0     & 100   & 0     & - \\
+					&       &       &       & 25\%  & 5     & 100   & 3600  & 0     & 16,16 & 0     & - \bigstrut[b]\\
+					\cline{3-12}          &       & \multirow{6}[4]{*}{50} & \multirow{3}[2]{*}{no} & 1     & 0     & -     & 3600  & -     & -     & -     & - \bigstrut[t]\\
+					&       &       &       & 10\%  & 0     & -     & 3600  & -     & -     & -     & - \\
+					&       &       &       & 25\%  & 0     & -     & 3600  & -     & -     & -     & - \bigstrut[b]\\
+					\cline{4-12}          &       &       & \multirow{3}[2]{*}{yes} & 1     & 5     & 100   & 3600  & 0     & 10,52 & 0     & - \bigstrut[t]\\
+					&       &       &       & 10\%  & 5     & 100   & 3600  & 0     & 100   & 0     & - \\
+					&       &       &       & 25\%  & 5     & 100   & 3600  & 0     & 61,43 & 0     & - \bigstrut[b]\\
+					\cline{2-12}          & \multirow{6}[4]{*}{yes} & \multirow{6}[4]{*}{100} & \multirow{3}[2]{*}{no} & 1     & 5     & 7,84  & 3600  & -     & -     & -     & - \bigstrut[t]\\
+					&       &       &       & 10\%  & 5     & 31,4  & 3600  & -     & -     & -     & - \\
+					&       &       &       & 25\%  & 5     & 7,67  & 3600  & -     & -     & -     & - \bigstrut[b]\\
+					\cline{4-12}          &       &       & \multirow{3}[2]{*}{yes} & 1     & 5     & 0,19  & 3600  & 2,07  & 5,48  & 2,01  & 60,36 \bigstrut[t]\\
+					&       &       &       & 10\%  & 5     & 23,38 & 3600  & 0,64  & 100   & 0,46  & 33,48 \\
+					&       &       &       & 25\%  & 5     & 2,93  & 3600  & 1,8   & 100   & 1,36  & 30,58 \bigstrut[b]\\
+					\hline
+			\end{tabular}}%
+			%
+			\caption{Computational results for 50 and 80 neighbourhoods\label{tab:results2}}
+		\end{table}%
+		
+		\section{Concluding remarks}\label{section:conclusion}
+		This paper has dealt with the \KMPHN \xspace and its general version called \KMPN, in which the assumption that neighbourhoods are not visible to one another is removed. This last version leads to  non-convex mixed-integer problems whereas the first one results in second-order cone mixed-integer problems. The two problems, beyond its similarity, show deep differences in terms of computational difficulty, as explained in Section \ref{section:experiments}. However, the proposed mathematical programming approaches allow a formal treatment that allows one to optimally solve small to medium-size instances. For larger size instances, this approach also inspires a matheuristic algorithm providing good quality solutions, in short computing time, by exploiting the structure of the problem. It is still an open question whether there is some kind of finite dominating set with polynomial cardinality for the version \KMPHN, which certainly will simplify the underlying graph structures and the solution of the problem. Moreover, given the complexity of the problem, studying valid inequalities that reduce the space of feasible solutions will be instrumental in solving larger instances efficiently. 
+		
+		In addition, one can consider an extension of these problems assuming limited lengths for the paths between the source and its associated target. It would also be interesting to combine in the same model different typologies of barriers such as piecewise linear and second-order cone-representable sets. Besides, it will deserve some attention to study three-dimensional barriers that simulate buildings that planar paths cannot traverse, thus approaching even more real-life applications in the drone delivery industry. 
+		
+		All of the problems mentioned above are natural extensions of those considered in this paper and may attract the attention of researchers in the future.
+		
+		\section*{Acknowledgements}
+		This research has been partially supported by the Agencia Estatal de Investigación (AEI) and the European Regional Development Fund (ERDF): PID2020-114594GB-C21; and Regional Government of Andalusia: project P18-FR-1422.
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		\bibliographystyle{apa}
+		\bibliography{location_barrier_bibliography.bib}
+		% \printbibliography
+		
 	\end{document}
