@@ -50,8 +50,8 @@ barrier8 = [[70, 90], [60, 50]]
 barrier9 = [[70, 80], [90, 60]]
 barrier10 = [[74, 33], [98, 60]]
 
-# barriers = [barrier1, barrier2, barrier3, barrier4, barrier5, barrier6, barrier7, barrier8, barrier9, barrier10]
-barriers = [barrier3, barrier5, barrier6, barrier7, barrier8]
+barriers = [barrier1, barrier2, barrier3, barrier4, barrier5, barrier6, barrier7, barrier8, barrier9, barrier10]
+# barriers = [barrier3, barrier5, barrier6, barrier7, barrier8]
 
 N1s = neigh.Circle(center=[70, 55], radii=4, col = 'green')
 N2s = neigh.Circle(center=[50, 70], radii=8, col = 'green')
@@ -68,7 +68,7 @@ N6t = neigh.Circle(center=[30, 90], radii=10, col = 'blue')
 
 targets = [N1t, N2t, N3t, N4t, N5t, N6t]
 
-k = 3
+k = 1
 
 endurance = 1000
 
@@ -77,6 +77,6 @@ wE = 1
 wL = 0
 
 # 279.88
-resultados = h_kmedian_n(barriers, sources=sources, targets=targets, k=k, wL=wL, lazy=False, A4=False, time_limit=1800, picture=True, init = False)
+resultados = h_kmedian_n(barriers, sources=sources, targets=targets, k=k, wL=wL, single=False, lazy=False, A4=False, time_limit=300, picture=True, init = False)
 
 print(resultados)

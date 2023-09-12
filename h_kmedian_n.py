@@ -13,7 +13,7 @@ from data import *
 from matheuristic import matheuristic
 
 
-def h_kmedian_n(barriers, sources, targets, k, wL=50, lazy=True, A4=True, prepro=True, log=False, picture=False,
+def h_kmedian_n(barriers, sources, targets, k, single = False, wL=50, lazy=True, A4=True, prepro=True, log=False, picture=False,
                 time_limit=7200, init=False):
     S = len(sources)
     T = len(targets)
@@ -90,14 +90,16 @@ def h_kmedian_n(barriers, sources, targets, k, wL=50, lazy=True, A4=True, prepro
 
     edges_source_target = []
 
-    if not (A4):
-
-        for (a, b) in vertices_source:
-            for (c, d) in vertices_target:
-                edges_source_target.append((a, b, c, d))
+    for (a, b) in vertices_source:
+        for (c, d) in vertices_target:
+            edges_source_target.append((a, b, c, d))
 
     vertices_total = vertices_source + vertices_barrier + vertices_target
-    edges_total = edges_source + edges_barrier + edges_target + edges_source_target
+
+    if not(A4):
+        edges_total = edges_source + edges_barrier + edges_target + edges_source_target
+    else:
+        edges_total = edges_source + edges_barrier + edges_target
 
     if log:
         print("vertices_source = " + str(vertices_source))
@@ -172,15 +174,49 @@ def h_kmedian_n(barriers, sources, targets, k, wL=50, lazy=True, A4=True, prepro
     for a, b, c, d in edges_total:
         epsilon_index.append((a, b, c, d))
 
+    # Assignment variables
+    x_index = []
 
-    x_index = edges_total
+    for a, b in vertices_source:
+        for c, d in vertices_target:
+            x_index.append((a, b, c, d))
 
+    # Allocating variables
+    y_index = vertices_source
+
+    # Flow variables
+
+    flow_index = []
     aux_index = []
 
-    for a, b, c, d in edges_total:
-        for e, f in vertices_target:
-            aux_index.append((a, b, c, d, e, f))
+    if single:
 
+        for a, b, c, d in edges_total:
+            flow_index.append((a, b, c, d))
+            for e, f in vertices_target:
+                aux_index.append((a, b, c, d, e, f))
+        
+        p_index = edges_total
+
+    else:
+
+        for a, b, c, d in edges_total:
+            for e, f, g, h in edges_source_target:
+                if ((a, b, c, d) in edges_source and a == e) or ((a, b, c, d) in edges_target and c == g) or ((a, b, c, d) in edges_barrier) or ((a, b, c, d) in edges_source_target and a == e and c == g):
+                    flow_index.append((a, b, c, d, e, f, g, h))
+
+        aux_index = flow_index
+
+        p_index = x_index
+
+    paux_index = aux_index
+
+        # print(flow_index)
+
+    # if single:
+    #     for a, b, c, d in edges_total:
+    #         for e, f in vertices_source:
+    #             aux_index.append((a, b, c, d, e, f))
 
     # for e, f in vertices_source:
     #     for g, h in vertices_target:
@@ -190,28 +226,21 @@ def h_kmedian_n(barriers, sources, targets, k, wL=50, lazy=True, A4=True, prepro
 
     # print(x_index)
 
-    y_index = vertices_source
 
 
-    z_index = []
 
-    for a, b in vertices_source:
-        for c, d in vertices_target:
-            z_index.append((a, b, c, d))
 
     if log:
         print("x_index = " + str(x_index))
         print("y_index = " + str(y_index))
-        print("z_index = " + str(z_index))
+        print("z_index = " + str(flow_index))
 
     # P_S and P_T: indices of the points in the neighborhoods
     # p_index = []
     # for a, b, c, d in edges_total:
     #     for e, f in vertices_neighborhood:
     #         p_index.append((a, b, c, d, e))
-    p_index = x_index
 
-    paux_index = aux_index
 
     # for index in vertices_neighborhood:
     #     for dim in range(2):
@@ -388,10 +417,15 @@ def h_kmedian_n(barriers, sources, targets, k, wL=50, lazy=True, A4=True, prepro
 
     p = model.addVars(p_index, vtype=GRB.CONTINUOUS, lb=0.0, name='p')
     paux = model.addVars(paux_index, vtype=GRB.CONTINUOUS, lb=0.0, name='paux')
-    x = model.addVars(x_index, vtype=GRB.INTEGER, lb=0.0, ub=len(targets), name='x')
-    aux = model.addVars(aux_index, vtype=GRB.BINARY, name='aux')
+    x = model.addVars(x_index, vtype=GRB.BINARY, name='x')
+    if single:
+        aux = model.addVars(aux_index, vtype=GRB.BINARY, name='aux')
+
     y = model.addVars(y_index, vtype=GRB.BINARY, name='y')
-    z = model.addVars(z_index, vtype=GRB.BINARY, name='z')
+    if single:
+        flow = model.addVars(flow_index, vtype=GRB.INTEGER, lb=0.0, ub=T, name='flow')
+    else:
+        flow = model.addVars(flow_index, vtype=GRB.BINARY, name='flow')
     dist = model.addVars(dist_index, vtype=GRB.CONTINUOUS, lb=0.0, name='dist')
     dif = model.addVars(dif_index, vtype=GRB.CONTINUOUS, lb=0.0, name='dif')
 
@@ -530,7 +564,12 @@ def h_kmedian_n(barriers, sources, targets, k, wL=50, lazy=True, A4=True, prepro
             model.addConstr(delta.sum(a, b, c, d, '*', '*', '*', '*') - len(barriers) + 1 <= epsilon[a, b, c, d])
             model.addConstr(len(barriers) * epsilon[a, b, c, d] <= delta.sum(a, b, c, d, '*', '*', '*', '*'))
 
-            model.addConstr(x[a, b, c, d] <= T * epsilon[a, b, c, d])
+            if single:
+                model.addConstr(flow[a, b, c, d] <= T*epsilon[a, b, c, d])
+            else:
+                for e, f, g, h in edges_source_target:
+                    if (a, b, c, d, e, f, g, h) in flow_index:
+                        model.addConstr(flow[a, b, c, d, e, f, g, h] <= epsilon[a, b, c, d])
 
         model.update()
 
@@ -613,57 +652,112 @@ def h_kmedian_n(barriers, sources, targets, k, wL=50, lazy=True, A4=True, prepro
     U_out = 100000
 
     # p constraints
-    for a, b, c, d, e, f in paux.keys():
-        if (a, b, c, d) in edges_source:
+    if single:
+        for a, b, c, d, e, f in paux.keys():
+            if (a, b, c, d) in edges_source:
 
-            source = sources[a - 1]
-            punto = barriers[c-1000][d]
-            L_out = af.estima_L(source, punto)
-            U_out = af.estima_U(source, punto)
+                source = sources[a - 1]
+                punto = barriers[c-1000][d]
+                L_out = af.estima_L(source, punto)
+                U_out = af.estima_U(source, punto)
 
-            # print((L_out, U_out))
-            # model.addConstr(paux[a, b, c, d, e, f] <= U_out * aux[a, b, c, d, e, f])
-            # model.addConstr(paux[a, b, c, d, e, f] <= dist[a, b, c, d])
-            model.addConstr(paux[a, b, c, d, e, f] >= L_out * aux[a, b, c, d, e, f])
-            model.addConstr(paux[a, b, c, d, e, f] >= dist[a, b, c, d] - U_out * (1 - aux[a, b, c, d, e, f]))
+                # print((L_out, U_out))
+                # model.addConstr(paux[a, b, c, d, e, f] <= U_out * aux[a, b, c, d, e, f])
+                # model.addConstr(paux[a, b, c, d, e, f] <= dist[a, b, c, d])
+                model.addConstr(paux[a, b, c, d, e, f] >= L_out * aux[a, b, c, d, e, f])
+                model.addConstr(paux[a, b, c, d, e, f] >= dist[a, b, c, d] - U_out * (1 - aux[a, b, c, d, e, f]))
 
-        if (a, b, c, d) in edges_target:
+            if (a, b, c, d) in edges_target:
 
-            target = targets[abs(c) - 1]
-            punto = barriers[a-1000][b]
-            L_out = af.estima_L(target, punto)
-            U_out = af.estima_U(target, punto)
+                target = targets[abs(c) - 1]
+                punto = barriers[a-1000][b]
+                L_out = af.estima_L(target, punto)
+                U_out = af.estima_U(target, punto)
 
-            # print((L_out, U_out))
-            # model.addConstr(paux[a, b, c, d, e, f] <= U_out * aux[a, b, c, d, e, f])
-            # model.addConstr(paux[a, b, c, d, e, f] <= dist[a, b, c, d])
-            model.addConstr(paux[a, b, c, d, e, f] >= L_out * aux[a, b, c, d, e, f])
-            model.addConstr(paux[a, b, c, d, e, f] >= dist[a, b, c, d] - U_out* (1 -aux[a, b, c, d, e, f]))
+                # print((L_out, U_out))
+                # model.addConstr(paux[a, b, c, d, e, f] <= U_out * aux[a, b, c, d, e, f])
+                # model.addConstr(paux[a, b, c, d, e, f] <= dist[a, b, c, d])
+                model.addConstr(paux[a, b, c, d, e, f] >= L_out * aux[a, b, c, d, e, f])
+                model.addConstr(paux[a, b, c, d, e, f] >= dist[a, b, c, d] - U_out* (1 -aux[a, b, c, d, e, f]))
 
-        if (a, b, c, d) in edges_barrier:
+            if (a, b, c, d) in edges_barrier:
 
-            L_out = np.linalg.norm(np.array(barriers[a - 1000][b]) - np.array(barriers[c - 1000][d]))
-            U_out = np.linalg.norm(np.array(barriers[a - 1000][b]) - np.array(barriers[c - 1000][d]))
+                L_out = np.linalg.norm(np.array(barriers[a - 1000][b]) - np.array(barriers[c - 1000][d]))
+                U_out = np.linalg.norm(np.array(barriers[a - 1000][b]) - np.array(barriers[c - 1000][d]))
 
-            # model.addConstr(paux[a, b, c, d, e, f] <= U_out * aux[a, b, c, d, e, f])
-            # model.addConstr(paux[a, b, c, d, e, f] <= dist[a, b, c, d])
-            model.addConstr(paux[a, b, c, d, e, f] >= L_out * aux[a, b, c, d, e, f])
-            model.addConstr(paux[a, b, c, d, e, f] >= dist[a, b, c, d] - U_out * (1 - aux[a, b, c, d, e, f]))
+                # model.addConstr(paux[a, b, c, d, e, f] <= U_out * aux[a, b, c, d, e, f])
+                # model.addConstr(paux[a, b, c, d, e, f] <= dist[a, b, c, d])
+                model.addConstr(paux[a, b, c, d, e, f] >= L_out * aux[a, b, c, d, e, f])
+                model.addConstr(paux[a, b, c, d, e, f] >= dist[a, b, c, d] - U_out * (1 - aux[a, b, c, d, e, f]))
 
-        elif (a, b, c, d) in edges_source_target:
+            elif (a, b, c, d) in edges_source_target:
 
-            target = targets[abs(c) - 1]
-            punto = sources[a - 1]
+                target = targets[abs(c) - 1]
+                punto = sources[a - 1]
 
-            L_out = af.estima_L(target, punto)
-            U_out = af.estima_U(target, punto)
+                L_out = af.estima_L(target, punto)
+                U_out = af.estima_U(target, punto)
 
-            # model.addConstr(paux[a, b, c, d, e, f] <= U_out * aux[a, b, c, d, e, f])
-            # model.addConstr(paux[a, b, c, d, e, f] <= dist[a, b, c, d])
-            model.addConstr(paux[a, b, c, d, e, f] >= L_out * aux[a, b, c, d, e, f])
-            model.addConstr(paux[a, b, c, d, e, f] >= dist[a, b, c, d] - U_out * (1 - aux[a, b, c, d, e, f]))
+                # model.addConstr(paux[a, b, c, d, e, f] <= U_out * aux[a, b, c, d, e, f])
+                # model.addConstr(paux[a, b, c, d, e, f] <= dist[a, b, c, d])
+                model.addConstr(paux[a, b, c, d, e, f] >= L_out * aux[a, b, c, d, e, f])
+                model.addConstr(paux[a, b, c, d, e, f] >= dist[a, b, c, d] - U_out * (1 - aux[a, b, c, d, e, f]))
 
-    model.addConstrs(p[a, b, c, d] == gp.quicksum((abs(e))*paux[a, b, c, d, e, f] for e, f in vertices_target) for a, b, c, d in edges_total)
+        model.addConstrs(p[a, b, c, d] == gp.quicksum(abs(e)*paux[a, b, c, d, e, f] for e, f in vertices_target if (a, b, c, d, e, f) in paux_index) for a, b, c, d in edges_total)
+    
+    else:
+        for a, b, c, d, e, f, g, h in paux.keys():
+            if (a, b, c, d) in edges_source:
+
+                source = sources[a - 1]
+                punto = barriers[c-1000][d]
+                L_out = af.estima_L(source, punto)
+                U_out = af.estima_U(source, punto)
+
+                # print((L_out, U_out))
+                # model.addConstr(paux[a, b, c, d, e, f] <= U_out * aux[a, b, c, d, e, f])
+                # model.addConstr(paux[a, b, c, d, e, f] <= dist[a, b, c, d])
+                model.addConstr(paux[a, b, c, d, e, f, g, h] >= L_out * flow[a, b, c, d, e, f, g, h])
+                model.addConstr(paux[a, b, c, d, e, f, g, h] >= dist[a, b, c, d] - U_out * (1 - flow[a, b, c, d, e, f, g, h]))
+
+            if (a, b, c, d) in edges_target:
+
+                target = targets[abs(c) - 1]
+                punto = barriers[a-1000][b]
+                L_out = af.estima_L(target, punto)
+                U_out = af.estima_U(target, punto)
+
+                # print((L_out, U_out))
+                # model.addConstr(paux[a, b, c, d, e, f] <= U_out * aux[a, b, c, d, e, f])
+                # model.addConstr(paux[a, b, c, d, e, f] <= dist[a, b, c, d])
+                model.addConstr(paux[a, b, c, d, e, f, g, h] >= L_out * flow[a, b, c, d, e, f, g, h])
+                model.addConstr(paux[a, b, c, d, e, f, g, h] >= dist[a, b, c, d] - U_out* (1 -flow[a, b, c, d, e, f, g, h]))
+
+            if (a, b, c, d) in edges_barrier:
+
+                L_out = np.linalg.norm(np.array(barriers[a - 1000][b]) - np.array(barriers[c - 1000][d]))
+                U_out = np.linalg.norm(np.array(barriers[a - 1000][b]) - np.array(barriers[c - 1000][d]))
+
+                # model.addConstr(paux[a, b, c, d, e, f] <= U_out * aux[a, b, c, d, e, f])
+                # model.addConstr(paux[a, b, c, d, e, f] <= dist[a, b, c, d])
+                model.addConstr(paux[a, b, c, d, e, f, g, h] >= L_out * flow[a, b, c, d, e, f, g, h])
+                model.addConstr(paux[a, b, c, d, e, f, g, h] >= dist[a, b, c, d] - U_out * (1 - flow[a, b, c, d, e, f, g, h]))
+
+            elif (a, b, c, d) in edges_source_target:
+
+                target = targets[abs(c) - 1]
+                punto = sources[a - 1]
+
+                L_out = af.estima_L(target, punto)
+                U_out = af.estima_U(target, punto)
+
+                # model.addConstr(paux[a, b, c, d, e, f] <= U_out * aux[a, b, c, d, e, f])
+                # model.addConstr(paux[a, b, c, d, e, f] <= dist[a, b, c, d])
+                model.addConstr(paux[a, b, c, d, e, f, g, h] >= L_out * flow[a, b, c, d, e, f, g, h])
+                model.addConstr(paux[a, b, c, d, e, f, g, h] >= dist[a, b, c, d] - U_out * (1 - flow[a, b, c, d, e, f, g, h]))
+
+        model.addConstrs(p[e, f, g, h] == gp.quicksum(paux[a, b, c, d, e, f, g, h] for a, b, c, d in edges_total if (a, b, c, d, e, f, g, h) in paux_index) for e, f in vertices_source for g, h in vertices_target)
+    
     # model.addConstrs(p[a, b, c, d] >= x[a, b, c, d]*dist[a, b, c, d] for a, b, c, d in edges_total)
     # flow conservation constraints
     # for index in y_index:
@@ -679,29 +773,42 @@ def h_kmedian_n(barriers, sources, targets, k, wL=50, lazy=True, A4=True, prepro
     # model.addConstr(- gp.quicksum(y[a, b, c, d] for a, b, c, d in E if c == -2) == -1)
 
     # We only open k facilities
-    model.addConstr(y.sum('*') == k)
+    model.addConstr(y.sum('*', '*') == k)
 
     # All the targets must be associated to one facility
-    model.addConstrs(z.sum('*', '*', c, d) == 1 for c, d in vertices_target)
+    model.addConstrs(x.sum('*', '*', c, d) == 1 for c, d in vertices_target)
 
     # If a facility is not open in S, we can not launch capacity from this source.
-    model.addConstrs(z[a, b, c, d] <= y[a, b] for a, b, c, d in z_index)
+    model.addConstrs(x[a, b, c, d] <= y[a, b] for a, b, c, d in x_index)
 
     # Binarying an integer variable
-    model.addConstrs(x[a, b, c, d] == gp.quicksum((abs(e))*aux[a, b, c, d, e, f] for e, f in vertices_target) for a, b, c, d in edges_total)
+    if single:
+        model.addConstrs(flow[a, b, c, d] == gp.quicksum((abs(e))*aux[a, b, c, d, e, f] for e, f in vertices_target if (a, b, c, d, e, f) in aux_index) for a, b, c, d in edges_total)
+    
     # model.addConstrs(aux.sum(a, b, c, d, '*', '*') == 1 for a, b, c, d in edges_total)
 
-    for a, b in vertices_total:
-        if (a, b) in vertices_source:
-            model.addConstr(x.sum(a, b, '*', '*') == z.sum(a, b, '*', '*'))
-        elif (a, b) in vertices_barrier:
-            model.addConstr(x.sum(a, b, '*', '*') - x.sum('*', '*', a, b) == 0)
-        else:
-            model.addConstr(x.sum('*', '*', a, b) == 1)
+    if single:
+        for a, b in vertices_total:
+            if (a, b) in vertices_source:
+                model.addConstr(flow.sum(a, b, '*', '*') == x.sum(a, b, '*', '*'))
+            elif (a, b) in vertices_barrier:
+                model.addConstr(flow.sum(a, b, '*', '*') - flow.sum('*', '*', a, b) == 0)
+            else:
+                model.addConstr(flow.sum('*', '*', a, b) == 1)
+    else:
+        for e, f in vertices_source:
+            for g, h in vertices_target:
+                for a, b in vertices_total:
+                    if (a, b) in vertices_source:
+                        model.addConstr(flow.sum(e, f, '*', '*', e, f, g, h) == x[e, f, g, h])
+                    elif (a, b) in vertices_barrier:
+                        model.addConstr(flow.sum(a, b, '*', '*', e, f, g, h) - flow.sum('*', '*', a, b, e, f, g, h) == 0)
+                    else:
+                        model.addConstr(flow.sum('*', '*', g, h, e, f, g, h) == x[e, f, g, h])
 
     model.update()
 
-    objective = gp.quicksum(p[index] for index in edges_total) + gp.quicksum(0.5*wL*x[index] for index in x.keys())
+    objective = gp.quicksum(p[index] for index in p.keys()) + gp.quicksum(0.5*wL*flow[index] for index in flow.keys())
 
     # for a, b, c, d in edges_barrier:
     #     # for e, f in vertices_source:
@@ -771,11 +878,17 @@ def h_kmedian_n(barriers, sources, targets, k, wL=50, lazy=True, A4=True, prepro
     results[9] = model.getAttr('NodeCount')
     results[10] = model.ObjVal
 
-    x_indices = [(index, x[index].X) for index in x.keys() if x[index].X > 0.5]
-    dist_indices = [(index, dist[index].X) for index in x.keys() if x[index].X > 0.5]
-    p_indices = [(index, p[index].X) for index in p.keys() if x[index].X > 0.5]
-    paux_indices = [(index, paux[index].X) for index in paux.keys() if x[index[0:4]].X > 0.5]
-    aux_indices = [(index, aux[index].X) for index in aux.keys() if aux[index].X > 0.5]
+    if single:
+        x_indices = [(index, x[index].X) for index in x.keys() if x[index].X > 0.5]
+        dist_indices = [(index, dist[index[0:4]].X) for index in flow.keys() if flow[index].X > 0.5]
+        p_indices = [(index, p[index].X) for index in p.keys() if flow[index].X > 0.5]
+    else:
+
+        x_indices = [(index, x[index].X) for index in x.keys() if x[index].X > 0.5]
+        dist_indices = [(index, dist[index[0:4]].X) for index in flow.keys() if flow[index].X > 0.5]
+        p_indices = [(index, p[index].X) for index in p.keys() if x[index].X > 0.5]
+    # paux_indices = [(index, paux[index].X) for index in paux.keys() if flow[index[0:4]].X > 0.5]
+    # aux_indices = [(index, aux[index].X) for index in aux.keys() if aux[index].X > 0.5]
 
     # print("x_indices:")
     # print(x_indices)
@@ -789,18 +902,20 @@ def h_kmedian_n(barriers, sources, targets, k, wL=50, lazy=True, A4=True, prepro
     # print("p_indices:")
     # print(p_indices)
     #
-    # print("dist_indices:")
-    # print(dist_indices)
+    print("dist_indices:")
+    print(dist_indices)
 
     x_indices = [index for index in x.keys() if x[index].X > 0.5]
 
     y_indices = [index for index in y.keys() if y[index].X > 0.5]
 
-    z_indices = [index for index in z.keys() if z[index].X > 0.5]
+    flow_indices = [index for index in flow.keys() if flow[index].X > 0.5]
 
     if log:
         print(x_indices)
         print(y_indices)
+    
+    print(flow_indices)
 
     # g_indices = []
     #
@@ -834,18 +949,32 @@ def h_kmedian_n(barriers, sources, targets, k, wL=50, lazy=True, A4=True, prepro
 
         segments = []
 
-        for a, b, c, d in x_indices:
-            if (a, b, c, d) in edges_source:
-                segments.append([point[a, b, 0].X, barriers[c-1000][d][0], point[a, b, 1].X, barriers[c-1000][d][1]])
+        if single:
+            for a, b, c, d in flow_indices:
+                if (a, b, c, d) in edges_source:
+                    segments.append([point[a, b, 0].X, barriers[c-1000][d][0], point[a, b, 1].X, barriers[c-1000][d][1]])
 
-            if (a, b, c, d) in edges_barrier:
-                segments.append([barriers[a-1000][b][0], barriers[c-1000][d][0], barriers[a-1000][b][1], barriers[c-1000][d][1]])
+                if (a, b, c, d) in edges_barrier:
+                    segments.append([barriers[a-1000][b][0], barriers[c-1000][d][0], barriers[a-1000][b][1], barriers[c-1000][d][1]])
 
-            if (a, b, c, d) in edges_target:
-                segments.append([barriers[a-1000][b][0], point[c, d, 0].X, barriers[a-1000][b][1], point[c, d, 1].X])
+                if (a, b, c, d) in edges_target:
+                    segments.append([barriers[a-1000][b][0], point[c, d, 0].X, barriers[a-1000][b][1], point[c, d, 1].X])
 
-            if (a, b, c, d) in edges_source_target:
-                segments.append([point[a, b, 0].X, point[c, d, 0].X, point[a, b, 1].X, point[c, d, 1].X])
+                if (a, b, c, d) in edges_source_target:
+                    segments.append([point[a, b, 0].X, point[c, d, 0].X, point[a, b, 1].X, point[c, d, 1].X])
+        else:
+            for a, b, c, d, e, f, g, h in flow_indices:
+                if (a, b, c, d) in edges_source:
+                    segments.append([point[a, b, 0].X, barriers[c-1000][d][0], point[a, b, 1].X, barriers[c-1000][d][1]])
+
+                if (a, b, c, d) in edges_barrier:
+                    segments.append([barriers[a-1000][b][0], barriers[c-1000][d][0], barriers[a-1000][b][1], barriers[c-1000][d][1]])
+
+                if (a, b, c, d) in edges_target:
+                    segments.append([barriers[a-1000][b][0], point[c, d, 0].X, barriers[a-1000][b][1], point[c, d, 1].X])
+
+                if (a, b, c, d) in edges_source_target:
+                    segments.append([point[a, b, 0].X, point[c, d, 0].X, point[a, b, 1].X, point[c, d, 1].X])
 
 
 
