@@ -91,7 +91,7 @@ for instance in instances:
                                 serie = pd.Series([instance] + resultados, index=dataframe.columns)
 
                                 dataframe = dataframe.append(serie, ignore_index=True)
-                                dataframe.to_csv('./resultados/resultados_buenos4.csv')
+                                dataframe.to_csv('./resultados/resultados_multi.csv')
 
                                 print('\n\nSolving hampered k-median')
                                 print('Instance: ' + str(instance))
@@ -111,7 +111,7 @@ for instance in instances:
                                 serie = pd.Series([instance] + resultados, index=dataframe.columns)
 
                                 dataframe = dataframe.append(serie, ignore_index=True)
-                                dataframe.to_csv('./resultados/resultados_buenos4.csv')
+                                dataframe.to_csv('./resultados/resultados_multi.csv')
 
                                 print('\n\nSolving hampered k-median')
                                 print('Instance: ' + str(instance))
@@ -131,7 +131,7 @@ for instance in instances:
                                 serie = pd.Series([instance] + resultados, index=dataframe.columns)
 
                                 dataframe = dataframe.append(serie, ignore_index=True)
-                                dataframe.to_csv('./resultados/resultados_buenos4.csv')
+                                dataframe.to_csv('./resultados/resultados_multi.csv')
 
                             else:
                                 print('\n\nSolving hampered k-median')
@@ -149,4 +149,4 @@ for instance in instances:
                                 serie = pd.Series([instance] + resultados, index=dataframe.columns)
 
                                 dataframe = dataframe.append(serie, ignore_index=True)
-                                dataframe.to_csv('./resultados/resultados_buenos4.csv')
+                                dataframe.to_csv('./resultados/resultados_multi.csv')
