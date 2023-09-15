@@ -85,7 +85,7 @@ for instance in instances:
                                 sublist = np.random.choice(nB, int(np.floor(0.1*nB)))
                                 barriers1 = [barriers[b] for b in sublist]
 
-                                resultados = h_kmedian_n(barriers1, sources=N, targets=N, k=k, single=True, wL=wL, lazy=l, A4=a, init=init,
+                                resultados = h_kmedian_n(barriers1, sources=N, targets=N, k=k, single=False, wL=wL, lazy=l, A4=a, init=init,
                                                          time_limit=time_limit)
 
                                 serie = pd.Series([instance] + resultados, index=dataframe.columns)
@@ -105,7 +105,7 @@ for instance in instances:
                                 sublist = np.random.choice(nB, int(np.floor(0.25*nB)))
                                 barriers2 = [barriers[b] for b in sublist]
 
-                                resultados = h_kmedian_n(barriers2, sources=N, targets=N, k=k, single=True,  wL=wL, lazy=l, A4=a, init=init,
+                                resultados = h_kmedian_n(barriers2, sources=N, targets=N, k=k, single=False,  wL=wL, lazy=l, A4=a, init=init,
                                                          time_limit=time_limit)
 
                                 serie = pd.Series([instance] + resultados, index=dataframe.columns)
@@ -125,7 +125,7 @@ for instance in instances:
                                 sublist = np.random.choice(nB, int(np.floor(0.5*nB)))
                                 barriers3 = [barriers[b] for b in sublist]
 
-                                resultados = h_kmedian_n(barriers3, sources=N, targets=N, k=k, single=True, wL=wL, lazy=l, A4=a, init=init,
+                                resultados = h_kmedian_n(barriers3, sources=N, targets=N, k=k, single=False,  wL=wL, lazy=l, A4=a, init=init,
                                                          time_limit=time_limit)
 
                                 serie = pd.Series([instance] + resultados, index=dataframe.columns)
@@ -143,7 +143,7 @@ for instance in instances:
                                 print('Init: ' + str(init))
                                 print('Percentage of barriers: 100 %\n\n')
 
-                                resultados = h_kmedian_n(barriers, sources=N, targets=N, k=k, single=True,  wL=wL, lazy=l, A4=a, init=init,
+                                resultados = h_kmedian_n(barriers, sources=N, targets=N, k=k, single=False,  wL=wL, lazy=l, A4=a, init=init,
                                                          time_limit=time_limit)
 
                                 serie = pd.Series([instance] + resultados, index=dataframe.columns)
