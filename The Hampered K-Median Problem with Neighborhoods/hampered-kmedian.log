@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (MiKTeX 21.6.28) (preloaded format=pdflatex 2021.7.4)  27 JUN 2023 13:18
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (MiKTeX 21.6.28) (preloaded format=pdflatex 2021.7.4)  13 SEP 2023 21:29
 entering extended mode
 **./hampered-kmedian.tex
 (hampered-kmedian.tex
@@ -888,7 +888,11 @@ Package: threeparttable 2003/06/13  v 3.0
 LaTeX Warning: Unused global option(s):
     [1p.].
 
-(hampered-kmedian.aux)
+(hampered-kmedian.aux
+
+LaTeX Warning: Label `form:H-KMPHN' multiply defined.
+
+)
 \openout1 = `hampered-kmedian.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 102.
@@ -1021,24 +1025,82 @@ File: pgflibraryarrows.code.tex 2021/05/15 v3.1.9a (3.1.9a)
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 [5] [6]
-Overfull \hbox (17.22168pt too wide) in paragraph at lines 419--433
-[]$[]$ $[]$ 
+Overfull \hbox (11.37099pt too wide) detected at line 378
+[] \OML/cmm/m/it/9 f\OT1/cmr/m/n/9 (\OML/cmm/m/it/9 PQ\OMS/cmsy/m/n/9 j\OML/cmm
+/m/it/9 ST\OT1/cmr/m/n/9 ) \OMS/cmsy/m/n/9   [] \OML/cmm/m/it/9 f\OT1/cmr/m/n/9
+ (\OML/cmm/m/it/9 PQ\OMS/cmsy/m/n/9 j\OML/cmm/m/it/9 ST\OT1/cmr/m/n/9 ) = []  \
+OMS/cmsy/m/n/9 8\OML/cmm/m/it/9 P \OMS/cmsy/m/n/9 2 \OML/cmm/m/it/9 V[]; \OMS/c
+msy/m/n/9 8\OML/cmm/m/it/9 S \OMS/cmsy/m/n/9 2 S\OML/cmm/m/it/9 ; \OMS/cmsy/m/n
+/9 8\OML/cmm/m/it/9 T \OMS/cmsy/m/n/9 2 T\OML/cmm/m/it/9 :
  []
 
-[7] [8]
-Overfull \hbox (25.49031pt too wide) detected at line 529
+[7] [8] [9]
+
+LaTeX Warning: Reference `eq:gammaC' on page 10 undefined on input line 611.
+
+
+LaTeX Warning: Reference `eq:fC' on page 10 undefined on input line 611.
+
+
+LaTeX Warning: Reference `eq:gammaC' on page 10 undefined on input line 611.
+
+
+LaTeX Warning: Reference `eq:fC' on page 10 undefined on input line 611.
+
+
+Overfull \hbox (5.42395pt too wide) detected at line 611
 []
  []
 
-[9]
-Overfull \hbox (5.88399pt too wide) detected at line 829
+[10]
+
+LaTeX Warning: Reference `eq:gammaC' on page 11 undefined on input line 631.
+
+
+LaTeX Warning: Reference `eq:fC' on page 11 undefined on input line 631.
+
+
+LaTeX Warning: Reference `eq:gammaC' on page 11 undefined on input line 631.
+
+
+LaTeX Warning: Reference `eq:fC' on page 11 undefined on input line 631.
+
+
+Overfull \hbox (25.49031pt too wide) detected at line 631
+[]
+ []
+
+
+LaTeX Warning: Reference `eq:gammaC' on page 11 undefined on input line 643.
+
+
+LaTeX Warning: Reference `eq:fC' on page 11 undefined on input line 643.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[11]
+
+LaTeX Warning: Reference `eq:gammaC' on page 12 undefined on input line 930.
+
+
+LaTeX Warning: Reference `eq:fC' on page 12 undefined on input line 930.
+
+
+LaTeX Warning: Reference `eq:gammaC' on page 12 undefined on input line 930.
+
+
+LaTeX Warning: Reference `eq:fC' on page 12 undefined on input line 930.
+
+
+Overfull \hbox (5.88399pt too wide) detected at line 930
 []
  []
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[10] [11] [12] [13]
+[12] [13] [14] [15]
 (C:\Users\G731\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendlayer/tikz
 /libraries\tikzlibrarypatterns.code.tex
 File: tikzlibrarypatterns.code.tex 2021/05/15 v3.1.9a (3.1.9a)
@@ -1061,53 +1123,68 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[14] (hampered-kmedian.bbl [15]) [16] [17] [18] (hampered-kmedian.aux) ) 
+[16] (hampered-kmedian.bbl [17]) [18] [19] [20] (hampered-kmedian.aux)
+
+LaTeX Warning: There were undefined references.
+
+
+LaTeX Warning: There were multiply-defined labels.
+
+ ) 
 Here is how much of TeX's memory you used:
- 29350 strings out of 478847
- 717085 string characters out of 2848861
- 1401829 words of memory out of 3000000
- 46740 multiletter control sequences out of 15000+600000
- 424923 words of font info for 84 fonts, out of 8000000 for 9000
+ 29371 strings out of 478847
+ 717299 string characters out of 2848861
+ 1402657 words of memory out of 3000000
+ 46753 multiletter control sequences out of 15000+600000
+ 428319 words of font info for 95 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  84i,26n,84p,2066b,2312s stack positions out of 5000i,500n,10000p,200000b,80000s
- <C:\Us
-ers\G731\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx0700.pk> <
-C:\Users\G731\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm0500.
-pk> <C:\Users\G731\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecss
-0800.pk> <C:\Users\G731\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600
-\tcrm1000.pk> <C:\Users\G731\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/d
-pi600\ecss1000.pk> <C:\Users\G731\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen
-/ec/dpi600\ectt0800.pk> <C:\Users\G731\AppData\Local\MiKTeX\fonts/pk/ljfour/jkn
-appen/ec/dpi600\ecrm0800.pk> <C:\Users\G731\AppData\Local\MiKTeX\fonts/pk/ljfou
-r/jknappen/ec/dpi600\ecti1000.pk> <C:\Users\G731\AppData\Local\MiKTeX\fonts/pk/
-ljfour/jknappen/ec/dpi600\ecbx1000.pk> <C:\Users\G731\AppData\Local\MiKTeX\font
-s/pk/ljfour/jknappen/ec/dpi600\ecti0800.pk> <C:\Users\G731\AppData\Local\MiKTeX
-\fonts/pk/ljfour/jknappen/ec/dpi600\ecti0600.pk> <C:\Users\G731\AppData\Local\M
-iKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm0700.pk> <C:\Users\G731\AppData\Lo
-cal\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1000.pk> <C:\Users\G731\AppDa
-ta\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1440.pk><C:/Users/G731/A
-ppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbsy10.pfb><C:/Use
-rs/G731/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cmextra/cmbsy
-7.pfb><C:/Users/G731/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/
-cm/cmbx7.pfb><C:/Users/G731/AppData/Local/Programs/MiKTeX/fonts/type1/public/am
-sfonts/cm/cmex10.pfb><C:/Users/G731/AppData/Local/Programs/MiKTeX/fonts/type1/p
-ublic/amsfonts/cmextra/cmex7.pfb><C:/Users/G731/AppData/Local/Programs/MiKTeX/f
-onts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/G731/AppData/Local/Programs/
-MiKTeX/fonts/type1/public/amsfonts/cm/cmmi5.pfb><C:/Users/G731/AppData/Local/Pr
-ograms/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Users/G731/AppData/L
-ocal/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmib10.pfb><C:/Users/G731/
-AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cmextra/cmmib7.pfb><C
-:/Users/G731/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10
-.pfb><C:/Users/G731/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/c
-m/cmr5.pfb><C:/Users/G731/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsf
-onts/cm/cmr7.pfb><C:/Users/G731/AppData/Local/Programs/MiKTeX/fonts/type1/publi
-c/amsfonts/cm/cmsy10.pfb><C:/Users/G731/AppData/Local/Programs/MiKTeX/fonts/typ
-e1/public/amsfonts/cm/cmsy5.pfb><C:/Users/G731/AppData/Local/Programs/MiKTeX/fo
-nts/type1/public/amsfonts/cm/cmsy6.pfb><C:/Users/G731/AppData/Local/Programs/Mi
-KTeX/fonts/type1/public/amsfonts/cm/cmsy7.pfb>
-Output written on hampered-kmedian.pdf (18 pages, 396439 bytes).
+ <C:\Users\G731\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx0
+500.pk> <C:\Users\G731\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\
+ecrm0500.pk> <C:\Users\G731\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dp
+i600\ecbx0700.pk> <C:\Users\G731\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/
+ec/dpi600\ecrm0900.pk> <C:\Users\G731\AppData\Local\MiKTeX\fonts/pk/ljfour/jkna
+ppen/ec/dpi600\ecss0800.pk> <C:\Users\G731\AppData\Local\MiKTeX\fonts/pk/ljfour
+/jknappen/ec/dpi600\tcrm1000.pk> <C:\Users\G731\AppData\Local\MiKTeX\fonts/pk/l
+jfour/jknappen/ec/dpi600\ecss1000.pk> <C:\Users\G731\AppData\Local\MiKTeX\fonts
+/pk/ljfour/jknappen/ec/dpi600\ectt0800.pk> <C:\Users\G731\AppData\Local\MiKTeX\
+fonts/pk/ljfour/jknappen/ec/dpi600\ecrm0800.pk> <C:\Users\G731\AppData\Local\Mi
+KTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecti1000.pk> <C:\Users\G731\AppData\Loc
+al\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1000.pk> <C:\Users\G731\AppDat
+a\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecti0800.pk> <C:\Users\G731\A
+ppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecti0600.pk> <C:\Users\G
+731\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm0700.pk> <C:\Us
+ers\G731\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1000.pk> <
+C:\Users\G731\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1440.
+pk><C:/Users/G731/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/
+cmbsy10.pfb><C:/Users/G731/AppData/Local/Programs/MiKTeX/fonts/type1/public/ams
+fonts/cmextra/cmbsy7.pfb><C:/Users/G731/AppData/Local/Programs/MiKTeX/fonts/typ
+e1/public/amsfonts/cm/cmbx7.pfb><C:/Users/G731/AppData/Local/Programs/MiKTeX/fo
+nts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/G731/AppData/Local/Programs/M
+iKTeX/fonts/type1/public/amsfonts/cmextra/cmex7.pfb><C:/Users/G731/AppData/Loca
+l/Programs/MiKTeX/fonts/type1/public/amsfonts/cmextra/cmex9.pfb><C:/Users/G731/
+AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Use
+rs/G731/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi5.pfb>
+<C:/Users/G731/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmm
+i6.pfb><C:/Users/G731/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts
+/cm/cmmi7.pfb><C:/Users/G731/AppData/Local/Programs/MiKTeX/fonts/type1/public/a
+msfonts/cm/cmmi9.pfb><C:/Users/G731/AppData/Local/Programs/MiKTeX/fonts/type1/p
+ublic/amsfonts/cm/cmmib10.pfb><C:/Users/G731/AppData/Local/Programs/MiKTeX/font
+s/type1/public/amsfonts/cmextra/cmmib7.pfb><C:/Users/G731/AppData/Local/Program
+s/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/G731/AppData/Local/
+Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr5.pfb><C:/Users/G731/AppData/
+Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:/Users/G731/Ap
+pData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Users/G
+731/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr9.pfb><C:/U
+sers/G731/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.p
+fb><C:/Users/G731/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/
+cmsy5.pfb><C:/Users/G731/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfo
+nts/cm/cmsy6.pfb><C:/Users/G731/AppData/Local/Programs/MiKTeX/fonts/type1/publi
+c/amsfonts/cm/cmsy7.pfb><C:/Users/G731/AppData/Local/Programs/MiKTeX/fonts/type
+1/public/amsfonts/cm/cmsy9.pfb>
+Output written on hampered-kmedian.pdf (20 pages, 481836 bytes).
 PDF statistics:
- 562 PDF objects out of 1000 (max. 8388607)
+ 631 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  13 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -68,7 +68,7 @@ N6t = neigh.Circle(center=[30, 90], radii=10, col = 'blue')
 
 targets = [N1t, N2t, N3t, N4t, N5t, N6t]
 
-k = 3
+k = 2
 
 endurance = 1000
 
@@ -77,6 +77,7 @@ wE = 1
 wL = 0
 
 # 279.88
-resultados = h_kmedian_n(barriers, sources=sources, targets=targets, k=k, wL=wL, single=False, lazy=False, A4=False, time_limit=300, picture=True, init = True)
+# resultados = h_kmedian_n(barriers, sources=sources, targets=targets, k=k, wL=wL, single=True, lazy=False, A4=False, time_limit=300, picture=True, init = True)
 
-print(resultados)
+# print(resultados)
+

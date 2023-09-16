@@ -46,7 +46,7 @@ inits = [False, True]
 # inits = [True]
 
 singles = [False, True]
-time_limit = 300
+time_limit = 3600
 
 dataframe = pd.DataFrame(columns=['Instance', 'n_N', 'n_B', 'k', 'wL', 'Lazy', 'A4', 'Init', 'Gap', 'Runtime', 'NodeCount', 'ObjVal', 'Runtime_h', 'Runtime_h2', 'ObjVal_h', 'ObjVal_h2'])
 

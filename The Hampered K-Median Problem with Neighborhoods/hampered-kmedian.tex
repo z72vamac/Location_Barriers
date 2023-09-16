@@ -290,7 +290,7 @@
 	
 	\section{MINLP Formulations}\label{section:formulations}
 	
-	This section proposes a mixed-integer non-linear programming formulation (MINLP) for the problem described in Section \ref{section:description}. First of all, the conic programming representation of the neighbourhoods and distance is presented. Then, the constraints that check if a segment is included in the set of edges $E_X$ with $X\in \{\rm KMPHN, \rm KMPN\}$ are set. Finally, the formulations for the \KMPHN \ and \KMPN \ are described and compared.
+	This section proposes a mixed-integer non-linear programming formulation (MINLP) for the problem described in Section \ref{section:description}. First of all, constraints that describe the $k$-median are set. Then, two approaches to ensure connectivity between each pair source-target are explained. Later, the conic programming representation of the neighbourhoods and distance are presented. Finally, the constraints that check if a segment is included in the set of edges $E_X$ with $X\in \{\rm KMPHN, \rm KMPN\}$ are described.
 	
 	First of all, we introduce the decision variables that represent the problem. They are summarized in Table \ref{table:variables}.
 	
@@ -300,16 +300,17 @@
 		\label{table:variables}
 		\begin{tabular}{|cl|l}
 			\cline{1-2}
-			\multicolumn{2}{|l|}{\textbf{Binary Decision Variables}} &  \\ \cline{1-2}
+			\multicolumn{2}{|l|}{\textbf{Binary and Integer Decision Variables}} &  \\ \cline{1-2}
 			\multicolumn{1}{|l|}{\textbf{Name}} & \textbf{Description} &  \\ \cline{1-2}
+			\multicolumn{1}{|c|}{$y(S)$} & \begin{tabular}[c]{@{}l@{}}1, if a facility is allocated in the source $S$ in the solution of the model,\\ 0, otherwise.\end{tabular} &  \\ \cline{1-2}
+			\multicolumn{1}{|c|}{$x(ST)$} & \begin{tabular}[c]{@{}l@{}}1, if source $S$ and target $T$ are joined by a path in the solution of the model,\\ 0, otherwise.\end{tabular} &  \\ \cline{1-2}
+			\multicolumn{1}{|c|}{$f(PQ)$} & \begin{tabular}[c]{@{}l@{}} \CV{number of times that edge $(P, Q)$ is traversed in the solution.}\end{tabular} &  \\ \cline{1-2}
+			\multicolumn{1}{|c|}{$f(PQ|ST)$} & \begin{tabular}[c]{@{}l@{}} 1, if edge $(P, Q)$ is traversed in the path joining $S$ and $T$, \\ 0, otherwise.\end{tabular} &  \\ \cline{1-2}
 			\multicolumn{1}{|c|}{$\alpha(P|QQ')$} & \begin{tabular}[c]{@{}l@{}}1, if the determinant $\det(P|QQ')$ is positive,\\ 0, otherwise.\end{tabular} &  \\ \cline{1-2}
 			\multicolumn{1}{|c|}{$\beta(PP'|QQ')$} & \begin{tabular}[c]{@{}l@{}}1, if the determinants $\det(P|QQ')$ and $\det(P'|QQ')$ have the same sign,\\ 0, otherwise.\end{tabular} &  \\ \cline{1-2}
 			\multicolumn{1}{|c|}{$\gamma(PP'|QQ')$} & \begin{tabular}[c]{@{}l@{}}1, if  the determinants $\det(P|QQ')$ and $\det(P'|QQ')$ are both positive,\\ 0, otherwise.\end{tabular} &  \\ \cline{1-2}
 			\multicolumn{1}{|c|}{$\delta(PP'|QQ')$} & \begin{tabular}[c]{@{}l@{}}1, if the line segments $\overline{PP'}$ and $\overline{QQ'}$ do not intersect,\\ 0, otherwise.\end{tabular} &  \\ \cline{1-2}
-			\multicolumn{1}{|c|}{$\varepsilon(PP')$} & \begin{tabular}[c]{@{}l@{}}1, if the line segment $\overline{PP'}$ does not cross any barrier,\\ 0, otherwise.\end{tabular} &  \\ \cline{1-2}
-			\multicolumn{1}{|c|}{$f(PQ|ST)$} & \begin{tabular}[c]{@{}l@{}} 1, if edge $(P, Q)$ is traversed in the path joining $S$ and $T$, \\ 0, otherwise.\end{tabular} &  \\ \cline{1-2}	
-			\multicolumn{1}{|c|}{$y(S)$} & \begin{tabular}[c]{@{}l@{}}1, if a facility is allocated in the source $S$ in the solution of the model,\\ 0, otherwise.\end{tabular} &  \\ \cline{1-2}
-			\multicolumn{1}{|c|}{$x(ST)$} & \begin{tabular}[c]{@{}l@{}}1, if source $S$ and target $T$ are joined by a path in the solution of the model,\\ 0, otherwise.\end{tabular} &  \\ \cline{1-2}
+			\multicolumn{1}{|c|}{$\varepsilon(PP')$} & \begin{tabular}[c]{@{}l@{}}1, if the line segment $\overline{PP'}$ does not cross any barrier,\\ 0, otherwise.\end{tabular} &  \\ \cline{1-2}	
 			\multicolumn{2}{|l|}{\textbf{Continuous Decision Variables}} & \multicolumn{1}{c}{\textbf{}} \\ \cline{1-2}
 			\multicolumn{1}{|l|}{\textbf{Name}} & \textbf{Description} &  \\ \cline{1-2}
 			\multicolumn{1}{|c|}{$P_N$} & Coordinates representing the point selected in the neighbourhood $N\in \mathcal S\cup\mathcal T$. &  \\ \cline{1-2}
@@ -318,7 +319,65 @@
 		\end{tabular}
 	\end{table}
 	
-	\subsection{Conic programming constraints in the models}
+	\CV{
+	\subsection{$k$-median constraints}
+	In the classical $k$-median, there are two decisions to make, that is, which sources are selected to allocate a facility and which targets are assigned to be served by each facility. To deal with these decisions, it is necessary to define the binary variables:
+	\begin{itemize}
+		\item $y(S)$, that assumes value one if the source neighbourhood $S\in\mathcal S$ is selected.
+		\item $x(ST)$, that is one if the target neighbourhood $T\in\mathcal T$ is assigned to the selected source $S\in\mathcal S$.
+	\end{itemize}
+	
+	The block of constraints inherited from the $k$-median are the following:
+	\begin{align}
+		\sum_{S\in\mathcal S}y(S)&=k,\tag{k-median-C1}\\
+		x(ST)&\leq y(S),\quad\forall S\in\mathcal S,\quad\forall T\in\mathcal T,\tag{k-median-C2}\\
+		\sum_{S\in\mathcal S} x(ST)&=1,\quad\forall T\in\mathcal T\tag{k-median-C3}.
+	\end{align}
+	
+	The first constraint imposes that a subset of $k$ sources is selected in $\mathcal S$. The second constraints ensure that one target $T$ is assigned to a source $S$ only if it is selected. The third inequalities ensure that every target is assigned to exactly one source.
+	
+	\subsection{Flow constraints}
+	The distances between each pair of source-target neighbourhoods in the formulations are represented by the shortest path joining them without traversing any barrier. Note that, although computing the shortest paths between every pair of neighbourhoods is possible, converting an instance of the \KMPHN \ into an instance of the standard $k$-median is not, since the points in neighbourhoods are not fixed. However, this simplification can be applied to produce an approximation to generate lower bounds for the problem. To model source-target allocation paths, two approaches can be used, involving different variables and constraints. 
+	
+	The first approach is based on a single-commodity formulation. It models a tree routed at each source that connects all targets assigned to that source. The idea is that the model must deliver one unit of commodity from the selected source neighbourhood to each of the required target neighbourhoods. Then, for each edge $(P, Q)\in E_X$, an integer variable $f(PQ)$ that counts the number of times that edge $(P, Q)$ is traversed in the solution is defined. Then, the flow conservation constraint that represents the path is the following:
+	
+	{\small
+	\begin{equation}\tag{single-flow-C}
+		\sum_{\{Q\in V_X:(P,Q)\in E_X\}}f(PQ)-\sum_{\{Q\in V_X:(Q,P)\in E_X\}}f(PQ) =\left\{
+		\begin{array}{rl} 
+			\sum_{T\in\mathcal T} x(ST), & \text{if } P\in \VS, \\
+			0, & \text{if } P\in \VB, \\
+			-1, & \text{if }P\in \VT,
+		\end{array}
+		\right.\quad\forall P\in V_X.
+	\end{equation}}
+
+	These constraints state that the units of commodity that are delivered from the source must be exactly the number of targets assigned to this source. These units must be transported along the path until an assigned target is reached.
+	
+	The second approach, related with a multi-commodity scheme, the binary variables $f(PQ|ST)$  must be defined for each $(P, Q)\in E_X$, $S\in\mathcal S$ and $T\in\mathcal T$. These variables are set to one for those edges that are used to go from the source $S$ to the target $T$. In this case, the flow conservation constraint reads as follows:
+	
+	{\small
+	\begin{equation}\tag{multi-flow-C}
+		\sum_{\{Q\in V_X:(P,Q)\in E_X\}}f(PQ|ST)-\sum_{\{Q\in V_X:(Q,P)\in E_X\}}f(PQ|ST) =\left\{
+		\begin{array}{rl} 
+			x(ST), & \text{if } P\in S, \\
+			0, & \text{if } P\in \VB, \\
+			-x(ST), & \text{if }P\in T,
+		\end{array}
+		\right.\quad\forall P\in V_X,\forall S\in\mathcal S,\forall T\in\mathcal T.
+	\end{equation}}
+
+	These constraints model the path joined the source $S$ and the target $T$ whenever these are assigned by means of variable $x(ST)$.
+	
+	These two approaches raise different ways to formulate the problem that are later compared in the computational section.
+	
+	
+	%\newcommand{\gvar}[2]{g(#1#2)}
+	\newcommand{\xvar}[2]{x(#1#2)}
+	
+}
+	
+	\subsection{Conic programming constraints}
 	For the two problems considered in this paper,  namely \KMPHN \ and \KMPN, there exist two typologies of second-order cone constraints. One of them models the distance between each pair of points $P$ and $Q$ in $V_X$, $X\in\{\rm KMPHN, \rm KMPN\}$, and the other, the representation of source and target neighbourhoods, where the points are chosen.
 	
 	\newcommand{\dvar}[2]{d(#1#2)}
@@ -383,11 +442,12 @@
 	Firstly, the sign of each determinant in Remark \ref{rem:determinants} is modelled. The binary variable $\alpha$ is introduced and assumes the value one if the determinant is non-negative and zero, otherwise. Note that determinants can not be null, because the barriers are located in general position.
 	
 	The following constraints represent the sign condition:
-	\begin{align*}\tag{$\alpha$-C}\label{eq:alphaC}
-		\left[1-\alphamas{P}{P_B^1}{P_B^2}\right]\LS{P}{P_B^1}{P_B^2}&\leq\determinant{P}{P_B^1}{P_B^2}\leq \US{P}{P_B^1}{P_B^2}\:\alphamas{P}{P_B^1}{P_B^2},\\
-		\left[1-\alphamas{Q}{P_B^1}{P_B^2}\right]\LS{Q}{P_B^1}{P_B^2}&\leq\determinant{Q}{P_B^1}{P_B^2}\leq \US{Q}{P_B^1}{P_B^2}\:\alphamas{Q}{P_B^1}{P_B^2},\\
-		\left[1-\alphamas{P_B^1}{P}{Q}\right]\LS{P_B^1}{P}{Q}&\leq\determinant{P_B^1}{P}{Q}\leq \US{P_B^1}{P}{Q}\:\alphamas{P_B^1}{P}{Q},\\		\left[1-\alphamas{P_B^2}{P}{Q}\right]\LS{P_B^2}{P}{Q}&\leq\determinant{P_B^2}{P}{Q}\leq \US{P_B^2}{P}{Q}\:\alphamas{P_B^2}{P}{Q},
-	\end{align*}
+	{\small
+	\begin{align*}\label{eq:alphaC} \tag{$\alpha$-C}
+		\left[1-\alphamas{P}{P_B^1}{P_B^2}\right]\LS{P}{P_B^1}{P_B^2}&\leq\determinant{P}{P_B^1}{P_B^2}\leq \US{P}{P_B^1}{P_B^2}\:\alphamas{P}{P_B^1}{P_B^2},&\CV{\quad\forall P \in V_X,\forall P_B^1, P_B^2\in \VB,}\\
+		\left[1-\alphamas{Q}{P_B^1}{P_B^2}\right]\LS{Q}{P_B^1}{P_B^2}&\leq\determinant{Q}{P_B^1}{P_B^2}\leq \US{Q}{P_B^1}{P_B^2}\:\alphamas{Q}{P_B^1}{P_B^2},&\CV{\quad\forall Q \in V_X,\forall P_B^1, P_B^2\in \VB,}\\
+		\left[1-\alphamas{P_B^1}{P}{Q}\right]\LS{P_B^1}{P}{Q}&\leq\determinant{P_B^1}{P}{Q}\leq \US{P_B^1}{P}{Q}\:\alphamas{P_B^1}{P}{Q},&\CV{\quad\forall P, Q \in V_X,\forall P_B^1\in \VB,}\\		\left[1-\alphamas{P_B^2}{P}{Q}\right]\LS{P_B^2}{P}{Q}&\leq\determinant{P_B^2}{P}{Q}\leq \US{P_B^2}{P}{Q}\:\alphamas{P_B^2}{P}{Q},&\CV{\quad\forall P, Q \in V_X,\forall P_B^2\in \VB,}
+	\end{align*}}
 	
 	\noindent where $L$ and $U$ are lower and upper bounds for the value of the corresponding determinants, respectively. If a determinant is non-negative, then $\alpha$ must be one to make the second inequality feasible. Analogously, if the determinant is not positive, $\alpha$ must be zero to satisfy the correct condition.
 	
@@ -405,32 +465,45 @@
 	\newcommand{\gammaprod}[4]{\gamma(#1#2|#3#4)}
 	
 	Hence, the correct value of $\beta$ variable can be expressed by the following constraint of the $\alpha$ variables
+	{\small
 	\begin{align*}%\tag{$\beta$-C}\label{eq:betaC}
-		\betamas{P}{Q}{P_B^1}{P_B^2}&=\alphamas{P}{P_B^1}{P_B^2}\alphamas{Q}{P_B^1}{P_B^2} + \left[1-\alphamas{P}{P_B^1}{P_B^2}\right]\left[1-\alphamas{Q}{P_B^1}{P_B^2}\right],\\
-		\betamas{P_B^1}{P_B^2}{P}{Q}&=\alphamas{P_B^1}{P}{Q}\alphamas{P_B^2}{P}{Q} + \left[1-\alphamas{P_B^1}{P}{Q}\right]\left[1-\alphamas{P_B^2}{P}{Q}\right].
-	\end{align*}
+		\betamas{P}{Q}{P_B^1}{P_B^2}&=\alphamas{P}{P_B^1}{P_B^2}\alphamas{Q}{P_B^1}{P_B^2} + \left[1-\alphamas{P}{P_B^1}{P_B^2}\right]\left[1-\alphamas{Q}{P_B^1}{P_B^2}\right],&\CV{\quad\forall P,Q\in V_X,\forall P_B^1P_B^2\in \VB,}\\
+		\betamas{P_B^1}{P_B^2}{P}{Q}&=\alphamas{P_B^1}{P}{Q}\alphamas{P_B^2}{P}{Q} + \left[1-\alphamas{P_B^1}{P}{Q}\right]\left[1-\alphamas{P_B^2}{P}{Q}\right],&\CV{\quad\forall P,Q\in V_X,\forall P_B^1P_B^2\in \VB}.
+	\end{align*}}
+
 	This condition can be equivalently written by means of an auxiliary binary variable $\gamma$ that models the product of the $\alpha$ variables:
 	\begin{align*}\tag{$\beta$-C}\label{eq:betaC}
-		\betamas{P}{Q}{P_B^1}{P_B^2}&=2\gammaprod{P}{Q}{P_B^1}{P_B^2} -\alphamas{P}{P_B^1}{P_B^2}-\alphamas{Q}{P_B^1}{P_B^2}+1,\\
-		\betamas{P_B^1}{P_B^2}{P}{Q}&=2\gammaprod{P_B^1}{P_B^2}{P}{Q} -\alphamas{P_B^1}{P}{Q}-\alphamas{P_B^2}{P}{Q}+1,
+		\betamas{P}{Q}{P_B^1}{P_B^2}&=2\gammaprod{P}{Q}{P_B^1}{P_B^2} -\alphamas{P}{P_B^1}{P_B^2}-\alphamas{Q}{P_B^1}{P_B^2}+1,&\CV{\quad\forall P,Q\in V_X,\forall P_B^1P_B^2\in \VB,}\\
+		\betamas{P_B^1}{P_B^2}{P}{Q}&=2\gammaprod{P_B^1}{P_B^2}{P}{Q} -\alphamas{P_B^1}{P}{Q}-\alphamas{P_B^2}{P}{Q}+1,&\CV{\quad\forall P,Q\in V_X,\forall P_B^1P_B^2\in \VB.}
 	\end{align*}
 	These $\gamma$ variables can be linearized by using the following constraints:
 	
-	\begin{minipage}{.5\linewidth}
-		\begin{align*}
-			\gammaprod{P}{Q}{P_B^1}{P_B^2} & \leq \alphamas{P}{P_B^1}{P_B^2},\\
-			\gammaprod{P}{Q}{P_B^1}{P_B^2} & \leq \alphamas{Q}{P_B^1}{P_B^2},\\
-			\gammaprod{P}{Q}{P_B^1}{P_B^2} & \geq \alphamas{P}{P_B^1}{P_B^2} + \alphamas{Q}{P_B^1}{P_B^2} - 1,
-		\end{align*}
-	\end{minipage}
-	\begin{minipage}{.5\linewidth}
+%	{\small
+%	\begin{minipage}{.5\linewidth}
+%		\begin{align*}
+%			\gammaprod{P}{Q}{P_B^1}{P_B^2} & \leq \alphamas{P}{P_B^1}{P_B^2},\CV{\quad\forall P,Q\in V_X,\forall P_B^1P_B^2\in \VB,}\\
+%			\gammaprod{P}{Q}{P_B^1}{P_B^2} & \leq \alphamas{Q}{P_B^1}{P_B^2},\CV{\quad\forall P,Q\in V_X,\forall P_B^1P_B^2\in \VB,}\\
+%			\gammaprod{P}{Q}{P_B^1}{P_B^2} & \geq \alphamas{P}{P_B^1}{P_B^2} + \alphamas{Q}{P_B^1}{P_B^2} - 1,\CV{\quad\forall P,Q\in V_X,\forall P_B^1P_B^2\in \VB,}
+%		\end{align*}
+%	\end{minipage}
+%	\begin{minipage}{.5\linewidth}
+%		\begin{align*}
+%			\gammaprod{P_B^1}{P_B^2}{P}{Q} & \leq \alphamas{P_B^1}{P}{Q},\CV{\quad\forall P,Q\in V_X,\forall P_B^1P_B^2\in \VB,}\\
+%			\gammaprod{P_B^1}{P_B^2}{P}{Q} & \leq \alphamas{P_B^2}{P}{Q},\CV{\quad\forall P,Q\in V_X,\forall P_B^1P_B^2\in \VB,}\\
+%			\gammaprod{P_B^1}{P_B^2}{P}{Q} & \geq \alphamas{P_B^1}{P}{Q} + \alphamas{P_B^2}{P}{Q} - 1\CV{\quad\forall P,Q\in V_X,\forall P_B^1P_B^2\in \VB,}.
+%		\end{align*}
+%	\end{minipage}}
 		\begin{align*}\tag{$\gamma$-C}\label{eq:gammaC}
-			\gammaprod{P_B^1}{P_B^2}{P}{Q} & \leq \alphamas{P_B^1}{P}{Q},\\
-			\gammaprod{P_B^1}{P_B^2}{P}{Q} & \leq \alphamas{P_B^2}{P}{Q},\\
-			\gammaprod{P_B^1}{P_B^2}{P}{Q} & \geq \alphamas{P_B^1}{P}{Q} + \alphamas{P_B^2}{P}{Q} - 1.
+			\gammaprod{P}{Q}{P_B^1}{P_B^2} & \leq \alphamas{P}{P_B^1}{P_B^2},&\CV{\quad\forall P,Q\in V_X,\forall P_B^1P_B^2\in \VB,}\\
+			\gammaprod{P}{Q}{P_B^1}{P_B^2} & \leq \alphamas{Q}{P_B^1}{P_B^2},&\CV{\quad\forall P,Q\in V_X,\forall P_B^1P_B^2\in \VB,}\\
+			\gammaprod{P}{Q}{P_B^1}{P_B^2} & \geq \alphamas{P}{P_B^1}{P_B^2} + \alphamas{Q}{P_B^1}{P_B^2} - 1,&\CV{\quad\forall P,Q\in V_X,\forall P_B^1P_B^2\in \VB,}
 		\end{align*}
-	\end{minipage}
-	
+		\begin{align*}
+			\gammaprod{P_B^1}{P_B^2}{P}{Q} & \leq \alphamas{P_B^1}{P}{Q},&\CV{\quad\forall P,Q\in V_X,\forall P_B^1P_B^2\in \VB,}\\
+			\gammaprod{P_B^1}{P_B^2}{P}{Q} & \leq \alphamas{P_B^2}{P}{Q},&\CV{\quad\forall P,Q\in V_X,\forall P_B^1P_B^2\in \VB,}\\
+			\gammaprod{P_B^1}{P_B^2}{P}{Q} & \geq \alphamas{P_B^1}{P}{Q} + \alphamas{P_B^2}{P}{Q} - 1&\CV{\quad\forall P,Q\in V_X,\forall P_B^1P_B^2\in \VB}.
+		\end{align*}
+
 	\bigskip
 	
 	\newcommand{\deltacheck}[4]{\delta(#1#2|#3#4)}
@@ -460,36 +533,45 @@
 	
 	It is interesting to note that $\EB$ is a fixed set whose edges can be computed by using the Remark \ref{rem:determinants}. Then, $\varepsilon$ variables can be prefixed in advance. However, edges in $E_X\setminus \EB$ depend on the points selected in the neighbourhoods. A special case that can be highlighted happens when the set of neighbourhoods, $\mathcal S$ and $\mathcal T$, are represented by points. In that case, the induced graph is completely fixed and it is only necessary to find which edges are included by keeping in mind that the graph must be planar, i.e., without crossings.
 	
-	\subsection{A formulation for the \KMPHN}\label{ssec:KMPHN}
+	\CV{
+		Once edges $E_X$ are represented by means of $\varepsilon$ variables. Then, some inequalities must be included to assure that the delivery can go from $P$ to $Q$ only if the segment $\segment{P}{Q}$ does not cross any barrier. These depend on the approach taken to model the paths.
+		
+		For the single-commodity approach, we have:
+		\begin{equation*}\tag{single-$f$-C}\label{eq:single-fC}
+			f(PQ)\leq  |\mathcal T|\varepsilonvar{P}{Q},\quad\forall P, Q\in V_X.
+		\end{equation*}
+		
+		This constraint ensures that if there exists a rectilinear path joining $P$ and $Q$, the maximum amount of commodity that flows in this path is the number of targets to serve.
+		
+		For the multi-commodity approach, we state
+		\begin{equation*}\tag{multi-$f$-C}\label{eq:multi-fC}
+			f(PQ|ST)\leq  \varepsilonvar{P}{Q},\quad\forall (P, Q)\in E_X, \forall S\in\mathcal S, \forall T\in\mathcal T.
+		\end{equation*}
 	
-	The formulation of the \KMPHN \ is based on the structure of the well-known $k$-Median Problem where distances between each pair of source-target neighbourhoods are represented by the shortest path joining them without traversing any barrier.
+		This inequality states that if target $T$ is assigned to the source $S$, the vehicle can traverse edge $(P, Q)$ only if it does not cross any barrier.
 	
-	Note that, although computing the shortest paths between every pair of neighbourhoods is possible, converting an instance of the \KMPHN \ into an instance of the standard $k$-median is not, since the points in neighbourhoods are not fixed. However, this simplification can be applied to produce an approximation to generate lower bounds for the \KMPHN.
+ 
+		
+	\subsection{Formulations for the \KMPHN}\label{ssec:KMPHN}
+	
+	The formulations of the \KMPHN \ are based on the structure of the well-known $k$-Median Problem where distances between each pair of source-target neighbourhoods are represented by the shortest path joining them without traversing any barrier.
+	
 	
 	%\newcommand{\gvar}[2]{g(#1#2)}
 	\newcommand{\xvar}[2]{x(#1#2)}
 	
-	Firstly, it is necessary to define the binary variables inherited from the $k$-median:
-	\begin{itemize}
-		\item $y(S)$, that assumes value one if the source neighbourhood $S\in\mathcal S$ is selected.
-		\item $x(ST)$, that is one if the target neighbourhood $T\in\mathcal T$ is assigned to the selected source $S\in\mathcal S$.
-	\end{itemize}
+
+
+		
 	
-	Secondly, adjusting a single-commodity flow formulation to ensure connectivity will also be used. The idea is that the model must deliver one unit of commodity from the selected source neighbourhood to each of the required target neighbourhoods. Then, for each edge $(P, Q)\in \EKMPHN$, a binary variable $f(PQ|ST)$ is defined, and takes the value of one when edge $(P, Q)$ is traversed in the path to go from the source $S$ to the target $T$. 
+
 	
-	
-	
-	
-	Then, the inequalities 
-	
-	\begin{equation*}\tag{$f$-C}\label{eq:fC}
-		f(PQ)\leq  |\mathcal T|\varepsilonvar{P}{Q},
-	\end{equation*}
-	are included to assure that the delivery can go from $P$ to $Q$ only if the segment $\segment{P}{Q}$ does not cross any barrier. 
-	
+
+
+
 	
 	Hence, we can adjust the flow formulation to the induced graph $\GKMPHN$ as follows:
-	
+	}
 	%\textcolor{red}{
 		%\begin{mini*}
 		%	{}{\sum_{(P,Q)\in \EKMPHN}\dvar{P}{Q}f(PQ)}
@@ -509,7 +591,27 @@
 		%	\addConstraint{\eqref{eq:nC}}{\quad\forall P\in \VS\cup \VT.}
 		%\end{mini*}}
 		
-		{\tiny
+		{\scriptsize
+			\begin{mini*}[2]
+				{}{\omega_E\sum_{(P,Q)\in E_X}\dvar{P}{Q}f(PQ) + \frac{\omega_L}{2}\sum_{(P,Q)\in E_X}f(PQ)}
+				{}{}\label{form:H-KMPHN}\tag{H-KMPHN}
+				\addConstraint{\sum_{S\in\mathcal S}y(S)}{=k}{}
+				\addConstraint{x(ST)}{\leq y(S),}{\quad\forall S\in\mathcal S,\quad\forall T\in\mathcal T}
+				\addConstraint{\sum_{S\in\mathcal S} x(ST)}{=1,}{\quad\forall T\in\mathcal T}
+				\addConstraint{\sum_{\{Q\in V_X:(P,Q)\in E_X\}}f(PQ)-\sum_{\{Q\in V_X:(Q,P)\in E_X\}}f(PQ)}	{=\left\{
+					\begin{array}{rl} 
+						\sum_{T\in\mathcal T} x(ST), & \text{if } P\in S, \\
+						0, & \text{if } P\in \VB, \\
+						-1, & \text{if } P\in T.
+					\end{array}
+					\right.}{\quad\forall P\in V_X,\forall S\in\mathcal S,\forall T\in\mathcal T}
+				\addConstraint{\eqref{eq:alphaC},\eqref{eq:betaC},\eqref{eq:gammaC},\eqref{eq:deltaC}}{\quad\forall P, Q\in V_X,\quad\forall P_B^1, P_B^2\in \VB}
+				\addConstraint{\eqref{eq:varepsilonC}, \eqref{eq:fC}, \eqref{eq:dC}}{\quad\forall P, Q\in V_X}
+				\addConstraint{\eqref{eq:nC}}{\quad\forall P\in \VS\cup \VT.}
+		\end{mini*}}
+		
+		
+			{\tiny
 			\begin{mini*}[2]
 				{}{\alpha_E\sum_{(P,Q)\in \EKMPHN}\sum_{S\in\mathcal S}\sum_{T\in\mathcal T}\dvar{P}{Q}f(PQ|ST) + \frac{\alpha_L}{2}\sum_{(P,Q)\in \EKMPHN}\sum_{S\in\mathcal S}\sum_{T\in\mathcal T}f(PQ|ST)}
 				{}{}\label{form:H-KMPHN}\tag{H-KMPHN}
@@ -527,7 +629,6 @@
 				\addConstraint{\eqref{eq:varepsilonC}, \eqref{eq:fC}, \eqref{eq:dC}}{\quad\forall P, Q\in \VKMPHN}
 				\addConstraint{\eqref{eq:nC}}{\quad\forall P\in \VS\cup \VT.}
 		\end{mini*}}
-		
 		%	\addConstraint{\sum_{(P,Q)\in \EKMPHN}\dvar{P}{Q}f(PQ|ST)}{\leq \text{endurance}\,x(ST),}{\quad\forall S\in\mathcal S,\forall T\in\mathcal T}
 		
 		%	\addConstraint{\sum_{\{Q:(P_N, Q)\in \EN\}}\yvar{P_N}{Q}}{\geq 1,}{\quad\forall P_N\in \VN}
