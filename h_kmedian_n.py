@@ -212,7 +212,6 @@ def h_kmedian_n(barriers, sources, targets, k, single = False, wL=50, lazy=True,
     paux_index = aux_index
 
         # print(flow_index)
-
     # if single:
     #     for a, b, c, d in edges_total:
     #         for e, f in vertices_source:
@@ -411,7 +410,7 @@ def h_kmedian_n(barriers, sources, targets, k, single = False, wL=50, lazy=True,
                 model._startobjval = model.cbGet(GRB.Callback.MIPSOL_OBJ)
                 model._starttime = model.cbGet(GRB.Callback.RUNTIME)
 
-                model.terminate()
+                # model.terminate()
 
     model = gp.Model('Model: H-KMedian-N')
 
@@ -456,17 +455,17 @@ def h_kmedian_n(barriers, sources, targets, k, single = False, wL=50, lazy=True,
 
         # print((time_h, objval_h))
 
-        model.read('solution.sol')
+        # model.read('solution.sol')
 
         # print(x_start)
-        # for index in x_start:
-        #     model.addConstr(x[index] >= 0.5)
-        #
-        # for index in y_start:
-        #     model.addConstr(y[index] >= 0.5)
-        #
-        # for index in z_start:
-        #     model.addConstr(z[index] >= 0.5)
+        for index in x_start:
+            x[index].start = 1
+        
+        for index in y_start:
+            y[index].start = 1
+        
+        for index in flow_start:
+            flow[index].start = 1
 
 
     if not (lazy):
@@ -510,10 +509,10 @@ def h_kmedian_n(barriers, sources, targets, k, single = False, wL=50, lazy=True,
                     L, U = eM.estima_M_alpha2(barriers[a-1000][b], sources[c-1], barriers[e-1000][f])
                     model.addConstr((1 - alpha[a, b, c, d, e, f]) * L <= af.determinant(barriers[a - 1000][b],
                                                                                         [point[c, d, 0],
-                                                                                         point[c, d, 1]],
+                                                                                        point[c, d, 1]],
                                                                                         barriers[e - 1000][f]))
                     model.addConstr(af.determinant(barriers[a - 1000][b], [point[c, d, 0], point[c, d, 1]],
-                                                   barriers[e - 1000][f]) <= U * alpha[a, b, c, d, e, f])
+                                                barriers[e - 1000][f]) <= U * alpha[a, b, c, d, e, f])
                 elif (c, d, e, f) in edges_barrier:
                     L = -2*abs(af.determinant(barriers[a-1000][b], barriers[c-1000][d], barriers[e-1000][f]))
                     U = 2*abs(L)
@@ -522,24 +521,24 @@ def h_kmedian_n(barriers, sources, targets, k, single = False, wL=50, lazy=True,
                                                                                         barriers[e - 1000][f]))
                     model.addConstr(
                         U * alpha[a, b, c, d, e, f] >= af.determinant(barriers[a - 1000][b], barriers[c - 1000][d],
-                                                                      barriers[e - 1000][f]))
+                                                                    barriers[e - 1000][f]))
                 elif (c, d, e, f) in edges_target:
                     L, U = eM.estima_M_alpha3(barriers[a-1000][b], barriers[c-1000][d], targets[abs(e)-1])
                     model.addConstr((1 - alpha[a, b, c, d, e, f]) * L <= af.determinant(barriers[a - 1000][b],
                                                                                         barriers[c - 1000][d],
                                                                                         [point[e, f, 0],
-                                                                                         point[e, f, 1]]))
+                                                                                        point[e, f, 1]]))
                     model.addConstr(af.determinant(barriers[a - 1000][b], barriers[c - 1000][d],
-                                                   [point[e, f, 0], point[e, f, 1]]) <= U * alpha[a, b, c, d, e, f])
+                                                [point[e, f, 0], point[e, f, 1]]) <= U * alpha[a, b, c, d, e, f])
                 elif (c, d, e, f) in edges_source_target:
                     L, U = eM.estima_M_alpha4(barriers[a-1000][b], sources[c-1], targets[abs(e)-1])
                     model.addConstr((1 - alpha[a, b, c, d, e, f]) * L <= af.determinant(barriers[a - 1000][b],
                                                                                         [point[c, d, 0],
-                                                                                         point[c, d, 1]],
+                                                                                        point[c, d, 1]],
                                                                                         [point[e, f, 0],
-                                                                                         point[e, f, 1]]))
+                                                                                        point[e, f, 1]]))
                     model.addConstr(af.determinant(barriers[a - 1000][b], [point[c, d, 0], point[c, d, 1]],
-                                                   [point[e, f, 0], point[e, f, 1]]) <= U * alpha[a, b, c, d, e, f])
+                                                [point[e, f, 0], point[e, f, 1]]) <= U * alpha[a, b, c, d, e, f])
 
         model.update()
 
@@ -786,6 +785,16 @@ def h_kmedian_n(barriers, sources, targets, k, single = False, wL=50, lazy=True,
     
     # model.addConstrs(aux.sum(a, b, c, d, '*', '*') == 1 for a, b, c, d in edges_total)
 
+    # indices = [(5, 0, -1, 0), (5, 0, -3, 0), (5, 0, -5, 0), (5, 0, -6, 0), (5, 0, -7, 0), (5, 0, -9, 0), (8, 0, -2, 0), (8, 0, -4, 0), (8, 0, -8, 0), (8, 0, -10, 0)]
+
+    # model.addConstrs(flow[index] == 1 for index in indices)
+    # model.addConstrs(flow[index] == 0 for index in flow_index if index not in indices)
+
+    # model.addConstrs(x[index] == 1 for index in indices)
+    # model.addConstr(y[5, 0] == 1)
+    # model.addConstr(y[8, 0] == 1)
+    
+    
     if single:
         for a, b in vertices_total:
             if (a, b) in vertices_source:

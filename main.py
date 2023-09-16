@@ -77,7 +77,57 @@ wE = 1
 wL = 0
 
 # 279.88
-# resultados = h_kmedian_n(barriers, sources=sources, targets=targets, k=k, wL=wL, single=True, lazy=False, A4=False, time_limit=300, picture=True, init = True)
+resultados = h_kmedian_n(barriers, sources=sources, targets=targets, k=k, wL=wL, single=True, lazy=False, A4=False, time_limit=300, picture=True, init = True)
 
 # print(resultados)
 
+# np.random.seed(5)
+
+# instances = range(5)
+# n_Ns = [10, 20, 30, 50, 80]
+# # n_Ns = [25, 30]
+
+# ks = []
+
+# for nn in n_Ns:
+#     ks.append(k)
+
+# time_limit = 3600
+
+# wE = 1
+
+# # wLs = [50, 100]
+# wLs = [50]
+
+# lazy = [False]
+# # A4 = [True, False]
+# A4 = [True, False]
+
+# inits = [False, True]
+# # inits = [True]
+
+# singles = [False, True]
+# time_limit = 3600
+
+# instance = 0
+
+# nn = 10
+
+# bolas = np.genfromtxt('./instancias/bolas' + str(nn) + '-' + str(instance) + '.csv', delimiter=',')
+
+# N = [neigh.Circle(center=[centro1, centro2], radii=radio, col = 'blue') for centro1, centro2, radio in bolas]
+
+# segments = np.genfromtxt('./instancias/segmentos' + str(nn) + '-' + str(instance) + '.csv', delimiter=',')
+
+# barriers = []
+
+# for lista in segments:
+#     barriers.append([[lista[0], lista[1]], [lista[2], lista[3]]])
+
+# nB = len(barriers)
+
+# sublist = np.random.choice(nB, int(np.floor(0.5*nB)))
+# barriers1 = [barriers[b] for b in sublist]
+
+# resultados = h_kmedian_n(barriers1, sources=N, targets=N, k=k, single=True, wL=50, lazy=False, A4=False, init=False, picture = False,
+#                             time_limit=3600) 
