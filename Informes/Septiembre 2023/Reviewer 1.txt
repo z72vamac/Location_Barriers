@@ -1,0 +1,7 @@
+Reviewer #1: This paper considers the hampered k-median problem with neighbourhoods. This is a continuous location problem on a 2-dimensional space in which there are both neighbours and barriers present. The authors claim that the problem has applications in the delivery industry and in the areas of inspection and surveillance activities.
+
+They develop valid mixed integer formulations formulations for two versions of the problem, first assuming that neighbourhoods are not visible from one another, and later for the case where this assumption is dropped. They develop valid inequalities and present computational experiments that both aim to find the optimal solution and also quick solutions (of good quality) using a. metaheuristic.
+
+From an applications perspective, the contribution is minimal as the applications have not been explored. There is no case study presented, and no effort made to speak to data requirements and availability.
+
+From a theory perspective, the contribution is better but in my opinion is not significant enough to justify publication in C&OR. It is in my view a good incremental paper in this area of research, but I don't think that is good enough for a journal like C&OR.

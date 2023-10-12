@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (MiKTeX 21.6.28) (preloaded format=pdflatex 2021.7.4)  13 SEP 2023 21:29
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (MiKTeX 21.6.28) (preloaded format=pdflatex 2021.7.4)  18 SEP 2023 17:26
 entering extended mode
 **./hampered-kmedian.tex
 (hampered-kmedian.tex
@@ -1025,7 +1025,7 @@ File: pgflibraryarrows.code.tex 2021/05/15 v3.1.9a (3.1.9a)
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 [5] [6]
-Overfull \hbox (11.37099pt too wide) detected at line 378
+Overfull \hbox (11.37099pt too wide) detected at line 380
 [] \OML/cmm/m/it/9 f\OT1/cmr/m/n/9 (\OML/cmm/m/it/9 PQ\OMS/cmsy/m/n/9 j\OML/cmm
 /m/it/9 ST\OT1/cmr/m/n/9 ) \OMS/cmsy/m/n/9   [] \OML/cmm/m/it/9 f\OT1/cmr/m/n/9
  (\OML/cmm/m/it/9 PQ\OMS/cmsy/m/n/9 j\OML/cmm/m/it/9 ST\OT1/cmr/m/n/9 ) = []  \
@@ -1036,71 +1036,35 @@ msy/m/n/9 8\OML/cmm/m/it/9 S \OMS/cmsy/m/n/9 2 S\OML/cmm/m/it/9 ; \OMS/cmsy/m/n
 
 [7] [8] [9]
 
-LaTeX Warning: Reference `eq:gammaC' on page 10 undefined on input line 611.
+LaTeX Warning: Reference `eq:fC' on page 10 undefined on input line 616.
 
 
-LaTeX Warning: Reference `eq:fC' on page 10 undefined on input line 611.
+LaTeX Warning: Reference `eq:fC' on page 10 undefined on input line 616.
 
 
-LaTeX Warning: Reference `eq:gammaC' on page 10 undefined on input line 611.
-
-
-LaTeX Warning: Reference `eq:fC' on page 10 undefined on input line 611.
-
-
-Overfull \hbox (5.42395pt too wide) detected at line 611
+Overfull \hbox (5.42395pt too wide) detected at line 616
 []
  []
 
 [10]
 
-LaTeX Warning: Reference `eq:gammaC' on page 11 undefined on input line 631.
+LaTeX Warning: Reference `eq:fC' on page 11 undefined on input line 636.
 
 
-LaTeX Warning: Reference `eq:fC' on page 11 undefined on input line 631.
+LaTeX Warning: Reference `eq:fC' on page 11 undefined on input line 636.
 
 
-LaTeX Warning: Reference `eq:gammaC' on page 11 undefined on input line 631.
-
-
-LaTeX Warning: Reference `eq:fC' on page 11 undefined on input line 631.
-
-
-Overfull \hbox (25.49031pt too wide) detected at line 631
+Overfull \hbox (25.49031pt too wide) detected at line 636
 []
  []
 
 
-LaTeX Warning: Reference `eq:gammaC' on page 11 undefined on input line 643.
-
-
-LaTeX Warning: Reference `eq:fC' on page 11 undefined on input line 643.
+LaTeX Warning: Reference `eq:fC' on page 11 undefined on input line 648.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[11]
-
-LaTeX Warning: Reference `eq:gammaC' on page 12 undefined on input line 930.
-
-
-LaTeX Warning: Reference `eq:fC' on page 12 undefined on input line 930.
-
-
-LaTeX Warning: Reference `eq:gammaC' on page 12 undefined on input line 930.
-
-
-LaTeX Warning: Reference `eq:fC' on page 12 undefined on input line 930.
-
-
-Overfull \hbox (5.88399pt too wide) detected at line 930
-[]
- []
-
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-[12] [13] [14] [15]
+[11] [12] [13] [14]
 (C:\Users\G731\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendlayer/tikz
 /libraries\tikzlibrarypatterns.code.tex
 File: tikzlibrarypatterns.code.tex 2021/05/15 v3.1.9a (3.1.9a)
@@ -1123,7 +1087,10 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[16] (hampered-kmedian.bbl [17]) [18] [19] [20] (hampered-kmedian.aux)
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[15] (hampered-kmedian.bbl [16] [17]) [18] [19] [20] (hampered-kmedian.aux)
 
 LaTeX Warning: There were undefined references.
 
@@ -1132,10 +1099,10 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 29371 strings out of 478847
- 717299 string characters out of 2848861
- 1402657 words of memory out of 3000000
- 46753 multiletter control sequences out of 15000+600000
+ 29370 strings out of 478847
+ 717286 string characters out of 2848861
+ 1402542 words of memory out of 3000000
+ 46752 multiletter control sequences out of 15000+600000
  428319 words of font info for 95 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  84i,26n,84p,2066b,2312s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1182,7 +1149,7 @@ cmsy5.pfb><C:/Users/G731/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfo
 nts/cm/cmsy6.pfb><C:/Users/G731/AppData/Local/Programs/MiKTeX/fonts/type1/publi
 c/amsfonts/cm/cmsy7.pfb><C:/Users/G731/AppData/Local/Programs/MiKTeX/fonts/type
 1/public/amsfonts/cm/cmsy9.pfb>
-Output written on hampered-kmedian.pdf (20 pages, 481836 bytes).
+Output written on hampered-kmedian.pdf (20 pages, 479107 bytes).
 PDF statistics:
  631 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)

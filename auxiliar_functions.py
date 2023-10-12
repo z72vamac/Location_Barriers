@@ -790,52 +790,6 @@ def estima_det(neighborhood, barrera):
 
     return L, U
 
-
-def estima_L(neighborhood, punto):
-    if type(punto) is neigh.Circle:
-        centro1 = neighborhood.center
-        centro2 = punto.center
-
-        dis = np.linalg.norm(np.array(centro1) - np.array(centro2)) - neighborhood.radii - punto.radii
-
-    else:
-        if type(neighborhood) is neigh.Circle:
-            centro = neighborhood.center
-            dis = np.linalg.norm(np.array(centro) - np.array(punto)) - neighborhood.radii
-
-            # dist = 0
-
-        if type(neighborhood) is neigh.Poligonal:
-            dis = dist_point_segment(punto, neighborhood)
-            # dr = np.array(neighborhood.V[1]) - np.array(neighborhood.V[0])
-            #
-            # A, B = -dr[1], dr[0]
-            #
-            # C = -A*neighborhood.V[0][0] - B*neighborhood.V[0][1]
-            #
-            # dis = abs(A*punto[0] + B*punto[1] + C)/np.sqrt(A**2 + B**2)
-
-    return dis
-
-
-def estima_U(neighborhood, punto):
-    if type(punto) is neigh.Circle:
-        centro1 = neighborhood.center
-        centro2 = punto.center
-
-        dis = np.linalg.norm(np.array(centro1) - np.array(centro2)) + neighborhood.radii + punto.radii
-
-    else:
-        if type(neighborhood) is neigh.Circle:
-            dis = np.linalg.norm(np.array(neighborhood.center) - np.array(punto)) + neighborhood.radii
-
-            # dist = 10000
-
-        if type(neighborhood) is neigh.Poligonal:
-            dis = max([np.linalg.norm(np.array(neighborhood.V[i]) - np.array(punto)) for i in range(2)])
-
-    return dis
-
 def dominant_set(neighborhoods, barriers):
     """
     Function that provides the dominant set of points candidates to be selected in the neighborhoods in the optimal

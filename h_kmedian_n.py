@@ -655,9 +655,8 @@ def h_kmedian_n(barriers, sources, targets, k, single = False, wL=50, lazy=True,
             if (a, b, c, d) in edges_source:
 
                 source = sources[a - 1]
-                punto = barriers[c-1000][d]
-                L_out = af.estima_L(source, punto)
-                U_out = af.estima_U(source, punto)
+                punto = neigh.Punto(barriers[c-1000][d])
+                L_out, U_out = eM.estima_M_complete(source, punto)
 
                 # print((L_out, U_out))
                 # model.addConstr(paux[a, b, c, d, e, f] <= U_out * aux[a, b, c, d, e, f])
@@ -668,9 +667,9 @@ def h_kmedian_n(barriers, sources, targets, k, single = False, wL=50, lazy=True,
             if (a, b, c, d) in edges_target:
 
                 target = targets[abs(c) - 1]
-                punto = barriers[a-1000][b]
-                L_out = af.estima_L(target, punto)
-                U_out = af.estima_U(target, punto)
+                punto = neigh.Punto(barriers[a-1000][b])
+                
+                L_out, U_out = eM.estima_M_complete(target, punto)
 
                 # print((L_out, U_out))
                 # model.addConstr(paux[a, b, c, d, e, f] <= U_out * aux[a, b, c, d, e, f])
@@ -679,9 +678,8 @@ def h_kmedian_n(barriers, sources, targets, k, single = False, wL=50, lazy=True,
                 model.addConstr(paux[a, b, c, d, e, f] >= dist[a, b, c, d] - U_out* (1 -aux[a, b, c, d, e, f]))
 
             if (a, b, c, d) in edges_barrier:
-
-                L_out = np.linalg.norm(np.array(barriers[a - 1000][b]) - np.array(barriers[c - 1000][d]))
-                U_out = np.linalg.norm(np.array(barriers[a - 1000][b]) - np.array(barriers[c - 1000][d]))
+                
+                L_out, U_out = eM.estima_M_complete(neigh.Punto(np.array(barriers[a - 1000][b])), neigh.Punto(np.array(barriers[c - 1000][d])))
 
                 # model.addConstr(paux[a, b, c, d, e, f] <= U_out * aux[a, b, c, d, e, f])
                 # model.addConstr(paux[a, b, c, d, e, f] <= dist[a, b, c, d])
@@ -691,10 +689,9 @@ def h_kmedian_n(barriers, sources, targets, k, single = False, wL=50, lazy=True,
             elif (a, b, c, d) in edges_source_target:
 
                 target = targets[abs(c) - 1]
-                punto = sources[a - 1]
+                source = sources[a - 1]
 
-                L_out = af.estima_L(target, punto)
-                U_out = af.estima_U(target, punto)
+                L_out, U_out = eM.estima_M_complete(target, source)
 
                 # model.addConstr(paux[a, b, c, d, e, f] <= U_out * aux[a, b, c, d, e, f])
                 # model.addConstr(paux[a, b, c, d, e, f] <= dist[a, b, c, d])
@@ -708,9 +705,9 @@ def h_kmedian_n(barriers, sources, targets, k, single = False, wL=50, lazy=True,
             if (a, b, c, d) in edges_source:
 
                 source = sources[a - 1]
-                punto = barriers[c-1000][d]
-                L_out = af.estima_L(source, punto)
-                U_out = af.estima_U(source, punto)
+                punto = neigh.Punto(barriers[c-1000][d])
+                
+                L_out, U_out = eM.estima_M_complete(source, punto)
 
                 # print((L_out, U_out))
                 # model.addConstr(paux[a, b, c, d, e, f] <= U_out * aux[a, b, c, d, e, f])
@@ -721,9 +718,9 @@ def h_kmedian_n(barriers, sources, targets, k, single = False, wL=50, lazy=True,
             if (a, b, c, d) in edges_target:
 
                 target = targets[abs(c) - 1]
-                punto = barriers[a-1000][b]
-                L_out = af.estima_L(target, punto)
-                U_out = af.estima_U(target, punto)
+                punto = neigh.Punto(barriers[a-1000][b])
+
+                L_out, U_out = eM.estima_M_complete(target, punto)
 
                 # print((L_out, U_out))
                 # model.addConstr(paux[a, b, c, d, e, f] <= U_out * aux[a, b, c, d, e, f])
@@ -733,8 +730,7 @@ def h_kmedian_n(barriers, sources, targets, k, single = False, wL=50, lazy=True,
 
             if (a, b, c, d) in edges_barrier:
 
-                L_out = np.linalg.norm(np.array(barriers[a - 1000][b]) - np.array(barriers[c - 1000][d]))
-                U_out = np.linalg.norm(np.array(barriers[a - 1000][b]) - np.array(barriers[c - 1000][d]))
+                L_out, U_out = eM.estima_M_complete(neigh.Punto(np.array(barriers[a - 1000][b])), neigh.Punto(np.array(barriers[c - 1000][d])))
 
                 # model.addConstr(paux[a, b, c, d, e, f] <= U_out * aux[a, b, c, d, e, f])
                 # model.addConstr(paux[a, b, c, d, e, f] <= dist[a, b, c, d])
@@ -744,10 +740,9 @@ def h_kmedian_n(barriers, sources, targets, k, single = False, wL=50, lazy=True,
             elif (a, b, c, d) in edges_source_target:
 
                 target = targets[abs(c) - 1]
-                punto = sources[a - 1]
+                source = sources[a - 1]
 
-                L_out = af.estima_L(target, punto)
-                U_out = af.estima_U(target, punto)
+                L_out, U_out = eM.estima_M_complete(target, source)
 
                 # model.addConstr(paux[a, b, c, d, e, f] <= U_out * aux[a, b, c, d, e, f])
                 # model.addConstr(paux[a, b, c, d, e, f] <= dist[a, b, c, d])
@@ -846,8 +841,6 @@ def h_kmedian_n(barriers, sources, targets, k, single = False, wL=50, lazy=True,
     if not (A4):
         model.Params.NonConvex = 2
 
-    # model.write('prueba.lp')
-    # model.write('prueba.mps')
     if lazy:
         model.optimize(elimcuts)
     elif init:
@@ -895,23 +888,6 @@ def h_kmedian_n(barriers, sources, targets, k, single = False, wL=50, lazy=True,
         x_indices = [(index, x[index].X) for index in x.keys() if x[index].X > 0.5]
         dist_indices = [(index, dist[index[0:4]].X) for index in flow.keys() if flow[index].X > 0.5]
         p_indices = [(index, p[index].X) for index in p.keys() if x[index].X > 0.5]
-    # paux_indices = [(index, paux[index].X) for index in paux.keys() if flow[index[0:4]].X > 0.5]
-    # aux_indices = [(index, aux[index].X) for index in aux.keys() if aux[index].X > 0.5]
-
-    # print("x_indices:")
-    # print(x_indices)
-    #
-    # print("aux_indices:")
-    # print(aux_indices)
-    #
-    # print("paux_indices:")
-    # print(paux_indices)
-    #
-    # print("p_indices:")
-    # print(p_indices)
-    #
-    # print("dist_indices:")
-    # print(dist_indices)
 
     x_indices = [index for index in x.keys() if x[index].X > 0.5]
 
@@ -924,15 +900,6 @@ def h_kmedian_n(barriers, sources, targets, k, single = False, wL=50, lazy=True,
         print(y_indices)
     
     print(flow_indices)
-
-    # g_indices = []
-    #
-    # for index in g_index:
-    #     if g[index].X > 0.5:
-    #         g_indices.append(g[index])
-    #
-    # if log:
-    #     print(g_indices)
 
     if picture:
         fig, ax = plt.subplots()
@@ -951,9 +918,6 @@ def h_kmedian_n(barriers, sources, targets, k, single = False, wL=50, lazy=True,
 
         for a, b in y_indices:
             ax.scatter(point[a, b, 0].X, point[a, b, 1].X, s = 30, c = 'black')
-
-        # for c, d in vertices_source:
-        #     ax.scatter(point[c, d, 0].X, point[c, d, 1].X, s = 10, c = 'black')
 
         segments = []
 
@@ -985,14 +949,11 @@ def h_kmedian_n(barriers, sources, targets, k, single = False, wL=50, lazy=True,
                     segments.append([point[a, b, 0].X, point[c, d, 0].X, point[a, b, 1].X, point[c, d, 1].X])
 
 
-
-        # print(segments)
-
         for segment in segments:
             ax.arrow(segment[0], segment[2], segment[1] - segment[0], segment[3] - segment[2], width=0.1,
                      head_width=1, length_includes_head=True, color='black')
 
-        # plt.axis([-5, 105, -5, 105])
+
         plt.axis([0, 100, 0, 100])
 
         ax.set_aspect('equal')

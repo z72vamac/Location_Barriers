@@ -287,6 +287,8 @@
 	\begin{itemize}
 		\item $\EST=\{(P_S, P_T):P_S\in\VS, P_T\in\VT \text{ and } \overline{P_SP_T}\cap B''=\emptyset,\forall B''\in\B,\:i=1,2\}$. Set of edges formed by the line segments that join the point selected in any source neighbourhood $S\in \mathcal{S}$ and the point selected in any target neighbourhood $T\in \mathcal{T}$.
 	\end{itemize}
+
+	\CV{The difference between the set of edges in the \KMPHN \xspace with respect to the graph in \KMPN \ is that, in the former case, the edges that join each pair of neighbourhoods must be considered.}
 	
 	\section{MINLP Formulations}\label{section:formulations}
 	
@@ -456,6 +458,8 @@
 	%\newcommand{\betacero}[4]{\beta^{0\,}(#1#2|#3#4)}
 	%\newcommand{\betapunto}[4]{\beta^{\cdotp}(#1#2|#3#4)}
 	
+	\CV{The fact of considering the possibility of going directly from one to other neighbourhood leads to include product of continuous variables in the $\alpha$ constraints of the model that represent the determinants. These products make the \KMPN to become non-convex. However, in the \KMPHN, since two of the three arguments of the determinant are fixed, the $\alpha$ constraints become linear. It motivates the comparison between two formulations in terms of computational cost of considering the more general version, studied in Section \ref{section:experiments}.}
+			 
 	Secondly, to check whether the sign of any pair
 	\begin{equation}\label{eq:pair}
 		\determinant{P}{P_B^1}{P_B^2},\: \determinant{Q}{P_B^1}{P_B^2}\quad \text{or} \quad \determinant{P_B^1}{P}{Q},\:	 \determinant{P_B^2}{P}{Q}
@@ -472,12 +476,12 @@
 	\end{align*}}
 
 	This condition can be equivalently written by means of an auxiliary binary variable $\gamma$ that models the product of the $\alpha$ variables:
+	{\small
 	\begin{align*}\tag{$\beta$-C}\label{eq:betaC}
 		\betamas{P}{Q}{P_B^1}{P_B^2}&=2\gammaprod{P}{Q}{P_B^1}{P_B^2} -\alphamas{P}{P_B^1}{P_B^2}-\alphamas{Q}{P_B^1}{P_B^2}+1,&\CV{\quad\forall P,Q\in V_X,\forall P_B^1P_B^2\in \VB,}\\
 		\betamas{P_B^1}{P_B^2}{P}{Q}&=2\gammaprod{P_B^1}{P_B^2}{P}{Q} -\alphamas{P_B^1}{P}{Q}-\alphamas{P_B^2}{P}{Q}+1,&\CV{\quad\forall P,Q\in V_X,\forall P_B^1P_B^2\in \VB.}
-	\end{align*}
+	\end{align*}}
 	These $\gamma$ variables can be linearized by using the following constraints:
-	
 %	{\small
 %	\begin{minipage}{.5\linewidth}
 %		\begin{align*}
@@ -493,6 +497,7 @@
 %			\gammaprod{P_B^1}{P_B^2}{P}{Q} & \geq \alphamas{P_B^1}{P}{Q} + \alphamas{P_B^2}{P}{Q} - 1\CV{\quad\forall P,Q\in V_X,\forall P_B^1P_B^2\in \VB,}.
 %		\end{align*}
 %	\end{minipage}}
+		{\small
 		\begin{align*}\tag{$\gamma$-C}\label{eq:gammaC}
 			\gammaprod{P}{Q}{P_B^1}{P_B^2} & \leq \alphamas{P}{P_B^1}{P_B^2},&\CV{\quad\forall P,Q\in V_X,\forall P_B^1P_B^2\in \VB,}\\
 			\gammaprod{P}{Q}{P_B^1}{P_B^2} & \leq \alphamas{Q}{P_B^1}{P_B^2},&\CV{\quad\forall P,Q\in V_X,\forall P_B^1P_B^2\in \VB,}\\
@@ -502,16 +507,15 @@
 			\gammaprod{P_B^1}{P_B^2}{P}{Q} & \leq \alphamas{P_B^1}{P}{Q},&\CV{\quad\forall P,Q\in V_X,\forall P_B^1P_B^2\in \VB,}\\
 			\gammaprod{P_B^1}{P_B^2}{P}{Q} & \leq \alphamas{P_B^2}{P}{Q},&\CV{\quad\forall P,Q\in V_X,\forall P_B^1P_B^2\in \VB,}\\
 			\gammaprod{P_B^1}{P_B^2}{P}{Q} & \geq \alphamas{P_B^1}{P}{Q} + \alphamas{P_B^2}{P}{Q} - 1&\CV{\quad\forall P,Q\in V_X,\forall P_B^1P_B^2\in \VB}.
-		\end{align*}
-
-	\bigskip
+		\end{align*}}
 	
 	\newcommand{\deltacheck}[4]{\delta(#1#2|#3#4)}
 	
 	Thirdly, verifying whether there exists any coincidence of the sign of determinants is required, so a binary variable $\delta$ is defined  assuming the value one if segments do not intersect and zero, otherwise. This condition can be modelled by adopting the following disjunctive constraints:
+	{\small
 	\begin{equation*}\tag{$\delta$-C}\label{eq:deltaC}
-		\frac{1}{2}\left[\betamas{P}{Q}{P_B^1}{P_B^2}+\betamas{P_B^1}{P_B^2}{P}{Q}\right]\leq\deltacheck{P}{Q}{P_B^1}{P_B^2}\leq \betamas{P}{Q}{P_B^1}{P_B^2}+\betamas{P_B^1}{P_B^2}{P}{Q}.
-	\end{equation*}
+		\frac{1}{2}\left[\betamas{P}{Q}{P_B^1}{P_B^2}+\betamas{P_B^1}{P_B^2}{P}{Q}\right]\leq\deltacheck{P}{Q}{P_B^1}{P_B^2}\leq \betamas{P}{Q}{P_B^1}{P_B^2}+\betamas{P_B^1}{P_B^2}{P}{Q},\CV{\quad\forall P,Q\in V_X,\forall P_B^1P_B^2\in \VB.}
+	\end{equation*}}
 	Indeed, the above restrictions state that if there exists a sign coincidence in any of the two pairs of determinants in \eqref{eq:pair}, then $\delta$ is one to satisfy the left constraint, and the right one is always fulfilled. However, if none of the signs of any pairs of determinants is the same, then the second constraint is zero and $\delta$ must be null.
 	
 	\newcommand{\varepsilonvar}[2]{\varepsilon(#1#2)}
@@ -521,7 +525,7 @@
 	
 	the binary variable $\varepsilonvar{P}{Q}$ is introduced, and it is one if this condition is verified for all $B''\in\B$. This variable can be expressed as: 
 	\begin{equation*}\tag{$\varepsilon$-C}\label{eq:varepsilonC}
-		\left[\sum_{B''\in\mathcal B}\deltacheck{P}{Q}{P^1_{B''}}{P^2_{B''}}-|\mathcal B|\right] + 1\leq \varepsilonvar{P}{Q}\leq \frac{1}{|\B|}\sum_{B''\in\mathcal B}\deltacheck{P}{Q}{P^1_{B''}}{P^2_{B''}}.
+		\left[\sum_{B''\in\mathcal B}\deltacheck{P}{Q}{P^1_{B''}}{P^2_{B''}}-|\mathcal B|\right] + 1\leq \varepsilonvar{P}{Q}\leq \frac{1}{|\B|}\sum_{B''\in\mathcal B}\deltacheck{P}{Q}{P^1_{B''}}{P^2_{B''}},\CV{\quad\forall P,Q\in V_X.}
 	\end{equation*}
 	
 	If there exists, at least, a barrier $B''\in\B$ that intersects the segment $\overline{PQ}$, then $\deltacheck{P}{Q}{P^1_{B''}}{P^2_{B''}}$ is zero and the second inequality enforces $\varepsilon$ to be zero because the right hand side is fractional and the first inequality is non-positive. However, if no barrier intersects the segment $\segment{P}{Q}$, then $\varepsilon$ is equals to one, because the left hand side of the first inequality is one and the right hand side of the second inequality too.
@@ -534,7 +538,7 @@
 	It is interesting to note that $\EB$ is a fixed set whose edges can be computed by using the Remark \ref{rem:determinants}. Then, $\varepsilon$ variables can be prefixed in advance. However, edges in $E_X\setminus \EB$ depend on the points selected in the neighbourhoods. A special case that can be highlighted happens when the set of neighbourhoods, $\mathcal S$ and $\mathcal T$, are represented by points. In that case, the induced graph is completely fixed and it is only necessary to find which edges are included by keeping in mind that the graph must be planar, i.e., without crossings.
 	
 	\CV{
-		Once edges $E_X$ are represented by means of $\varepsilon$ variables. Then, some inequalities must be included to assure that the delivery can go from $P$ to $Q$ only if the segment $\segment{P}{Q}$ does not cross any barrier. These depend on the approach taken to model the paths.
+		Once edges $E_X$ are represented by means of $\varepsilon$ variables, some inequalities must be included to assure that the delivery from $P$ to $Q$ can be produced only if the segment $\segment{P}{Q}$ does not cross any barrier. These depend on the approach taken to model the paths.
 		
 		For the single-commodity approach, we have:
 		\begin{equation*}\tag{single-$f$-C}\label{eq:single-fC}
@@ -552,9 +556,10 @@
 	
  
 		
-	\subsection{Formulations for the \KMPHN}\label{ssec:KMPHN}
+	\subsection{Formulations for the Hampered $k$-Median Problem with Neighbourhoods}\label{ssec:KMPHN}
 	
-	The formulations of the \KMPHN \ are based on the structure of the well-known $k$-Median Problem where distances between each pair of source-target neighbourhoods are represented by the shortest path joining them without traversing any barrier.
+	\CV{The formulations of the \KMPN are based on the structure of the well-known $k$-Median Problem where distances between each pair of source-target neighbourhoods are represented by the shortest path joining them without traversing any barrier, as stated before. Putting together all the constraints explained along this section, we can describe two formulations based on the two approaches to model the flow between sources and targets. The single-commodity formulation adjusted to the induced graph $G_X$, $X\in{}}
+%	The formulations of the \KMPHN \ 
 	
 	
 	%\newcommand{\gvar}[2]{g(#1#2)}
@@ -658,7 +663,7 @@
 		%\input{figures/Example_ H-TSP-S_ Solution}
 		
 		\begin{prop}
-			The \KMPHN \ is NP-complete.
+			The \KMPN \ is NP-complete.
 		\end{prop}
 		
 		Note that, once a point is fixed in each neighbourhood, the problem that results in the induced graph $\GKMPHN$ is the $k$-median with geodesic distances, that is NP-complete. Figure \ref{fig:optimalsolution_kmphn} shows the solutions of the problem data in Figure \ref{fig:initialdata} for $k=1,2,3$, respectively.
@@ -895,41 +900,41 @@
 			\label{fig:optimalsolution_kmphn}
 		\end{figure}
 		
-		\subsection{Relaxing the assumptions of the problem: The \KMPN}
+%		\subsection{Relaxing the assumptions of the problem: The \KMPN}
+%		
+%		In this subsection, we analyze the differences between the \KMPHN \ and the \KMPN, where it is allowed that rectilinear paths joining a source neighbourhood with a target neighbourhood may exist. The main difference lies in the description of the edges of the graph induced by the neighbourhoods and the endpoints of the barriers, as shown in Subsection \ref{subsection:descriptionKMPN}.
+%		
+%		%	By taking the same approach as before, the sets that describe the graph in the new case are $\VN$, $\VB$, $V_{\rm TSPV}$ and $E_{\rm TSPV}$, as described in Subsection \ref{ssec:TSPN}.
+%		
+%		%		\begin{itemize}
+%			%			\item $\VN=\{P_N:N\in\mathcal N\}$: set of points in the neighbourhoods $\mathcal N$ that must be visited.
+%			%			\item $\VB=\{P^1_B, P^2_B:B=\overline{P^1_B P^2_B}\in \mathcal B\}$: set of endpoints of the barriers in the problem.
+%			%			\item $V = \VN \cup \VB$.
+%			%			\item $E=\{(P, P'):P, P' \in V \text{ and } \overline{PP'}\cap B''=\emptyset,\forall B''\in\B\}$: set of edges formed by the line segments that join every pair of points in $V$ and that do not cross any barrier.
+%			%		\end{itemize} 
+%		
+%		By taking the same approach as before, the sets that describe the graph in the new case are $\VKMPN$ and $\EKMPN$, as described in Subsection \ref{ssec:KMPHN}. The formulation for the \KMPN \ is as follows:
+%		
+%		{\tiny
+%			\begin{mini*}[2]
+%				{}{\alpha_E\sum_{(P,Q)\in \EKMPN}\sum_{S\in\mathcal S}\sum_{T\in\mathcal T}\dvar{P}{Q}f(PQ|ST) + \frac{\alpha_L}{2}\sum_{(P,Q)\in \EKMPN}\sum_{S\in\mathcal S}\sum_{T\in\mathcal T}f(PQ|ST)}
+%				{}{}\label{form:H-KMPN}\tag{H-KMPN}
+%				\addConstraint{\sum_{S\in\mathcal S}y(S)}{=k}{}
+%				\addConstraint{x(ST)}{\leq y(S),}{\quad\forall S\in\mathcal S,\quad\forall T\in\mathcal T}
+%				\addConstraint{\sum_{S\in\mathcal S} x(ST)}{=1,}{\quad\forall T\in\mathcal T}
+%				\addConstraint{\sum_{\{Q\in \VKMPN:(P,Q)\in \EKMPN\}}f(PQ|ST)-\sum_{\{Q\in \VKMPN:(Q,P)\in \EKMPN\}}f(PQ|ST)}	{=\left\{
+%					\begin{array}{rl} 
+%						x(ST), & \text{if } P\in S, \\
+%						0, & \text{if } P\in \VB, \\
+%						-x(ST), & \text{if }P\in T.
+%					\end{array}
+%					\right.}{\quad\forall S\in\mathcal S,\forall T\in\mathcal T}
+%				\addConstraint{\eqref{eq:alphaC},\eqref{eq:betaC},\eqref{eq:gammaC},\eqref{eq:deltaC}}{\quad\forall P, Q\in \VKMPN,\quad\forall P_B^1, P_B^2\in \VB}
+%				\addConstraint{\eqref{eq:varepsilonC}, \eqref{eq:fC}, \eqref{eq:dC}}{\quad\forall P, Q\in \VKMPN}
+%				\addConstraint{\eqref{eq:nC}}{\quad\forall P\in \VS\cup \VT.}
+%		\end{mini*}}
 		
-		In this subsection, we analyze the differences between the \KMPHN \ and the \KMPN, where it is allowed that rectilinear paths joining a source neighbourhood with a target neighbourhood may exist. The main difference lies in the description of the edges of the graph induced by the neighbourhoods and the endpoints of the barriers, as shown in Subsection \ref{subsection:descriptionKMPN}.
-		
-		%	By taking the same approach as before, the sets that describe the graph in the new case are $\VN$, $\VB$, $V_{\rm TSPV}$ and $E_{\rm TSPV}$, as described in Subsection \ref{ssec:TSPN}.
-		
-		%		\begin{itemize}
-			%			\item $\VN=\{P_N:N\in\mathcal N\}$: set of points in the neighbourhoods $\mathcal N$ that must be visited.
-			%			\item $\VB=\{P^1_B, P^2_B:B=\overline{P^1_B P^2_B}\in \mathcal B\}$: set of endpoints of the barriers in the problem.
-			%			\item $V = \VN \cup \VB$.
-			%			\item $E=\{(P, P'):P, P' \in V \text{ and } \overline{PP'}\cap B''=\emptyset,\forall B''\in\B\}$: set of edges formed by the line segments that join every pair of points in $V$ and that do not cross any barrier.
-			%		\end{itemize} 
-		
-		By taking the same approach as before, the sets that describe the graph in the new case are $\VKMPN$ and $\EKMPN$, as described in Subsection \ref{ssec:KMPHN}. The formulation for the \KMPN \ is as follows:
-		
-		{\tiny
-			\begin{mini*}[2]
-				{}{\alpha_E\sum_{(P,Q)\in \EKMPN}\sum_{S\in\mathcal S}\sum_{T\in\mathcal T}\dvar{P}{Q}f(PQ|ST) + \frac{\alpha_L}{2}\sum_{(P,Q)\in \EKMPN}\sum_{S\in\mathcal S}\sum_{T\in\mathcal T}f(PQ|ST)}
-				{}{}\label{form:H-KMPN}\tag{H-KMPN}
-				\addConstraint{\sum_{S\in\mathcal S}y(S)}{=k}{}
-				\addConstraint{x(ST)}{\leq y(S),}{\quad\forall S\in\mathcal S,\quad\forall T\in\mathcal T}
-				\addConstraint{\sum_{S\in\mathcal S} x(ST)}{=1,}{\quad\forall T\in\mathcal T}
-				\addConstraint{\sum_{\{Q\in \VKMPN:(P,Q)\in \EKMPN\}}f(PQ|ST)-\sum_{\{Q\in \VKMPN:(Q,P)\in \EKMPN\}}f(PQ|ST)}	{=\left\{
-					\begin{array}{rl} 
-						x(ST), & \text{if } P\in S, \\
-						0, & \text{if } P\in \VB, \\
-						-x(ST), & \text{if }P\in T.
-					\end{array}
-					\right.}{\quad\forall S\in\mathcal S,\forall T\in\mathcal T}
-				\addConstraint{\eqref{eq:alphaC},\eqref{eq:betaC},\eqref{eq:gammaC},\eqref{eq:deltaC}}{\quad\forall P, Q\in \VKMPN,\quad\forall P_B^1, P_B^2\in \VB}
-				\addConstraint{\eqref{eq:varepsilonC}, \eqref{eq:fC}, \eqref{eq:dC}}{\quad\forall P, Q\in \VKMPN}
-				\addConstraint{\eqref{eq:nC}}{\quad\forall P\in \VS\cup \VT.}
-		\end{mini*}}
-		
-		The difference between the set of edges in the \KMPHN \xspace with respect to the graph in \KMPN \ is that, in the former case, the edges that join each pair of neighbourhoods must be considered. This fact leads to include product of continuous variables in the $\alpha$ constraints of the model that represent the determinants. These products make the problem to become non-convex. Alternatively, in the \KMPHN, since two of the three arguments of the determinant are fixed, the $\alpha$ constraints become linear.
+
 		
 		Again, the problem data in Figure \ref{fig:initialdata}, with a smaller number of barriers, is used to illustrate the solutions of the \KMPN \ for $k=1,2,3$, respectively.
 		
