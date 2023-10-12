@@ -83,16 +83,16 @@ for instance in instances:
                                 print('Lazy mode: ' + str(l))
                                 print('Init: ' + str(init))
                                 print('Percentage of barriers: ' + str(perc) + '%\n\n')
-                            
-                                if perc < 1:
-                                    sublist = np.random.choice(nB, int(np.floor(perc*nB)))
-                                    barriers1 = [barriers[b] for b in sublist]
+                                
+                                sublist = np.random.choice(nB, int(np.floor(perc*nB)))
+                                barriers1 = [barriers[b] for b in sublist]
 
+                                if perc < 1:
                                     A4 = False
                                 else:
                                     A4 = True
 
-                                resultados = h_kmedian_n(barriers1, sources=neighbourhoods, targets=neighbourhoods, k=k, single=True, wL=wL, lazy=l, A4=A4, init=init, time_limit=time_limit)
+                                resultados = h_kmedian_n(barriers1, sources=neighbourhoods, targets=neighbourhoods, k=k, single=False, wL=wL, lazy=l, A4=A4, init=init, time_limit=time_limit)
                                 serie = pd.Series([instance] + resultados, index=dataframe.columns)
 
                                 dataframe = dataframe.append(serie, ignore_index=True)
