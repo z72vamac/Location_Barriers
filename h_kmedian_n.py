@@ -467,14 +467,15 @@ def h_kmedian_n(barriers, sources, targets, k, single = False, wL=50, lazy=True,
         for index in flow_start:
             flow[index].start = 1
 
+    L_first = -100000
+    U_first = 100000
 
     if not (lazy):
         # alpha-C
         for a, b, c, d, e, f in alpha_index:
             # Dos primeras
             # print((a, b, c, d, e, f))
-            L = -100000
-            U = 100000
+
             if (c, d, e, f) in indices_barriers:
                 if (a, b) in vertices_source + vertices_target:
                     if (a, b) in vertices_source:
@@ -482,63 +483,53 @@ def h_kmedian_n(barriers, sources, targets, k, single = False, wL=50, lazy=True,
 
                     elif (a, b) in vertices_target:
                         L, U = eM.estima_M_alpha1(targets[abs(a)-1], barriers[c-1000][0], barriers[e-1000][1])
+                    
                     # L, U = af.estima_det(sources[a - 1], [barriers[c - 1000][0], barriers[c - 1000][1], barriers[e - 1000][0], barriers[e - 1000][1]])
                     model.addConstr(
-                        (1 - alpha[a, b, c, d, e, f]) * L <= af.determinant([point[a, b, 0], point[a, b, 1]],
-                                                                            barriers[c - 1000][d],
-                                                                            barriers[e - 1000][f]))
-                    model.addConstr(-U * alpha[a, b, c, d, e, f] <= -af.determinant([point[a, b, 0], point[a, b, 1]],
-                                                                                    barriers[c - 1000][d],
-                                                                                    barriers[e - 1000][f]))
-                elif (a, b) in vertices_barrier:
-                    L = -2*abs(af.determinant(barriers[a-1000][b], barriers[c-1000][0], barriers[e-1000][1]))
-                    U = 2*abs(L)
-                    model.addConstr((1 - alpha[a, b, c, d, e, f]) * L <= af.determinant(barriers[a - 1000][b],
-                                                                                        barriers[c - 1000][d],
-                                                                                        barriers[e - 1000][f]))
+                        af.determinant([point[a, b, 0], point[a, b, 1]], barriers[c - 1000][d], barriers[e - 1000][f]) >= (1 - alpha[a, b, c, d, e, f]) * L)
+                    
                     model.addConstr(
-                        -U * alpha[a, b, c, d, e, f] <= -af.determinant(barriers[a - 1000][b], barriers[c - 1000][d],
-                                                                        barriers[e - 1000][f]))
-                # else:
-                #     # L, U = af.estima_det(targets[abs(a) - 1], [barriers[c - 1000][0], barriers[c - 1000][1], barriers[e - 1000][0], barriers[e - 1000][1]])
-                #     model.addConstr((1-alpha[a,b,c,d,e,f])*L <= af.determinant([point[a, b, 0], point[a, b, 1]], barriers[c-1000][d], barriers[e-1000][f]))
-                #     model.addConstr(-U*alpha[a,b,c,d,e,f]<= -af.determinant([point[a, b, 0], point[a, b, 1]], barriers[c-1000][d], barriers[e-1000][f]))
+                        af.determinant([point[a, b, 0], point[a, b, 1]], barriers[c - 1000][d], barriers[e - 1000][f]) <= U * alpha[a, b, c, d, e, f])
+
+                elif (a, b) in vertices_barrier:
+                    if (af.determinant(barriers[a - 1000][b], barriers[c - 1000][d], barriers[e - 1000][f]) <= 0):
+                        alpha[a, b, c, d, e, f] = 0
+                    else:
+                        alpha[a, b, c, d, e, f] = 1
 
             else:
                 if (c, d, e, f) in edges_source:
                     L, U = eM.estima_M_alpha2(barriers[a-1000][b], sources[c-1], barriers[e-1000][f])
-                    model.addConstr((1 - alpha[a, b, c, d, e, f]) * L <= af.determinant(barriers[a - 1000][b],
-                                                                                        [point[c, d, 0],
-                                                                                        point[c, d, 1]],
-                                                                                        barriers[e - 1000][f]))
-                    model.addConstr(af.determinant(barriers[a - 1000][b], [point[c, d, 0], point[c, d, 1]],
-                                                barriers[e - 1000][f]) <= U * alpha[a, b, c, d, e, f])
-                elif (c, d, e, f) in edges_barrier:
-                    L = -2*abs(af.determinant(barriers[a-1000][b], barriers[c-1000][d], barriers[e-1000][f]))
-                    U = 2*abs(L)
-                    model.addConstr((1 - alpha[a, b, c, d, e, f]) * L <= af.determinant(barriers[a - 1000][b],
-                                                                                        barriers[c - 1000][d],
-                                                                                        barriers[e - 1000][f]))
+                    
                     model.addConstr(
-                        U * alpha[a, b, c, d, e, f] >= af.determinant(barriers[a - 1000][b], barriers[c - 1000][d],
-                                                                    barriers[e - 1000][f]))
+                        af.determinant(barriers[a - 1000][b], [point[c, d, 0], point[c, d, 1]], barriers[e - 1000][f]) >= (1 - alpha[a, b, c, d, e, f]) * L)
+                    
+                    model.addConstr(
+                        af.determinant(barriers[a - 1000][b], [point[c, d, 0], point[c, d, 1]], barriers[e - 1000][f]) <= U * alpha[a, b, c, d, e, f])
+                
+                elif (c, d, e, f) in edges_barrier:
+                    if (af.determinant(barriers[a - 1000][b], barriers[c - 1000][d], barriers[e - 1000][f]) <= 0):
+                        alpha[a, b, c, d, e, f] = 0
+                    else:
+                        alpha[a, b, c, d, e, f] = 1
+
                 elif (c, d, e, f) in edges_target:
                     L, U = eM.estima_M_alpha3(barriers[a-1000][b], barriers[c-1000][d], targets[abs(e)-1])
-                    model.addConstr((1 - alpha[a, b, c, d, e, f]) * L <= af.determinant(barriers[a - 1000][b],
-                                                                                        barriers[c - 1000][d],
-                                                                                        [point[e, f, 0],
-                                                                                        point[e, f, 1]]))
-                    model.addConstr(af.determinant(barriers[a - 1000][b], barriers[c - 1000][d],
-                                                [point[e, f, 0], point[e, f, 1]]) <= U * alpha[a, b, c, d, e, f])
+                    
+                    model.addConstr(
+                        af.determinant(barriers[a - 1000][b], barriers[c - 1000][d], [point[e, f, 0], point[e, f, 1]]) >= (1 - alpha[a, b, c, d, e, f]) * L)
+                    
+                    model.addConstr(
+                        af.determinant(barriers[a - 1000][b], barriers[c - 1000][d], [point[e, f, 0], point[e, f, 1]]) <= alpha[a, b, c, d, e, f] * U)
+ 
                 elif (c, d, e, f) in edges_source_target:
                     L, U = eM.estima_M_alpha4(barriers[a-1000][b], sources[c-1], targets[abs(e)-1])
-                    model.addConstr((1 - alpha[a, b, c, d, e, f]) * L <= af.determinant(barriers[a - 1000][b],
-                                                                                        [point[c, d, 0],
-                                                                                        point[c, d, 1]],
-                                                                                        [point[e, f, 0],
-                                                                                        point[e, f, 1]]))
-                    model.addConstr(af.determinant(barriers[a - 1000][b], [point[c, d, 0], point[c, d, 1]],
-                                                [point[e, f, 0], point[e, f, 1]]) <= U * alpha[a, b, c, d, e, f])
+                    
+                    model.addConstr(
+                        af.determinant(barriers[a - 1000][b], [point[c, d, 0], point[c, d, 1]], [point[e, f, 0], point[e, f, 1]]) >= (1 - alpha[a, b, c, d, e, f]) * L)
+                    
+                    model.addConstr(
+                        af.determinant(barriers[a - 1000][b], [point[c, d, 0], point[c, d, 1]], [point[e, f, 0], point[e, f, 1]]) <=  alpha[a, b, c, d, e, f] * U)
 
         model.update()
 

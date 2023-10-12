@@ -68,7 +68,7 @@ for instance in instances:
                                 circles = np.genfromtxt('./instances_random/circles/circles' + str(nn) + '-' + str(instance) + '.csv', delimiter=',')
                                 neighbourhoods = [Circle(center=[centro1, centro2], radii=radio, col = 'blue') for centro1, centro2, radio in circles]
 
-                                segments = np.genfromtxt('./instancias/segmentos' + str(nn) + '-' + str(instance) + '.csv', delimiter=',')
+                                segments = np.genfromtxt('./instances_random/barriers/barriers' + str(nn) + '-' + str(instance) + '.csv', delimiter=',')
                                 barriers = []
 
                                 for lista in segments:

@@ -77,7 +77,7 @@ wE = 1
 wL = 0
 
 # 279.88
-resultados = h_kmedian_n(barriers, sources=sources, targets=targets, k=k, wL=wL, single=False, lazy=False, A4=False, time_limit=300, picture=True, init = False)
+resultados = h_kmedian_n(barriers, sources=sources, targets=targets, k=k, wL=wL, single=True, lazy=False, A4=False, time_limit=300, picture=True, init = False)
 
 # print(resultados)
 
