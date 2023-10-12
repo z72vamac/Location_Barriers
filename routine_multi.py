@@ -44,10 +44,10 @@ inits = [False, True]
 
 time_limit = 3600
 
-start = True
+start = False
 
 if start:
-    dataframe = pd.read_csv('./resultados/results_single.csv').iloc[:, 1:]
+    dataframe = pd.read_csv('./resultados/results_multi.csv').iloc[:, 1:]
     num_rows = dataframe.shape[0]-1
 else:
     num_rows = 0
@@ -96,6 +96,6 @@ for instance in instances:
                                 serie = pd.Series([instance] + resultados, index=dataframe.columns)
 
                                 dataframe = dataframe.append(serie, ignore_index=True)
-                                dataframe.to_csv('./resultados/results_single.csv')
+                                dataframe.to_csv('./resultados/results_multi.csv')
 
                             counter += 1
