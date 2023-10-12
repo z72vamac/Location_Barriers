@@ -83,11 +83,11 @@ for instance in instances:
                                 print('Lazy mode: ' + str(l))
                                 print('Init: ' + str(init))
                                 print('Percentage of barriers: ' + str(perc) + '%\n\n')
-                            
-                                if perc < 1:
-                                    sublist = np.random.choice(nB, int(np.floor(perc*nB)))
-                                    barriers1 = [barriers[b] for b in sublist]
+                                
+                                sublist = np.random.choice(nB, int(np.floor(perc*nB)))
+                                barriers1 = [barriers[b] for b in sublist]
 
+                                if perc < 1:
                                     A4 = False
                                 else:
                                     A4 = True
