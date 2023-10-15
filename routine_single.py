@@ -44,7 +44,7 @@ inits = [False, True]
 
 time_limit = 3600
 
-start = False
+start = True
 
 if start:
     dataframe = pd.read_csv('./resultados/results_single.csv').iloc[:, 1:]
