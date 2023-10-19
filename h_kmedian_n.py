@@ -461,17 +461,17 @@ def h_kmedian_n(barriers, sources, targets, k, single = False, wL=50, lazy=True,
 
         # print((time_h, objval_h))
 
-        # model.read('solution.sol')
+        model.read('solution.sol')
 
         # print(x_start)
-        for index in x_start:
-            x[index].start = 1
-        
-        for index in y_start:
-            y[index].start = 1
-        
-        for index in flow_start:
-            flow[index].start = 1
+        # for index in x_start:
+        #     x[index].start = 1
+        #
+        # for index in y_start:
+        #     y[index].start = 1
+        #
+        # for index in flow_start:
+        #     flow[index].start = 1
 
     L_first = -100000
     U_first = 100000
