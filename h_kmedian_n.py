@@ -54,16 +54,22 @@ def h_kmedian_n(barriers, sources, targets, k, single = False, wL=50, lazy=True,
     edges_barrier = []
     for v, i in vertices_barrier:
         for w, j in vertices_barrier:
-            if v != w:
-                if prepro:
-                    barrier = [barriers[v-1000][i], barriers[w-1000][j]]
+            if v > w:
+                barrier = [barriers[v-1000][i], barriers[w-1000][j]]
 
-                    if any([af.intersect(barrieri, barrier) for barrieri in barriers]):
-                        pass
-                    else:
+                if np.linalg.norm(np.array(barriers[v-1000][i]) - np.array(barriers[w-1000][j])) >= 0.5:
+
+                    intersect = False
+                    for barrieri in barriers:
+                        if af.intersect(barrieri, barrier):
+                            intersect = True
+                            break
+
+                    if not (intersect):
                         edges_barrier.append((v, i, w, j))
-                else:
-                    edges_barrier.append((v, i, w, j))
+                        edges_barrier.append((w, j, v, i))
+                    else:
+                        pass
 
     indices_barriers = [(v, 0, v, 1) for v in range(1000, 1000 + len(barriers))]
 

@@ -53,16 +53,16 @@ import auxiliar_functions as af
 #
 #     return BigM
 
-def preproM(m, M):
+def preproM(m, M, factor=5):
     if m < 0 and M < 0:
-        m *= 2
-        M /= 2
+        m *= factor
+        M /= factor
     elif m < 0 and M > 0:
-        m *= 2
-        M *= 2
+        m *= factor
+        M *= factor
     else:
-        m /= 2
-        M *= 2
+        m /= factor
+        M *= factor
 
 n_iter = 100
 
