@@ -14,7 +14,7 @@ import auxiliar_functions as af
 import networkx as nx
 
 from sflpn_b import sflpn_b
-from h_kmedian_n import h_kmedian_n
+from h_kmedian_new import h_kmedian_n
 
 
 blocks = [9]
@@ -43,4 +43,4 @@ for i in blocks:
 
 # N = [neigh.Circle(center = [centro1, centro2], radii = radio) for centro1, centro2, radio in bolas]
 
-resultados = h_kmedian_n(barriers, sources=sources, targets=targets, k=1, wL=0, single=True, lazy=False, A4=False, time_limit=300, picture=True, init = True)
+resultados = h_kmedian_n(barriers, sources=sources, targets=targets, k=1, wL=0, single=True, lazy=False, A4=False, time_limit=1200, picture=True, init = False)

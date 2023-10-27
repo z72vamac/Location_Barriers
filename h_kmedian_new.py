@@ -13,8 +13,9 @@ from data import *
 from matheuristic import matheuristic
 
 
-def h_kmedian_n(barriers, sources, targets, k, single = False, wL=50, lazy=True, A4=True, prepro=True, log=False, picture=False,
-                time_limit=7200, init=False):
+def h_kmedian_n(barriers, sources, targets, k, single = False, wL=50, lazy=True, A4=True, prepro=True, log=False, picture=False, time_limit=7200, init=False):
+    
+    # Size of the set of sources and targets
     S = len(sources)
     T = len(targets)
 
@@ -30,6 +31,9 @@ def h_kmedian_n(barriers, sources, targets, k, single = False, wL=50, lazy=True,
     vertices_target = list(itertools.product(range(-len(targets), 0), range(1)))
     vertices_target = vertices_target[::-1]
 
+    # print('Number of sources: ' + str(S))
+    # print('Number of targets: ' + str(S))
+    # print('Number of barriers: ' + str(len(barriers)))
 
     # Indices of the edges joining a source and a barrier
     edges_source = []
@@ -46,11 +50,13 @@ def h_kmedian_n(barriers, sources, targets, k, single = False, wL=50, lazy=True,
                 if af.cansee(point, neighborhood, barriers):
                     # Appending the feasible edges to edges_neighborhood
                     edges_source.append((a, b, c, d))
-                    # edges_neighborhood.append((c, d, a, b))
             else:
                 edges_source.append((a, b, c, d))
-                # edges_neighborhood.append((c, d, a, b))
+    
+    second_time = time.time() - first_time
+    print('\nTime_source_barrier: ' + str(second_time))
 
+    start_barrier_barrier = time.time()
     edges_barrier = []
     for v, i in vertices_barrier:
         for w, j in vertices_barrier:
@@ -70,11 +76,15 @@ def h_kmedian_n(barriers, sources, targets, k, single = False, wL=50, lazy=True,
                         edges_barrier.append((w, j, v, i))
                     else:
                         pass
+    
+    third_time = time.time() - start_barrier_barrier
+    print('Time_barrier_barrier: ' + str(third_time))
 
     indices_barriers = [(v, 0, v, 1) for v in range(1000, 1000 + len(barriers))]
 
     edges_target = []
 
+    start_target_barrier = time.time()
     for (a, b) in vertices_target:
         for c, d in vertices_barrier:
             if prepro:
@@ -92,13 +102,23 @@ def h_kmedian_n(barriers, sources, targets, k, single = False, wL=50, lazy=True,
                 # edges_neighborhood.append((a, b, c, d))
                 edges_target.append((c, d, a, b))
 
-    # Including edges joining source neighbourhood and target neighbourhood
+    fourth_time = time.time() - start_target_barrier
+    print('Time_barrier_target: ' + str(fourth_time))
 
+    start_source_target = time.time()
+    # Including edges joining source neighbourhood and target neighbourhood
     edges_source_target = []
 
     for (a, b) in vertices_source:
         for (c, d) in vertices_target:
-            edges_source_target.append((a, b, c, d))
+            neighborhood1 = sources[a - 1]
+            neighborhood2 = targets[abs(c) - 1]
+
+            if af.canseeN(neighborhood1, neighborhood2, barriers):
+                edges_source_target.append((a, b, c, d))
+
+    fifth_time = time.time() - start_source_target
+    print('Time_source_target: ' + str(fifth_time))
 
     vertices_total = vertices_source + vertices_barrier + vertices_target
 
@@ -117,70 +137,66 @@ def h_kmedian_n(barriers, sources, targets, k, single = False, wL=50, lazy=True,
         print("edges_free = " + str(edges_target))
         print("edges_total = " + str(edges_total))
 
-    epsilon_index = []  # epsilon(S / T, B, i) = 1 si (P_{S/T}, P_B^i)\in E_{S/T}
-
-    # print(epsilon_index)
-
+    # Indices of the points
     point_index = []
-    for a, b in vertices_source+vertices_target:
+    for a, b in vertices_source + vertices_target:
         for dim in range(2):
             point_index.append((a, b, dim))
 
     shape_barriers = np.array(barriers).shape[0]
     bounds_min, bounds_max = np.array(barriers).reshape(shape_barriers*2, 2).min(), np.array(barriers).reshape(shape_barriers*2, 2).max()
 
-    # for a, b, c, d in edges_total:
-    #     for e, f in vertices_neighborhood:
-    #         y_index.append((a, b, c, d, e))
 
+    # Indices of alpha variables
     alpha_index = []
 
-    # for a, b in vertices_total:
-    #     for c, d in vertices_total:
-    #         for e, f in vertices_total:
-    #             if (c, d, e, f) in indices_barriers or a > 0:
-    #                 alpha_index.append((a, b, c, d, e, f))
-
     for a, b in vertices_barrier:
-        for c, d, e, f in edges_total:
+        for c, d, e, f in edges_source + edges_target + edges_source_target:
             alpha_index.append((a, b, c, d, e, f))
-
-    for a, b in vertices_total:
+    for a, b in vertices_source + vertices_target:
         for (c, d, e, f) in indices_barriers:
             alpha_index.append((a, b, c, d, e, f))
+
+    print("\nCardinality of alpha set: " + str(len(alpha_index)))
 
     if log:
         print("alpha = " + str(alpha_index))
 
+    # Indices of beta variables
     beta_index = []
 
-    # for a, b in vertices_total:
-    #     for c, d in vertices_total:
-    #         for e, f in vertices_total:
-    #             for g, h in vertices_total:
-    #                 if ((a, b, c, d) in indices_barriers and (e, f, g, h) in edges_total) or ((a, b, c, d) in edges_total and (e, f, g, h) in indices_barriers):
-    #                     beta_index.append((a, b, c, d, e, f, g, h))
-
-    for a, b, c, d in indices_barriers:
-        for e, f, g, h in edges_total:
+    for a, b, c, d in edges_source + edges_target + edges_source_target:
+        for e, f, g, h in indices_barriers:
             beta_index.append((a, b, c, d, e, f, g, h))
             beta_index.append((e, f, g, h, a, b, c, d))
 
-    # print([index for index in beta_index if (index in list(set(beta_index)))])
-    # beta_index = list(beta_index)-list(set(beta_index))
+    print("Cardinality of beta set: " + str(len(beta_index)))
 
-
-    if log:
-        print("beta = " + str(beta_index))
-
+    # Indices of gamma variables
     gamma_index = beta_index
 
-    delta_index = gamma_index
+    if log:
+        print("beta/gamma = " + str(beta_index))
 
+    # Indices of delta variables
+    delta_index = []
+
+    for a, b, c, d in edges_source + edges_target + edges_source_target:
+        for e, f, g, h, in indices_barriers:
+            delta_index.append((a, b, c, d, e, f, g, h))
+
+    print("Cardinality of delta set: " + str(len(delta_index)))
+
+    if log:
+        print("delta = " + str(delta_index))
+
+    # Indices of epsilon variables
     epsilon_index = []
 
-    for a, b, c, d in edges_total:
+    for a, b, c, d in edges_source + edges_target + edges_source_target:
         epsilon_index.append((a, b, c, d))
+
+    print("Cardinality of epsilon set: " + str(len(epsilon_index)))
 
     # Assignment variables
     x_index = []
@@ -193,12 +209,11 @@ def h_kmedian_n(barriers, sources, targets, k, single = False, wL=50, lazy=True,
     y_index = vertices_source
 
     # Flow variables
-
     flow_index = []
     aux_index = []
 
+    # Single commodity flow case
     if single:
-
         for a, b, c, d in edges_total:
             flow_index.append((a, b, c, d))
             for e, f in vertices_target:
@@ -207,11 +222,26 @@ def h_kmedian_n(barriers, sources, targets, k, single = False, wL=50, lazy=True,
         p_index = edges_total
 
     else:
+    # Multi commodity flow case
+        # for a, b, c, d in edges_total:
+        #     for e, f, g, h in x_index:
+        #         if ((a, b, c, d) in edges_source and a == e) or ((a, b, c, d) in edges_target and c == g) or ((a, b, c, d) in edges_barrier) or ((a, b, c, d) in edges_source_target and a == e and c == g):
+        #             flow_index.append((a, b, c, d, e, f, g, h))
 
-        for a, b, c, d in edges_total:
-            for e, f, g, h in edges_source_target:
-                if ((a, b, c, d) in edges_source and a == e) or ((a, b, c, d) in edges_target and c == g) or ((a, b, c, d) in edges_barrier) or ((a, b, c, d) in edges_source_target and a == e and c == g):
-                    flow_index.append((a, b, c, d, e, f, g, h))
+        for a, b, c, d in edges_source:
+            for g, h in vertices_target:
+                flow_index.append((a, b, c, d, a, 0, g, h))
+        
+        for a, b, c, d in edges_target:
+            for e, f in vertices_source:
+                flow_index.append((a, b, c, d, e, f, c, 0))
+        
+        for a, b, c, d in edges_barrier:
+            for e, f, g, h in x_index:
+                flow_index.append((a, b, c, d, e, f, g, h))
+        
+        for a, b, c, d in edges_source_target:
+            flow_index.append((a, b, c, d, a, 0, c, 0))
 
         aux_index = flow_index
 
@@ -219,39 +249,11 @@ def h_kmedian_n(barriers, sources, targets, k, single = False, wL=50, lazy=True,
 
     paux_index = aux_index
 
-        # print(flow_index)
-    # if single:
-    #     for a, b, c, d in edges_total:
-    #         for e, f in vertices_source:
-    #             aux_index.append((a, b, c, d, e, f))
-
-    # for e, f in vertices_source:
-    #     for g, h in vertices_target:
-    #         for a, b, c, d in edges_total:
-    #             if a == e or c == g or (a, b, c, d) in edges_barrier:
-    #                 x_index.append((a, b, c, d, e, f, g, h))
-
-    # print(x_index)
-
-
-
-
-
     if log:
         print("x_index = " + str(x_index))
         print("y_index = " + str(y_index))
-        print("z_index = " + str(flow_index))
+        print("flow_index = " + str(flow_index))
 
-    # P_S and P_T: indices of the points in the neighborhoods
-    # p_index = []
-    # for a, b, c, d in edges_total:
-    #     for e, f in vertices_neighborhood:
-    #         p_index.append((a, b, c, d, e))
-
-
-    # for index in vertices_neighborhood:
-    #     for dim in range(2):
-    #         p_index.append((index[0], index[1], dim))
 
     if log:
         print("p_index = " + str(p_index))
@@ -282,16 +284,6 @@ def h_kmedian_n(barriers, sources, targets, k, single = False, wL=50, lazy=True,
     if log:
         print("d_inside_index = " + str(d_inside_index))
         print("dif_inside_index = " + str(dif_inside_index))
-
-    # z variables:
-    # z_index = list(itertools.product(vertices_neighborhood, vertices_neighborhood))
-    # print("z_index = " + str(z_index))
-
-    # f variables:
-    # g_index = y_index
-    #
-    # if log:
-    #     print("g_index = " + str(g_index))
 
     if lazy:
         def elimcuts(model, where):
@@ -435,168 +427,254 @@ def h_kmedian_n(barriers, sources, targets, k, single = False, wL=50, lazy=True,
     dist = model.addVars(dist_index, vtype=GRB.CONTINUOUS, lb=0.0, name='dist')
     dif = model.addVars(dif_index, vtype=GRB.CONTINUOUS, lb=0.0, name='dif')
 
-    # beta = model.addVars(beta_index, vtype = GRB.BINARY, name = 'beta')
-    # alpha = model.addVars(alpha_index, vtype = GRB.BINARY, name = 'alpha')
     alpha = model.addVars(alpha_index, vtype=GRB.BINARY, name='alpha')
     beta = model.addVars(beta_index, vtype=GRB.BINARY, name='beta')
     gamma = model.addVars(gamma_index, vtype=GRB.BINARY, name='gamma')
 
     if not (lazy):
-
         delta = model.addVars(delta_index, vtype=GRB.BINARY, name='delta')
         epsilon = model.addVars(epsilon_index, vtype=GRB.BINARY, name='epsilon')
 
-    # point = model.addVars(p_index, vtype = GRB.CONTINUOUS, lb = 0.1, ub = 99.9, name = 'point')
     point = model.addVars(point_index, vtype=GRB.CONTINUOUS, lb=min([0, bounds_min]), name='point')
-    # point_star = model.addVars(point_star_index, vtype=GRB.CONTINUOUS, name='point_star')
 
     d_inside = model.addVars(d_inside_index, vtype=GRB.CONTINUOUS, lb=0.0, name='d_inside')
     dif_inside = model.addVars(dif_inside_index, vtype=GRB.CONTINUOUS, lb=0.0, name='dif_inside')
-    # landa = model.addVars(d_inside_index, vtype=GRB.CONTINUOUS, lb=0.0, ub=1.0, name='landa')
-    # z = model.addVars(z_index, vtype = GRB.BINARY, name = 'z')
-    # g = model.addVars(g_index, vtype=GRB.CONTINUOUS, lb=0.0, name='g')
 
     model.update()
 
     if init:
-        time_h, objval_h, x_start, y_start, flow_start = matheuristic(barriers, sources, targets, k, single = single, wL = wL, time_limit = 100, picture = False)
+        # Solving the problem by taking the center of the neighbourhoods.
+        time_h, objval_h, x_start, y_start, flow_start, point_vals = matheuristic(barriers, sources, targets, k, single = single, wL = wL, time_limit = 100, picture = False)
 
-        # print((time_h, objval_h))
-
-        model.read('solution.sol')
+        # model.read('solution.sol')
 
         # print(x_start)
-        # for index in x_start:
-        #     x[index].start = 1
-        #
-        # for index in y_start:
-        #     y[index].start = 1
-        #
-        # for index in flow_start:
-        #     flow[index].start = 1
+        for index in x_start:
+            x[index].start = 1
+        
+        for index in y_start:
+            y[index].start = 1
+        
+        for index in flow_start:
+            flow[index].start = 1
+        
+        for index in vertices_source + vertices_target:
+            for dim in range(2):
+                point[index[0], index[1], dim].start = point_vals[index[0], index[1], dim]
 
-    L_first = -100000
-    U_first = 100000
+    L = -10000
+    U = 10000
 
     if not (lazy):
-        # alpha-C
-        for a, b, c, d, e, f in alpha_index:
-            # Dos primeras
-            # print((a, b, c, d, e, f))
+        # alpha constraints
+        print('\nSetting alpha constraints: ')
 
-            if (c, d, e, f) in indices_barriers:
-                if (a, b) in vertices_source + vertices_target:
-                    if (a, b) in vertices_source:
-                        L, U = eM.estima_M_alpha1(sources[a-1], barriers[c-1000][d], barriers[e-1000][f])
+        start_alpha = time.time()
 
-                    elif (a, b) in vertices_target:
-                        L, U = eM.estima_M_alpha1(targets[abs(a)-1], barriers[c-1000][d], barriers[e-1000][f])
-                    
-                    # L, U = af.estima_det(sources[a - 1], [barriers[c - 1000][0], barriers[c - 1000][1], barriers[e - 1000][0], barriers[e - 1000][1]])
-                    model.addConstr(
-                        af.determinant([point[a, b, 0], point[a, b, 1]], barriers[c - 1000][d], barriers[e - 1000][f]) >= (1 - alpha[a, b, c, d, e, f]) * L)
-                    
-                    model.addConstr(
-                        af.determinant([point[a, b, 0], point[a, b, 1]], barriers[c - 1000][d], barriers[e - 1000][f]) <= U * alpha[a, b, c, d, e, f])
+        alpha_counter = 0
+        
+        for a, b in vertices_source:
+            for (c, d, e, f) in indices_barriers:
+                L, U = eM.estima_M_alpha1(sources[a-1], barriers[c-1000][d], barriers[e-1000][f])
 
-                elif (a, b) in vertices_barrier:
-                    if (af.determinant(barriers[a - 1000][b], barriers[c - 1000][d], barriers[e - 1000][f]) <= 0):
-                        alpha[a, b, c, d, e, f] = 0
-                    else:
-                        alpha[a, b, c, d, e, f] = 1
+                model.addConstr(
+                    af.determinant([point[a, b, 0], point[a, b, 1]], barriers[c - 1000][d], barriers[e - 1000][f]) >= (1 - alpha[a, b, c, d, e, f]) * L)
 
-            else:
-                if (c, d, e, f) in edges_source:
-                    L, U = eM.estima_M_alpha2(barriers[a-1000][b], sources[c-1], barriers[e-1000][f])
-                    
-                    model.addConstr(
-                        af.determinant(barriers[a - 1000][b], [point[c, d, 0], point[c, d, 1]], barriers[e - 1000][f]) >= (1 - alpha[a, b, c, d, e, f]) * L)
-                    
-                    model.addConstr(
-                        af.determinant(barriers[a - 1000][b], [point[c, d, 0], point[c, d, 1]], barriers[e - 1000][f]) <= U * alpha[a, b, c, d, e, f])
+                model.addConstr(
+                    af.determinant([point[a, b, 0], point[a, b, 1]], barriers[c - 1000][d], barriers[e - 1000][f]) <= U * alpha[a, b, c, d, e, f])
+
+                alpha_counter += 2
+
+        for a, b in vertices_target:
+            for (c, d, e, f) in indices_barriers:
+                L, U = eM.estima_M_alpha1(targets[abs(a)-1], barriers[c-1000][d], barriers[e-1000][f])
+
+                model.addConstr(
+                    af.determinant([point[a, b, 0], point[a, b, 1]], barriers[c - 1000][d], barriers[e - 1000][f]) >= (1 - alpha[a, b, c, d, e, f]) * L)
                 
-                elif (c, d, e, f) in edges_barrier:
-                    if (af.determinant(barriers[a - 1000][b], barriers[c - 1000][d], barriers[e - 1000][f]) <= 0):
-                        alpha[a, b, c, d, e, f] = 0
-                    else:
-                        alpha[a, b, c, d, e, f] = 1
+                model.addConstr(
+                    af.determinant([point[a, b, 0], point[a, b, 1]], barriers[c - 1000][d], barriers[e - 1000][f]) <= U * alpha[a, b, c, d, e, f])
 
-                elif (c, d, e, f) in edges_target:
-                    L, U = eM.estima_M_alpha3(barriers[a-1000][b], barriers[c-1000][d], targets[abs(e)-1])
-                    
-                    model.addConstr(
-                        af.determinant(barriers[a - 1000][b], barriers[c - 1000][d], [point[e, f, 0], point[e, f, 1]]) >= (1 - alpha[a, b, c, d, e, f]) * L)
-                    
-                    model.addConstr(
-                        af.determinant(barriers[a - 1000][b], barriers[c - 1000][d], [point[e, f, 0], point[e, f, 1]]) <= alpha[a, b, c, d, e, f] * U)
- 
-                elif (c, d, e, f) in edges_source_target:
-                    L, U = eM.estima_M_alpha4(barriers[a-1000][b], sources[c-1], targets[abs(e)-1])
-                    
-                    model.addConstr(
-                        af.determinant(barriers[a - 1000][b], [point[c, d, 0], point[c, d, 1]], [point[e, f, 0], point[e, f, 1]]) >= (1 - alpha[a, b, c, d, e, f]) * L)
-                    
-                    model.addConstr(
-                        af.determinant(barriers[a - 1000][b], [point[c, d, 0], point[c, d, 1]], [point[e, f, 0], point[e, f, 1]]) <=  alpha[a, b, c, d, e, f] * U)
+                alpha_counter += 2
+
+        for a, b in vertices_barrier:
+            for c, d, e, f in edges_source:
+                L, U = eM.estima_M_alpha2(barriers[a-1000][b], sources[c-1], barriers[e-1000][f])
+                
+                model.addConstr(
+                    af.determinant(barriers[a - 1000][b], [point[c, d, 0], point[c, d, 1]], barriers[e - 1000][f]) >= (1 - alpha[a, b, c, d, e, f]) * L)
+                
+                model.addConstr(
+                    af.determinant(barriers[a - 1000][b], [point[c, d, 0], point[c, d, 1]], barriers[e - 1000][f]) <= U * alpha[a, b, c, d, e, f])
+                
+                alpha_counter += 2
+
+        for a, b in vertices_barrier:
+            for c, d, e, f in edges_target:
+                L, U = eM.estima_M_alpha3(barriers[a-1000][b], barriers[c-1000][d], targets[abs(e)-1])
+                
+                model.addConstr(
+                    af.determinant(barriers[a - 1000][b], barriers[c - 1000][d], [point[e, f, 0], point[e, f, 1]]) >= (1 - alpha[a, b, c, d, e, f]) * L)
+                
+                model.addConstr(
+                    af.determinant(barriers[a - 1000][b], barriers[c - 1000][d], [point[e, f, 0], point[e, f, 1]]) <= alpha[a, b, c, d, e, f] * U)
+
+                alpha_counter += 2
+
+        for a, b in vertices_barrier:
+            for c, d, e, f in edges_source_target:                
+                L, U = eM.estima_M_alpha4(barriers[a-1000][b], sources[c-1], targets[abs(e)-1])
+                
+                model.addConstr(
+                    af.determinant(barriers[a - 1000][b], [point[c, d, 0], point[c, d, 1]], [point[e, f, 0], point[e, f, 1]]) >= (1 - alpha[a, b, c, d, e, f]) * L)
+                
+                model.addConstr(
+                    af.determinant(barriers[a - 1000][b], [point[c, d, 0], point[c, d, 1]], [point[e, f, 0], point[e, f, 1]]) <=  alpha[a, b, c, d, e, f] * U)
+
+                alpha_counter += 2
+
+        print('Spent time: ' + str(time.time() - start_alpha))
+        print('Number of alpha constraints: ' + str(alpha_counter))
 
         model.update()
 
-        for a, b, c, d, e, f, g, h in beta_index:
-            if ((a, b, c, d) in indices_barriers) or ((e, f, g, h) in indices_barriers):
+        print('\nSetting beta and gamma constraints: ')
+
+        start_beta = time.time()
+        
+        beta_counter = 0
+        gamma_counter = 0
+
+        # beta constraints
+        for a, b, c, d in edges_source:
+            for e, f, g, h in indices_barriers:
+                value = (af.determinant(barriers[c - 1000][d], barriers[e - 1000][f], barriers[g - 1000][h]) > 0)*1
+
                 model.addConstr(
-                    beta[a, b, c, d, e, f, g, h] == 2 * gamma[a, b, c, d, e, f, g, h] - alpha[a, b, e, f, g, h] - alpha[
-                        c, d, e, f, g, h] + 1)
+                    beta[a, b, c, d, e, f, g, h] == 2 * alpha[a, b, e, f, g, h] * value - alpha[a, b, e, f, g, h] - value + 1)
+
+                model.addConstr(
+                    beta[e, f, g, h, a, b, c, d] == 2 * gamma[e, f, g, h, a, b, c, d] - alpha[e, f, a, b, c, d] - alpha[g, h, a, b, c, d] + 1)
+
+                beta_counter += 2
+
+                model.addConstr(gamma[e, f, g, h, a, b, c, d] <= alpha[e, f, a, b, c, d])
+                model.addConstr(gamma[e, f, g, h, a, b, c, d] <= alpha[g, h, a, b, c, d])
+                model.addConstr(gamma[e, f, g, h, a, b, c, d] >= alpha[e, f, a, b, c, d] + alpha[g, h, a, b, c, d] - 1)
+
+                gamma_counter += 3
+
+        for a, b, c, d in edges_target:
+            for e, f, g, h in indices_barriers:
+                value = (af.determinant(barriers[a - 1000][b], barriers[e - 1000][f], barriers[g - 1000][h]) > 0)*1
+
+                model.addConstr(
+                    beta[a, b, c, d, e, f, g, h] == 2 * value * alpha[c, d, e, f, g, h] - value - alpha[c, d, e, f, g, h] + 1)
+
+                model.addConstr(
+                    beta[e, f, g, h, a, b, c, d] == 2 * gamma[e, f, g, h, a, b, c, d] - alpha[e, f, a, b, c, d] - alpha[g, h, a, b, c, d] + 1)
+
+                beta_counter += 2
+
+                model.addConstr(gamma[e, f, g, h, a, b, c, d] <= alpha[e, f, a, b, c, d])
+                model.addConstr(gamma[e, f, g, h, a, b, c, d] <= alpha[g, h, a, b, c, d])
+                model.addConstr(gamma[e, f, g, h, a, b, c, d] >= alpha[e, f, a, b, c, d] + alpha[g, h, a, b, c, d] - 1)
+
+                gamma_counter += 3
+
+        for a, b, c, d in edges_source_target:
+            for e, f, g, h in indices_barriers:
+                model.addConstr(
+                    beta[a, b, c, d, e, f, g, h] == 2 * gamma[a, b, c, d, e, f, g, h] - alpha[a, b, e, f, g, h]  - alpha[c, d, e, f, g, h] + 1)
 
                 model.addConstr(gamma[a, b, c, d, e, f, g, h] <= alpha[a, b, e, f, g, h])
                 model.addConstr(gamma[a, b, c, d, e, f, g, h] <= alpha[c, d, e, f, g, h])
                 model.addConstr(gamma[a, b, c, d, e, f, g, h] >= alpha[a, b, e, f, g, h] + alpha[c, d, e, f, g, h] - 1)
 
-            if (e, f, g, h) in indices_barriers:
-                model.addConstr(0.5 * (beta[a, b, c, d, e, f, g, h] + beta[e, f, g, h, a, b, c, d]) <= delta[
-                    a, b, c, d, e, f, g, h])
+                model.addConstr(
+                    beta[e, f, g, h, a, b, c, d] == 2 * gamma[e, f, g, h, a, b, c, d] - alpha[e, f, a, b, c, d] - alpha[g, h, a, b, c, d] + 1)
+
+                model.addConstr(gamma[e, f, g, h, a, b, c, d] <= alpha[e, f, a, b, c, d])
+                model.addConstr(gamma[e, f, g, h, a, b, c, d] <= alpha[g, h, a, b, c, d])
+                model.addConstr(gamma[e, f, g, h, a, b, c, d] >= alpha[e, f, a, b, c, d] + alpha[g, h, a, b, c, d] - 1)
+
+                beta_counter += 2
+                gamma_counter += 3
+
+        print('Spent time: ' + str(time.time() - start_beta))
+        print('Number of beta constraints: ' + str(beta_counter))
+        print('Number of gamma constraints: ' + str(gamma_counter))
+        
+        print('\nSetting delta constraints: ')
+        
+        start_delta = time.time()
+        delta_counter = 0
+
+        # delta constraints
+        for a, b, c, d in edges_source + edges_target + edges_source_target:
+            for e, f, g, h in indices_barriers:
+                model.addConstr(
+                    0.5 * (beta[a, b, c, d, e, f, g, h] + beta[e, f, g, h, a, b, c, d]) <= delta[a, b, c, d, e, f, g, h])
                 model.addConstr(
                     2 * (beta[a, b, c, d, e, f, g, h] + beta[e, f, g, h, a, b, c, d]) >= delta[a, b, c, d, e, f, g, h])
+                delta_counter += 2
+
+        print('Spent time: ' + str(time.time() - start_delta))
+        print('Number of delta constraints: ' + str(delta_counter))
+
+        # epsilon constraints
+
+        print('\nSetting epsilon constraints: ')
+        
+        start_epsilon = time.time()
+        epsilon_counter = 0
 
         for a, b, c, d in epsilon_index:
             model.addConstr(delta.sum(a, b, c, d, '*', '*', '*', '*') - len(barriers) + 1 <= epsilon[a, b, c, d])
             model.addConstr(len(barriers) * epsilon[a, b, c, d] <= delta.sum(a, b, c, d, '*', '*', '*', '*'))
 
+            epsilon_counter += 2
+
             if single:
                 model.addConstr(flow[a, b, c, d] <= T*epsilon[a, b, c, d])
-            else:
-                for e, f, g, h in edges_source_target:
-                    if (a, b, c, d, e, f, g, h) in flow_index:
-                        model.addConstr(flow[a, b, c, d, e, f, g, h] <= epsilon[a, b, c, d])
+
+                epsilon_counter += 1
+
+        if not(single):
+            for a, b, c, d in edges_source:
+                for g, h in vertices_target:
+                    model.addConstr(flow[a, b, c, d, a, 0, g, h] <= epsilon[a, b, c, d])
+
+                    epsilon_counter += 1
+                    
+            for a, b, c, d in edges_target:
+                for e, f in vertices_source:
+                    model.addConstr(flow[a, b, c, d, e, f, c, 0] <= epsilon[a, b, c, d])
+                    
+                    epsilon_counter += 1
+            
+            for a, b, c, d in edges_source_target:
+                model.addConstr(flow[a, b, c, d, a, 0, c, 0] <= epsilon[a, b, c, d])
+                
+                epsilon_counter += 1
+
+        print('Spent time: ' + str(time.time() - start_epsilon))
+        print('Number of epsilon constraints: ' + str(epsilon_counter))       
 
         model.update()
 
-    # epsilon-C and y-C
-    # for a, b, c, d in epsilon.keys():
-    #     # print((a, b, c, d))
-    #     # model.addConstr((delta.sum(a, b, c, d, '*') - len(barriers)) + 1 <= epsilon[a, b, c, d])
-    #     # model.addConstr(len(barriers) * epsilon[a, b, c, d] <= delta.sum(a, b, c, d, '*'))
-    #
-    #     # if a < 0 and b >= 0 and c >= 0:
-    #     for e, f in vertices_neighborhood:
-    #         model.addConstr(y[a, b, c, d, e] + y[c, d, a, b, e] <= 2 * epsilon[a, b, c, d])
+    print('\nSetting neighbourhood constraints: ')
+        
+    start_neighbourhood = time.time()
 
-        # if a < 0 and b < 0 and c == 0:
-        #     model.addConstr(y[a, b, c] + y[b, a, c] <= 2*epsilon[a, b, c])
-
-        # if no_ve(neighborhoods[abs(a)-1], barriers[b][0]) and no_ve(neighborhoods[abs(a)-1], barriers[b][1]):
-        #     model.addConstr(epsilon[a, b, c] <= 0)
-
-    # NS and NT constraints
+    # neighbourhood constraints
     for a, b, dim in point.keys():
-
         if (a, b) in vertices_source:
             source = sources[a - 1]
 
-            # model.addConstr(point[a, b, dim] == source.center[dim])
             if type(source) is neigh.Circle:
                 model.addConstr(dif_inside[a, b, dim] >= point[a, b, dim] - source.center[dim])
                 model.addConstr(dif_inside[a, b, dim] >= source.center[dim] - point[a, b, dim])
-
                 model.addConstr(gp.quicksum(dif_inside[a, b, dim] * dif_inside[a, b, dim] for dim in range(2)) <= d_inside[a, b] * d_inside[a, b])
                 model.addConstr(d_inside[a, b] <= source.radii)
 
@@ -606,163 +684,128 @@ def h_kmedian_n(barriers, sources, targets, k, single = False, wL=50, lazy=True,
         elif (a, b) in vertices_target:
             target = targets[abs(a) - 1]
 
-            # model.addConstr(point[a, b, dim] == target.center[dim])
-
             if type(target) is neigh.Circle:
                 model.addConstr(dif_inside[a, b, dim] >= point[a, b, dim] - target.center[dim])
                 model.addConstr(dif_inside[a, b, dim] >= target.center[dim] - point[a, b, dim])
-
                 model.addConstr(gp.quicksum(dif_inside[a, b, dim] * dif_inside[a, b, dim] for dim in range(2)) <= d_inside[a, b] * d_inside[a, b])
                 model.addConstr(d_inside[a, b] <= target.radii)
 
             if type(target) is neigh.Poligonal:
                 model.addConstrs(point[a, b, dim] == landa[a, b] * target.V[0][dim] + (1 - landa[a, b]) * target.V[1][dim] for dim in range(2))
 
-    # dist constraints
-    for a, b, c, d, dim in dif_index:
+    print('Spent time: ' + str(time.time() - start_neighbourhood))
 
+    print('\nSetting distance constraints: ')
+    
+    start_distance = time.time()
+    # distance constraints constraints
+    for a, b, c, d, dim in dif_index:
         if (a, b, c, d) in edges_barrier:
-            model.addConstr(dist[a, b, c, d] == np.linalg.norm(np.array(barriers[a-1000][b]) - np.array(barriers[c-1000][d])))
+            dist[a, b, c, d] = np.linalg.norm(np.array(barriers[a-1000][b]) - np.array(barriers[c-1000][d]))
 
         elif (a, b, c, d) in edges_source:
             model.addConstr(dif[a, b, c, d, dim] >= point[a, b, dim] - barriers[c - 1000][d][dim])
             model.addConstr(dif[a, b, c, d, dim] >= - point[a, b, dim] + barriers[c - 1000][d][dim])
-            model.addConstr(
-                gp.quicksum(dif[a, b, c, d, dim] * dif[a, b, c, d, dim] for dim in range(2)) <= dist[a, b, c, d] * dist[
-                    a, b, c, d])
+            model.addConstr(gp.quicksum(dif[a, b, c, d, dim] * dif[a, b, c, d, dim] for dim in range(2)) <= dist[a, b, c, d] * dist[a, b, c, d])
 
         elif (a, b, c, d) in edges_target:
             model.addConstr(dif[a, b, c, d, dim] >= point[c, d, dim] - barriers[a - 1000][b][dim])
             model.addConstr(dif[a, b, c, d, dim] >= - point[c, d, dim] + barriers[a - 1000][b][dim])
-            model.addConstr(
-                gp.quicksum(dif[a, b, c, d, dim] * dif[a, b, c, d, dim] for dim in range(2)) <= dist[a, b, c, d] * dist[
-                    a, b, c, d])
+            model.addConstr(gp.quicksum(dif[a, b, c, d, dim] * dif[a, b, c, d, dim] for dim in range(2)) <= dist[a, b, c, d] * dist[a, b, c, d])
 
         else:
             model.addConstr(dif[a, b, c, d, dim] >= point[a, b, dim] - point[c, d, dim])
             model.addConstr(dif[a, b, c, d, dim] >= - point[a, b, dim] + point[c, d, dim])
-            model.addConstr(
-                gp.quicksum(dif[a, b, c, d, dim] * dif[a, b, c, d, dim] for dim in range(2)) <= dist[a, b, c, d] * dist[
-                    a, b, c, d])
+            model.addConstr(gp.quicksum(dif[a, b, c, d, dim] * dif[a, b, c, d, dim] for dim in range(2)) <= dist[a, b, c, d] * dist[a, b, c, d])
+
+    print('Spent time: ' + str(time.time() - start_distance))
 
     L_out = 0
     U_out = 100000
 
-    # p constraints
+    print('\nSetting product constraints: ')
+    start_product = time.time()
+
+    # product constraints
     if single:
-        for a, b, c, d, e, f in paux.keys():
-            if (a, b, c, d) in edges_source:
-
-                source = sources[a - 1]
-                punto = neigh.Punto(barriers[c-1000][d])
-                L_out, U_out = eM.estima_M_complete(source, punto)
-
-                # print((L_out, U_out))
-                # model.addConstr(paux[a, b, c, d, e, f] <= U_out * aux[a, b, c, d, e, f])
-                # model.addConstr(paux[a, b, c, d, e, f] <= dist[a, b, c, d])
+        for a, b, c, d in edges_source:
+            source = sources[a - 1]
+            punto = neigh.Punto(barriers[c-1000][d])
+            L_out, U_out = eM.estima_M_complete(source, punto)
+            for e, f in vertices_target:
                 model.addConstr(paux[a, b, c, d, e, f] >= L_out * aux[a, b, c, d, e, f])
                 model.addConstr(paux[a, b, c, d, e, f] >= dist[a, b, c, d] - U_out * (1 - aux[a, b, c, d, e, f]))
 
-            if (a, b, c, d) in edges_target:
-
-                target = targets[abs(c) - 1]
-                punto = neigh.Punto(barriers[a-1000][b])
-                
-                L_out, U_out = eM.estima_M_complete(target, punto)
-
-                # print((L_out, U_out))
-                # model.addConstr(paux[a, b, c, d, e, f] <= U_out * aux[a, b, c, d, e, f])
-                # model.addConstr(paux[a, b, c, d, e, f] <= dist[a, b, c, d])
+        for a, b, c, d in edges_target:
+            target = targets[abs(c) - 1]
+            punto = neigh.Punto(barriers[a-1000][b])
+            L_out, U_out = eM.estima_M_complete(target, punto)
+            for e, f in vertices_target:
                 model.addConstr(paux[a, b, c, d, e, f] >= L_out * aux[a, b, c, d, e, f])
                 model.addConstr(paux[a, b, c, d, e, f] >= dist[a, b, c, d] - U_out* (1 -aux[a, b, c, d, e, f]))
 
-            if (a, b, c, d) in edges_barrier:
-                
-                L_out, U_out = eM.estima_M_complete(neigh.Punto(np.array(barriers[a - 1000][b])), neigh.Punto(np.array(barriers[c - 1000][d])))
+        for a, b, c, d in edges_barrier:
+            # L_out, U_out = eM.estima_M_complete(neigh.Punto(np.array(barriers[a - 1000][b])), neigh.Punto(np.array(barriers[c - 1000][d])))
 
-                # model.addConstr(paux[a, b, c, d, e, f] <= U_out * aux[a, b, c, d, e, f])
-                # model.addConstr(paux[a, b, c, d, e, f] <= dist[a, b, c, d])
+            for e, f in vertices_target:
+                # model.addConstr(paux[a, b, c, d, e, f] >= L_out * aux[a, b, c, d, e, f])
+                # model.addConstr(paux[a, b, c, d, e, f] >= dist[a, b, c, d] - U_out * (1 - aux[a, b, c, d, e, f]))
+                paux[a, b, c, d, e, f] = dist[a, b, c, d] * aux[a, b, c, d, e, f]
+
+        for a, b, c, d in edges_source_target:
+            source = sources[a - 1]
+            target = targets[abs(c) - 1]
+            L_out, U_out = eM.estima_M_complete(target, source)
+            for e, f in vertices_target:
                 model.addConstr(paux[a, b, c, d, e, f] >= L_out * aux[a, b, c, d, e, f])
                 model.addConstr(paux[a, b, c, d, e, f] >= dist[a, b, c, d] - U_out * (1 - aux[a, b, c, d, e, f]))
 
-            elif (a, b, c, d) in edges_source_target:
-
-                target = targets[abs(c) - 1]
-                source = sources[a - 1]
-
-                L_out, U_out = eM.estima_M_complete(target, source)
-
-                # model.addConstr(paux[a, b, c, d, e, f] <= U_out * aux[a, b, c, d, e, f])
-                # model.addConstr(paux[a, b, c, d, e, f] <= dist[a, b, c, d])
-                model.addConstr(paux[a, b, c, d, e, f] >= L_out * aux[a, b, c, d, e, f])
-                model.addConstr(paux[a, b, c, d, e, f] >= dist[a, b, c, d] - U_out * (1 - aux[a, b, c, d, e, f]))
-
-        model.addConstrs(p[a, b, c, d] == gp.quicksum(abs(e)*paux[a, b, c, d, e, f] for e, f in vertices_target if (a, b, c, d, e, f) in paux_index) for a, b, c, d in edges_total)
-    
+        for a, b, c, d in edges_total:
+            model.addConstr(p[a, b, c, d] == gp.quicksum(abs(e)*paux[a, b, c, d, e, f] for e, f in vertices_target))
+        
     else:
-        for a, b, c, d, e, f, g, h in paux.keys():
-            if (a, b, c, d) in edges_source:
+        for a, b, c, d in edges_source:
+            source = sources[a - 1]
+            punto = neigh.Punto(barriers[c-1000][d])
+            L_out, U_out = eM.estima_M_complete(source, punto)
+            for g, h in vertices_target:
+                model.addConstr(paux[a, b, c, d, a, 0, g, h] >= L_out * flow[a, b, c, d, a, 0, g, h])
+                model.addConstr(paux[a, b, c, d, a, 0, g, h] >= dist[a, b, c, d] - U_out * (1 - flow[a, b, c, d, a, 0, g, h]))
 
-                source = sources[a - 1]
-                punto = neigh.Punto(barriers[c-1000][d])
-                
-                L_out, U_out = eM.estima_M_complete(source, punto)
 
-                # print((L_out, U_out))
-                # model.addConstr(paux[a, b, c, d, e, f] <= U_out * aux[a, b, c, d, e, f])
-                # model.addConstr(paux[a, b, c, d, e, f] <= dist[a, b, c, d])
-                model.addConstr(paux[a, b, c, d, e, f, g, h] >= L_out * flow[a, b, c, d, e, f, g, h])
-                model.addConstr(paux[a, b, c, d, e, f, g, h] >= dist[a, b, c, d] - U_out * (1 - flow[a, b, c, d, e, f, g, h]))
+        for a, b, c, d in edges_target:
+            target = targets[abs(c) - 1]
+            punto = neigh.Punto(barriers[a-1000][b])
+            L_out, U_out = eM.estima_M_complete(target, punto)
+            for e, f in vertices_source:
+                model.addConstr(paux[a, b, c, d, e, f, c, 0] >= L_out * flow[a, b, c, d, e, f, c, 0])
+                model.addConstr(paux[a, b, c, d, e, f, c, 0] >= dist[a, b, c, d] - U_out* (1 -flow[a, b, c, d, e, f, c, 0]))
 
-            if (a, b, c, d) in edges_target:
+        for a, b, c, d in edges_barrier:
+            for e, f in vertices_source:
+                for g, h in vertices_target:
+                    # L_out, U_out = eM.estima_M_complete(neigh.Punto(np.array(barriers[a - 1000][b])), neigh.Punto(np.array(barriers[c - 1000][d])))
+                    paux[a, b, c, d, e, f, g, h] = dist[a, b, c, d] * flow[a, b, c, d, e, f, g, h]
+                    # model.addConstr(paux[a, b, c, d, e, f, g, h] >= L_out * flow[a, b, c, d, e, f, g, h])
+                    # model.addConstr(paux[a, b, c, d, e, f, g, h] >= dist[a, b, c, d] - U_out * (1 - flow[a, b, c, d, e, f, g, h]))
 
-                target = targets[abs(c) - 1]
-                punto = neigh.Punto(barriers[a-1000][b])
+        for a, b, c, d in edges_source_target:
+            source = sources[a - 1]
+            target = targets[abs(c) - 1]
+            L_out, U_out = eM.estima_M_complete(target, source)
+            model.addConstr(paux[a, b, c, d, a, 0, c, 0] >= L_out * flow[a, b, c, d, a, 0, c, 0])
+            model.addConstr(paux[a, b, c, d, a, 0, c, 0] >= dist[a, b, c, d] - U_out * (1 - flow[a, b, c, d, a, 0, c, 0]))
+        
+        suma = 0
 
-                L_out, U_out = eM.estima_M_complete(target, punto)
-
-                # print((L_out, U_out))
-                # model.addConstr(paux[a, b, c, d, e, f] <= U_out * aux[a, b, c, d, e, f])
-                # model.addConstr(paux[a, b, c, d, e, f] <= dist[a, b, c, d])
-                model.addConstr(paux[a, b, c, d, e, f, g, h] >= L_out * flow[a, b, c, d, e, f, g, h])
-                model.addConstr(paux[a, b, c, d, e, f, g, h] >= dist[a, b, c, d] - U_out* (1 -flow[a, b, c, d, e, f, g, h]))
-
-            if (a, b, c, d) in edges_barrier:
-
-                L_out, U_out = eM.estima_M_complete(neigh.Punto(np.array(barriers[a - 1000][b])), neigh.Punto(np.array(barriers[c - 1000][d])))
-
-                # model.addConstr(paux[a, b, c, d, e, f] <= U_out * aux[a, b, c, d, e, f])
-                # model.addConstr(paux[a, b, c, d, e, f] <= dist[a, b, c, d])
-                model.addConstr(paux[a, b, c, d, e, f, g, h] >= L_out * flow[a, b, c, d, e, f, g, h])
-                model.addConstr(paux[a, b, c, d, e, f, g, h] >= dist[a, b, c, d] - U_out * (1 - flow[a, b, c, d, e, f, g, h]))
-
-            elif (a, b, c, d) in edges_source_target:
-
-                target = targets[abs(c) - 1]
-                source = sources[a - 1]
-
-                L_out, U_out = eM.estima_M_complete(target, source)
-
-                # model.addConstr(paux[a, b, c, d, e, f] <= U_out * aux[a, b, c, d, e, f])
-                # model.addConstr(paux[a, b, c, d, e, f] <= dist[a, b, c, d])
-                model.addConstr(paux[a, b, c, d, e, f, g, h] >= L_out * flow[a, b, c, d, e, f, g, h])
-                model.addConstr(paux[a, b, c, d, e, f, g, h] >= dist[a, b, c, d] - U_out * (1 - flow[a, b, c, d, e, f, g, h]))
-
-        model.addConstrs(p[e, f, g, h] == gp.quicksum(paux[a, b, c, d, e, f, g, h] for a, b, c, d in edges_total if (a, b, c, d, e, f, g, h) in paux_index) for e, f in vertices_source for g, h in vertices_target)
+        for e, f in vertices_source:
+            for g, h in vertices_target:
+                model.addConstr(p[e, f, g, h] == paux.sum('*', '*', '*', '*', e, f, g, h))
     
-    # model.addConstrs(p[a, b, c, d] >= x[a, b, c, d]*dist[a, b, c, d] for a, b, c, d in edges_total)
-    # flow conservation constraints
-    # for index in y_index:
-    #     if len(index) == 3:
-    # model.addConstr(gp.quicksum(y[tupla] for tupla in E if tupla[0] == -1) == 1)
-    #
-    # for v, i in VB:
-    #     tuplas_salen = gp.quicksum([y[a, b, c, d] for a, b, c, d in E if (a == v and b == i)])
-    #     tuplas_entran = gp.quicksum([y[a, b, c, d] for a, b, c, d in E if (c == v and d == i)])
-    #
-    #     model.addConstr(tuplas_salen - tuplas_entran == 0)
-    #
-    # model.addConstr(- gp.quicksum(y[a, b, c, d] for a, b, c, d in E if c == -2) == -1)
+    print('Spent time: ' + str(time.time() - start_product))
+    
+    print('\nSetting k-median constraints: ')
+    start_median = time.time()
 
     # We only open k facilities
     model.addConstr(y.sum('*', '*') == k)
@@ -773,22 +816,19 @@ def h_kmedian_n(barriers, sources, targets, k, single = False, wL=50, lazy=True,
     # If a facility is not open in S, we can not launch capacity from this source.
     model.addConstrs(x[a, b, c, d] <= y[a, b] for a, b, c, d in x_index)
 
+    print('Spent time: ' + str(time.time() - start_median))
+
+    print('\nBinarying variables: ')
+    start_binary = time.time()
     # Binarying an integer variable
     if single:
-        model.addConstrs(flow[a, b, c, d] == gp.quicksum((abs(e))*aux[a, b, c, d, e, f] for e, f in vertices_target if (a, b, c, d, e, f) in aux_index) for a, b, c, d in edges_total)
+        for a, b, c, d in edges_total:
+            model.addConstr(flow[a, b, c, d] == gp.quicksum((abs(e))*aux[a, b, c, d, e, f] for e, f in vertices_target))
     
-    # model.addConstrs(aux.sum(a, b, c, d, '*', '*') == 1 for a, b, c, d in edges_total)
+    print('Spent time: ' + str(time.time() - start_binary))
 
-    # indices = [(5, 0, -1, 0), (5, 0, -3, 0), (5, 0, -5, 0), (5, 0, -6, 0), (5, 0, -7, 0), (5, 0, -9, 0), (8, 0, -2, 0), (8, 0, -4, 0), (8, 0, -8, 0), (8, 0, -10, 0)]
-
-    # model.addConstrs(flow[index] == 1 for index in indices)
-    # model.addConstrs(flow[index] == 0 for index in flow_index if index not in indices)
-
-    # model.addConstrs(x[index] == 1 for index in indices)
-    # model.addConstr(y[5, 0] == 1)
-    # model.addConstr(y[8, 0] == 1)
-    
-    
+    print('\nSetting flow constraints: ')
+    start_flow = time.time()
     if single:
         for a, b in vertices_total:
             if (a, b) in vertices_source:
@@ -808,27 +848,25 @@ def h_kmedian_n(barriers, sources, targets, k, single = False, wL=50, lazy=True,
                     else:
                         model.addConstr(flow.sum('*', '*', g, h, e, f, g, h) == x[e, f, g, h])
 
+    print('Spent time: ' + str(time.time() - start_flow))
+
     model.update()
 
+    # Objective function
     objective = gp.quicksum(p[index] for index in p.keys()) + gp.quicksum(0.5*wL*flow[index] for index in flow.keys())
-
-    # for a, b, c, d in edges_barrier:
-    #     # for e, f in vertices_source:
-    #     #     for g, h in vertices_target:
-    #     objective += dist[a, b, c, d]*x[a, b, c, d]
-
     model.setObjective(objective, GRB.MINIMIZE)
 
+    # Model Setup Time
     second_time = time.time()
-
     time_elapsed = second_time - first_time
 
     model.update()
 
+    # Model Params
     model.Params.Threads = 6
-    model.Params.timeLimit = time_limit  # - time_elapsed
+    model.Params.timeLimit = time_limit
     model.Params.NumericFocus = 1
-
+    
     if lazy:
         model._x = x
         model._point = point
@@ -880,13 +918,13 @@ def h_kmedian_n(barriers, sources, targets, k, single = False, wL=50, lazy=True,
 
     if single:
         x_indices = [(index, x[index].X) for index in x.keys() if x[index].X > 0.5]
-        dist_indices = [(index, dist[index[0:4]].X) for index in flow.keys() if flow[index].X > 0.5]
-        p_indices = [(index, p[index].X) for index in p.keys() if flow[index].X > 0.5]
+        # dist_indices = [(index, dist[index[0:4]].X) for index in flow.keys() if (flow[index].X > 0.5)]
+        # p_indices = [(index, p[index].X) for index in p.keys() if flow[index].X > 0.5]
     else:
 
         x_indices = [(index, x[index].X) for index in x.keys() if x[index].X > 0.5]
-        dist_indices = [(index, dist[index[0:4]].X) for index in flow.keys() if flow[index].X > 0.5]
-        p_indices = [(index, p[index].X) for index in p.keys() if x[index].X > 0.5]
+        # dist_indices = [(index, dist[index[0:4]].X) for index in flow.keys() if flow[index].X > 0.5]
+        # p_indices = [(index, p[index].X) for index in p.keys() if x[index].X > 0.5]
 
     x_indices = [index for index in x.keys() if x[index].X > 0.5]
 
@@ -898,7 +936,7 @@ def h_kmedian_n(barriers, sources, targets, k, single = False, wL=50, lazy=True,
         print(x_indices)
         print(y_indices)
     
-    print(flow_indices)
+    # print(flow_indices)
 
     if picture:
         fig, ax = plt.subplots()

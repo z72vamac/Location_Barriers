@@ -14,7 +14,7 @@ import auxiliar_functions as af
 import networkx as nx
 
 from sflpn_b import sflpn_b
-from h_kmedian_n import h_kmedian_n
+from h_kmedian_new import h_kmedian_n
 
 # from HTSPS_without_prepro import HTSPS_without_prepro
 # 50-3
@@ -68,7 +68,7 @@ N6t = neigh.Circle(center=[30, 90], radii=10, col = 'blue')
 
 targets = [N1t, N2t, N3t, N4t, N5t, N6t]
 
-k = 2
+k = 3
 
 endurance = 1000
 
@@ -76,8 +76,21 @@ wE = 1
 
 wL = 0
 
-# 279.88
-resultados = h_kmedian_n(barriers, sources=sources, targets=targets, k=k, wL=wL, single=True, lazy=False, A4=False, time_limit=300, picture=True, init = False)
+# Random instances
+instance = 0
+neighbourhood_size = 10
+
+segments = np.genfromtxt('./instances_random/barriers/barriers{0}-{1}.csv'.format(neighbourhood_size, instance), delimiter = ',')
+
+barriers = []
+for segment in segments:
+    barriers.append([[segment[0], segment[1]], [segment[2], segment[3]]])
+
+circles = np.genfromtxt('./instances_random/circles/circles{0}-{1}.csv'.format(neighbourhood_size, instance), delimiter = ',')
+
+neighbourhoods = [neigh.Circle(center = [centerx, centery], radii = radius, col='red') for centerx, centery, radius in circles]
+
+resultados = h_kmedian_n(barriers, sources=neighbourhoods, targets=neighbourhoods, k=k, wL=wL, single=False, lazy=False, A4=False, time_limit=600, picture=True, init = True)
 
 # print(resultados)
 

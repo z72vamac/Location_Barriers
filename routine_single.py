@@ -15,7 +15,7 @@ import networkx as nx
 import math
 import numpy as np
 import pandas as pd
-from h_kmedian_n import h_kmedian_n
+from h_kmedian_new import h_kmedian_n
 from neighborhood import Circle
 
 np.random.seed(5)
@@ -44,7 +44,7 @@ inits = [False, True]
 
 time_limit = 3600
 
-start = True
+start = False
 
 if start:
     dataframe = pd.read_csv('./resultados/results_single.csv').iloc[:, 1:]
