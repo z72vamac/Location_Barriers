@@ -44,11 +44,11 @@ inits = [False, True]
 
 time_limit = 3600
 
-start = False
+start = True
 
 if start:
     dataframe = pd.read_csv('./resultados/results_multi.csv').iloc[:, 1:]
-    num_rows = dataframe.shape[0]-1
+    num_rows = dataframe.shape[0]
 else:
     num_rows = 0
 
@@ -63,47 +63,40 @@ for instance in instances:
                 for perc in percs:
                     for l in lazy:
                         for init in inits:
+                            circles = np.genfromtxt('./instances_random/circles/circles' + str(nn) + '-' + str(instance) + '.csv', delimiter=',')
+                            neighbourhoods = [Circle(center=[centro1, centro2], radii=radio, col='blue') for centro1, centro2, radio in circles]
+
+                            segments = np.genfromtxt('./instances_random/barriers/barriers' + str(nn) + '-' + str(instance) + '.csv', delimiter=',')
+                            barriers = []
+
+                            for lista in segments:
+                                barriers.append([[lista[0], lista[1]], [lista[2], lista[3]]])
+
+                            nB = len(barriers)
+
+                            sublist = np.random.choice(nB, int(np.floor(perc * nB)))
+                            barriers1 = [barriers[b] for b in sublist]
+
                             if counter > num_rows:
-                                circles = np.genfromtxt(
-                                    './instances_random/circles/circles' + str(nn) + '-' + str(instance) + '.csv',
-                                    delimiter=',')
-                                neighbourhoods = [Circle(center=[centro1, centro2], radii=radio, col='blue') for
-                                                  centro1, centro2, radio in circles]
 
-                                segments = np.genfromtxt(
-                                    './instances_random/barriers/barriers' + str(nn) + '-' + str(instance) + '.csv',
-                                    delimiter=',')
-                                barriers = []
+                                print('\n\nSolving hampered k-median')
+                                print('Instance: ' + str(instance))
+                                print('Number of neighbourhoods: ' + str(nn))
+                                print('k: ' + str(k))
+                                print('Lazy mode: ' + str(l))
+                                print('Init: ' + str(init))
+                                print('Percentage of barriers: ' + str(perc) + '%\n\n')
 
-                                for lista in segments:
-                                    barriers.append([[lista[0], lista[1]], [lista[2], lista[3]]])
 
-                                nB = len(barriers)
+                                if perc < 1:
+                                    A4 = False
+                                else:
+                                    A4 = True
 
-                                sublist = np.random.choice(nB, int(np.floor(perc * nB)))
-                                barriers1 = [barriers[b] for b in sublist]
+                                resultados = h_kmedian_n(barriers1, sources=neighbourhoods, targets=neighbourhoods, k=k, single=False, wL=wL, lazy=l, A4=A4, init=init, time_limit=time_limit)
+                                serie = pd.Series([instance] + resultados, index=dataframe.columns)
 
-                                if counter > num_rows:
+                                dataframe = dataframe.append(serie, ignore_index=True)
+                                dataframe.to_csv('./resultados/results_multi.csv')
 
-                                    print('\n\nSolving hampered k-median')
-                                    print('Instance: ' + str(instance))
-                                    print('Number of neighbourhoods: ' + str(nn))
-                                    print('k: ' + str(k))
-                                    print('Lazy mode: ' + str(l))
-                                    print('Init: ' + str(init))
-                                    print('Percentage of barriers: ' + str(perc) + '%\n\n')
-
-                                    if perc < 1:
-                                        A4 = False
-                                    else:
-                                        A4 = True
-
-                                    resultados = h_kmedian_n(barriers1, sources=neighbourhoods, targets=neighbourhoods,
-                                                             k=k, single=False, wL=wL, lazy=l, A4=A4, init=init,
-                                                             time_limit=time_limit)
-                                    serie = pd.Series([instance] + resultados, index=dataframe.columns)
-
-                                    dataframe = dataframe.append(serie, ignore_index=True)
-                                    dataframe.to_csv('./resultados/results_multi.csv')
-
-                                counter += 1
+                            counter += 1
