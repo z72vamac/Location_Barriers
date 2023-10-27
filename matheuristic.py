@@ -200,11 +200,20 @@ def matheuristic(barriers, sources_auxiliar, targets_auxiliar, k, single = False
         
     else:
 
-        for a, b, c, d in edges_total:
+        for a, b, c, d in edges_source:
+            for g, h in vertices_target:
+                flow_index.append((a, b, c, d, a, 0, g, h))
+        
+        for a, b, c, d in edges_target:
             for e, f in vertices_source:
-                for g, h in vertices_target:
-                    if ((a, b, c, d) in edges_source and a == e) or ((a, b, c, d) in edges_target and c == g) or ((a, b, c, d) in edges_barrier) or ((a, b, c, d) in edges_source_target and a == e and c == g):
-                        flow_index.append((a, b, c, d, e, f, g, h))
+                flow_index.append((a, b, c, d, e, f, c, 0))
+        
+        for a, b, c, d in edges_barrier:
+            for e, f, g, h in x_index:
+                flow_index.append((a, b, c, d, e, f, g, h))
+        
+        for a, b, c, d in edges_source_target:
+            flow_index.append((a, b, c, d, a, 0, c, 0))
 
     if log:
         print("x_index = " + str(x_index))
