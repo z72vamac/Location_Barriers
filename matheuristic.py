@@ -91,16 +91,18 @@ def matheuristic(barriers, sources_auxiliar, targets_auxiliar, k, single = False
         for w, j in vertices_barrier:
             if v > w:
                 barrier = [barriers[v-1000][i], barriers[w-1000][j]]
+                
+                if np.linalg.norm(np.array(barriers[v-1000][i]) - np.array(barriers[w-1000][j])) >= 0.5:
 
-                inter = False
-                for barrieri in barriers:
-                    if af.intersect(barrieri, barrier):
-                        inter = True
-                        break
+                    inter = False
+                    for barrieri in barriers:
+                        if af.intersect(barrieri, barrier):
+                            inter = True
+                            break
 
-                if not (inter):
-                    edges_barrier.append((v, i, w, j))
-                    edges_barrier.append((w, j, v, i))
+                    if not (inter):
+                        edges_barrier.append((v, i, w, j))
+                        edges_barrier.append((w, j, v, i))
 
     indices_barriers = [(v, 0, v, 1) for v in range(1000, 1000 + len(barriers))]
 
