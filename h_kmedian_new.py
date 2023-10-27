@@ -109,13 +109,14 @@ def h_kmedian_n(barriers, sources, targets, k, single = False, wL=50, lazy=True,
     # Including edges joining source neighbourhood and target neighbourhood
     edges_source_target = []
 
-    for (a, b) in vertices_source:
-        for (c, d) in vertices_target:
-            neighborhood1 = sources[a - 1]
-            neighborhood2 = targets[abs(c) - 1]
+    if not(A4):
+        for (a, b) in vertices_source:
+            for (c, d) in vertices_target:
+                neighborhood1 = sources[a - 1]
+                neighborhood2 = targets[abs(c) - 1]
 
-            if af.canseeN(neighborhood1, neighborhood2, barriers):
-                edges_source_target.append((a, b, c, d))
+                if af.canseeN(neighborhood1, neighborhood2, barriers):
+                    edges_source_target.append((a, b, c, d))
 
     fifth_time = time.time() - start_source_target
     print('Time_source_target: ' + str(fifth_time))
