@@ -91,16 +91,18 @@ def matheuristic(barriers, sources_auxiliar, targets_auxiliar, k, single = False
         for w, j in vertices_barrier:
             if v > w:
                 barrier = [barriers[v-1000][i], barriers[w-1000][j]]
+                
+                if np.linalg.norm(np.array(barriers[v-1000][i]) - np.array(barriers[w-1000][j])) >= 0.5:
 
-                inter = False
-                for barrieri in barriers:
-                    if af.intersect(barrieri, barrier):
-                        inter = True
-                        break
+                    inter = False
+                    for barrieri in barriers:
+                        if af.intersect(barrieri, barrier):
+                            inter = True
+                            break
 
-                if not (inter):
-                    edges_barrier.append((v, i, w, j))
-                    edges_barrier.append((w, j, v, i))
+                    if not (inter):
+                        edges_barrier.append((v, i, w, j))
+                        edges_barrier.append((w, j, v, i))
 
     indices_barriers = [(v, 0, v, 1) for v in range(1000, 1000 + len(barriers))]
 
@@ -200,11 +202,20 @@ def matheuristic(barriers, sources_auxiliar, targets_auxiliar, k, single = False
         
     else:
 
-        for a, b, c, d in edges_total:
+        for a, b, c, d in edges_source:
+            for g, h in vertices_target:
+                flow_index.append((a, b, c, d, a, 0, g, h))
+        
+        for a, b, c, d in edges_target:
             for e, f in vertices_source:
-                for g, h in vertices_target:
-                    if ((a, b, c, d) in edges_source and a == e) or ((a, b, c, d) in edges_target and c == g) or ((a, b, c, d) in edges_barrier) or ((a, b, c, d) in edges_source_target and a == e and c == g):
-                        flow_index.append((a, b, c, d, e, f, g, h))
+                flow_index.append((a, b, c, d, e, f, c, 0))
+        
+        for a, b, c, d in edges_barrier:
+            for e, f, g, h in x_index:
+                flow_index.append((a, b, c, d, e, f, g, h))
+        
+        for a, b, c, d in edges_source_target:
+            flow_index.append((a, b, c, d, a, 0, c, 0))
 
     if log:
         print("x_index = " + str(x_index))
