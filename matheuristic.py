@@ -89,7 +89,7 @@ def matheuristic(barriers, sources_auxiliar, targets_auxiliar, k, single = False
     edges_barrier = []
     for v, i in vertices_barrier:
         for w, j in vertices_barrier:
-            if v != w:
+            if v > w:
                 barrier = [barriers[v-1000][i], barriers[w-1000][j]]
 
                 inter = False
@@ -100,6 +100,7 @@ def matheuristic(barriers, sources_auxiliar, targets_auxiliar, k, single = False
 
                 if not (inter):
                     edges_barrier.append((v, i, w, j))
+                    edges_barrier.append((w, j, v, i))
 
     indices_barriers = [(v, 0, v, 1) for v in range(1000, 1000 + len(barriers))]
 
@@ -197,8 +198,6 @@ def matheuristic(barriers, sources_auxiliar, targets_auxiliar, k, single = False
             for e, f in vertices_target:
                 aux_index.append((a, b, c, d, e, f))
         
-        p_index = edges_total
-
     else:
 
         for a, b, c, d in edges_total:
@@ -206,12 +205,6 @@ def matheuristic(barriers, sources_auxiliar, targets_auxiliar, k, single = False
                 for g, h in vertices_target:
                     if ((a, b, c, d) in edges_source and a == e) or ((a, b, c, d) in edges_target and c == g) or ((a, b, c, d) in edges_barrier) or ((a, b, c, d) in edges_source_target and a == e and c == g):
                         flow_index.append((a, b, c, d, e, f, g, h))
-
-        aux_index = flow_index
-
-        p_index = x_index
-
-    paux_index = aux_index
 
     if log:
         print("x_index = " + str(x_index))
@@ -226,46 +219,13 @@ def matheuristic(barriers, sources_auxiliar, targets_auxiliar, k, single = False
 
         dist[a, b, c, d] = np.linalg.norm(np.array([point[a, b, 0], point[a, b, 1]]) - np.array([point[c, d, 0], point[c, d, 1]]))
 
-        # if (a, b, c, d) in edges_source:
-        #     source = sources[a-1]
-        #
-        #     if type(source) is neigh.Circle:
-        #         dist[a, b, c, d] = np.linalg.norm(np.array(source.center)-np.array(barriers[c-1000][d]))
-        #     if type(source) is neigh.Poligonal:
-        #         dist[a, b, c, d] = np.linalg.norm(np.array(source.V[0])-np.array(barriers[c-1000][d]))
-        #
-        # elif (a, b, c, d) in edges_barrier:
-        #     dist[a, b, c, d] = np.linalg.norm(np.array(barriers[a-1000][b]) - np.array(barriers[c - 1000][d]))
-        #
-        # elif (a, b, c, d) in edges_target:
-        #     target = targets[abs(c)-1]
-        #
-        #     if type(target) is neigh.Circle:
-        #         dist[a, b, c, d] = np.linalg.norm(np.array(target.center)-np.array(barriers[a-1000][b]))
-        #     if type(target) is neigh.Poligonal:
-        #         dist[a, b, c, d] = np.linalg.norm(np.array(target.V[0])-np.array(barriers[a-1000][b]))
-        #
-        # elif (a, b, c, d) in edges_source_target:
-        #     source = sources[a-1]
-        #     target = targets[abs(c) - 1]
-        #
-        #     if type(source) is neigh.Circle and type(target) is neigh.Circle:
-        #         dist[a, b, c, d] = np.linalg.norm(np.array(source.center) - np.array(target.center))
-        #     elif type(source) is neigh.Circle and type(target) is neigh.Poligonal:
-        #         dist[a, b, c, d] = np.linalg.norm(np.array(source.center) - np.array(target.V[0]))
-        #     elif type(source) is neigh.Poligonal and type(target) is neigh.Circle:
-        #         dist[a, b, c, d] = np.linalg.norm(np.array(source.V[0]) - np.array(target.center))
-        #     elif type(source) is neigh.Poligonal and type(target) is neigh.Poligonal:
-        #         dist[a, b, c, d] = np.linalg.norm(np.array(source.V[0]) - np.array(target.V[0]))
-
-
     model = gp.Model('Model: H-KMedian-N')
 
     x = model.addVars(x_index, vtype=GRB.BINARY, name='x')
-    aux = model.addVars(aux_index, vtype=GRB.BINARY, name='aux')
 
     y = model.addVars(y_index, vtype=GRB.BINARY, name='y')
     if single:
+        aux = model.addVars(aux_index, vtype=GRB.BINARY, name='aux')
         flow = model.addVars(flow_index, vtype=GRB.INTEGER, lb=0.0, ub=T, name='flow')
     else:
         flow = model.addVars(flow_index, vtype=GRB.BINARY, name='flow')
@@ -283,7 +243,8 @@ def matheuristic(barriers, sources_auxiliar, targets_auxiliar, k, single = False
 
     # Binarying an integer variable
     if single:
-        model.addConstrs(flow[a, b, c, d] == gp.quicksum((abs(e))*aux[a, b, c, d, e, f] for e, f in vertices_target if (a, b, c, d, e, f) in aux_index) for a, b, c, d in edges_total)
+        for a, b, c, d in edges_total:
+            model.addConstr(flow[a, b, c, d] == gp.quicksum((abs(e))*aux[a, b, c, d, e, f] for e, f in vertices_target))
     
     # model.addConstrs(aux.sum(a, b, c, d, '*', '*') == 1 for a, b, c, d in edges_total)
 
@@ -416,6 +377,6 @@ def matheuristic(barriers, sources_auxiliar, targets_auxiliar, k, single = False
         ax.set_aspect('equal')
         plt.show()
 
-    return time_h, objval_h, x_indices, y_indices, flow_indices
+    return time_h, objval_h, x_indices, y_indices, flow_indices, point
 
 

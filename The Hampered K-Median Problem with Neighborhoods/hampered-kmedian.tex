@@ -331,9 +331,9 @@
 	
 	The block of constraints inherited from the $k$-median are the following:
 	\begin{align}
-		\sum_{S\in\mathcal S}y(S)&=k,\tag{k-median-C1}\\
-		x(ST)&\leq y(S),\quad\forall S\in\mathcal S,\quad\forall T\in\mathcal T,\tag{k-median-C2}\\
-		\sum_{S\in\mathcal S} x(ST)&=1,\quad\forall T\in\mathcal T\tag{k-median-C3}.
+		\sum_{S\in\mathcal S}y(S)&=k,\label{eq:k-median1C}\tag{k-median-C1}\\
+		x(ST)&\leq y(S),\quad\forall S\in\mathcal S,\quad\forall T\in\mathcal T,\label{eq:k-median2C}\tag{k-median-C2}\\
+		\sum_{S\in\mathcal S} x(ST)&=1,\quad\forall T\in\mathcal T\label{eq:k-median3C}\tag{k-median-C3}.
 	\end{align}
 	
 	The first constraint imposes that a subset of $k$ sources is selected in $\mathcal S$. The second constraints ensure that one target $T$ is assigned to a source $S$ only if it is selected. The third inequalities ensure that every target is assigned to exactly one source.
@@ -344,7 +344,7 @@
 	The first approach is based on a single-commodity formulation. It models a tree routed at each source that connects all targets assigned to that source. The idea is that the model must deliver one unit of commodity from the selected source neighbourhood to each of the required target neighbourhoods. Then, for each edge $(P, Q)\in E_X$, an integer variable $f(PQ)$ that counts the number of times that edge $(P, Q)$ is traversed in the solution is defined. Then, the flow conservation constraint that represents the path is the following:
 	
 	{\small
-	\begin{equation}\tag{single-flow-C}
+	\begin{equation}\label{eq:single-flowC}\tag{single-flow-C}
 		\sum_{\{Q\in V_X:(P,Q)\in E_X\}}f(PQ)-\sum_{\{Q\in V_X:(Q,P)\in E_X\}}f(PQ) =\left\{
 		\begin{array}{rl} 
 			\sum_{T\in\mathcal T} x(ST), & \text{if } P\in \VS, \\
@@ -359,7 +359,7 @@
 	The second approach, related with a multi-commodity scheme, the binary variables $f(PQ|ST)$  must be defined for each $(P, Q)\in E_X$, $S\in\mathcal S$ and $T\in\mathcal T$. These variables are set to one for those edges that are used to go from the source $S$ to the target $T$. In this case, the flow conservation constraint reads as follows:
 	
 	{\small
-	\begin{equation}\tag{multi-flow-C}
+	\begin{equation}\label{eq:multi-flowC}\tag{multi-flow-C}
 		\sum_{\{Q\in V_X:(P,Q)\in E_X\}}f(PQ|ST)-\sum_{\{Q\in V_X:(Q,P)\in E_X\}}f(PQ|ST) =\left\{
 		\begin{array}{rl} 
 			x(ST), & \text{if } P\in S, \\
@@ -458,7 +458,7 @@
 	%\newcommand{\betacero}[4]{\beta^{0\,}(#1#2|#3#4)}
 	%\newcommand{\betapunto}[4]{\beta^{\cdotp}(#1#2|#3#4)}
 	
-	\CV{The fact of considering the possibility of going directly from one to other neighbourhood leads to include product of continuous variables in the $\alpha$ constraints of the model that represent the determinants. These products make the \KMPN to become non-convex. However, in the \KMPHN, since two of the three arguments of the determinant are fixed, the $\alpha$ constraints become linear. It motivates the comparison between two formulations in terms of computational cost of considering the more general version, studied in Section \ref{section:experiments}.}
+	\CV{The fact of considering the possibility of going directly from one to other neighbourhood leads to include product of continuous variables in the $\alpha$ constraints of the model that represent the determinants. These products make the \KMPN \ to become non-convex. However, in the \KMPHN, since two of the three arguments of the determinant are fixed, the $\alpha$ constraints become linear. It motivates the comparison between two formulations in terms of computational cost of considering the more general version, studied in Section \ref{section:experiments}.}
 			 
 	Secondly, to check whether the sign of any pair
 	\begin{equation}\label{eq:pair}
@@ -552,31 +552,22 @@
 			f(PQ|ST)\leq  \varepsilonvar{P}{Q},\quad\forall (P, Q)\in E_X, \forall S\in\mathcal S, \forall T\in\mathcal T.
 		\end{equation*}
 	
-		This inequality states that if target $T$ is assigned to the source $S$, the vehicle can traverse edge $(P, Q)$ only if it does not cross any barrier.
+		This inequality states that if target $T$ is assigned to the source $S$, the vehicle can traverse edge $(P, Q)$ only if it does not cross any barrier.}
 	
  
 		
 	\subsection{Formulations for the Hampered $k$-Median Problem with Neighbourhoods}\label{ssec:KMPHN}
 	
-	\CV{The formulations of the \KMPN are based on the structure of the well-known $k$-Median Problem where distances between each pair of source-target neighbourhoods are represented by the shortest path joining them without traversing any barrier, as stated before. Putting together all the constraints explained along this section, we can describe two formulations based on the two approaches to model the flow between sources and targets. The single-commodity formulation adjusted to the induced graph $G_X$, $X\in{}}
+	\CV{The formulations of the \KMPN \ are based on the structure of the well-known $k$-Median Problem where distances between each pair of source-target neighbourhoods are represented by the shortest path joining them without traversing any barrier, as stated before. Putting together all the constraints explained along this section, we can describe two formulations based on the two approaches to model the flow between sources and targets. 
+		
+	The single-commodity formulation adjusted to the induced graph $G_X$, $X\in \{\rm KMPHN, \rm KMPN\}$ is as follows:}
 %	The formulations of the \KMPHN \ 
 	
 	
 	%\newcommand{\gvar}[2]{g(#1#2)}
 	\newcommand{\xvar}[2]{x(#1#2)}
-	
-
-
-		
-	
 
 	
-
-
-
-	
-	Hence, we can adjust the flow formulation to the induced graph $\GKMPHN$ as follows:
-	}
 	%\textcolor{red}{
 		%\begin{mini*}
 		%	{}{\sum_{(P,Q)\in \EKMPHN}\dvar{P}{Q}f(PQ)}
@@ -599,22 +590,22 @@
 		{\scriptsize
 			\begin{mini*}[2]
 				{}{\omega_E\sum_{(P,Q)\in E_X}\dvar{P}{Q}f(PQ) + \frac{\omega_L}{2}\sum_{(P,Q)\in E_X}f(PQ)}
-				{}{}\label{form:H-KMPHN}\tag{H-KMPHN}
-				\addConstraint{\sum_{S\in\mathcal S}y(S)}{=k}{}
-				\addConstraint{x(ST)}{\leq y(S),}{\quad\forall S\in\mathcal S,\quad\forall T\in\mathcal T}
-				\addConstraint{\sum_{S\in\mathcal S} x(ST)}{=1,}{\quad\forall T\in\mathcal T}
-				\addConstraint{\sum_{\{Q\in V_X:(P,Q)\in E_X\}}f(PQ)-\sum_{\{Q\in V_X:(Q,P)\in E_X\}}f(PQ)}	{=\left\{
-					\begin{array}{rl} 
-						\sum_{T\in\mathcal T} x(ST), & \text{if } P\in S, \\
-						0, & \text{if } P\in \VB, \\
-						-1, & \text{if } P\in T.
-					\end{array}
-					\right.}{\quad\forall P\in V_X,\forall S\in\mathcal S,\forall T\in\mathcal T}
-				\addConstraint{\eqref{eq:alphaC},\eqref{eq:betaC},\eqref{eq:gammaC},\eqref{eq:deltaC}}{\quad\forall P, Q\in V_X,\quad\forall P_B^1, P_B^2\in \VB}
-				\addConstraint{\eqref{eq:varepsilonC}, \eqref{eq:fC}, \eqref{eq:dC}}{\quad\forall P, Q\in V_X}
-				\addConstraint{\eqref{eq:nC}}{\quad\forall P\in \VS\cup \VT.}
+				{}{}\label{form:H-KMPN-single}\tag{H-KMPN-single}
+				\addConstraint{\eqref{eq:k-median1C}-\eqref{eq:k-median3C}}{}{}
+				\addConstraint{\eqref{eq:single-flowC}, \eqref{eq:single-fC}}{}{}
+				\addConstraint{\eqref{eq:alphaC},\eqref{eq:betaC},\eqref{eq:gammaC},\eqref{eq:deltaC}, \eqref{eq:varepsilonC}}{}{}
+				\addConstraint{\eqref{eq:dC}, \eqref{eq:nC}.}{}{}
 		\end{mini*}}
-		
+
+		{\scriptsize
+			\begin{mini*}[2]
+				{}{\omega_E\sum_{(P,Q)\in E_X}\sum_{S\in\mathcal S}\sum_{T\in\mathcal T}\dvar{P}{Q}f(PQ|ST) + \frac{\omega_L}{2}\sum_{(P,Q)\in E_X}\sum_{S\in\mathcal S}\sum_{T\in\mathcal T}f(PQ|ST)}
+				{}{}\label{form:H-KMPN-multi}\tag{H-KMPN-multi}
+				\addConstraint{\eqref{eq:k-median1C}-\eqref{eq:k-median3C}}{}{}
+				\addConstraint{\eqref{eq:multi-flowC}, \eqref{eq:multi-fC}}{}{}
+				\addConstraint{\eqref{eq:alphaC},\eqref{eq:betaC},\eqref{eq:gammaC},\eqref{eq:deltaC}, \eqref{eq:varepsilonC}}{}{}
+				\addConstraint{\eqref{eq:dC}, \eqref{eq:nC}.}{}{}
+		\end{mini*}}
 		
 			{\tiny
 			\begin{mini*}[2]
@@ -644,8 +635,8 @@
 		%\addConstraint{\eqref{eq:alphaC},\eqref{eq:betaC},\eqref{eq:gammaC},\eqref{eq:deltaC}}{\quad\forall P, Q\in \VTSP,\quad\forall P_B^1, P_B^2\in \VB}
 		%\addConstraint{\eqref{eq:varepsilonC}, \eqref{eq:yC}, \eqref{eq:dC}}{\quad\forall P, Q\in \VTSP}
 		%\addConstraint{\eqref{eq:nC}}{\quad\forall P_N\in \VN.}
-		
-		The objective function takes into account both the Euclidean and link weighted distances to join the selected sources with their assigned targets. The first group of constraints imposes that a subset of $k$ sources is selected in $\mathcal S$. The second constraints ensure that one target $T$ is assigned to a source $S$ only if it is selected. The third inequalities ensure that every target is assigned to one source. The fourth ones are the flow conservation constraints, where the units of commodity launched from the source must be the number of targets that are assigned to that source. The fifth group of inequalities ensures that the trip can reach, in endurance terms, the target $T$ when it starts from the source $S$. Constraints \eqref{eq:alphaC}, \eqref{eq:betaC}, \eqref{eq:gammaC}, \eqref{eq:deltaC}, \eqref{eq:varepsilonC}, \eqref{eq:fC}, \eqref{eq:dC}, \eqref{eq:nC} enforce the variables of the problem to be well-defined. 
+		\CV{
+		The objective function takes into account both the Euclidean and link weighted distances to join the selected sources with their assigned targets. The first group of constraints represents the classical $k$-median. The second group includes the flow conservation constraints and the constraint that relates the possibility of traversing one path with the amount of commodity that can flow in that path. The third group models the visibility graph. Finally, the fourth defines the conic constraints used to model the distance between each pair of points and the neighbourhoods representing sources and targets. }
 		
 		
 		To deal with the bilinear terms that appear in the objective function, the McCormick's envelope are used to linearize them by including variables $p(PQ|ST)\geq 0$ that represent the products and introducing the following constraints:

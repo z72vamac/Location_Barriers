@@ -497,7 +497,7 @@ def intersect(barrier1, barrier2):
     return expr
 
 
-def cansee(point, neighborhood, barriers):
+def cansee(point, neighborhood, barriers, n_iter = 20):
     """
     Function that determines if a point can see a neighborhood
     :param point: Point to test if it is visible.
@@ -513,19 +513,18 @@ def cansee(point, neighborhood, barriers):
         center = np.array(neighborhood.center)
 
         # dr = vector joining the center and the point of the barrier
-        dr = center - np.array(point)
+        theta = np.linspace(0, 2*np.pi, n_iter)
 
-        # dr_u = unitary vector
-        dr_u = dr / np.linalg.norm(dr)
+        center = neighborhood.center
+        radii = neighborhood.radii
 
-        # nr_u = normal vector to dr
-        nr_u = np.array([-dr_u[1], dr_u[0]])
+        x = center[0] + radii*np.cos(theta)
+        y = center[1] + radii*np.sin(theta)
 
         # Generate a discretization of the diameter that is normal to the segment joining the center and the point
-        mus = np.linspace(-neighborhood.radii, neighborhood.radii, 20)
 
-        for mu in mus:
-            barrier = [point, center + mu*nr_u]
+        for mu in range(n_iter):
+            barrier = [point, [x[mu], y[mu]]]
 
             inter = False
             for barrieri in barriers:
@@ -567,7 +566,7 @@ def cansee(point, neighborhood, barriers):
         return False
 
 
-def canseeN(neighborhood1, neighborhood2, barriers):
+def canseeN(neighborhood1, neighborhood2, barriers, n_iter = 20):
     """
     Extends the definition of cansee function.
     :param neighborhood1:
@@ -576,27 +575,37 @@ def canseeN(neighborhood1, neighborhood2, barriers):
     :return: True, if the exists a point joining neighborhood1 and neighborhood2; False, otherwhise
     """
     if type(neighborhood1) is neigh.Circle and type(neighborhood2) is neigh.Circle:
+
+        theta = np.linspace(0, 2*np.pi, n_iter)
+
         # Define the centers of both neighborhoods
         center1 = np.array(neighborhood1.center)
+        radii1 = neighborhood1.radii
+
+        x1 = center1[0] + radii1*np.cos(theta)
+        y1 = center1[1] + radii1*np.sin(theta)
+
         center2 = np.array(neighborhood2.center)
+        radii2 = neighborhood2.radii
 
-        # dr = vector joining the centers of the neighborhoods
-        dr = center2 - center1
+        x2 = center2[0] + radii2*np.cos(theta)
+        y2 = center2[1] + radii2*np.sin(theta)
 
-        # dr_u = unitary vector
-        dr_u = dr / np.linalg.norm(dr)
 
-        # nr_u = normal vector to dr
-        nr_u = np.array([-dr_u[1], dr_u[0]])
+        for mu1 in range(n_iter):
+            for mu2 in range(n_iter):
+                barrier = [[x1[mu1], y1[mu1]], [x2[mu2], y2[mu2]]]
 
-        # Generate a discretization of the neighborhoods that is normal to the segment joining the center and the point
-        mus1 = np.linspace(-neighborhood1.radii, neighborhood1.radii, 20)
-        mus2 = np.linspace(-neighborhood2.radii, neighborhood2.radii, 20)
+                inter = False
+                for barrieri in barriers:
+                    if intersect(barrieri, barrier):
+                        inter = True
+                        break
 
-        return any(
-            [not (any([intersect([center1 + mu1 * nr_u, center2 + mu2 * nr_u], [barrier[0], barrier[1]]) for barrier in
-                       barriers]))
-             for mu1 in mus1 for mu2 in mus2])
+                if not(inter):
+                    return True
+
+        return False
 
     if type(neighborhood1) is neigh.Circle and type(neighborhood2) is neigh.Poligonal:
         # Define the centers of both neighborhoods

@@ -54,16 +54,22 @@ def h_kmedian_n(barriers, sources, targets, k, single = False, wL=50, lazy=True,
     edges_barrier = []
     for v, i in vertices_barrier:
         for w, j in vertices_barrier:
-            if v != w:
-                if prepro:
-                    barrier = [barriers[v-1000][i], barriers[w-1000][j]]
+            if v > w:
+                barrier = [barriers[v-1000][i], barriers[w-1000][j]]
 
-                    if any([af.intersect(barrieri, barrier) for barrieri in barriers]):
-                        pass
-                    else:
+                if np.linalg.norm(np.array(barriers[v-1000][i]) - np.array(barriers[w-1000][j])) >= 0.5:
+
+                    intersect = False
+                    for barrieri in barriers:
+                        if af.intersect(barrieri, barrier):
+                            intersect = True
+                            break
+
+                    if not (intersect):
                         edges_barrier.append((v, i, w, j))
-                else:
-                    edges_barrier.append((v, i, w, j))
+                        edges_barrier.append((w, j, v, i))
+                    else:
+                        pass
 
     indices_barriers = [(v, 0, v, 1) for v in range(1000, 1000 + len(barriers))]
 
@@ -120,6 +126,8 @@ def h_kmedian_n(barriers, sources, targets, k, single = False, wL=50, lazy=True,
         for dim in range(2):
             point_index.append((a, b, dim))
 
+    shape_barriers = np.array(barriers).shape[0]
+    bounds_min, bounds_max = np.array(barriers).reshape(shape_barriers*2, 2).min(), np.array(barriers).reshape(shape_barriers*2, 2).max()
 
     # for a, b, c, d in edges_total:
     #     for e, f in vertices_neighborhood:
@@ -439,7 +447,7 @@ def h_kmedian_n(barriers, sources, targets, k, single = False, wL=50, lazy=True,
         epsilon = model.addVars(epsilon_index, vtype=GRB.BINARY, name='epsilon')
 
     # point = model.addVars(p_index, vtype = GRB.CONTINUOUS, lb = 0.1, ub = 99.9, name = 'point')
-    point = model.addVars(point_index, vtype=GRB.CONTINUOUS, name='point')
+    point = model.addVars(point_index, vtype=GRB.CONTINUOUS, lb=min([0, bounds_min]), name='point')
     # point_star = model.addVars(point_star_index, vtype=GRB.CONTINUOUS, name='point_star')
 
     d_inside = model.addVars(d_inside_index, vtype=GRB.CONTINUOUS, lb=0.0, name='d_inside')
@@ -479,10 +487,10 @@ def h_kmedian_n(barriers, sources, targets, k, single = False, wL=50, lazy=True,
             if (c, d, e, f) in indices_barriers:
                 if (a, b) in vertices_source + vertices_target:
                     if (a, b) in vertices_source:
-                        L, U = eM.estima_M_alpha1(sources[a-1], barriers[c-1000][0], barriers[e-1000][1])
+                        L, U = eM.estima_M_alpha1(sources[a-1], barriers[c-1000][d], barriers[e-1000][f])
 
                     elif (a, b) in vertices_target:
-                        L, U = eM.estima_M_alpha1(targets[abs(a)-1], barriers[c-1000][0], barriers[e-1000][1])
+                        L, U = eM.estima_M_alpha1(targets[abs(a)-1], barriers[c-1000][d], barriers[e-1000][f])
                     
                     # L, U = af.estima_det(sources[a - 1], [barriers[c - 1000][0], barriers[c - 1000][1], barriers[e - 1000][0], barriers[e - 1000][1]])
                     model.addConstr(
@@ -945,7 +953,7 @@ def h_kmedian_n(barriers, sources, targets, k, single = False, wL=50, lazy=True,
                      head_width=1, length_includes_head=True, color='black')
 
 
-        plt.axis([0, 100, 0, 100])
+        plt.axis([bounds_min, bounds_max, bounds_min, bounds_max])
 
         ax.set_aspect('equal')
         plt.show()

@@ -53,16 +53,18 @@ import auxiliar_functions as af
 #
 #     return BigM
 
-def preproM(m, M):
-    if m < 0 and M < 0:
-        m *= 2
-        M /= 2
+def preproM(m, M, factor=2):
+    if m < 0 and M <= 0:
+        m *= factor
+        M /= factor
     elif m < 0 and M > 0:
-        m *= 2
-        M *= 2
+        m *= factor
+        M *= factor
     else:
-        m /= 2
-        M *= 2
+        m /= factor
+        M *= factor
+
+    return m, M
 
 n_iter = 100
 
@@ -116,7 +118,7 @@ def estima_max_inside(comp):
 
         return maximo
 
-def estima_M_alpha1(entorno, punto1, punto2, n_iter = 100):
+def estima_M_alpha1(entorno, punto1, punto2, n_iter = 20):
     if type(entorno) is Circle:
 
         theta = np.linspace(0, 2*np.pi, n_iter)
@@ -132,11 +134,11 @@ def estima_M_alpha1(entorno, punto1, punto2, n_iter = 100):
         m = min(determinantes)
         M = max(determinantes)
 
-        preproM(m, M)
+        m, M = preproM(m, M)
 
         return m, M
 
-def estima_M_alpha2(punto1, entorno, punto2, n_iter = 100):
+def estima_M_alpha2(punto1, entorno, punto2, n_iter = 20):
     if type(entorno) is Circle:
 
         theta = np.linspace(0, 2*np.pi, n_iter)
@@ -152,11 +154,11 @@ def estima_M_alpha2(punto1, entorno, punto2, n_iter = 100):
         m = min(determinantes)
         M = max(determinantes)
 
-        preproM(m, M)
+        m, M = preproM(m, M)
 
         return m, M
 
-def estima_M_alpha3(punto1, punto2, entorno, n_iter = 100):
+def estima_M_alpha3(punto1, punto2, entorno, n_iter = 20):
     if type(entorno) is Circle:
 
         theta = np.linspace(0, 2*np.pi, n_iter)
@@ -174,11 +176,11 @@ def estima_M_alpha3(punto1, punto2, entorno, n_iter = 100):
         m = min(determinantes)
         M = max(determinantes)
 
-        preproM(m, M)
+        m, M = preproM(m, M)
 
         return m, M
 
-def estima_M_alpha4(punto1, entorno1, entorno2, n_iter=10):
+def estima_M_alpha4(punto1, entorno1, entorno2, n_iter=20):
     if type(entorno1) is Circle and type(entorno2) is Circle:
 
         theta = np.linspace(0, 2*np.pi, n_iter)
@@ -200,7 +202,7 @@ def estima_M_alpha4(punto1, entorno1, entorno2, n_iter=10):
         m = min(determinantes)
         M = max(determinantes)
 
-        preproM(m, M)
+        m, M = preproM(m, M)
 
         return m, M
 
@@ -344,6 +346,6 @@ def estima_M_complete(ent1, ent2, n_iter = 10):
     m = min(distancias)
     M = max(distancias)
 
-    preproM(m, M)
+    m, M = preproM(m, M)
 
     return m, M
