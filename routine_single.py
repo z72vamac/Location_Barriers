@@ -18,8 +18,6 @@ import pandas as pd
 from h_kmedian_new import h_kmedian_n
 from neighborhood import Circle
 
-np.random.seed(5)
-
 # Parameters of the model
 instances = range(5)
 n_Ns = [10, 20, 30, 50, 80]
@@ -49,13 +47,13 @@ start = True
 if start:
     dataframe = pd.read_csv('./resultados/results_single.csv').iloc[:, 1:]
     num_rows = dataframe.shape[0]
-    print(num_rows)
 else:
     num_rows = 0
     dataframe = pd.DataFrame(columns=['Instance', 'n_N', 'n_B', 'k', 'wL', 'Lazy', 'A4', 'Init', 'Gap', 'Runtime', 'NodeCount', 'ObjVal', 'Runtime_h', 'Runtime_h2', 'ObjVal_h', 'ObjVal_h2'])
 
 counter = 1
 
+num_rows = 97
 
 for instance in instances:
     for nn, k_list in zip(n_Ns, ks):
@@ -74,7 +72,8 @@ for instance in instances:
                                 barriers.append([[lista[0], lista[1]], [lista[2], lista[3]]])
 
                             nB = len(barriers)
-
+                            
+                            np.random.seed(5)
                             sublist = np.random.choice(nB, int(np.floor(perc * nB)))
                             barriers1 = [barriers[b] for b in sublist]
 
@@ -86,7 +85,7 @@ for instance in instances:
                                 print('k: ' + str(k))
                                 print('Lazy mode: ' + str(l))
                                 print('Init: ' + str(init))
-                                print('Percentage of barriers: ' + str(perc) + '%\n\n')
+                                print('Percentage of barriers: ' + str(100*perc) + '%\n\n')
 
 
                                 if perc < 1:
@@ -97,9 +96,7 @@ for instance in instances:
                                 resultados = h_kmedian_n(barriers1, sources=neighbourhoods, targets=neighbourhoods, k=k, single=True, wL=wL, lazy=l, A4=A4, init=init, time_limit=time_limit)
                                 serie = pd.Series([instance] + resultados, index=dataframe.columns)
 
-                                print(dataframe)
                                 dataframe = dataframe.append(serie, ignore_index=True)
                                 dataframe.to_csv('./resultados/results_single.csv')
-                                print(dataframe)
 
                             counter += 1
