@@ -49,12 +49,13 @@ start = True
 if start:
     dataframe = pd.read_csv('./resultados/results_single.csv').iloc[:, 1:]
     num_rows = dataframe.shape[0]
+    print(num_rows)
 else:
     num_rows = 0
+    dataframe = pd.DataFrame(columns=['Instance', 'n_N', 'n_B', 'k', 'wL', 'Lazy', 'A4', 'Init', 'Gap', 'Runtime', 'NodeCount', 'ObjVal', 'Runtime_h', 'Runtime_h2', 'ObjVal_h', 'ObjVal_h2'])
 
 counter = 1
 
-dataframe = pd.DataFrame(columns=['Instance', 'n_N', 'n_B', 'k', 'wL', 'Lazy', 'A4', 'Init', 'Gap', 'Runtime', 'NodeCount', 'ObjVal', 'Runtime_h', 'Runtime_h2', 'ObjVal_h', 'ObjVal_h2'])
 
 for instance in instances:
     for nn, k_list in zip(n_Ns, ks):
@@ -96,7 +97,9 @@ for instance in instances:
                                 resultados = h_kmedian_n(barriers1, sources=neighbourhoods, targets=neighbourhoods, k=k, single=True, wL=wL, lazy=l, A4=A4, init=init, time_limit=time_limit)
                                 serie = pd.Series([instance] + resultados, index=dataframe.columns)
 
+                                print(dataframe)
                                 dataframe = dataframe.append(serie, ignore_index=True)
                                 dataframe.to_csv('./resultados/results_single.csv')
+                                print(dataframe)
 
                             counter += 1
