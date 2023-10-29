@@ -68,7 +68,7 @@ N6t = neigh.Circle(center=[30, 90], radii=10, col = 'blue')
 
 targets = [N1t, N2t, N3t, N4t, N5t, N6t]
 
-k = 3
+k = 1
 
 endurance = 1000
 
@@ -78,13 +78,19 @@ wL = 0
 
 # Random instances
 instance = 0
-neighbourhood_size = 10
+neighbourhood_size = 30
 
 segments = np.genfromtxt('./instances_random/barriers/barriers{0}-{1}.csv'.format(neighbourhood_size, instance), delimiter = ',')
 
 barriers = []
 for segment in segments:
     barriers.append([[segment[0], segment[1]], [segment[2], segment[3]]])
+
+nB = len(barriers)
+
+sublist = np.random.choice(nB, int(np.floor(0.1 * nB)))
+barriers = [barriers[b] for b in sublist]
+
 
 circles = np.genfromtxt('./instances_random/circles/circles{0}-{1}.csv'.format(neighbourhood_size, instance), delimiter = ',')
 

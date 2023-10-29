@@ -18,7 +18,6 @@ import pandas as pd
 from h_kmedian_new import h_kmedian_n
 from neighborhood import Circle
 
-np.random.seed(5)
 
 # Parameters of the model
 instances = range(5)
@@ -51,6 +50,7 @@ if start:
     num_rows = dataframe.shape[0]
 else:
     num_rows = 0
+    dataframe = pd.DataFrame(columns=['Instance', 'n_N', 'n_B', 'k', 'wL', 'Lazy', 'A4', 'Init', 'Gap', 'Runtime', 'NodeCount', 'ObjVal', 'Runtime_h', 'Runtime_h2', 'ObjVal_h', 'ObjVal_h2'])
 
 counter = 1
 
@@ -73,7 +73,8 @@ for instance in instances:
                                 barriers.append([[lista[0], lista[1]], [lista[2], lista[3]]])
 
                             nB = len(barriers)
-
+                            
+                            np.random.seed(5)
                             sublist = np.random.choice(nB, int(np.floor(perc * nB)))
                             barriers1 = [barriers[b] for b in sublist]
 
@@ -85,7 +86,7 @@ for instance in instances:
                                 print('k: ' + str(k))
                                 print('Lazy mode: ' + str(l))
                                 print('Init: ' + str(init))
-                                print('Percentage of barriers: ' + str(perc) + '%\n\n')
+                                print('Percentage of barriers: ' + str(100*perc) + '%\n\n')
 
 
                                 if perc < 1:
