@@ -53,8 +53,6 @@ else:
 
 counter = 1
 
-num_rows = 97
-
 for instance in instances:
     for nn, k_list in zip(n_Ns, ks):
         for k in k_list:
