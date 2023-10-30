@@ -54,8 +54,6 @@ else:
 
 counter = 1
 
-dataframe = pd.DataFrame(columns=['Instance', 'n_N', 'n_B', 'k', 'wL', 'Lazy', 'A4', 'Init', 'Gap', 'Runtime', 'NodeCount', 'ObjVal', 'Runtime_h', 'Runtime_h2', 'ObjVal_h', 'ObjVal_h2'])
-
 for instance in instances:
     for nn, k_list in zip(n_Ns, ks):
         for k in k_list:

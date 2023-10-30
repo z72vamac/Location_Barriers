@@ -18,6 +18,7 @@ import pandas as pd
 from h_kmedian_new import h_kmedian_n
 from neighborhood import Circle
 
+
 # Parameters of the model
 instances = range(5)
 n_Ns = [10, 20, 30, 50, 80]
@@ -42,10 +43,10 @@ inits = [False, True]
 
 time_limit = 3600
 
-start = True
+start = False
 
 if start:
-    dataframe = pd.read_csv('./resultados/results_single.csv').iloc[:, 1:]
+    dataframe = pd.read_csv('./resultados/results_multi_last_instances.csv').iloc[:, 1:]
     num_rows = dataframe.shape[0]
 else:
     num_rows = 0
@@ -53,7 +54,7 @@ else:
 
 counter = 1
 
-for instance in instances:
+for instance in range(3, 5):
     for nn, k_list in zip(n_Ns, ks):
         for k in k_list:
             for wL in wLs:
@@ -91,10 +92,10 @@ for instance in instances:
                                 else:
                                     A4 = True
 
-                                resultados = h_kmedian_n(barriers1, sources=neighbourhoods, targets=neighbourhoods, k=k, single=True, wL=wL, lazy=l, A4=A4, init=init, time_limit=time_limit)
+                                resultados = h_kmedian_n(barriers1, sources=neighbourhoods, targets=neighbourhoods, k=k, single=False, wL=wL, lazy=l, A4=A4, init=init, time_limit=time_limit)
                                 serie = pd.Series([instance] + resultados, index=dataframe.columns)
 
-                                dataframe = dataframe.append(serie, ignore_index=True)
-                                dataframe.to_csv('./resultados/results_single.csv')
+                                dataframe = dataframe._append(serie, ignore_index=True)
+                                dataframe.to_csv('./resultados/results_multi_last_instances.csv')
 
                             counter += 1
