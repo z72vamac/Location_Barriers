@@ -15,16 +15,16 @@ import neighborhood as neigh
 from data import *
 
 
-def matheuristic(barriers, sources_auxiliar, targets_auxiliar, k, single = False, wL=50, A4 = True, log=False, picture=False,
+def matheuristic(barriers, sources, targets, edges_source, edges_target, edges_barrier, edges_source_target, k, single = False, wL=50, A4 = True, log=False, picture=False,
                 time_limit=7200, init=False):
 
-    print('Iniciando matheuristico')
+    print('\nIniciando matheuristico\n')
 
-    S = len(sources_auxiliar)
-    T = len(targets_auxiliar)
+    # # S = len(sources_auxiliar)
+    # # T = len(targets_auxiliar)
 
-    sources = af.preprocess_neighborhoods(sources_auxiliar)
-    targets = af.preprocess_neighborhoods(targets_auxiliar)
+    # # sources = af.preprocess_neighborhoods(sources_auxiliar)
+    # # targets = af.preprocess_neighborhoods(targets_auxiliar)
 
     first_time = time.time()
 
@@ -64,93 +64,94 @@ def matheuristic(barriers, sources_auxiliar, targets_auxiliar, k, single = False
             for dim in range(2):
                 point[a, b, dim] = barriers[a-1000][b][dim]
 
-    # Indices of the edges joining a source and a barrier
-    edges_source = []
+    # # Indices of the edges joining a source and a barrier
+    # edges_source = []
 
-    for (a, b) in vertices_source:
-        for c, d in vertices_barrier:
-            # Point of the barrier to check if is visible by the neighborhood
-            point2 = barriers[c-1000][d]
+    # for (a, b) in vertices_source:
+    #     for c, d in vertices_barrier:
+    #         # Point of the barrier to check if is visible by the neighborhood
+    #         point2 = barriers[c-1000][d]
 
-            # Neighborhood to check if it is visible by the point
-            point1 = [point[a, b, 0], point[a, b, 1]]
+    #         # Neighborhood to check if it is visible by the point
+    #         point1 = [point[a, b, 0], point[a, b, 1]]
 
-            barrier = [point1, point2]
+    #         barrier = [point1, point2]
 
-            inter = False
-            for barrieri in barriers:
-                if af.intersect(barrieri, barrier):
-                    inter = True
-                    break
+    #         inter = False
+    #         for barrieri in barriers:
+    #             if af.intersect(barrieri, barrier):
+    #                 inter = True
+    #                 break
 
-            if not (inter):
-                edges_source.append((a, b, c, d))
+    #         if not (inter):
+    #             edges_source.append((a, b, c, d))
 
-    edges_barrier = []
-    for v, i in vertices_barrier:
-        for w, j in vertices_barrier:
-            if v > w:
-                barrier = [barriers[v-1000][i], barriers[w-1000][j]]
+    # edges_barrier = []
+    # for v, i in vertices_barrier:
+    #     for w, j in vertices_barrier:
+    #         if v > w:
+    #             barrier = [barriers[v-1000][i], barriers[w-1000][j]]
                 
-                if np.linalg.norm(np.array(barriers[v-1000][i]) - np.array(barriers[w-1000][j])) >= 0.5:
+    #             if np.linalg.norm(np.array(barriers[v-1000][i]) - np.array(barriers[w-1000][j])) >= 0.5:
 
-                    inter = False
-                    for barrieri in barriers:
-                        if af.intersect(barrieri, barrier):
-                            inter = True
-                            break
+    #                 inter = False
+    #                 for barrieri in barriers:
+    #                     if af.intersect(barrieri, barrier):
+    #                         inter = True
+    #                         break
 
-                    if not (inter):
-                        edges_barrier.append((v, i, w, j))
-                        edges_barrier.append((w, j, v, i))
+    #                 if not (inter):
+    #                     edges_barrier.append((v, i, w, j))
+    #                     edges_barrier.append((w, j, v, i))
 
-    indices_barriers = [(v, 0, v, 1) for v in range(1000, 1000 + len(barriers))]
+    # indices_barriers = [(v, 0, v, 1) for v in range(1000, 1000 + len(barriers))]
 
-    edges_target = []
+    # edges_target = []
 
-    for (a, b) in vertices_target:
-        for c, d in vertices_barrier:
-            # Point of the barrier to check if is visible by the neighborhood
-            point2 = barriers[c-1000][d]
+    # for (a, b) in vertices_target:
+    #     for c, d in vertices_barrier:
+    #         # Point of the barrier to check if is visible by the neighborhood
+    #         point2 = barriers[c-1000][d]
 
-            # Neighborhood to check if it is visible by the point
-            point1 = [point[a, b, 0], point[a, b, 1]]
+    #         # Neighborhood to check if it is visible by the point
+    #         point1 = [point[a, b, 0], point[a, b, 1]]
 
-            barrier = [point1, point2]
+    #         barrier = [point1, point2]
 
-            inter = False
-            for barrieri in barriers:
-                if af.intersect(barrieri, barrier):
-                    inter = True
-                    break
+    #         inter = False
+    #         for barrieri in barriers:
+    #             if af.intersect(barrieri, barrier):
+    #                 inter = True
+    #                 break
 
-            if not (inter):
-                edges_target.append((c, d, a, b))
+    #         if not (inter):
+    #             edges_target.append((c, d, a, b))
 
-    # Including edges joining source neighbourhood and target neighbourhood
+    # print(edges_target)
+    # # Including edges joining source neighbourhood and target neighbourhood
 
-    edges_source_target = []
+    # edges_source_target = []
 
-    if not (A4):
+    # if not (A4):
 
-        for (a, b) in vertices_source:
-            for (c, d) in vertices_target:
-                # Point of the barrier to check if is visible by the neighborhood
-                point2 = [point[c, d, 0], point[c, d, 1]]
+    #     for (a, b) in vertices_source:
+    #         for (c, d) in vertices_target:
+    #             # Point of the barrier to check if is visible by the neighborhood
+    #             point2 = [point[c, d, 0], point[c, d, 1]]
 
-                # Neighborhood to check if it is visible by the point
-                point1 = [point[a, b, 0], point[a, b, 1]]
+    #             # Neighborhood to check if it is visible by the point
+    #             point1 = [point[a, b, 0], point[a, b, 1]]
 
-                barrier = [point1, point2]
+    #             barrier = [point1, point2]
 
-                inter = False
-                for barrieri in barriers:
-                    if af.intersect(barrieri, barrier):
-                        inter = True
-                        break
+    #             inter = False
+    #             for barrieri in barriers:
+    #                 if af.intersect(barrieri, barrier):
+    #                     inter = True
+    #                     break
 
-                if not (inter):
-                    edges_source_target.append((a, b, c, d))
+    #             if not (inter):
+    #                 edges_source_target.append((a, b, c, d))
 
     vertices_total = vertices_source + vertices_barrier + vertices_target
     
@@ -230,6 +231,8 @@ def matheuristic(barriers, sources_auxiliar, targets_auxiliar, k, single = False
 
         dist[a, b, c, d] = np.linalg.norm(np.array([point[a, b, 0], point[a, b, 1]]) - np.array([point[c, d, 0], point[c, d, 1]]))
 
+    print(dist)
+
     model = gp.Model('Model: H-KMedian-N')
 
     x = model.addVars(x_index, vtype=GRB.BINARY, name='x')
@@ -237,7 +240,7 @@ def matheuristic(barriers, sources_auxiliar, targets_auxiliar, k, single = False
     y = model.addVars(y_index, vtype=GRB.BINARY, name='y')
     if single:
         aux = model.addVars(aux_index, vtype=GRB.BINARY, name='aux')
-        flow = model.addVars(flow_index, vtype=GRB.INTEGER, lb=0.0, ub=T, name='flow')
+        flow = model.addVars(flow_index, vtype=GRB.INTEGER, lb=0.0, ub=len(targets), name='flow')
     else:
         flow = model.addVars(flow_index, vtype=GRB.BINARY, name='flow')
 

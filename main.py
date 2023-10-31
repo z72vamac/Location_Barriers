@@ -78,7 +78,7 @@ wL = 0
 
 # Random instances
 instance = 0
-neighbourhood_size = 30
+neighbourhood_size = 10
 
 segments = np.genfromtxt('./instances_random/barriers/barriers{0}-{1}.csv'.format(neighbourhood_size, instance), delimiter = ',')
 
@@ -87,6 +87,8 @@ for segment in segments:
     barriers.append([[segment[0], segment[1]], [segment[2], segment[3]]])
 
 nB = len(barriers)
+
+np.random.seed(0)
 
 sublist = np.random.choice(nB, int(np.floor(0.1 * nB)))
 barriers = [barriers[b] for b in sublist]
