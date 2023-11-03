@@ -102,6 +102,8 @@ def h_kmedian_n(barriers, sources, targets, k, single = False, wL=50, lazy=True,
                 # edges_neighborhood.append((a, b, c, d))
                 edges_target.append((c, d, a, b))
 
+    print(edges_target)
+
     fourth_time = time.time() - start_target_barrier
     print('Time_barrier_target: ' + str(fourth_time))
 
@@ -145,7 +147,7 @@ def h_kmedian_n(barriers, sources, targets, k, single = False, wL=50, lazy=True,
             point_index.append((a, b, dim))
 
     shape_barriers = np.array(barriers).shape[0]
-    bounds_min, bounds_max = np.array(barriers).reshape(shape_barriers*2, 2).min(), np.array(barriers).reshape(shape_barriers*2, 2).max()
+    bounds_min, bounds_max = min([0, np.array(barriers).reshape(shape_barriers*2, 2).min()]), max([100, np.array(barriers).reshape(shape_barriers*2, 2).max()])
 
 
     # Indices of alpha variables
@@ -289,7 +291,7 @@ def h_kmedian_n(barriers, sources, targets, k, single = False, wL=50, lazy=True,
     if lazy:
         def elimcuts(model, where):
             if where == GRB.Callback.MIPSOL:
-                xs = model.cbGetSolution(model._x)
+                flows = model.cbGetSolution(model._flow)
 
                 alphas = model.cbGetSolution(model._alpha)
                 betas = model.cbGetSolution(model._beta)
@@ -304,9 +306,9 @@ def h_kmedian_n(barriers, sources, targets, k, single = False, wL=50, lazy=True,
                 U = 100000
 
                 # Loop to add constraints
-                x_indices = [index for index in xs.keys() if xs[index] > 0.5]
+                flow_indices = [index for index in flows.keys() if flows[index] > 0.5]
 
-                for a, b, c, d in x_indices:
+                for a, b, c, d in flow_indices:
                     if (a, b, c, d) in edges_source:
                         segment = [[points[a, b, 0], points[a, b, 1]], barriers[c - 1000][d]]
 
@@ -322,16 +324,10 @@ def h_kmedian_n(barriers, sources, targets, k, single = False, wL=50, lazy=True,
                             if det1*det2 < 0 and det3*det4 < 0:
                                 # print(af.determinant([model._point[a, b, 0], model._point[a, b, 1]], barriers[e - 1000][0], barriers[e - 1000][1]))
                                 L1, U1 = eM.estima_M_alpha1(sources[a - 1], barriers[e - 1000][0], barriers[e - 1000][1])
-                                L2= -100*abs(af.determinant(barriers[c - 1000][d], barriers[e - 1000][0], barriers[e - 1000][1]))
-                                U2 = 100*abs(L2)
                                 model.cbLazy(
                                     (1 - model._alpha[a, b, e, 0, e, 1]) * L1 <= af.determinant([model._point[a, b, 0], model._point[a, b, 1]], barriers[e - 1000][0], barriers[e - 1000][1]))
                                 model.cbLazy(
                                     -U1 * model._alpha[a, b, e, 0, e, 1] <= -af.determinant([model._point[a, b, 0], model._point[a, b, 1]], barriers[e - 1000][0], barriers[e - 1000][1]))
-                                model.cbLazy(
-                                    (1 - model._alpha[c, d, e, 0, e, 1]) * L2 <= af.determinant(barriers[c - 1000][d], barriers[e - 1000][0], barriers[e - 1000][1]))
-                                model.cbLazy(
-                                    -U2 * model._alpha[c, d, e, 0, e, 1] <= -af.determinant(barriers[c - 1000][d], barriers[e - 1000][0], barriers[e - 1000][1]))
 
                                 for f in range(2):
                                     L, U = eM.estima_M_alpha2(barriers[e - 1000][f], sources[a - 1], barriers[c - 1000][d])
@@ -355,12 +351,6 @@ def h_kmedian_n(barriers, sources, targets, k, single = False, wL=50, lazy=True,
                             if det1 * det2 < 0 and det3 * det4 < 0:
                                 L1, U1 = eM.estima_M_alpha1(targets[abs(c) - 1], barriers[e - 1000][0], barriers[e - 1000][1])
 
-                                L2= -100*abs(af.determinant(barriers[a - 1000][d], barriers[e - 1000][0], barriers[e - 1000][1]))
-                                U2 = 100*abs(L2)
-                                model.cbLazy(
-                                    (1 - model._alpha[a, b, e, 0, e, 1]) * L2 <= af.determinant(barriers[a - 1000][b], barriers[e - 1000][0], barriers[e - 1000][1]))
-                                model.cbLazy(
-                                    -U2 * model._alpha[a, b, e, 0, e, 1] <= -af.determinant(barriers[a - 1000][b], barriers[e - 1000][0], barriers[e - 1000][1]))
                                 model.cbLazy(
                                     (1 - model._alpha[c, d, e, 0, e, 1]) * L1 <= af.determinant([model._point[c, d, 0], model._point[c, d, 1]], barriers[e - 1000][0], barriers[e - 1000][1]))
                                 model.cbLazy(
@@ -445,9 +435,10 @@ def h_kmedian_n(barriers, sources, targets, k, single = False, wL=50, lazy=True,
 
     if init:
         # Solving the problem by taking the center of the neighbourhoods.
-        time_h, objval_h, x_start, y_start, flow_start, point_vals = matheuristic(barriers, sources, targets, k, single = single, wL = wL, time_limit = 100, picture = False)
+        time_h, objval_h, x_start, y_start, flow_start, point_vals = matheuristic(barriers, sources, targets, edges_source, edges_target, edges_barrier, edges_source_target, k, single = single, wL = wL, A4=A4, time_limit = 100, picture = False)
 
         # model.read('solution.sol')
+        print(flow_start)
 
         # print(x_start)
         for index in x_start:
@@ -868,8 +859,8 @@ def h_kmedian_n(barriers, sources, targets, k, single = False, wL=50, lazy=True,
     model.Params.timeLimit = time_limit
     model.Params.NumericFocus = 1
     
-    if lazy:
-        model._x = x
+    if lazy and single:
+        model._flow = flow
         model._point = point
         model._alpha = alpha
         model._beta = beta
@@ -935,7 +926,8 @@ def h_kmedian_n(barriers, sources, targets, k, single = False, wL=50, lazy=True,
 
     if log:
         print(x_indices)
-        print(y_indices)
+    
+    print(y_indices)
     
     # print(flow_indices)
 
