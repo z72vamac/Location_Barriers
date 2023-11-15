@@ -906,10 +906,10 @@ def h_kmedian_n(barriers, sources, targets, k, single = False, wL=50, lazy=True,
 
     # model.write('solution.sol')
 
-    results[7] = model.getAttr('MIPGap')
-    results[8] = model.getAttr('Runtime')
-    results[9] = model.getAttr('NodeCount')
-    results[10] = model.ObjVal
+    results[8] = model.getAttr('MIPGap')
+    results[9] = model.getAttr('Runtime')
+    results[10] = model.getAttr('NodeCount')
+    results[11] = model.ObjVal
 
     if single:
         x_indices = [(index, x[index].X) for index in x.keys() if x[index].X > 0.5]
