@@ -51,7 +51,7 @@ singles = [True, False]
 
 time_limit = 3600
 
-start = False
+start = TRue
 
 if start:
     dataframe = pd.read_csv('./resultados/results_' + str(instance) + '.csv').iloc[:, 1:]
@@ -104,7 +104,7 @@ for nn, k_list in zip(n_Ns, ks):
                                     resultados = h_kmedian_n(barriers1, sources=neighbourhoods, targets=neighbourhoods, k=k, single=True, wL=wL, lazy=l, A4=A4, init=init, time_limit=time_limit)
                                     serie = pd.Series([instance] + resultados, index=dataframe.columns)
 
-                                    dataframe = dataframe.append(serie, ignore_index=True)
+                                    dataframe = dataframe._append(serie, ignore_index=True)
                                     dataframe.to_csv('./resultados/results_' + str(instance) + '.csv')
 
                                 counter += 1
