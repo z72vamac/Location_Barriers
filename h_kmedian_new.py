@@ -435,10 +435,10 @@ def h_kmedian_n(barriers, sources, targets, k, single = False, wL=50, lazy=True,
 
     if init:
         # Solving the problem by taking the center of the neighbourhoods.
-        time_h, objval_h, x_start, y_start, flow_start, point_vals = matheuristic(barriers, sources, targets, edges_source, edges_target, edges_barrier, edges_source_target, k, single = single, wL = wL, A4=A4, time_limit = 100, picture = False)
+        time_h, objval_h, x_start, y_start, flow_start, point_vals = matheuristic(barriers, sources, targets, edges_source, edges_target, edges_barrier, edges_source_target, k, single = single, wL = wL, A4=A4, time_limit = 600, picture = False)
 
         # model.read('solution.sol')
-        print(flow_start)
+        # print(flow_start)
 
         # print(x_start)
         for index in x_start:
@@ -881,7 +881,7 @@ def h_kmedian_n(barriers, sources, targets, k, single = False, wL=50, lazy=True,
 
     time_elapsed = second_time - first_time
 
-    results = [len(sources), len(barriers), k, wL, lazy, A4, init, np.nan, np.nan, np.nan, np.nan, np.nan, np.nan, np.nan, np.nan]
+    results = [len(sources), len(barriers), k, single, wL, lazy, A4, init, np.nan, np.nan, np.nan, np.nan, np.nan, np.nan, np.nan, np.nan]
 
 
     if init:

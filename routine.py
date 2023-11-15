@@ -17,9 +17,16 @@ import numpy as np
 import pandas as pd
 from h_kmedian_new import h_kmedian_n
 from neighborhood import Circle
+import sys
 
 # Parameters of the model
-instances = range(5)
+# instances = range(5)
+
+
+instance = sys.argv[1]
+
+print("Solving problems of instance:" + str(instance))
+
 n_Ns = [10, 20, 30, 50, 80]
 # n_Ns = [25, 30]
 
@@ -40,20 +47,22 @@ percs = [0.1, 0.2, 0.5, 1]
 
 inits = [False, True]
 
+singles = [True, False]
+
 time_limit = 3600
 
-start = True
+start = False
 
 if start:
-    dataframe = pd.read_csv('./resultados/results_single.csv').iloc[:, 1:]
+    dataframe = pd.read_csv('./resultados/results_' + str(instance) + '.csv').iloc[:, 1:]
     num_rows = dataframe.shape[0]
 else:
     num_rows = 0
-    dataframe = pd.DataFrame(columns=['Instance', 'n_N', 'n_B', 'k', 'wL', 'Lazy', 'A4', 'Init', 'Gap', 'Runtime', 'NodeCount', 'ObjVal', 'Runtime_h', 'Runtime_h2', 'ObjVal_h', 'ObjVal_h2'])
+    dataframe = pd.DataFrame(columns=['Instance', 'n_N', 'n_B', 'k', 'Single', 'wL', 'Lazy', 'A4', 'Init', 'Gap', 'Runtime', 'NodeCount', 'ObjVal', 'Runtime_h', 'Runtime_h2', 'ObjVal_h', 'ObjVal_h2'])
 
 counter = 1
 
-for instance in instances:
+for single in singles:
     for nn, k_list in zip(n_Ns, ks):
         for k in k_list:
             for wL in wLs:
@@ -95,6 +104,6 @@ for instance in instances:
                                 serie = pd.Series([instance] + resultados, index=dataframe.columns)
 
                                 dataframe = dataframe.append(serie, ignore_index=True)
-                                dataframe.to_csv('./resultados/results_single.csv')
+                                dataframe.to_csv('./resultados/results_' + str(instance) + '.csv')
 
                             counter += 1

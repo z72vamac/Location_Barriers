@@ -459,21 +459,21 @@ def h_kmedian_n(barriers, sources, targets, k, single = False, wL=50, lazy=True,
     model.update()
 
     if init:
-        time_h, objval_h, x_start, y_start, flow_start = matheuristic(barriers, sources, targets, k, single = single, wL = wL, time_limit = 100, picture = False)
+        time_h, objval_h, x_start, y_start, flow_start = matheuristic(barriers, sources, targets, k, single = single, wL = wL, time_limit = 600, picture = False)
 
         # print((time_h, objval_h))
 
-        model.read('solution.sol')
+        # model.read('solution.sol')
 
         # print(x_start)
-        # for index in x_start:
-        #     x[index].start = 1
-        #
-        # for index in y_start:
-        #     y[index].start = 1
-        #
-        # for index in flow_start:
-        #     flow[index].start = 1
+        for index in x_start:
+            x[index].start = 1
+        
+        for index in y_start:
+            y[index].start = 1
+        
+        for index in flow_start:
+            flow[index].start = 1
 
     L_first = -100000
     U_first = 100000
@@ -851,7 +851,7 @@ def h_kmedian_n(barriers, sources, targets, k, single = False, wL=50, lazy=True,
 
     time_elapsed = second_time - first_time
 
-    results = [len(sources), len(barriers), k, wL, lazy, A4, init, np.nan, np.nan, np.nan, np.nan, np.nan, np.nan, np.nan, np.nan]
+    results = [len(sources), len(barriers), k, single, wL, lazy, A4, init, np.nan, np.nan, np.nan, np.nan, np.nan, np.nan, np.nan, np.nan]
 
 
     if init:
