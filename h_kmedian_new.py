@@ -441,18 +441,19 @@ def h_kmedian_n(barriers, sources, targets, k, single = False, wL=50, lazy=True,
         # print(flow_start)
 
         # print(x_start)
-        for index in x_start:
-            x[index].start = 1
-        
-        for index in y_start:
-            y[index].start = 1
-        
-        for index in flow_start:
-            flow[index].start = 1
-        
-        for index in vertices_source + vertices_target:
-            for dim in range(2):
-                point[index[0], index[1], dim].start = point_vals[index[0], index[1], dim]
+        try:
+            for index in x_start:
+                x[index].start = 1
+            
+            for index in y_start:
+                y[index].start = 1
+            
+            for index in flow_start:
+                flow[index].start = 1
+            
+            for index in vertices_source + vertices_target:
+                for dim in range(2):
+                    point[index[0], index[1], dim].start = point_vals[index[0], index[1], dim]
 
     L = -10000
     U = 10000
