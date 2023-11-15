@@ -101,7 +101,7 @@ for nn, k_list in zip(n_Ns, ks):
                                     else:
                                         A4 = True
 
-                                    resultados = h_kmedian_n(barriers1, sources=neighbourhoods, targets=neighbourhoods, k=k, single=True, wL=wL, lazy=l, A4=A4, init=init, time_limit=time_limit)
+                                    resultados = h_kmedian_n(barriers1, sources=neighbourhoods, targets=neighbourhoods, k=k, single=single, wL=wL, lazy=l, A4=A4, init=init, time_limit=time_limit)
                                     serie = pd.Series([instance] + resultados, index=dataframe.columns)
 
                                     dataframe = dataframe._append(serie, ignore_index=True)
