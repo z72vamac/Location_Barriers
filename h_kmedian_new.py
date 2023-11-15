@@ -454,6 +454,8 @@ def h_kmedian_n(barriers, sources, targets, k, single = False, wL=50, lazy=True,
             for index in vertices_source + vertices_target:
                 for dim in range(2):
                     point[index[0], index[1], dim].start = point_vals[index[0], index[1], dim]
+        except:
+            print('The matheuristic did not find solution')
 
     L = -10000
     U = 10000
