@@ -51,11 +51,7 @@ singles = [True, False]
 
 time_limit = 3600
 
-<<<<<<< HEAD
 start = True
-=======
-start = TRue
->>>>>>> bb9c13b33ed4b5f70828307376ce3d32174f1abc
 
 if start:
     dataframe = pd.read_csv('./resultados/results_' + str(instance) + '.csv').iloc[:, 1:]
