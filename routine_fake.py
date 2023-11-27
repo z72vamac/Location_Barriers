@@ -31,10 +31,14 @@ n_Ns = [10, 20, 30, 50, 80]
 # n_Ns = [25, 30]
 
 ks = []
+percs_k = []
 
 for nn in n_Ns:
     k = [1, math.floor(0.1*nn), math.floor(0.25*nn)]
     ks.append(k)
+    
+    perc_k = [1, 0.1, 0.25]
+    percs_k.append(perc_k)
 
 time_limit = 3600
 
@@ -51,22 +55,22 @@ singles = [True, False]
 
 time_limit = 3600
 
-start = True
+start = False
 
 
 if start:
-    dataframe = pd.read_csv('./resultados/results_' + str(instance) + '.csv').iloc[:, 1:]
+    dataframe = pd.read_csv('./resultados/parameters_' + str(instance) + '.csv').iloc[:, 1:]
     num_rows = dataframe.shape[0]
 else:
     num_rows = 0
-    dataframe = pd.DataFrame(columns=['Instance', 'n_N', 'n_B', 'k', 'Single', 'wL', 'Lazy', 'A4', 'Init', 'Gap', 'Runtime', 'NodeCount', 'ObjVal', 'Runtime_h', 'Runtime_h2', 'ObjVal_h', 'ObjVal_h2'])
+    dataframe = pd.DataFrame(columns=['instance', 'n_N', 'perc_B', 'k', 'single', 'wL', 'lazy', 'A4', 'init'])
 
 counter = 1
 
 
-for nn, k_list in zip(n_Ns, ks):
+for nn, perc_k in zip(n_Ns, percs_k):
     for single in singles:
-            for k in k_list:
+            for k in perc_k:
                 for wL in wLs:
                     for perc in percs:
                         for l in lazy:
@@ -102,10 +106,10 @@ for nn, k_list in zip(n_Ns, ks):
                                     else:
                                         A4 = True
 
-                                    resultados = h_kmedian_n(barriers1, sources=neighbourhoods, targets=neighbourhoods, k=k, single=single, wL=wL, lazy=l, A4=A4, init=init, time_limit=time_limit)
-                                    serie = pd.Series([instance] + resultados, index=dataframe.columns)
+                                    # resultados = h_kmedian_n(barriers1, sources=neighbourhoods, targets=neighbourhoods, k=k, single=single, wL=wL, lazy=l, A4=A4, init=init, time_limit=time_limit)
+                                    serie = pd.Series([instance, nn, perc, k, single, wL, l, A4, init], index=dataframe.columns)
 
                                     dataframe = dataframe._append(serie, ignore_index=True)
-                                    dataframe.to_csv('./resultados/results_' + str(instance) + '.csv')
+                                    dataframe.to_csv('./resultados/parameters_' + str(instance) + '.csv')
 
                                 counter += 1
