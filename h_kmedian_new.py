@@ -438,7 +438,7 @@ def h_kmedian_n(barriers, sources, targets, k, single = False, wL=50, lazy=True,
         time_h, objval_h, x_start, y_start, flow_start, point_vals = matheuristic(barriers, sources, targets, edges_source, edges_target, edges_barrier, edges_source_target, k, single = single, wL = wL, A4=A4, time_limit = 100, picture = False)
 
         # model.read('solution.sol')
-        print(flow_start)
+        # print(flow_start)
 
         # print(x_start)
         for index in x_start:
@@ -841,7 +841,9 @@ def h_kmedian_n(barriers, sources, targets, k, single = False, wL=50, lazy=True,
                         model.addConstr(flow.sum('*', '*', g, h, e, f, g, h) == x[e, f, g, h])
 
     print('Spent time: ' + str(time.time() - start_flow))
-
+# (1081, 0, 1083, 0, 3, 0, -6, 0),
+    # model.addConstr(flow[1081, 0, 1083, 1, 3, 0, -6, 0] + flow[1084, 1, 1083, 0, 3, 0, -6, 0] + flow[1084, 1, 1082, 1, 3, 0, -6, 0] + flow[1081, 0, 1083, 0, 3, 0, -6, 0] + flow[1081, 0, 1082, 1, 3, 0, -6, 0]<= 0)
+    
     model.update()
 
     # Objective function
@@ -927,9 +929,9 @@ def h_kmedian_n(barriers, sources, targets, k, single = False, wL=50, lazy=True,
     if log:
         print(x_indices)
     
-    print(y_indices)
+    # print(y_indices)
     
-    # print(flow_indices)
+    print(flow_indices)
 
     if picture:
         fig, ax = plt.subplots()

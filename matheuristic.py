@@ -231,7 +231,7 @@ def matheuristic(barriers, sources, targets, edges_source, edges_target, edges_b
 
         dist[a, b, c, d] = np.linalg.norm(np.array([point[a, b, 0], point[a, b, 1]]) - np.array([point[c, d, 0], point[c, d, 1]]))
 
-    print(dist)
+    # print(dist)
 
     model = gp.Model('Model: H-KMedian-N')
 
