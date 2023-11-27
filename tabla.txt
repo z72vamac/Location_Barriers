@@ -1,0 +1,8 @@
+\begin{tabular}{lll}
+\toprule
+Binary and Integer Decision Variables \\
+                                 Name &       Domain &                                        Description \\
+\midrule
+                                  \$y\$ & \$\textbackslash mathcal S\$ & 1, if a facility is allocated in the source \$S\$... \\
+\bottomrule
+\end{tabular}
