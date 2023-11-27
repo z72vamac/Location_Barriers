@@ -44,4 +44,5 @@ for i in blocks:
 # N = [neigh.Circle(center = [centro1, centro2], radii = radio) for centro1, centro2, radio in bolas]
 
 for k in range(1, 5):
-    resultados = h_kmedian_n(barriers, sources=sources, targets=targets, k=3, wL=0, single=False, lazy=False, A4=False, time_limit=3600, picture=True, init = False)
+    resultados = h_kmedian_n(barriers, sources=sources, targets=targets, k=k, wL=0, single=False, lazy=False, A4=False, time_limit=3600, picture=True, init = False)
+ 
