@@ -102,7 +102,7 @@ def h_kmedian_n(barriers, sources, targets, k, single = False, wL=50, lazy=True,
                 # edges_neighborhood.append((a, b, c, d))
                 edges_target.append((c, d, a, b))
 
-    print(edges_target)
+    # print(edges_target)
 
     fourth_time = time.time() - start_target_barrier
     print('Time_barrier_target: ' + str(fourth_time))
@@ -934,22 +934,19 @@ def h_kmedian_n(barriers, sources, targets, k, single = False, wL=50, lazy=True,
     print(flow_indices)
 
     if picture:
-        fig, ax = plt.subplots()
+        # fig, ax = plt.subplots()
 
-        for b in barriers:
-            ax.plot([b[0][0], b[1][0]], [b[0][1], b[1][1]], c='red')
+        # for b in barriers:
+        #     ax.plot([b[0][0], b[1][0]], [b[0][1], b[1][1]], c='red')
 
-        for n in sources + targets:
-            ax.add_artist(n.artist)
+        # for n in sources + targets:
+        #     ax.add_artist(n.artist)
 
         points_vals = model.getAttr('x', point)
         print(points_vals)
 
-        if log:
-            print(points_vals)
-
-        for a, b in y_indices:
-            ax.scatter(point[a, b, 0].X, point[a, b, 1].X, s = 30, c = 'black')
+        # for a, b in y_indices:
+        #     ax.scatter(point[a, b, 0].X, point[a, b, 1].X, s = 30, c = 'black')
 
         segments = []
 
@@ -980,15 +977,16 @@ def h_kmedian_n(barriers, sources, targets, k, single = False, wL=50, lazy=True,
                 if (a, b, c, d) in edges_source_target:
                     segments.append([point[a, b, 0].X, point[c, d, 0].X, point[a, b, 1].X, point[c, d, 1].X])
 
+        
+        print(segments)
+        # for segment in segments:
+        #     ax.arrow(segment[0], segment[2], segment[1] - segment[0], segment[3] - segment[2], width=0.1,
+        #              head_width=1, length_includes_head=True, color='black')
 
-        for segment in segments:
-            ax.arrow(segment[0], segment[2], segment[1] - segment[0], segment[3] - segment[2], width=0.1,
-                     head_width=1, length_includes_head=True, color='black')
 
+        # plt.axis([bounds_min, bounds_max, bounds_min, bounds_max])
 
-        plt.axis([bounds_min, bounds_max, bounds_min, bounds_max])
-
-        ax.set_aspect('equal')
-        plt.show()
+        # ax.set_aspect('equal')
+        # plt.show()
 
     return results
