@@ -435,24 +435,27 @@ def h_kmedian_n(barriers, sources, targets, k, single = False, wL=50, lazy=True,
 
     if init:
         # Solving the problem by taking the center of the neighbourhoods.
-        time_h, objval_h, x_start, y_start, flow_start, point_vals = matheuristic(barriers, sources, targets, edges_source, edges_target, edges_barrier, edges_source_target, k, single = single, wL = wL, A4=A4, time_limit = 100, picture = False)
+        time_h, objval_h, x_start, y_start, flow_start, point_vals = matheuristic(barriers, sources, targets, edges_source, edges_target, edges_barrier, edges_source_target, k, single = single, wL = wL, A4=A4, time_limit = 600, picture = False)
 
         # model.read('solution.sol')
         # print(flow_start)
 
         # print(x_start)
-        for index in x_start:
-            x[index].start = 1
-        
-        for index in y_start:
-            y[index].start = 1
-        
-        for index in flow_start:
-            flow[index].start = 1
-        
-        for index in vertices_source + vertices_target:
-            for dim in range(2):
-                point[index[0], index[1], dim].start = point_vals[index[0], index[1], dim]
+        try:
+            for index in x_start:
+                x[index].start = 1
+            
+            for index in y_start:
+                y[index].start = 1
+            
+            for index in flow_start:
+                flow[index].start = 1
+            
+            for index in vertices_source + vertices_target:
+                for dim in range(2):
+                    point[index[0], index[1], dim].start = point_vals[index[0], index[1], dim]
+        except:
+            print('The matheuristic did not find solution')
 
     L = -10000
     U = 10000
@@ -883,7 +886,7 @@ def h_kmedian_n(barriers, sources, targets, k, single = False, wL=50, lazy=True,
 
     time_elapsed = second_time - first_time
 
-    results = [len(sources), len(barriers), k, wL, lazy, A4, init, np.nan, np.nan, np.nan, np.nan, np.nan, np.nan, np.nan, np.nan]
+    results = [len(sources), len(barriers), k, single, wL, lazy, A4, init, np.nan, np.nan, np.nan, np.nan, np.nan, np.nan, np.nan, np.nan]
 
 
     if init:
@@ -905,10 +908,10 @@ def h_kmedian_n(barriers, sources, targets, k, single = False, wL=50, lazy=True,
 
     # model.write('solution.sol')
 
-    results[7] = model.getAttr('MIPGap')
-    results[8] = model.getAttr('Runtime')
-    results[9] = model.getAttr('NodeCount')
-    results[10] = model.ObjVal
+    results[8] = model.getAttr('MIPGap')
+    results[9] = model.getAttr('Runtime')
+    results[10] = model.getAttr('NodeCount')
+    results[11] = model.ObjVal
 
     if single:
         x_indices = [(index, x[index].X) for index in x.keys() if x[index].X > 0.5]

@@ -322,9 +322,12 @@ def matheuristic(barriers, sources, targets, edges_source, edges_target, edges_b
         return results
 
     if model.SolCount == 0:
-        return results
+        x_indices = []
+        y_indices = []
+        flow_indices = [] 
+        point = []
 
-    model.write('solution.sol')
+        return time_limit, np.nan, x_indices, y_indices, flow_indices, point
 
     # model.write('solution.sol')
 
