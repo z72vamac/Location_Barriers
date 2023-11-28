@@ -27,7 +27,7 @@ instance = sys.argv[1]
 
 print("Solving problems of instance:" + str(instance))
 
-n_Ns = [10, 20, 30, 50, 80]
+n_Ns = [10, 20, 30, 50, 70]
 # n_Ns = [25, 30]
 
 ks = []
