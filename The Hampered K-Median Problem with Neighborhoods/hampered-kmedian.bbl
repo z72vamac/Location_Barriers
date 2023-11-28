@@ -1,118 +1,169 @@
 \begin{thebibliography}{}
 
-\bibitem[\protect\astroncite{Blanco}{2019}]{blanco_ordered_2019}
+\bibitem[\protect\astroncite{Blanco}{2019}]{blanco2019}
 Blanco, V. (2019).
 \newblock Ordered p-median problems with neighbourhoods.
 \newblock {\em Computational Optimization and Applications}, 73(2):603--645.
 
-\bibitem[\protect\astroncite{Blanco et~al.}{2017}]{blanco_minimum_2017}
-Blanco, V., Fernández, E., and Puerto, J. (2017).
-\newblock Minimum {Spanning} {Trees} with neighborhoods: {Mathematical}
+\bibitem[\protect\astroncite{Blanco et~al.}{2017}]{blanco2017}
+Blanco, V., Fern{\'a}ndez, E., and Puerto, J. (2017).
+\newblock Minimum {{Spanning Trees}} with neighborhoods: {{Mathematical}}
   programming formulations and solution methods.
 \newblock {\em European Journal of Operational Research}, 262(3):863--878.
 
-\bibitem[\protect\astroncite{Boyd and Vandenberghe}{2004}]{boyd_convex_2004}
-Boyd, S.~P. and Vandenberghe, L. (2004).
-\newblock {\em Convex optimization}.
-\newblock Cambridge University Press, Cambridge, UK ; New York.
+\bibitem[\protect\astroncite{Boyd and Vandenberghe}{2004}]{boyd2004}
+Boyd, S. and Vandenberghe, L. (2004).
+\newblock {\em Convex {{Optimization}}}.
+\newblock {Cambridge University Press}, {Cambridge}.
 
-\bibitem[\protect\astroncite{Daescu et~al.}{2008}]{daescu_experimental_2008}
+\bibitem[\protect\astroncite{Butt and Cavalier}{1996}]{butt1996}
+Butt, S.~E. and Cavalier, T.~M. (1996).
+\newblock An efficient algorithm for facility location in the presence of
+  forbidden regions.
+\newblock {\em European Journal of Operational Research}, 90(1):56--70.
+
+\bibitem[\protect\astroncite{Daescu et~al.}{2008}]{daescu2008}
 Daescu, O., Mitchell, J. S.~B., Ntafos, S., Palmer, J.~D., and Yap, C.~K.
   (2008).
-\newblock An {Experimental} {Study} of {Weighted} k-{Link} {Shortest} {Path}
-  {Algorithms}.
+\newblock An {{Experimental Study}} of {{Weighted}} k-{{Link Shortest Path
+  Algorithms}}.
 \newblock In Akella, S., Amato, N.~M., Huang, W.~H., and Mishra, B., editors,
-  {\em Algorithmic {Foundation} of {Robotics} {VII}: {Selected} {Contributions}
-  of the {Seventh} {International} {Workshop} on the {Algorithmic}
-  {Foundations} of {Robotics}}, Springer {Tracts} in {Advanced} {Robotics},
-  pages 187--202. Springer, Berlin, Heidelberg.
+  {\em Algorithmic {{Foundation}} of {{Robotics VII}}: {{Selected
+  Contributions}} of the {{Seventh International Workshop}} on the
+  {{Algorithmic Foundations}} of {{Robotics}}}, Springer {{Tracts}} in
+  {{Advanced Robotics}}, pages 187--202. {Springer}, {Berlin, Heidelberg}.
 
-\bibitem[\protect\astroncite{de~Berg et~al.}{1990}]{de_berg_finding_1990}
-de~Berg, M., van Kreveld, M., Nilsson, B.~J., and Overmars, M.~H. (1990).
+\bibitem[\protect\astroncite{{de Berg} et~al.}{1990}]{deberg1990}
+{de Berg}, M., {van Kreveld}, M., Nilsson, B.~J., and Overmars, M.~H. (1990).
 \newblock Finding shortest paths in the presence of orthogonal obstacles using
-  a combined {L1} and link metric.
-\newblock In Gilbert, J.~R. and Karlsson, R., editors, {\em {SWAT} 90}, Lecture
-  {Notes} in {Computer} {Science}, pages 213--224, Berlin, Heidelberg.
-  Springer.
+  a combined {{L1}} and link metric.
+\newblock In Gilbert, J.~R. and Karlsson, R., editors, {\em {{SWAT}} 90},
+  Lecture {{Notes}} in {{Computer Science}}, pages 213--224, {Berlin,
+  Heidelberg}. {Springer}.
 
-\bibitem[\protect\astroncite{Drezner and
-  Hamacher}{2004}]{drezner_facility_2004}
-Drezner, Z. and Hamacher, H.~W., editors (2004).
-\newblock {\em Facility {Location}: {Applications} and {Theory}}.
-\newblock Springer, Berlin.
+\bibitem[\protect\astroncite{Drezner and Hamacher}{2004}]{drezner2004}
+Drezner, Z. and Hamacher, H.~W. (2004).
+\newblock {\em Facility {{Location}}: {{Applications}} and {{Theory}}}.
+\newblock {Springer Science \& Business Media}.
 
 \bibitem[\protect\astroncite{{G. van Rossum
-  (Guido)}}{1995}]{g_van_rossum_guido_python_1995}
+  (Guido)}}{1995}]{g.vanrossumguido1995}
 {G. van Rossum (Guido)} (1995).
 \newblock Python reference manual.
-\newblock Issue: R 9525 Publication Title: Department of Computer Science [CS].
 
-\bibitem[\protect\astroncite{Gentilini
-  et~al.}{2013}]{gentilini_travelling_2013}
+\bibitem[\protect\astroncite{Gentilini et~al.}{2013}]{gentilini2013}
 Gentilini, I., Margot, F., and Shimada, K. (2013).
-\newblock The travelling salesman problem with neighbourhoods: {MINLP}
+\newblock The travelling salesman problem with neighbourhoods: {{MINLP}}
   solution.
 \newblock {\em Optimization Methods and Software}, 28(2):364--378.
-\newblock Publisher: Taylor \& Francis \_eprint:
-  https://doi.org/10.1080/10556788.2011.648932.
 
 \bibitem[\protect\astroncite{{Gurobi Optimization
-  LLC}}{2022}]{gurobi_optimization_llc_gurobi_2022}
+  LLC}}{2022}]{gurobioptimizationllc2022a}
 {Gurobi Optimization LLC} (2022).
-\newblock Gurobi {Optimizer} {Reference} {Manual}.
+\newblock Gurobi {{Optimizer Reference Manual}}.
 
-\bibitem[\protect\astroncite{Klamroth}{2002}]{klamroth_single-facility_2002}
+\bibitem[\protect\astroncite{Hakimi}{1965}]{hakimi1965}
+Hakimi, S.~L. (1965).
+\newblock Optimum {{Distribution}} of {{Switching Centers}} in a
+  {{Communication Network}} and {{Some Related Graph Theoretic Problems}}.
+\newblock {\em Operations Research}, 13(3):462--475.
+
+\bibitem[\protect\astroncite{Hamacher and Nickel}{1995}]{hamacher1995}
+Hamacher, H.~W. and Nickel, S. (1995).
+\newblock Restricted planar location problems and applications.
+\newblock {\em Naval Research Logistics (NRL)}, 42(6):967--992.
+
+\bibitem[\protect\astroncite{Kariv and Hakimi}{1979}]{kariv1979}
+Kariv, O. and Hakimi, S.~L. (1979).
+\newblock An {{Algorithmic Approach}} to {{Network Location Problems}}. {{II}}:
+  {{The}} p-{{Medians}}.
+\newblock {\em SIAM Journal on Applied Mathematics}, 37(3):539--560.
+
+\bibitem[\protect\astroncite{Klamroth}{2002}]{klamroth2002}
 Klamroth, K. (2002).
-\newblock {\em Single-{Facility} {Location} {Problems} with {Barriers}}.
-\newblock Springer, New York, NY.
+\newblock {\em Single-{{Facility Location Problems}} with {{Barriers}}}.
+\newblock {Springer}, {New York, NY}.
 
-\bibitem[\protect\astroncite{Kuehn and Hamburger}{1963}]{kuehn_heuristic_1963}
+\bibitem[\protect\astroncite{Kuehn and Hamburger}{1963}]{kuehn1963}
 Kuehn, A.~A. and Hamburger, M.~J. (1963).
-\newblock A {Heuristic} {Program} for {Locating} {Warehouses}.
+\newblock A {{Heuristic Program}} for {{Locating Warehouses}}.
 \newblock {\em Management Science}, 9(4):643--666.
-\newblock Publisher: INFORMS.
 
-\bibitem[\protect\astroncite{Lobo et~al.}{1998}]{lobo_applications_1998}
+\bibitem[\protect\astroncite{LaPaugh}{1980}]{lapaugh1980}
+LaPaugh, A.~S. (1980).
+\newblock {\em Algorithms for {{Integrated Circuit Layout}}: {{An Analytic
+  Approach}}}.
+\newblock PhD thesis, Massachusetts Institute of Technology.
+
+\bibitem[\protect\astroncite{Lobo et~al.}{1998}]{lobo1998}
 Lobo, M.~S., Vandenberghe, L., Boyd, S., and Lebret, H. (1998).
 \newblock Applications of second-order cone programming.
 \newblock {\em Linear Algebra and its Applications}, 284(1):193--228.
 
-\bibitem[\protect\astroncite{Mitchell}{2017}]{mitchell_shortest_2017}
-Mitchell, J. S.~B. (2017).
-\newblock Shortest {Paths} and {Networks}.
-\newblock In {\em Handbook of {Discrete} and {Computational} {Geometry}}.
-  Chapman and Hall/CRC, 3 edition.
-\newblock Num Pages: 38.
+\bibitem[\protect\astroncite{{Lozano-P{\'e}rez} and
+  Wesley}{1979}]{lozano-perez1979}
+{Lozano-P{\'e}rez}, T. and Wesley, M.~A. (1979).
+\newblock An algorithm for planning collision-free paths among polyhedral
+  obstacles.
+\newblock {\em Communications of the ACM}, 22(10):560--570.
 
-\bibitem[\protect\astroncite{Nickel and Puerto}{2007}]{nickel_s_2007}
+\bibitem[\protect\astroncite{Maheshwari et~al.}{2000}]{maheshwari2000}
+Maheshwari, A., Sack, J.-R., and Djidjev, H.~N. (2000).
+\newblock Chapter 12 - {{Link Distance Problems}}.
+\newblock In Sack, J.~R. and Urrutia, J., editors, {\em Handbook of
+  {{Computational Geometry}}}, pages 519--558. {North-Holland}, {Amsterdam}.
+
+\bibitem[\protect\astroncite{Mitchell}{2017}]{mitchell2017}
+Mitchell, J. S.~B. (2017).
+\newblock Shortest {{Paths}} and {{Networks}}.
+\newblock In {\em Handbook of {{Discrete}} and {{Computational Geometry}}}.
+  {Chapman and Hall/CRC}, 3 edition.
+
+\bibitem[\protect\astroncite{Mitchell and Papadimitriou}{1991}]{mitchell1991}
+Mitchell, J. S.~B. and Papadimitriou, C.~H. (1991).
+\newblock The weighted region problem: {{Finding}} shortest paths through a
+  weighted planar subdivision.
+\newblock {\em Journal of the ACM}, 38(1):18--73.
+
+\bibitem[\protect\astroncite{Nickel}{1995}]{nickel1995}
+Nickel, S. (1995).
+\newblock {\em Discretization of {{Planar Location Problems}}}.
+\newblock {Shaker Verlag}, {Aachen}.
+
+\bibitem[\protect\astroncite{Nickel and Puerto}{2007}]{nickel2007}
 Nickel, S. and Puerto, J. (2007).
-\newblock S. {Nickel} and {J}. {Puerto}: {Location} theory: a unified approach.
+\newblock S. {{Nickel}} and {{J}}. {{Puerto}}: {{Location}} theory: A unified
+  approach.
 \newblock {\em Mathematical Methods of Operations Research}, 66(2):369--371.
 
-\bibitem[\protect\astroncite{Puerto}{2008}]{puerto_new_2008}
+\bibitem[\protect\astroncite{Puerto}{2008}]{puerto2008}
 Puerto, J. (2008).
-\newblock A {New} {Formulation} of the {Capacitated} {Discrete} {Ordered}
-  {Median} {Problems} with \{0, 1\}-{Assignment}.
-\newblock In Kalcsics, J. and Nickel, S., editors, {\em Operations {Research}
-  {Proceedings} 2007}, Operations {Research} {Proceedings}, pages 165--170,
-  Berlin, Heidelberg. Springer.
+\newblock A {{New Formulation}} of the {{Capacitated Discrete Ordered Median
+  Problems}} with \{0, 1\}-{{Assignment}}.
+\newblock In Kalcsics, J. and Nickel, S., editors, {\em Operations {{Research
+  Proceedings}} 2007}, Operations {{Research Proceedings}}, pages 165--170,
+  {Berlin, Heidelberg}. {Springer}.
 
-\bibitem[\protect\astroncite{Puerto and Valverde}{2022}]{puerto_routing_2022}
+\bibitem[\protect\astroncite{Puerto and Valverde}{2022}]{puerto2022a}
 Puerto, J. and Valverde, C. (2022).
-\newblock Routing for unmanned aerial vehicles: {Touring} dimensional sets.
+\newblock Routing for unmanned aerial vehicles: {{Touring}} dimensional sets.
 \newblock {\em European Journal of Operational Research}, 298(1):118--136.
 
-\bibitem[\protect\astroncite{Ulukan and
-  Demircioğlu}{2015}]{ulukan_survey_2015}
-Ulukan, Z. and Demircioğlu, E. (2015).
-\newblock A {Survey} of {Discrete} {Facility} {Location} {Problems}.
+\bibitem[\protect\astroncite{Ulukan and Demircio{\u g}lu}{2015}]{ulukan2015}
+Ulukan, Z. and Demircio{\u g}lu, E. (2015).
+\newblock A {{Survey}} of {{Discrete Facility Location Problems}}.
 \newblock {\em World Academy of Science, Engineering and Technology,
   International Journal of Industrial and Manufacturing Engineering}.
 
-\bibitem[\protect\astroncite{Yuan and Zhang}{2017}]{yuan_towards_2017}
+\bibitem[\protect\astroncite{Wangdahl et~al.}{1974}]{wangdahl1974}
+Wangdahl, G.~E., Pollock, S.~M., and Woodward, J.~B. (1974).
+\newblock Minimum-{{Trajectory Pipe Routing}}.
+\newblock {\em Journal of Ship Research}, 18(01):46--49.
+
+\bibitem[\protect\astroncite{Yuan and Zhang}{2017}]{yuan2017}
 Yuan, B. and Zhang, T. (2017).
-\newblock Towards {Solving} {TSPN} with {Arbitrary} {Neighborhoods}: {A}
-  {Hybrid} {Solution}.
-\newblock In {\em {ACALCI}}, pages 204--215.
+\newblock Towards {{Solving TSPN}} with {{Arbitrary Neighborhoods}}: {{A Hybrid
+  Solution}}.
+\newblock In {\em {{ACALCI}}}, pages 204--215.
 
 \end{thebibliography}
