@@ -73,6 +73,12 @@ Hamacher, H.~W. and Nickel, S. (1995).
 \newblock Restricted planar location problems and applications.
 \newblock {\em Naval Research Logistics (NRL)}, 42(6):967--992.
 
+\bibitem[\protect\astroncite{Kariv and Hakimi}{1979}]{kariv1979}
+Kariv, O. and Hakimi, S.~L. (1979).
+\newblock An {{Algorithmic Approach}} to {{Network Location Problems}}. {{II}}:
+  {{The}} p-{{Medians}}.
+\newblock {\em SIAM Journal on Applied Mathematics}, 37(3):539--560.
+
 \bibitem[\protect\astroncite{Klamroth}{2002}]{klamroth2002}
 Klamroth, K. (2002).
 \newblock {\em Single-{{Facility Location Problems}} with {{Barriers}}}.
