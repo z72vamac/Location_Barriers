@@ -27,7 +27,7 @@ instance = sys.argv[1]
 
 print("Solving problems of instance:" + str(instance))
 
-n_Ns = [10, 20, 30, 50, 80]
+n_Ns = [10, 20, 30, 50, 70]
 # n_Ns = [25, 30]
 
 ks = []
@@ -51,11 +51,7 @@ singles = [True, False]
 
 time_limit = 3600
 
-<<<<<<< HEAD
-start = False
-=======
 start = True
->>>>>>> c76f8d994bdeb4c10f81b78de34a5c72929f97e8
 
 if start:
     dataframe = pd.read_csv('./resultados/results_' + str(instance) + '.csv').iloc[:, 1:]
