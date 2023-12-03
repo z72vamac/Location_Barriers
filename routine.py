@@ -53,7 +53,6 @@ time_limit = 3600
 
 start = True
 
-
 if start:
     dataframe = pd.read_csv('./resultados/results_' + str(instance) + '.csv').iloc[:, 1:]
     num_rows = dataframe.shape[0]
