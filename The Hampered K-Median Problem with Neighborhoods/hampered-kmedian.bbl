@@ -1,5 +1,11 @@
 \begin{thebibliography}{}
 
+\bibitem[\protect\astroncite{Arsanjani et~al.}{2013}]{arsanjani2013}
+Arsanjani, J.~J., Helbich, M., and {de Noronha Vaz}, E. (2013).
+\newblock Spatiotemporal simulation of urban growth patterns using agent-based
+  modeling: {{The}} case of {{Tehran}}.
+\newblock {\em Cities}, 32:33--42.
+
 \bibitem[\protect\astroncite{Blanco}{2019}]{blanco2019}
 Blanco, V. (2019).
 \newblock Ordered p-median problems with neighbourhoods.
@@ -113,6 +119,11 @@ Maheshwari, A., Sack, J.-R., and Djidjev, H.~N. (2000).
 \newblock In Sack, J.~R. and Urrutia, J., editors, {\em Handbook of
   {{Computational Geometry}}}, pages 519--558. {North-Holland}, {Amsterdam}.
 
+\bibitem[\protect\astroncite{Mangiameli et~al.}{2013}]{mangiameli2013}
+Mangiameli, M., Muscato, G., Mussumeci, G., and Milazzo, C. (2013).
+\newblock A {{GIS}} application for {{UAV}} flight planning.
+\newblock {\em IFAC Proceedings Volumes}, 46(30):147--151.
+
 \bibitem[\protect\astroncite{Mitchell}{2017}]{mitchell2017}
 Mitchell, J. S.~B. (2017).
 \newblock Shortest {{Paths}} and {{Networks}}.
@@ -148,6 +159,12 @@ Puerto, J. (2008).
 Puerto, J. and Valverde, C. (2022).
 \newblock Routing for unmanned aerial vehicles: {{Touring}} dimensional sets.
 \newblock {\em European Journal of Operational Research}, 298(1):118--136.
+
+\bibitem[\protect\astroncite{{QGIS Development
+  Team}}{2009}]{qgisdevelopmentteam2009}
+{QGIS Development Team} (2009).
+\newblock {{QGIS Geographic Information System}}.
+\newblock Open Source Geospatial Foundation.
 
 \bibitem[\protect\astroncite{Ulukan and Demircio{\u g}lu}{2015}]{ulukan2015}
 Ulukan, Z. and Demircio{\u g}lu, E. (2015).
