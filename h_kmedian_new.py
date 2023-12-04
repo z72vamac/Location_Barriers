@@ -102,7 +102,7 @@ def h_kmedian_n(barriers, sources, targets, k, single = False, wL=50, lazy=True,
                 # edges_neighborhood.append((a, b, c, d))
                 edges_target.append((c, d, a, b))
 
-    print(edges_target)
+    # print(edges_target)
 
     fourth_time = time.time() - start_target_barrier
     print('Time_barrier_target: ' + str(fourth_time))
@@ -532,6 +532,7 @@ def h_kmedian_n(barriers, sources, targets, k, single = False, wL=50, lazy=True,
         print('Number of alpha constraints: ' + str(alpha_counter))
 
         model.update()
+        print(model)
 
         print('\nSetting beta and gamma constraints: ')
 

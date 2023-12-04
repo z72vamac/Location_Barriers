@@ -5,44 +5,44 @@ Reallocating 'name_of_file' (item size: 1) to 4 items.
 The style file: apa.bst
 Reallocating 'name_of_file' (item size: 1) to 34 items.
 Database file #1: location_barrier_bibliography.bib
-You've used 28 entries,
+You've used 31 entries,
             1940 wiz_defined-function locations,
-            657 strings with 8822 characters,
-and the built_in function-call counts, 11362 in all, are:
-= -- 1137
-> -- 403
-< -- 26
-+ -- 144
-- -- 126
-* -- 980
-:= -- 1920
-add.period$ -- 87
-call.type$ -- 28
-change.case$ -- 194
-chr.to.int$ -- 28
-cite$ -- 28
-duplicate$ -- 450
-empty$ -- 823
-format.name$ -- 178
-if$ -- 2249
+            676 strings with 9432 characters,
+and the built_in function-call counts, 12486 in all, are:
+= -- 1249
+> -- 451
+< -- 27
++ -- 162
+- -- 142
+* -- 1082
+:= -- 2121
+add.period$ -- 96
+call.type$ -- 31
+change.case$ -- 217
+chr.to.int$ -- 31
+cite$ -- 31
+duplicate$ -- 488
+empty$ -- 895
+format.name$ -- 197
+if$ -- 2458
 int.to.chr$ -- 1
 int.to.str$ -- 0
-missing$ -- 29
-newline$ -- 141
-num.names$ -- 92
-pop$ -- 164
+missing$ -- 31
+newline$ -- 156
+num.names$ -- 101
+pop$ -- 180
 preamble$ -- 1
-purify$ -- 198
+purify$ -- 221
 quote$ -- 0
-skip$ -- 352
+skip$ -- 381
 stack$ -- 0
-substring$ -- 846
-swap$ -- 99
+substring$ -- 928
+swap$ -- 104
 text.length$ -- 5
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 160
+type$ -- 178
 warning$ -- 0
-while$ -- 103
+while$ -- 113
 width$ -- 0
-write$ -- 370
+write$ -- 408
