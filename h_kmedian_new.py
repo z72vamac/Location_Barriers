@@ -864,7 +864,7 @@ def h_kmedian_n(barriers, sources, targets, k, single = False, wL=50, lazy=True,
     model.Params.Threads = 6
     model.Params.timeLimit = time_limit
     model.Params.NumericFocus = 1
-    model.Params.MemLimit = 4
+    # model.Params.MemLimit = 4
     
     if lazy and single:
         model._flow = flow
