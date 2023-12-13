@@ -33,6 +33,9 @@
 \usepackage{array}
 \usepackage{multirow}
 \usepackage{colortbl}
+\usepackage[notransparent]{svg}
+\usepackage{pdfpages}
+
 \setlength{\extrarowheight}{.5ex}
 % \usepackage[style=apa]{biblatex} %Imports biblatex package
 % \addbibresource{location_barrier_bibliography.bib} %Import the bibliography file
@@ -123,7 +126,7 @@
 		
 		
 		\begin{abstract}
-			This paper deals with facility location  problems in a continuous space with neighbours and barriers. Each one of these two elements, neighbours and barriers, make the problems harder than their standard counterparts. Therefore, mixing both together results in a new challenging problem that, as far as we know, has not been addressed before but that has applications for inspection and surveillance activities and the delivery industry assuming uniformly distributed demand in some regions. Specifically, we analyze the $K$-Median  problem with neighbours and polygonal barriers under two different situations. As a first building block, we deal with the problem assuming that neighbourhoods are not visible from one another and therefore there are no rectilinear paths joining any two of them without crossing barriers. Under this hypothesis we derive a valid mixed integer, linear formulation. Removing that hypothesis leads to the more general, realistic problem but at the price of making it more challenging. Adapting the elements of the first formulation, we also develop another valid mixed integer, bilinear formulation.  Both formulations handle polygonal barriers and neighbours that are second-order cone (SOC) representable, that we preprocess and strengthen with valid inequalities. These mathematical programming formulations are also instrumental to derive an adapted matheuristic algorithm that provides good quality solutions for both problems in short computing time. The paper also reports an extensive computational experience showing that our exact and heuristic approaches are useful: the exact approach can solve to optimality instances with up to 50 neighbourhoods and different number of barriers within one hour of CPU time, whereas the matheuristic always returns good feasible solutions in less than 100 seconds.
+			This paper deals with facility location  problems in a continuous space with neighbours and barriers. Each one of these two elements, neighbours and barriers, make the problems harder than their standard counterparts. Combining all together results in a new challenging problem  that, as far as we know, has not been addressed before but that has applications for inspection and surveillance activities and the delivery industry assuming uniformly distributed demand in some regions. Specifically, we analyze the $k$-Median  problem with neighbours and polygonal barriers under two different situations. \JP{None of these problems can be  seen as a simple incremental contribution since in both cases the tools required to analyze and solve them go beyond any standard overlapping of techniques used in the separated problems.} As a first building block, we deal with the problem assuming that neighbourhoods are not visible from one another and therefore there are no rectilinear paths joining any two of them without crossing barriers. Under this hypothesis we derive a valid mixed integer, linear formulation. Removing that hypothesis leads to the more general, realistic problem but at the price of making it more challenging. Adapting the elements of the first formulation, we also develop another valid mixed integer, bilinear formulation.  \JP{Both formulations rely on tools borrowed from computational geometry} that allow to handle polygonal barriers and neighbours that are second-order cone (SOC) representable, which we preprocess and strengthen with valid inequalities. These mathematical programming formulations are also instrumental to derive an adapted matheuristic algorithm that provides good quality solutions for both problems in short computing time. The paper also reports an extensive computational experience showing that our exact and heuristic approaches are useful: the exact approach can solve to optimality instances with up to 50 neighbourhoods and different number of barriers within one hour of CPU time, whereas the matheuristic always returns good feasible solutions in less than 100 seconds.
 		\end{abstract}
 		
 		\begin{keyword}
@@ -133,20 +136,24 @@
 	
 	%		\section{Introduction}
 	\section{Introduction}\label{section:introduction}
-	
+
 	Location analysis is a classical branch of operations research that studies the best way to place some facilities to satisfy the demand of customers. In location analysis, problems are usually classified in discrete or continuous facility location problems. The first class is considered when there is a finite number of candidates to allocate facilities (see \citet{ulukan2015} for a survey). Continuous facility location problems arise if facilities can be placed anywhere in some continuous regions. Both versions are widely investigated in the literature (see \citet{drezner2004} or \citet{nickel2007} for more details) by their many applications in transportation, logistics or telecommunication. For these problems, lot of variants have been studied in terms of the objective functions to be optimized, the number of facilities that must be allocated or the maximum capacity that facilities can supply, among many other respects (we refer the reader to \citet{kuehn1963} and \citet{puerto2008}).
 	
-	\CV{The $k$-median, one of the most studied facility location problems, concerns the optimal placement of one or several new facilities/plants to satisfy the demands of customers. Here, the positions of both the customers and the potential new facilities are part of the input, as well as the travel costs between them. It was introduced by \cite{hakimi1965} as a generalisation of the concept of median. The $k$-median problem is concerned with the location of $k$ facilities within a given region to minimise the total distance between the facilities and a set of demand points.}
+	\JP{The $k$-median problem, one of the most studied facility location models, deals with the optimal placement of one or several new facilities/plants to satisfy the demand of some customers. Here, the positions of both the customers and the potential new facilities are part of the input, as well as the travel costs between them. It was introduced by \cite{hakimi1965} as a generalisation of the concept of median. The goal of the $k$-median problem is  the location of $k$ facilities within a given region to minimise the total distance between those facilities and a set of given demand points.}
 	
-	\CV{One extension of this problem, studied in \cite{blanco2019}, is the Ordered $k$-Median Problem with Neighbourhoods. It} is presented as a single source uncapacitated continuous facility location problem that extends its respective underlying discrete location problem. In this problem, facilities are allowed to be allocated in certain regions called neighbourhoods. If those are points, the problem reduces to the single source uncapacitated facility discrete location problem, that have been already studied in the literature. Otherwise, the continuous version is considered. In this version, different shapes and sizes for the neighbourhoods allow one to model how imprecise the provided locational information is. This problem also has interest on drone delivery and inspection problems. Neighbourhoods can represent regions that the drone must reach and where the customers are willing to pick up the orders (they can be seen as uniform probability densities) in the delivery industry. Moreover, they can be also used for modelling some areas that must be inspected by the drone (whenever visiting a point of these areas is enough to consider them as inspected). This framework will be called Facility Location with Neighbourhoods, a terminology borrowed from the neighbourhood versions of the Minimum Spanning Tree problem, described in \citet{blanco2017} and the Traveling Salesman problem, studied in \citet{gentilini2013}, \citet{yuan2017} or \citet{puerto2022a}.
+	\CV{One extension of this problem, studied in \cite{blanco2019}, is the Ordered $k$-Median Problem with Neighbourhoods. It} is presented as a single source uncapacitated continuous facility location problem that extends its respective underlying discrete location problem. In this problem, facilities are allowed to be allocated in certain regions called neighbourhoods. If those are points, the problem reduces to the single source uncapacitated facility discrete location problem, that have been already studied in the literature. Otherwise, the continuous version is considered. In this version, different shapes and sizes for the neighbourhoods allow one to model how imprecise the provided locational information is. \JP{The same rational behind this model also has interest on drone delivery and inspection problems. Indeed, neighbourhoods can represent regions that one drone must reach and where the customers are willing to pick up the orders (they can be seen as uniform probability densities) in the delivery industry. Moreover, they can be also used for modelling some areas that must be inspected by a drone (whenever visiting a point of these areas is enough to consider them as inspected).} This framework will be called Facility Location with Neighbourhoods, a terminology borrowed from the neighbourhood versions of the Minimum Spanning Tree problem, described in \citet{blanco2017} and the Traveling Salesman problem, studied in \citet{gentilini2013}, \citet{yuan2017} or \citet{puerto2022a}.
 	
-	\CV{On the other hand, there exist other well-studied version of the $k$-median in the literature that is known as $k$-median problem with barriers (see \citet{klamroth2002}). In this case, there exist some areas that cannot be traversed, and it is necessary to compute the minimum distance between each pair of points in the graph induced by the facility locations and demand points. In the context of planar location modelling, this problem represents restrictions that appear in a real-life context. One of them can be the case in which there are regions (called forbidden regions) in which the placement of a facility is forbidden, but transportation is still possible. They can model state parks or regions where geographic characteristics forbid the construction of the facility. For a survey of location problems with forbidden regions, see \cite{hamacher1995} or \cite{nickel1995}. The case in which transportation is possible, but only at a higher cost (called congested regions) is studied in \cite{butt1996} or \cite{mitchell1991}. In this case, in these regions, different travel speeds or travel costs are considered. Finally, the existence of military areas, buildings, mountain ranges, lakes, big rivers, and highways can not allow transportation. These examples of barrier regions involve circuit board design \citep{lapaugh1980}, pipe network design for ships \citep{wangdahl1974}, or location and routing with robots \citep{lozano-perez1979}.}
+	\JP{On the other hand, another studied version of the $k$-median problem in the literature is the so called $k$-median problem with barriers (see \citet{klamroth2002}). In this case, there exist some areas that cannot be traversed, and it is necessary to compute the minimum distance between each pair of points in the graph induced by the facility locations and demand points. In the context of planar location modelling, this problem represents restrictions that appear in a real-life context. One of them can be the case in which there are regions (called forbidden regions) where the placement of a facility is forbidden, but transportation  through them it  is still possible. They can model  parks or regions where by their geographic characteristics it is forbidden the construction of a facility. For a survey of location problems with forbidden regions, see \cite{hamacher1995} or \cite{nickel1995}. The case in which transportation is possible, but only at a higher cost (called congested regions) is studied in \cite{butt1996} or \cite{mitchell1991}. In this case, in these regions, different travel speeds or travel costs are considered. Finally, the case where transportation is not possible is justified by the existence of military areas, buildings, mountain ranges, lakes, big rivers, or highways that cannot be traversed. Examples of barrier regions involve circuit board design \citep{lapaugh1980}, pipe network design for ships \citep{wangdahl1974}, \citep{blanco2022} or location and routing with robots \citep{lozano-perez1979}. }
 	
-	\CV{This paper seeks for extends the $k$-median with neighbourhoods by including barriers, described as line segments, that not allow transportation, i.e.}, assuming that the trips between service facilities and demand points can not cross them. \CV{From a drone routing perspective}, these barriers can simulate buildings in urban areas that drones cannot cross. \CV{Another application can be seen as obstacles pedestrian must avoid in urban or rural areas}. The resulting problem keeps geometric components from the $k$-median problem with neighbourhoods that must be exploited to partially overcome the difficulties of the solution approaches and algorithms in the network design among neighbourhoods with barriers. The combination of both elements has attracted less attention in the Operations Research literature. 
+	\JP{This paper introduces the $k$-median problem with neighbourhoods and barriers, that do not allow transportation through them, i.e.}, assuming that the trips between service facilities and demand points can not cross them. \CV{From a drone routing perspective}, these barriers can simulate buildings in urban areas that drones cannot cross. \JP{Another application appears in modelling  pedestrian routes that  must avoid obstacles in urban or rural areas}. \JP{The resulting problem inherits some elements from the $k$-median problem with neighbourhoods that must be exploited to partially overcome the difficulties of the solution approaches, but in addition requires new techniques and algorithms  from computational geometry to handle the network design among neighbourhoods and with barriers. The combination of all these elements makes this problem an new, attractive challenge  in the area of Operations Research. }
 	
-	Our goal in this paper is to deal with the $k$-median problem with neighbourhoods and barriers that we call the Hampered $k$-Median problem with Neighbourhoods (\KMPN). We present exact mathematical programming formulations assuming linear barriers and second-order cone (SOC) representable neighbourhoods. These formulations are modeled by using a geodesic shortest-path representation, based on problems studied in \citet{mitchell2017}. These assumptions lead to quadratically-constrained mixed-integer formulations. Solving this family of formulations in addition to the classic $k$-median, that is NP-hard, makes the solution of the problem under study a hard challenge. On-the-shelf solvers can deal only with small-size instances. This fact motivates the design of a matheuristic that provides good quality solutions for medium-size instances.
+		
+	\CV{
+		Nowadays, the advance of technology permits to obtain maps with accurate representations of two-dimensional obstacles by means of various software tools designed for geographic information systems (GIS). An open-source software like Quantum GIS (\cite{qgisdevelopmentteam2009}) provides robust capabilities for creating, editing, and exporting maps with detailed two-dimensional building footprints and attributes. These tools enable users to incorporate building information into spatial analyses, urban planning, and environmental assessments. Some examples where QGIS has been successfully used are described in the following. The work of \cite{arsanjani2013} explores the use of open-source GIS software for mapping and analyzing urban structures, emphasizing the importance of accurate two-dimensional building data. In drone routing, the work by \cite{mangiameli2013} proposes an innovative approach for the construction of a map of the obstacles based on Geographic Information Systems (GIS) technologies. In this way, the path planning for the drone navigation is accurately managed by defining precise flight plans on a cartographic support where the obstacles are represented in a three-dimensional way. In summary, GIS software serves as a fundamental resource for exporting maps with two- and three-dimensional building information, contributing to a wide range of spatial analysis and planning endeavors.}
+		
+	Our goal in this paper is to deal with the $k$-median problem with neighbourhoods and barriers that we call the Hampered $k$-Median problem with Neighbourhoods (\KMPN). We present exact mathematical programming formulations assuming linear barriers and second-order cone (SOC) representable neighbourhoods. These formulations are modeled by using a geodesic shortest-path representation, based on problems studied in \citet{mitchell2017}. These assumptions lead to quadratically-constrained mixed-integer formulations. Solving this family of formulations in addition to the classic $k$-median, \JP{which is already NP-hard}, makes the solution of the problem under study a hard challenge. \CV{Off}-the-shelf solvers can deal only with small-size instances. This fact motivates the design of a matheuristic that provides good quality solutions for medium-size instances. \JP{Finally, this problem is applied to a real-world scenario of drone delivery of a small-size instance extracted from a neighbourhood of the city of Cordoba (in the south of Spain).}
 	
-	The paper is organized in six sections. In Section \ref{section:description} the problem and its variant are introduced and described. Section \ref{section:formulations} is devoted to provide quadratically-constrained mixed-integer programming formulations of the problems. In Section \ref{section:matheuristic} the matheuristic approach is described. The results of some computational experiments are reported in Section \ref{section:experiments}. \CV{A case study based on drone delivery is described in \ref{section:casestudy}}. Finally, some conclusions are presented in Section \ref{section:conclusion}.
+	The paper is organized in seven sections. In Section \ref{section:description} the problem and its variant are introduced and described. Section \ref{section:formulations} is devoted to provide quadratically-constrained mixed-integer programming formulations of the problems. In Section \ref{section:matheuristic} the matheuristic approach is described. The results of some computational experiments are reported in Section \ref{section:experiments}. \CV{A case study based on drone delivery is described in \ref{section:casestudy}}. Finally, some conclusions are presented in Section \ref{section:conclusion}.
 	
 	
 	\section{Description of the Problem}\label{section:description}
@@ -161,7 +168,7 @@
 		\item $\mathcal T$: Set of neighbourhoods representing the targets that must be served by a facility. It is assumed, wlog, that each target is served when it has been assigned to a facility.
 		
 		\CV{In this work, the set of neighbourhoods $\mathcal N=\mathcal S\cup\mathcal T$ are assumed to be compact, closed and convex sets. These sets can be represented by second-order cone constraints as explained in Section \ref{subsection:conic}.}
-		
+
 		\item $\mathcal B$: Set of barriers (line segments) that can not be crossed when a facility is joined with a target. The assumptions made for this set of line segments are the following:
 		
 		\begin{enumerate}[label=\textbf{A\arabic*},ref=\textbf{A\arabic*}]
@@ -279,14 +286,31 @@
 		\label{fig:initialdata}
 	\end{figure}
 	
+	
+	\subsubsection*{Notation} 
+	
+	The following terminology clarifies the notation applied throughout the paper: 
+	\begin{itemize}
+		\item $P$ and $Q$ are referred to as generic points that, at the same time, are identified with their coordinates $P=(P_x, P_y)$ and $Q=(Q_x, Q_y)$, respectively.
+		\item Given two points $P^1$ and $P^2$, the line segment that joins $P^1$ and $P^2$ is denoted by $\segment{P^1}{P^2}$.
+		\item  Given two points $P^1$ and $P^2$, the edge whose vertices are $P^1$ and $P^2$ is denoted by $(P^1, P^2)$.
+		\item  Given two points $P^1$ and $P^2$, the vector pointing from $P^1$ to $P^2$ is denoted by $\overrightarrow{P^1P^2}$. It is computed as
+		$\overrightarrow{P^1P^2}=P^2-P^1.$
+		\item Given three points $P^1$, $P^2$ and $P^3$, $\determinant{P^1}{P^2}{P^3}$ denotes the following determinant:
+		$$
+		\determinant{P^1}{P^2}{P^3}=\det\left(\begin{array}{c|c} \overrightarrow{P^1P^2} & \overrightarrow{P^1P^3}\end{array}\right):=\det\left( \begin{array}{cc}  P^2_x-P^1_x & P^3_x-P^1_x \\ P_y^2-P^1_y & P_y^3-P_y^1 \end{array}\right).
+		$$
+		The sign of $\determinant{P^1}{P^2}{P^3}$ gives the orientation of the point $P^1$ with respect to the line segment $\segment{P^2}{P^3}.$ Note that $\determinant{P^1}{P^2}{P^3}\neq 0$ by \ref{A1}. 
+	\end{itemize} 
+		
 	\subsection{Description of the Hampered $k$-Median Problem with Neighbourhoods}\label{subsection:descriptionKMPN}
 	
-	The goal of the \KMPHN \ is to find a subset of $k$ points in the source set $\mathcal S$, at most one in each neighbourhood, and one point in each target set $\mathcal T$ that minimize the weighted length of the path joining each target point with its associated source point and the weighted link distance without crossing any barrier of $\mathcal B$ assuming \ref{A1}-\ref{A4}. Recall that the link distance accounts for the numbers of edges of the path joining two points in the underlying graph. The interested reader is referred to \citet{deberg1990,daescu2008} for further details. To state the model, we define the following sets:
+	The goal of the \KMPHN \ is to find a subset of $k$ points, \CV{denoted by \CV{$P_S$}}, in the source set $\mathcal S$, at most one in each neighbourhood, and one point in each target set $\mathcal T$, \CV{denoted by $P_T$}, that minimise the weighted length of the path joining each target point with its associated source point and the weighted link distance without crossing any barrier of $\mathcal B$ assuming \ref{A1}-\ref{A4}. Recall that the link distance accounts for the numbers of edges of the path joining two points in the underlying graph. The interested reader is referred to \citet{deberg1990,daescu2008} for further details. To state the model, we define the following sets:
 	\begin{itemize}
 		\item $\VS=\{P_S:S\in\mathcal S\}$. Set of the points selected in the sources of $\mathcal S$.
 		\item $\VB=\{P^1_B, P^2_B:B=\overline{P^1_B P^2_B}\in \mathcal B\}$. Set of vertices that come from the endpoints of barriers in the problem.
 		\item $\VT=\{P^{}_T:T\in\mathcal T\}$. Set of the points selected in the targets of $\mathcal T$.
-		\item $\VN=\VS\cup\VT$.
+		\item \CV{$\VN=\VS\cup\VT$. Set of vertices selected in the set of neighbourhoods $\mathcal N$.}
 		\item $\ES=\{(P_S, P^i_{B}):P_S\in\VS, P^i_B\in V_\B\text{ and } \overline{P_SP^i_B}\cap B''=\emptyset,\forall B''\in\B,\:i=1,2\}$. Set of edges formed by the line segments that join the point selected in any source neighbourhood $S\in \mathcal{S}$ and every endpoint in the barriers that do not cross any other barrier in $\B$.
 		\item $\EB=\{(P^{i}_B, P^{j}_{B'}):P^i_B, P^j_{B'}\in \VB \text{ and } \overline{P^i_B P^j_{B'}}\cap B''=\emptyset,\:\forall B''\in\mathcal B,\:i, j=1,2\}$. Set of edges formed by the line segments that join two vertices of $V_{\mathcal B}$ and do not cross any other barrier in $\B$. \CV{$\EBint$ denotes the edges represented by the linear barriers.}
 		\item $\ET=\{(P^i_{B}, P^{}_T):P^i_B\in V_\B, P_T\in\VT\text{ and } \overline{P^i_BP^{}_T}\cap B''=\emptyset,\forall B''\in\B,\:i=1,2\}$. Set of edges formed by the line segments that join the point selected in any target neighbourhood $T\in \mathcal{T}$ and every endpoint in the barriers that do not cross any other barrier in $\B$.
@@ -296,14 +320,14 @@
 	
 	By taking the same approach, the graph induced for the relaxed version \KMPN \ can be described as $\GKMPN= (\VKMPN, \EKMPN)$, $\VKMPN= \VKMPHN$ and $\EKMPN=\EKMPHN\cup \EST$, where:
 	\begin{itemize}
-		\item $\EST=\{(P_S, P_T):P_S\in\VS, P_T\in\VT \text{ and } \overline{P_SP_T}\cap B''=\emptyset,\forall B''\in\B,\:i=1,2\}$. Set of edges formed by the line segments that join the point selected in any source neighbourhood $S\in \mathcal{S}$ and the point selected in any target neighbourhood $T\in \mathcal{T}$.
-		\item $\EN=\ES\cup\ET\cup\EST.$
+		\item $\EST=\{(P_S, P_T):P_S\in\VS, P_T\in\VT \text{ and } \overline{P_SP_T}\cap B''=\emptyset,\forall B''\in\B,\:i=1,2\}$. Set of edges formed by the line segments that join the point selected in any source neighbourhood $S\in \mathcal{S}$ and the point selected in any target neighbourhood $T\in \mathcal{T}$ \CV{that do not cross any other barrier in $\B$.}
+		\item \JP{$\EN=\ES\cup\EB \cup\ET\cup\EST.$ ***** OJO ***** Set of edges incidents to the set of neighbourhoods $\mathcal N$ that do not cross any other barrier in $\B$.}
 	\end{itemize}
 	
 
 	\CV{The difference between the set of edges in the \KMPHN \xspace with respect to the graph in \KMPN \ is that, in the former case, the edges that join each pair of neighbourhoods must be considered.}
 	
-	\CV{It is interesting to note that this graph can be split into two parts: a fixed graph $G_\B=(\VB,\EB)$ whose edges can be computed beforehand, and the sets $\VS$, $\ES$, $\VT$ and $\ET$ that depend on where the points $P_S$ and $P^{}_T$ are located as shown in Figures \ref{fig:graph1} and \ref{fig:graph2}.  The two subfigures show how the graph $G$ is generated. The blue dashed line segments represent the edges of $\ES$, the green dashed lines, the edges of $\ET$ and the red dashed lines, the edges of $\EB$. This explains that the difficulty to determine the visibility graph is centered on the sets of edges that depend on the location of the variables, that is, $\VN$ and $\EN$. Hence, the aim of the following section is to build a formulation that exploits this remark to reduce the size of the problem.}
+	\JP{It is interesting to note that this graph can be split into two parts: a fixed graph $G_\B=(\VB,\EB)$ whose edges can be computed beforehand, and the sets $\VN$, $\EN$, that depend on where the points $P_N$ are located as shown in Figures \ref{fig:graph1} and \ref{fig:graph2}.  The two subfigures show how the graph $G$ is generated. The blue dashed line segments represent the edges of $\ES$, the green dashed lines, the edges of $\ET$ and the red dashed lines, the edges of $\EB$. This explains that the difficulty to determine the visibility graph focused on the sets of edges that depend on the location of the variable points on the neighboors, that is, $\VN$ and $\EN$. Hence, the aim of the following section is to find the tools to build a valid formulation and  to reduce the size of the problem.}
 
 	\input{figures/Example_ H-SPP-S_ Second Figure A}
 	
@@ -312,12 +336,13 @@
 			The \KMPN \ is NP-complete.
 		\end{prop}
 		
-		Note that, once a point is fixed in each neighbourhood, the problem that results in the induced graph $G_X$ is the $k$-median with geodesic distances. This problem is a version of the discrete $k$-median in which the distances are computed beforehand by solving a shortest-path problem for each pair source-target in $G_X$. Hence, it is NP-complete \citep{kariv1979}.}
+	Note that, once a point is fixed in each neighbourhood, the problem that results in the induced graph $G_X$ is the $k$-median with geodesic distances. This problem is a version of the discrete $k$-median  in which the distances are computed beforehand by solving a shortest-path problem for each pair source-target in $G_X$. Hence, it is NP-complete by a reduction to $k$-median \citep{kariv1979}.}
 	
 	\section{MINLP Formulations}\label{section:formulations}
 	
-	This section proposes a mixed-integer non-linear programming formulation (MINLP) for the problem described in Section \ref{section:description}. First of all, constraints that describe the $k$-median are set. Then, two approaches to ensure connectivity between each pair source-target are explained. Later, the conic programming representation of the neighbourhoods and distance are presented. Finally, the constraints that check if a segment is included in the set of edges $E_X$ with $X\in \{\rm KMPHN, \rm KMPN\}$ are described.
-	
+	This section proposes a mixed-integer non-linear programming formulation (MINLP) for the problem described in Section \ref{section:description}. First of all, constraints that describe the $k$-median feasible region are set. Then, two different approaches to ensure connectivity between each pair source-target are presented. Later, we give the conic programming representation of the neighbourhoods and distance. Finally, we describe the constraints that check if a segment is included in the set of edges $E_X$ with $X\in \{\rm KMPHN, \rm KMPN\}$. \JP{As far as we are concerned, this family of constraints is new and they are presented for the first time in this paper. The reader may realize that they are based on tools borrowed from computational geometry \citep{deberg1990,daescu2008}. }
+		
+		
 	First of all, we introduce the decision variables that represent the problem. They are summarized in Table \ref{table:variables}.
 	
 %	\begin{table}[h!]
@@ -364,7 +389,7 @@
 			$f_{PP'}^{ST}$       & $(P,P',S,T)\in \EX\times \mathcal S\times \mathcal T$                                           & $\mathbb Z_2$          & \begin{tabular}[c]{@{}l@{}}1, if edge $(P, P')$ is traversed in the path joining $S$ and $T$,\\ 0, otherwise.\end{tabular}                   \\ \midrule
 			$\alpha_{PQQ'}$     & $(P,Q,Q')\in \mathcal A=(\VN\times \EBint)\cup (\VB\times \EN)$     & $\mathbb Z_2$          & \begin{tabular}[c]{@{}l@{}}1, if the determinant $\det(P|QQ')$ is positive,\\ 0, otherwise.\end{tabular}                                    \\ \midrule
 			$\delta_{PP'QQ'}$   & $(P,P',Q,Q')\in \mathcal D=(\EN\times\EBint)\cup(\EBint\times\EN)$ & $\mathbb Z_2$          & \begin{tabular}[c]{@{}l@{}}1, if the determinants $\det(P|QQ')$ and $\det(P'|QQ')$ have the same sign,\\ 0, otherwise.\end{tabular}         \\ \midrule
-			$\epsilon_{PP'QQ'}$ & $(P,P',Q,Q')\in \mathcal D$ & $\mathbb Z_2$          & \begin{tabular}[c]{@{}l@{}}1, if  the determinants $\det(P|QQ')$ and $\det(P'|QQ')$ are both positive,\\ 0, otherwise.\end{tabular}         \\ \midrule
+			$\varepsilon_{PP'QQ'}$ & $(P,P',Q,Q')\in \mathcal D$ & $\mathbb Z_2$          & \begin{tabular}[c]{@{}l@{}}1, if  the determinants $\det(P|QQ')$ and $\det(P'|QQ')$ are both positive,\\ 0, otherwise.\end{tabular}         \\ \midrule
 			$\zeta_{PP'QQ'}$    & $(P,P',Q,Q')\in \mathcal Z=\EN\times\EBint$                                      & $\mathbb Z_2$          & \begin{tabular}[c]{@{}l@{}}1, if the line segments $\overline{PP'}$ and $\overline{QQ'}$ do not intersect,\\ 0, otherwise.\end{tabular}     \\ \midrule
 			$\eta_{PP'}$         & $(P,P')\in \EN$                                                                     & $\mathbb Z_2$          & \begin{tabular}[c]{@{}l@{}}1, if the line segment $\overline{PP'}$ does not cross any barrier,\\ 0, otherwise.\end{tabular}                  \\ \midrule
 			\multicolumn{4}{l}{\textbf{Continuous Decision Variables}}                                                                                                                                                                                                                                  \\ \midrule
@@ -409,7 +434,7 @@
 
 	These constraints state that the units of commodity that are delivered from the source must be exactly the number of targets assigned to this source. These units must be transported along the path until an assigned target is reached.
 	
-	The second approach, related with a multi-commodity scheme, the binary variables $f_{PP'}^{ST}$  must be defined for each $(P, P')\in E_X$, $S\in\mathcal S$ and $T\in\mathcal T$. These variables are set to one for those edges that are used to go from the source $S$ to the target $T$. In this case, the flow conservation constraint reads as follows:
+	The second approach, related with a multi-commodity scheme, \JP{requires the binary variables $f_{PP'}^{ST}$  to be defined for each $(P, P')\in E_X$, $S\in\mathcal S$ and $T\in\mathcal T$. }These variables are set to one for those edges that are used to go from the source $S$ to the target $T$. In this case, the flow conservation constraint reads as follows:
 	
 	{\small
 	\begin{equation}\label{eq:multi-flowC}\tag{multi-flow-C}
@@ -422,7 +447,7 @@
 		\right.\quad\forall P\in V_X,\forall S\in\mathcal S,\forall T\in\mathcal T.
 	\end{equation}}
 
-	These constraints model the path joined the source $S$ and the target $T$ whenever these are assigned by means of variable $x^{ST}$.
+	These constraints model the path joining the source $S$ and the target $T$ whenever these two  are assigned by means of variable $x^{ST}$.
 	
 	These two approaches raise different ways to formulate the problem that are later compared in the computational section.
 	
@@ -433,7 +458,7 @@
 }
 	
 	\subsection{Conic programming constraints}\label{subsection:conic}
-	For the two problems considered in this paper,  namely \KMPHN \ and \KMPN, there exist two typologies of second-order cone constraints. One of them models the distance between each pair of points $P$ and $P'$ in $V_X$, $X\in\{\rm KMPHN, \rm KMPN\}$, and the other, the representation of source and target neighbourhoods, where the points are chosen.
+	For the two problems considered in this paper,  namely \KMPHN \ and \KMPN, there exist two typologies of second-order cone constraints. One of them models the distance between each pair of points $P$ and $P'$ in $V_X$, $X\in\{\rm KMPHN, \rm KMPN\}$, and the other one, the representation of source and target neighbourhoods, where the points are chosen.
 	
 	\newcommand{\dvar}[2]{d_{#1#2}}
 	
@@ -442,10 +467,10 @@
 		\|P - P'\|\leq \dvar{P}{P'},\quad\forall (P,P')\in \EN,
 	\end{equation*}
 	
-	\CV{where $\EN$ is the set of edges incidents to the set of neighbourhoods $\mathcal N$ in $\EKMPHN$ or $\EKMPN$}, depending on the considered problem.
+	\CV{where $\EN$ is the set of edges incident to the set of neighbourhoods $\mathcal N$ in $\EKMPHN$ or $\EKMPN$}, depending on the considered problem.
 	
 	Secondly, since we are assuming that the neighbourhoods are second-order cone (SOC) representable, they can be expressed by means of the constraints:
-	\begin{equation*}\tag{$N$-C}\label{eq:nC}
+	\begin{equation*}\tag{$\mathcal N$-C}\label{eq:nC}
 		P_N\in N \Longleftrightarrow
 		\|A_N^i P_N + b_N^i\| \leq (c_N^i)^T P_N + d_N^i,\quad i=1,\ldots,n(N), \\
 	\end{equation*}
@@ -458,15 +483,9 @@
 	
 	\subsection{Checking whether a segment is an edge of the induced graph}
 	
-	The goal of this subsection is to represent by linear constraints a test to check whether given two arbitrary vertices $P, P'\in \VX$, the edge $(P, P')$ belongs to $\EX$, with $X\in\{\rm KMPHN, \rm KMPN\}$, i.e., whether the line segment $\overline{PP'}$ does not intersect with any barrier of $\mathcal B$. 
+	\JP{The goal of this subsection is to construct  a test representable by linear constraints to check whether given two arbitrary vertices $P, P'\in \VX$, the edge $(P, P')$ \CV{belongs to} $\EX$, with $X\in\{\rm KMPHN, \rm KMPN\}$, i.e., whether the line segment $\overline{PP'}$ does not intersect with any barrier of $\mathcal B$.  The reader may note that this is a new contribution to the field that can be used in future in different problems involving barriers.
 	
-	\CV{Given three points $P^1$, $P^2$ and $P^3$, $\determinant{P^1}{P^2}{P^3}$ denotes the following determinant:
-	$$
-	\determinant{P^1}{P^2}{P^3}=\det\left(\begin{array}{c|c} \overrightarrow{P^1P^2} & \overrightarrow{P^1P^3}\end{array}\right):=\det\left( \begin{array}{cc}  P^2_x-P^1_x & P^3_x-P^1_x \\ P_y^2-P^1_y & P_y^3-P_y^1 \end{array}\right).
-	$$
-	The sign of $\determinant{P^1}{P^2}{P^3}$ gives the orientation of the point $P^1$ with respect to the line segment $\segment{P^2}{P^3}.$ Note that $\determinant{P^1}{P^2}{P^3}\neq 0$ by \ref{A1}.} 
-	
-	The following well-known computational geometry result can be used to check if two line segments intersect. 
+	The following result borrowed from computational geometry is instrumental to check if two line segments intersect. }
 	
 	\begin{remark}\label{rem:determinants}
 		Let $\overline{PP'}$ and $\overline{QQ'}$ be two different line segments. 
@@ -501,7 +520,7 @@
 	%\newcommand{\alphacero}[3]{\alpha^{0\,}(#1|#2#3)}
 	\newcommand{\alphapunto}[3]{\alpha^{\cdotp}(#1|#2#3)}
 	
-	Firstly, the sign of each determinant in Remark \ref{rem:determinants} is modelled. The binary variable $\alpha$ is introduced and assumes the value one if the determinant is non-negative and zero, otherwise. Note that determinants can not be null, because the barriers are located in general position.
+	Firstly, the sign of each determinant in Remark \ref{rem:determinants} \JP{is modelled with \eqref{eq:alphaC}.} The binary variable $\alpha$ is introduced and assumes the value one if the determinant is non-negative and zero, otherwise. Note that determinants can not be null, because the barriers are located in general position.
 	
 	The following constraints represent the sign condition:
 %	{\small
@@ -521,17 +540,17 @@
 	%\newcommand{\deltacero}[4]{\delta^{0\,}(#1#2|#3#4)}
 	%\newcommand{\deltapunto}[4]{\delta^{\cdotp}(#1#2|#3#4)}
 	
-	\CV{The fact of considering the possibility of going directly from one to other neighbourhood leads to include product of continuous variables in the $\alpha$ constraints of the model that represent the determinants. Concretely, for the tuples $(P, Q, Q')\in\VB\times\EST$, the corresponding determinants produce bilinear terms. These products make the \KMPN \ to become non-convex. However, in the \KMPHN, since two of the three arguments of the determinant are fixed because $\EST$ is not considered, the $\alpha$ constraints become linear. It motivates the comparison between two formulations in terms of computational cost of considering the more general version, studied in Section \ref{section:experiments}.}
+	\JP{The fact of considering the possibility of going directly from one neighbourhood  to another leads to include product of continuous variables, presented in the determinants of the $\alpha$ constraints of the model. Specifically, for the tuples $(P, Q, Q')\in V_\mathcal B\times E_{\mathcal S\mathcal T}$, the determinant $\det(P|QQ')$ produces bilinear terms. These products make the general \KMPN \ to become non-convex. However, for the hidden version, since two of the three arguments of the determinant are fixed because $E_{\mathcal S\mathcal T}$ is not considered, the $\alpha$ constraints become linear. This difference justifies the comparison between the two formulations in terms of computational cost studied in Section 5.}
 			 
 	Secondly, to check whether the sign of any pair
 	\begin{equation}\label{eq:pair}
 		\CV{\determinant{P}{Q}{Q'},\: \determinant{P'}{Q}{Q'}\quad \text{or} \quad \determinant{Q}{P}{P'},\:	 \determinant{Q'}{P}{P'}}
 	\end{equation} 
-	of determinants is the same, the binary variable $\delta$ is defined, that is one if the corresponding pair has the same sign, and zero otherwise.
+	of determinants is the same, a binary variable $\delta$ is defined which assumes the value one if the corresponding pair has the same sign, and zero otherwise.
 	
 	\newcommand{\varepsilonprod}[4]{\varepsilon_{#1#2#3#4}}
 	
-	Hence, the correct value of $\delta$ variable can be expressed by the following constraint of the $\alpha$ variables
+	Hence, the correct value of $\delta$ variable can be expressed by the following constraint of the $\alpha$ variables:
 %	{\small
 %	\begin{align*}%\tag{$\delta$-C}\label{eq:deltaC}
 %		\deltamas{P}{Q}{P_B^1}{P_B^2}&=\alphamas{P}{P_B^1}{P_B^2}\alphamas{Q}{P_B^1}{P_B^2} + \left[1-\alphamas{P}{P_B^1}{P_B^2}\right]\left[1-\alphamas{Q}{P_B^1}{P_B^2}\right],&\CV{\quad\forall P,Q\in V_X,\forall P_B^1P_B^2\in \VB,}\\
@@ -550,7 +569,7 @@
 %		\deltamas{P}{Q}{P_B^1}{P_B^2}&=2\varepsilonprod{P}{Q}{P_B^1}{P_B^2} -\alphamas{P}{P_B^1}{P_B^2}-\alphamas{Q}{P_B^1}{P_B^2}+1,&\CV{\quad\forall P,Q\in V_X,\forall P_B^1P_B^2\in \VB,}\\
 %		\deltamas{P_B^1}{P_B^2}{P}{Q}&=2\varepsilonprod{P_B^1}{P_B^2}{P}{Q} -\alphamas{P_B^1}{P}{Q}-\alphamas{P_B^2}{P}{Q}+1,&\CV{\quad\forall P,Q\in V_X,\forall P_B^1P_B^2\in \VB.}
 %\end{align*}}
-	These $\varepsilon$ variables can be linearized by using the following constraints:
+	\CV{The product of binary variables that define $\varepsilon$ can be linearised by means of the McCormick's envelope}:
 %	{\small
 %	\begin{minipage}{.5\linewidth}
 %		\begin{align*}
@@ -590,7 +609,7 @@
 %		\frac{1}{2}\left[\deltamas{P}{Q}{P_B^1}{P_B^2}+\deltamas{P_B^1}{P_B^2}{P}{Q}\right]\leq\zetacheck{P}{Q}{P_B^1}{P_B^2}\leq \deltamas{P}{Q}{P_B^1}{P_B^2}+\deltamas{P_B^1}{P_B^2}{P}{Q},\CV{\quad\forall P,Q\in V_X,\forall P_B^1P_B^2\in \VB.}
 %	\end{equation*}}
 	\CV{
-	\begin{equation*}
+	\begin{equation*}\tag{$\zeta$-C}\label{eq:zetaC}
 		\frac{1}{2}\left[\deltamas{P}{P'}{Q}{Q'}+\deltamas{Q}{Q'}{P}{P'}\right]\leq\zetacheck{P}{P'}{Q}{Q'}\leq \deltamas{P}{P'}{Q}{Q'}+\deltamas{Q}{Q'}{P}{P'},\quad\forall (P,P',Q,Q')\in \mathcal Z.
 	\end{equation*}}
 	Indeed, the above restrictions state that if there exists a sign coincidence in any of the two pairs of determinants in \eqref{eq:pair}, then $\zeta$ is one to satisfy the left constraint, and the right one is always fulfilled. However, if none of the signs of any pairs of determinants is the same, then the second constraint is zero and $\zeta$ must be null.
@@ -602,7 +621,7 @@
 	$$\overline{PP'}\cap \overline{QQ'}\neq\emptyset,\quad \forall \overline{QQ'}\in\B,\quad\Longleftrightarrow\quad \zetacheck{P}{P'}{Q}{Q'}=1,\quad\forall \overline{QQ'}\in\B,$$}
 	the binary variable $\etavar{P}{P'}$ is introduced, and it is one if this condition is verified for all $\overline{QQ'}\in\B$. This variable can be expressed as: 
 	\CV{
-	\begin{equation*}\tag{$\eta$-C}\label{eq:zetaC}
+	\begin{equation*}\tag{$\eta$-C}\label{eq:etaC}
 		\left[\sum_{\overline{QQ'}\in\mathcal B}\zetacheck{P}{P'}{Q}{Q'}-|\mathcal B|\right] + 1\leq \etavar{P}{P'}\leq \frac{1}{|\B|}\sum_{\overline{QQ'}\in\mathcal B}\zetacheck{P}{P'}{Q}{Q'},\quad\forall (P,P')\in\mathcal E.
 	\end{equation*}}
 	
@@ -617,7 +636,7 @@
 	A special case that can be highlighted happens when the set of neighbourhoods \CV{$\mathcal N$} is represented by points. In that case, the induced graph is completely fixed and it is only necessary to find which edges are included by keeping in mind that the graph must be planar, i.e., without crossings.
 	
 	\CV{
-		Once edges $E_X$ are represented by means of $\eta$ variables, some inequalities must be included to assure that the delivery from $P$ to $P'$ can be produced only if the segment $\segment{P}{P'}$ does not cross any barrier. These depend on the approach taken to model the paths.
+		Once edges $E_X$ are represented by means of $\eta$ variables, some inequalities must be included to assure that the delivery from $P$ to $P'$ can be produced only if the segment $\segment{P}{P'}$ does not cross any barrier. They depend on the approach taken to model the paths.
 		
 		For the single-commodity approach, we have:
 		\begin{equation*}\tag{single-$f$-C}\label{eq:single-fC}
@@ -631,13 +650,13 @@
 			f_{PP'}^{ST}\leq  \etavar{P}{P'},\quad\forall (P, P')\in E_X, \forall S\in\mathcal S, \forall T\in\mathcal T.
 		\end{equation*}
 	
-		This inequality states that if target $T$ is assigned to the source $S$, the vehicle can traverse edge $(P, P')$ only if it does not cross any barrier.}
+		This inequality ensures that if target $T$ is assigned to the source $S$, the drone can traverse edge $(P, P')$ only if it does not cross any barrier.}
 	
  
 		
 	\subsection{Formulations for the Hampered $k$-Median Problem with Neighbourhoods}\label{ssec:KMPHN}
 	
-	\CV{The formulations of the \KMPN \ are based on the structure of the well-known $k$-Median Problem where distances between each pair of source-target neighbourhoods are represented by the shortest path joining them without traversing any barrier, as stated before. Putting together all the constraints explained along this section, we can describe two formulations based on the two approaches to model the flow between sources and targets. 
+	\CV{The formulations of the \KMPN \ are based on the structure of the  $k$-Median Problem but imposing that distances between each pair of source-target neighbourhoods are represented by the shortest path joining them without traversing any barrier, as stated before. \JP{The reader may realize that this is far from trivial since elements in neighbourhoos are variable and paths cannot cross.} Putting together all the constraints explained along this section, we can describe two formulations based on the two approaches to model the flow between sources and targets. 
 		
 	The single-commodity formulation adjusted to the induced graph $G_X$, $X\in \{\rm KMPHN, \rm KMPN\}$ is as follows:}
 %	The formulations of the \KMPHN \ 
@@ -671,14 +690,14 @@
 				{}{}\label{form:H-KMPN-single}\tag{H-KMPN-single}
 				\addConstraint{\eqref{eq:k-median1C}-\eqref{eq:k-median3C}}{}{}
 				\addConstraint{\eqref{eq:single-flowC}, \eqref{eq:single-fC}}{}{}
-				\addConstraint{\eqref{eq:alphaC},\eqref{eq:deltaC},\eqref{eq:varepsilonC},\eqref{eq:deltaC}, \eqref{eq:zetaC}}{}{}
+				\addConstraint{\eqref{eq:alphaC},\eqref{eq:deltaC},\eqref{eq:varepsilonC},\eqref{eq:zetaC}, \eqref{eq:etaC}}{}{}
 				\addConstraint{\eqref{eq:dC}, \eqref{eq:nC}}{}{}
 				\addConstraint{\CV{y\in\mathbb Z_2^{\mathcal S}, x\in\mathbb Z_2^{\mathcal S\times\mathcal T}, f\in\mathbb{Z}_{|\mathcal T|}^{E_X}}}{}{}
 				\addConstraint{\CV{\alpha\in\mathbb Z_2^{\mathcal A}, \delta,\varepsilon\in\mathbb Z_2^{\mathcal D},\zeta\in\mathbb Z_2^{\mathcal Z},\eta\in\mathbb Z_2^{\EN}}.}{}{}
 		\end{mini*}
 
 		\CV{
-		The objective function takes into account both the Euclidean and link weighted distances to join the selected sources with their assigned targets. \CV{The term related with the Euclidean distance is split into two parts: the first accounts the variable distances, while the distances in the second are known beforehand. Inspired in a drone routing application, the link distance refers to the rotation cost of the vehicle (see \cite{maheshwari2000} for more details)}. The first group of constraints represents the classical $k$-median. The second group includes the flow conservation constraints and the constraint that relates the possibility of traversing one path with the amount of commodity that can flow in that path. The third group models the visibility graph. The fourth defines the conic constraints used to model the distance between each pair of points and the representation of the sources and targets. Finally, lines five and six describe the domain of the variables.
+		The objective function takes into account both the Euclidean and link weighted distances to join the selected sources with their assigned targets. \CV{The term related with the Euclidean distance is split into two parts: the first one accounts for the variable distances, while the distances in the second one are known beforehand. Inspired in a drone routing application, the link distance refers to the rotation cost of the vehicle (see \cite{maheshwari2000} for more details)}. The first group of constraints represents the classical $k$-median. The second group includes the flow conservation constraints and the constraint that relate the possibility of traversing one path with the amount of commodity that can flow in that path. The third group models the visibility graph. The fourth block defines the conic constraints used to model the distance between each pair of points and the representation of the sources and targets. Finally, lines five and six describe the domain of the variables.
 		
 		In order to linearise the bilinear terms defined in the first part of the objective function, it is necessary to transform the integer variable as a linear combination of binary indicator variables, $f_{aux,PP'}^t$, that attains the value one if edge $(P,P')\in \EN$ is visited $t$ times. Hence, for each edge $(P,P')\in \EN$, the representation of $f$ in terms of $f_{aux}$ variables can be described as follows:}
 		\begin{align*}
@@ -703,13 +722,13 @@
 			{}{}\label{form:H-KMPN-single-l}\tag{H-KMPN-single}
 			\addConstraint{\eqref{eq:k-median1C}-\eqref{eq:k-median3C}}{}{}
 			\addConstraint{\eqref{eq:single-flowC}, \eqref{eq:single-fC}}{}{}
-			\addConstraint{\eqref{eq:alphaC},\eqref{eq:deltaC},\eqref{eq:varepsilonC},\eqref{eq:deltaC}, \eqref{eq:zetaC}}{}{}
+			\addConstraint{\eqref{eq:alphaC},\eqref{eq:deltaC},\eqref{eq:varepsilonC},\eqref{eq:zetaC}, \eqref{eq:etaC}}{}{}
 			\addConstraint{\eqref{eq:dC}, \eqref{eq:nC}}{}{}
 			\addConstraint{\eqref{eq:f1}-\eqref{eq:f2}}{}{}
 			\addConstraint{\eqref{eq:mccormick1}-\eqref{eq:mccormick2}}{}{}
 			\addConstraint{\CV{y\in\mathbb Z_2^{\mathcal S}, x\in\mathbb Z_2^{\mathcal S\times\mathcal T}, f\in\mathbb{Z}_{|\mathcal T|}^{E_X},f_{aux}^t,prod^t\in\mathbb Z_2^{\EN\times\mathcal T}}}{}{}
 			\addConstraint{\CV{\alpha\in\mathbb Z_2^{\mathcal A}, \delta,\varepsilon\in\mathbb Z_2^{\mathcal D},\zeta\in\mathbb Z_2^{\mathcal Z},\eta\in\mathbb Z_2^{\EN}}.}{}{}
-		\end{mini*}	
+ 		\end{mini*}	
 		
 		The \KMPN \ can be also modelled by means of a multi-commodity approach. It can be described as follows:
 		
@@ -719,20 +738,20 @@
 			{}{}\label{form:H-KMPN-multi}\tag{H-KMPN-multi}
 			\addConstraint{\eqref{eq:k-median1C}-\eqref{eq:k-median3C}}{}{}
 			\addConstraint{\eqref{eq:multi-flowC}, \eqref{eq:multi-fC}}{}{}
-			\addConstraint{\eqref{eq:alphaC},\eqref{eq:deltaC},\eqref{eq:varepsilonC},\eqref{eq:deltaC}, \eqref{eq:zetaC}}{}{}
+			\addConstraint{\eqref{eq:alphaC},\eqref{eq:deltaC},\eqref{eq:varepsilonC},\eqref{eq:zetaC}, \eqref{eq:etaC}}{}{}
 			\addConstraint{\eqref{eq:dC}, \eqref{eq:nC}}{}{}
 			\addConstraint{\CV{y\in\mathbb Z_2^{\mathcal S}, x\in\mathbb Z_2^{\mathcal S\times\mathcal T}, f\in\mathbb Z_2^{\EX\times\mathcal S\times\mathcal T}}}{}{}
 			\addConstraint{\CV{\alpha\in\mathbb Z_2^{\mathcal A}, \delta,\varepsilon\in\mathbb Z_2^{\mathcal D},\zeta\in\mathbb Z_2^{\mathcal Z},\eta\in\mathbb Z_2^{\EN}}.}{}{}
 		\end{mini*}
 	
-		In this case, the objective function considers both Euclidean and link-weighted distances to connect the chosen sources with their designated targets. The initial set of constraints are the $k$-median constraints, while the second set encompasses flow conservation and the traversability of a path with the quantity of commodity that can flow through it. The third set characterizes the visibility graph, and the fourth describes conic constraints employed to represent the distance between every pair of points and the domain of sources and targets. Lastly, constraints in lines 5 and 6 describe variables domains. Once more, the bilinear terms in the objective function can be linearised by using McCormick's envelope by defining the corresponding continuous variable $prod_{PP'}^{ST}\geq 0$. Thus, an equivalent formulation is:
+		In this case, the objective function considers both Euclidean and link-weighted distances to connect the chosen sources with their designated targets. The initial set of constraints are the $k$-median constraints, while the second set encompasses flow conservation and the traversability of a path with the quantity of commodity that can flow through it. The third set characterizes the visibility graph, and the fourth describes conic constraints adopted to represent the distance between every pair of points and the domain of sources and targets. Lastly, constraints in lines 5 and 6 describe variables domains. Once more, the bilinear terms in the objective function can be linearised by using McCormick's envelope by defining the corresponding continuous variable $prod_{PP'}^{ST}\geq 0$. Thus, an equivalent formulation is:
 		
 		\begin{mini*}[2]
 			{}{{\small\omega_E\sum_{S\in\mathcal S}\sum_{T\in\mathcal T}\left(\sum_{(P,P')\in \EN}prod_{PP'}^{ST} + \sum_{(P,P')\in \EB}\|P-P'\|f_{PP'}^{ST}\right)+ \frac{\omega_L}{2}\sum_{S\in\mathcal S}\sum_{T\in\mathcal T}\sum_{(P,P')\in E_X}f_{PP'}^{ST}}}
 			{}{}\label{form:H-KMPN-multi-l}\tag{H-KMPN-multi}
 			\addConstraint{\eqref{eq:k-median1C}-\eqref{eq:k-median3C}}{}{}
 			\addConstraint{\eqref{eq:multi-flowC}, \eqref{eq:multi-fC}}{}{}
-			\addConstraint{\eqref{eq:alphaC},\eqref{eq:deltaC},\eqref{eq:varepsilonC},\eqref{eq:deltaC}, \eqref{eq:zetaC}}{}{}
+			\addConstraint{\eqref{eq:alphaC},\eqref{eq:deltaC},\eqref{eq:varepsilonC},\eqref{eq:zetaC}, \eqref{eq:etaC}}{}{}
 			\addConstraint{\eqref{eq:dC}, \eqref{eq:nC}}{}{}
 			\addConstraint{\eqref{eq:mccormick1}-\eqref{eq:mccormick2}}{}{}
 			\addConstraint{\CV{y\in\mathbb Z_2^{\mathcal S}, x\in\mathbb Z_2^{\mathcal S\times\mathcal T}, f\in\mathbb Z_2^{\EX\times\mathcal S\times\mathcal T}, prod\in\mathbb Z_2^{\EN\times \mathcal S\times \mathcal T}}}{}{}
@@ -779,6 +798,7 @@
 		
 		\begin{figure}[h!]
 			\centering
+			\caption{Optimal solution for the \KMPHN}
 			\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=0.1cm,y=0.1cm, scale = 0.45]
 				\begin{axis}[
 					x=0.1cm,y=0.1cm,
@@ -1004,8 +1024,6 @@
 					\end{scriptsize}
 				\end{axis}
 			\end{tikzpicture}
-			
-			\caption{Optimal solution for the \KMPHN}
 			\label{fig:optimalsolution_kmphn}
 		\end{figure}
 		
@@ -1049,6 +1067,7 @@
 		
 		\begin{figure}[h!]
 			\centering
+			\caption{Optimal solution for the \KMPN}
 			\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=0.1cm,y=0.1cm, scale = 0.45]
 				\begin{axis}[
 					x=0.1cm,y=0.1cm,
@@ -1213,7 +1232,6 @@
 					\end{scriptsize}
 				\end{axis}
 			\end{tikzpicture}
-			\caption{Optimal solution for the \KMPN}
 			\label{fig:optimalsolution_kmpn}
 		\end{figure}
 		%	that determine if the segment joining the two variable points in the neighbourhoods cross any barrier or not. 
@@ -1236,7 +1254,7 @@
 		
 		
 		\subsection{Data generation}\label{subsection:datageneration}
-		Assumptions \ref{A1}-\ref{A4} stated in Section \ref{section:description} are assumed to generate the instances of the experiments. In this case, w.l.o.g., the neighbourhoods generated are circles. The sketch of the procedure is as follows. 
+		Assumptions \ref{A1}-\ref{A4} stated in Section \ref{section:description} are assumed to generate the instances of the experiments. In this case, \CV{wlog}, the neighbourhoods generated are circles. The sketch of the procedure is as follows. 
 		
 		\begin{enumerate}
 			\item Random sampling of points in a square.
@@ -1310,7 +1328,7 @@
 		
 		The above information allows us to compare the difficulty of the problem, and, in addition, to test the matheuristic performance to obtain solutions for instances generated as stated in Subsection \ref{subsection:datageneration}.
 		
-		\subsection{Results of the experiments}
+		\subsection{Results of the experiments \JP{*** Not revised yet ****}}
 		Analysing the results in Tables \ref{tab:results1} and \ref{tab:results2}, we first note that the solver is capable of finding feasible solutions up to 80 neighbourhoods when the formulation \KMPHN \ is considered. Furthermore, these solutions are optimal up to a number of 30 neighbourhoods. Moreover, the solver reports maximum gaps of $14,46\%$ and $31,4\%$ for a number of 50 and 80 neighbourhoods, respectively. It is noteworthy that these gaps are obtained when a $10\%$ of the entire set must be chosen as facilities. For $k=1$, the maximum gap reported by the solver is $7,84\%$ after the time limit. In addition, this case is considerably the fastest (and the easiest)  one to obtain the optimal solution with Gurobi, whenever it is found. Finally, one can remark that the initial solution found by the matheuristic helps to certify optimality in less time and also to get better gaps whenever the optimal solution is not found within the time limit. Note that the maximum gap between the best incumbent solution obtained by the matheuristic in a time limit of 100 seconds and the best by the exact formulation after an hour is $5.96\%$.  This is an indication that the mathheuristic is a good alternative to the exact method whenever the problem size grows.
 		
 		With regard to the more general problem modelled with formulation \KMPN, the non-convex nature of the model makes the problem even harder. This can be seen in terms of the resulting gap after the time limit (see Figure \ref{fig:finalgap}). The solver starts to not close this gap already for 20 neighbourhoods and half of the original barriers considered. In addition, for instances with 50 and 80 neighbourhoods, the solver cannot find even a feasible solution when it is not initialised. Moreover, Gurobi cannot even build, in some cases, the solution provided by the matheuristic. The case where only one neighbourhood is selected ($k=1$, e.g., the single facility case) is the hardest one to be solved. This is counterintuitive and is the opposite of the behaviour shown by the formulation \KMPHN. This case has become the hardest, in our computational experience, because choosing only one point to serve all the required neighbourhoods implies to jointly satisfy a large bunch of non-convex constraints with the same point. This seems to be very difficult for the solver. Another remarkable fact is that the higher the percentage of barriers that are set, the greater the difficulty of the problem, taking into account that the location of the neighbourhood remains the same for all cases. It can be explained in terms of constraints and variables that depend on the number of barriers that are considered. Finally, we can conclude that the matheuristic works well for medium to large-size instances. For those, the matheuristic algorithm always finds a feasible solution that can not be improved by the solver, as can be observed in terms of the relative gap. In addition, in all cases the feasible solutions given by the matheuristic are obtained in a maximum computing time of 100 seconds. This makes the matheuristic an efficient method to provide good-quality solutions in short computing time.
@@ -2230,16 +2248,72 @@
 		
 		\CV{
 		\section{Case study}\label{section:casestudy}
-		In this section, we describe a realistic application of the problem studied in this paper to perform last-mile delivery. We focus on the problem of allocating $k$ vans from where some drones depart to delivery some products to the population represented. In particular, we consider a neighbourhood in the city of Córdoba called Fátima, that is located in the northeast of the city. The sources are represented by circles that simulate zones in which vans can park. The targets are also modelled by circles that define the zones in which customers are willing to go to take the delivery. The barriers represent buildings that drones cannot cross. To simplify the problem, we assume the drones have enough endurance to go from any source to any target and they cannot ascend to avoid the buildings.
+		In this section, we describe a realistic application of the problem studied in this paper to perform last-mile delivery. We focus on the problem of allocating $k$ vans from where some drones depart to delivery some products to the population represented. In particular, we consider a neighbourhood in the city of Córdoba called Fátima, that is located in the northeast part of the city as shown in Figure \ref{fig:realmap}. This map is extracted from Google Maps.
 		
-		We run the single-commodity model presented in Section \ref{section:formulations} in this scenario. The green neighbourhoods reported on the map of Fig. \ref{fig:casestudy} represent the sources in which the vans can be located, the blue, the targets where the drones serve the customers and the polygons, the buildings to be avoided. }
+		\begin{figure}[H]
+			\centering
+			\caption{Map that represents a part of Fátima, Córdoba. Scale 1:1000}
+			\includegraphics[width=1\linewidth]{figures/realmap}
+			\label{fig:realmap}
+
+		\end{figure}
+		
+		In Figure \ref{fig:blocks}, we plot the sources that are represented by green circles that simulate zones in which vans can park. The targets are also modelled by blue circles that define the zones in which customers are willing to pick up the delivery. The barriers represent buildings that drones cannot cross. To simplify the problem, we assume the drones have enough endurance to go from any source to any target and they cannot ascend to avoid the buildings and, once the number of vans is fixed, we can know the number of required drones assigned with each van.
+		
+		\begin{figure}[H]
+			\centering
+			\caption{Buildings that are presented in this part of Fátima}
+			\includegraphics[width=1\linewidth]{figures/blocks}
+			\label{fig:blocks}
+		\end{figure}
+		
+		We run the single-commodity model in this scenario,  presented in Section \ref{section:formulations}, for a different number of vans $k\in\{1, 2, 3, 4\}$. It is assumed that the link distance is negligible in comparison with the Euclidean distance, i.e., $\omega_E=1$ and $\omega_L=0$. 
+		
+		The optimal value, measured in meters, and runtime spent to obtain the optimal solution obtained for each $k\in\{1,2,3,4\}$ are reported in Table \ref{tab:casestudy}. 
+		
+		% Please add the following required packages to your document preamble:
+		% \usepackage{graphicx}
+		\begin{table}[H]
+			\centering
+			\caption{Optimal solution and runtime for each configuration}
+			\label{tab:casestudy}%
+				\begin{tabular}{ccc}
+					$k$ & optimal value (m) & runtime (s) \\ \hline
+					1 	& 289.192           & 1208.53     \\
+					2 	& 176.669           & 1417.14     \\
+					3 	& 124.861           & 998.25      \\
+					4 	& 110.001           & 427.47     
+				\end{tabular}%
+		\end{table}
+		
+		The optimal solutions are represented in Figures \ref{fig:solution1}, \ref{fig:solution2}, \ref{fig:solution3} and \ref{fig:solution4}, respectively. Studying the values in Table \ref{tab:casestudy}, we can conclude that increasing the number of vans to be located reduce the total cost spent by the drones to visit all the customers at the cost of including an additional van. Although this work does not consider this ``allocation cost'', the reader may note that this issue can be dealt straightforwardly by adding an additional term in the objective function described in Section \ref{section:formulations}.
+		
+		
+		\begin{figure}[H]
+			\centering
+			\caption{Solution for the case study ($k=1$)}
+			\includegraphics[width=0.6\linewidth]{figures/solution1}
+			\label{fig:solution1}
+			\caption{Solution for the case study ($k=2$)}
+			\includegraphics[width=0.6\linewidth]{figures/solution2}
+			\label{fig:solution2}
+			\caption{Solution for the case study ($k=3$)}
+			\includegraphics[width=0.6\linewidth]{figures/solution3}
+			\label{fig:solution3}
+			\caption{Solution for the case study ($k=4$)}
+			\includegraphics[width=0.6\linewidth]{figures/solution4}
+			\label{fig:solution4}
+		\end{figure}
+
+
+		}
 		
 %		in this case, inspected, by the drone fleet. In addition, we assume that the drone speed is 43 km/h, while that of the helicopter is 30 km/h with the aim to minimise costs. Furthermore, we assume that the fleet consists of two drones with endurance equal to 7.5 min, and we impose that each target graph must be fully visited (inspected). As we can see in Fig. 18, Fig. 19, the origin of the mothership tour coincides with the destination and is located in an area of the city where it is possible to take off and land the helicopter. Fig. 18 reports the tour followed by the helicopter in solving the complete overlapping version of the problem, after 4 h of running time. We can observe that the helicopter, starting from the origin, flies to the point 
 %		which is the first retrieval point, coinciding with the second launching point. Then it flies along the edge connecting with, that is, the second retrieval point, which coincides with the third launching point. The helicopter then flies to retrieve the drone completing the third mission. From the same point, the fourth and last mission starts and ends at the point, which is also the final destination of the helicopter tour.}
 		
 		
 		\section{Concluding remarks}\label{section:conclusion}
-		This paper has dealt with the \KMPHN \xspace and its general version called \KMPN, in which the assumption that neighbourhoods are not visible to one another is removed. This last version leads to  non-convex mixed-integer problems whereas the first one results in second-order cone mixed-integer problems. The two problems, beyond its similarity, show deep differences in terms of computational difficulty, as explained in Section \ref{section:experiments}. However, the proposed mathematical programming approaches allow a formal treatment that allows one to optimally solve small to medium-size instances. For larger size instances, this approach also inspires a matheuristic algorithm providing good quality solutions, in short computing time, by exploiting the structure of the problem. It is still an open question whether there is some kind of finite dominating set with polynomial cardinality for the version \KMPHN, which certainly will simplify the underlying graph structures and the solution of the problem. Moreover, given the complexity of the problem, studying valid inequalities that reduce the space of feasible solutions will be instrumental in solving larger instances efficiently. 
+		This paper has dealt with the \KMPHN \xspace and its general version called \KMPN, in which the assumption that neighbourhoods are not visible to one another is removed. \JP{The resulting problems inherit some elements from the $k$-median problem with neighbourhoods that must be exploited to partially overcome the difficulties of the solution approaches, but in addition require new techniques and algorithms  from computational geometry to handle the network design among neighbourhoods and with barriers. The \KMPN \xspace version leads to  non-convex mixed-integer problems whereas \KMPHN \xspace results in second-order cone mixed-integer problems.} The two problems, beyond its similarity, show deep differences in terms of computational difficulty, as explained in Section \ref{section:experiments}. However, the proposed mathematical programming approaches permit a formal treatment that allows one to optimally solve small to medium-size instances. For larger size instances, this approach also inspires a matheuristic algorithm providing good quality solutions, in short computing time, by exploiting the structure of the problem. It is still an open question whether there is some kind of finite dominating set with polynomial cardinality for the version \KMPHN, which certainly will simplify the underlying graph structures and the solution of the problem. Moreover, given the complexity of the problem, studying valid inequalities that reduce the space of feasible solutions will be instrumental in solving larger instances efficiently. 
 		
 		In addition, one can consider an extension of these problems assuming limited lengths for the paths between the source and its associated target. It would also be interesting to combine in the same model different typologies of barriers such as piecewise linear and second-order cone-representable sets. Besides, it will deserve some attention to study three-dimensional barriers that simulate buildings that planar paths cannot traverse, thus approaching even more real-life applications in the drone delivery industry. 
 		
@@ -2254,7 +2328,7 @@
 		
 		
 		
-		
+	
 		
 		
 		

@@ -14,7 +14,8 @@ import auxiliar_functions as af
 import networkx as nx
 
 from sflpn_b import sflpn_b
-from h_kmedian_new import h_kmedian_n
+from h_kmedian_n_moresubindex import h_kmedian_n
+# from h_kmedian_new import h_kmedian_n
 
 # from HTSPS_without_prepro import HTSPS_without_prepro
 # 50-3
@@ -78,7 +79,7 @@ wL = 0
 
 # Random instances
 instance = 0
-neighbourhood_size = 10
+neighbourhood_size = 80
 
 segments = np.genfromtxt('./instances_random/barriers/barriers{0}-{1}.csv'.format(neighbourhood_size, instance), delimiter = ',')
 
@@ -98,7 +99,7 @@ circles = np.genfromtxt('./instances_random/circles/circles{0}-{1}.csv'.format(n
 
 neighbourhoods = [neigh.Circle(center = [centerx, centery], radii = radius, col='red') for centerx, centery, radius in circles]
 
-resultados = h_kmedian_n(barriers, sources=neighbourhoods, targets=neighbourhoods, k=k, wL=wL, single=False, lazy=False, A4=False, time_limit=600, picture=True, init = True)
+resultados = h_kmedian_n(barriers, sources=neighbourhoods, targets=neighbourhoods, k=k, wL=wL, single=False, lazy=False, A4=False, time_limit=600, picture=True, init = False)
 
 # print(resultados)
 

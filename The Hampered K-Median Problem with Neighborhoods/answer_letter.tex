@@ -135,7 +135,7 @@
 		\end{itshape}
 		
 		\begin{tcolorbox}[breakable,enhanced,coltitle=black,colback=red!5!white,colframe=red!75!black,title=\textbf{Answer R1.\point},borderline={1pt}{0pt}{black},boxrule=0pt]
-			
+			We appreciate your comments that summarise our work.
 		\end{tcolorbox}
 		
 		\begin{itshape}
@@ -143,7 +143,18 @@
 		\end{itshape}
 		
 		\begin{tcolorbox}[breakable,enhanced,coltitle=black,colback=red!5!white,colframe=red!75!black,title=\textbf{Answer R1.\point},borderline={1pt}{0pt}{black},boxrule=0pt]
-
+			To deal with the Reviewer's requirements, along the manuscript we present different real-life scenarios where these models can be adopted. In the following, we remark different paragraphs that have been included to argue the combination of neighbourhoods and barriers in the $k$-median:
+			\begin{itemize}
+				\item The use of neighbourhoods has interest on drone delivery and inspection problems. Neighbourhoods can represent regions that the drone must reach and where the customers are willing to pick up the orders (they can be seen as uniform probability densities) in the delivery industry. Moreover, they can be also used for modelling some areas that must be inspected by the drone (whenever visiting a point of these areas is enough to consider them as inspected). \textbf{Section 1. Introduction: Paragraph 3.}
+				\item The use of barriers in the $k$-median, that is known as $k$-median problem with barriers are deeply studied in the literature (see Klamroth (2002)). In this case, there exist some areas that cannot be traversed, and it is necessary to compute the minimum distance between each pair of points in the graph induced by the facility locations and demand points. In the context of planar location modelling, this problem represents restrictions that appear in a real-life context. One of them can be	the case in which there are regions (called forbidden regions) in which the placement of a facility is	forbidden, but transportation is still possible. They can model state parks or regions where geographic characteristics forbid the construction of the facility. For a survey of location problems with forbidden regions, see Hamacher and Nickel (1995) or Nickel (1995). The case in which transportation is possible,
+				but only at a higher cost (called congested regions) is studied in Butt and Cavalier (1996) or Mitchell and	Papadimitriou (1991). In this case, in these regions, different travel speeds or travel costs are considered. Finally, the existence of military areas, buildings, mountain ranges, lakes, big rivers, and highways can not allow transportation. These examples of barrier regions involve circuit board design (LaPaugh, 1980), pipe network design for ships (Wangdahl et al., 1974), or location and routing with robots (Lozano-Pérez
+				and Wesley, 1979, {\color{red} Blanco et al. (2022)-Omega 2022}). \textbf{Section 1. Introduction: Paragraph 4.}
+				\item From a drone routing perspective, these barriers can simulate buildings in urban areas that drones cannot cross. Another application can be seen as obstacles pedestrian
+				must avoid in urban or rural areas. \textbf{Section 1. Introduction: Paragraph 5.}
+			\end{itemize}
+			We describe a realistic application of the problem studied in this paper to perform last-mile delivery. We focus on the problem of allocating $k$ vans from where some drones depart to deliver some products to the population represented. In particular, we consider a neighbourhood in the city of Córdoba called Fátima, that is located in the northeast of the city. We express sources that are represented by green circles that simulate zones in which vans can park; and targets, also modelled by circles,  that define the zones in which customers are willing to pick up the delivery. The barriers represent buildings that drones cannot cross. To simplify the problem, we assume the drones have enough endurance to go from any source to any target and they cannot ascend to avoid the buildings and, once the number of vans is fixed, we can know the number of required drones assigned with each van. \textbf{Section 6. Case study. }
+			
+			We also discuss data availability by exposing that the advance of technology permits to obtain maps with accurate representations of two-dimensional obstacles by means of various software tools designed for geographic information systems (GIS). An open-source like Quantum GIS (QGIS Development Team (2009)) provides robust capabilities for creating, editing, and exporting maps with detailed two-dimensional building footprints and attributes. These tools enable users to incorporate building information into spatial analyses, urban planning, and environmental assessments. We include some examples where QGIS has been successfully used. The work of Arsanjani et al. (2013) explores the use of open-source GIS software for mapping and analyzing urban structures, emphasizing the importance of accurate two-dimensional building data. In drone routing, the work by Mangiameli et al. (2013) proposes an innovative approach	for the construction of a map of the obstacles based on Geographic Information Systems (GIS) technologies. \textbf{Section 1. Introduction: Paragraph 6.}
 		\end{tcolorbox}
 		
 		\begin{itshape}
@@ -151,6 +162,7 @@
 		\end{itshape}
 		
 		\begin{tcolorbox}[breakable,enhanced,coltitle=black,colback=red!5!white,colframe=red!75!black,title=\textbf{Answer R1.\point},borderline={1pt}{0pt}{black},boxrule=0pt]
+\JP{ This paper analyzes the $k$-Median  problem with neighbours and polygonal barriers. This problem is new and it has important actual applications in different fields, as mentioned in the paper. Its analysis and formulation cannot be  seen as a simple incremental contribution since  the tools required to analyze and solve it go beyond any standard overlapping of techniques used in the separated problems. We present a valid formulation which  relies, apart from some already known blocks of constraints taken from $k$-median and network design,  on new tools borrowed from computational geometry. Specifically, one of our} \JP{important contributions  is presented in subsection 3.4. There, we derive a new test, representable by linear constraints, to check whether given two arbitrary, variable vertices $P, P'\in V_X$, the edge $(P, P')$ belongs to $E_X$, with $X\in\{\rm KMPHN, \rm KMPN\}$, i.e., whether the line segment $\overline{PP'}$ does not intersect with any barrier of $\mathcal B$.  The referee may note that this is a new methodological contribution to the field and that it will be used in future in different problems involving barriers. Apart from the exact method, we also propose a new matheuristic based on the knowledge obtained from the exact analysis. All together brings a new perspective to the considered problem and contributes to a better knowledge of the logistic problems with neighbors and barriers.}
 
 		\end{tcolorbox}
 		
@@ -184,7 +196,11 @@
 		\end{itshape}
 		
 		\begin{tcolorbox}[breakable,enhanced,coltitle=black,colback=green!5!white,colframe=green!75!black,title=\textbf{Answer R2.\point},borderline={1pt}{0pt}{black},boxrule=0pt]
+			In \textit{Section 2.1. Parameters and Assumptions of the Problem}, we have included the following paragraph: 
 
+			\medskip
+			
+			In this work, the set of neighbourhoods $\mathcal N=\mathcal S\cup\mathcal T$ are assumed to be compact, closed and convex sets. These sets can be represented by second-order cone constraints as explained in Section 3.3. 
 		\end{tcolorbox}
 		
 		\begin{itshape}
@@ -192,7 +208,10 @@
 		\end{itshape}
 	
 		\begin{tcolorbox}[breakable,enhanced,coltitle=black,colback=green!5!white,colframe=green!75!black,title=\textbf{Answer R2.\point},borderline={1pt}{0pt}{black},boxrule=0pt]
-		
+			In the part of the manuscript in which $\alpha$ constraints are introduced, we have introduced the following paragraph:
+			\medskip
+			
+			{\color{red}The fact of considering the possibility of going directly from one neighbourhood  to another leads to include product of continuous variables, presented in the determinants of the $\alpha$ constraints of the model. Specifically, for the tuples $(P, Q, Q')\in V_\mathcal B\times E_{\mathcal S\mathcal T}$, the determinant $\det(P|QQ')$ produces bilinear terms. These products make the general H-KMPN \ to become non-convex. However, for the hidden version, since two of the three arguments of the determinant are fixed because $E_{\mathcal S\mathcal T}$ is not considered, the $\alpha$ constraints become linear. This difference justifies the comparison between the two formulations in terms of computational cost studied in Section 5.}
 		\end{tcolorbox}
 	
 		\begin{itshape}
@@ -200,28 +219,64 @@
 		\end{itshape}
 		
 		\begin{tcolorbox}[breakable,enhanced,coltitle=black,colback=green!5!white,colframe=green!75!black,title=\textbf{Answer R2.\point},borderline={1pt}{0pt}{black},boxrule=0pt]
+			We have described with more precision the objective function represented in our problem after the description of the first formulation. We have also inserted a reference that motivates the use of the link distance in this kind of problems:
+			\medskip
+			
+			The objective function takes into account both the Euclidean and link weighted distances to join the selected sources with their assigned targets. The term related with the Euclidean distance is split into two parts: the first accounts {\color{red} for} the variable distances, while the distances in the second are known beforehand. Inspired in a drone routing application, the link distance refers to the rotation cost of the vehicle (see Maheshwari et al. (2000) for more details).
 			
 		\end{tcolorbox}
 	
 		\begin{itshape}
-			When introducing the graph $G_X$, it is not clear whether points $P_S$, $P_T$ are given in advance, or whether we are searching for their coordinates (the latter is the case, bit this becomes clear much later in the paper after introducing the full MINLP model). For the set $E_{ST}$, shouldn't we also add in the definition that these line segments should not cross any other barrier from $B$? When introducing constraints (N-C), please mention that $P_N$ are variables.
+			When introducing the graph $G_X$, it is not clear whether points $P_S$, $P_T$ are given in advance, or whether we are searching for their coordinates (the latter is the case, but this becomes clear much later in the paper after introducing the full MINLP model). 
 		\end{itshape}
 	
 		\begin{tcolorbox}[breakable,enhanced,coltitle=black,colback=green!5!white,colframe=green!75!black,title=\textbf{Answer R2.\point},borderline={1pt}{0pt}{black},boxrule=0pt]
-		
+			We have given details in the description of the problem by including the notation for the points selected in $\mathcal S$ and $\mathcal T$. Additionally, we have better explained how the visibility graph is built by arguing that is a ``variable'' graph that depends on the location of its vertices to determine which are its edges. \textbf{Section 2. Description of the Problem. Paragraph previous to Proposition 1.}
 		\end{tcolorbox}
-			
+		
+		\begin{itshape}
+			For the set $E_{\mathcal S \mathcal T}$, shouldn't we also add in the definition that these line segments should not cross any other barrier from $B$?
+		\end{itshape}
+		
+		\begin{tcolorbox}[breakable,enhanced,coltitle=black,colback=green!5!white,colframe=green!75!black,title=\textbf{Answer R2.\point},borderline={1pt}{0pt}{black},boxrule=0pt]
+			Yes. We have inserted the correct description of the set of edges $E_{\mathcal S\mathcal T}$.
+		\end{tcolorbox}
+		
+		\begin{itshape}
+			When introducing constraints ($\mathcal N$-C), please mention that $P_N$ are variables.
+		\end{itshape}
+		
+		\begin{tcolorbox}[breakable,enhanced,coltitle=black,colback=green!5!white,colframe=green!75!black,title=\textbf{Answer R2.\point},borderline={1pt}{0pt}{black},boxrule=0pt]
+			Thank you. We have explained that $P_N$ represents the coordinates of the variable point selected in $N$.
+		\end{tcolorbox}
+		
 		\subsection*{MINLP formulation}
 		\begin{itshape}
-			When introducing model variables, what is the domain of variables - for example, for $\alpha(P|QQ')$, where does $P$, $Q$, and $Q'$ come from? The same has to be clarified for all variables used in the model. I recommend to use notation $f^{ST}_{PQ}$ instead of $f(PQ|ST)$, first, because it is a common way to state flow along a segment $PQ$ for the commodity $ST$ in that way, and second, to avoid confusion with the determinants notation (see minor remarks below). 
+			When introducing model variables, what is the domain of variables - for example, for $\alpha(P|QQ')$, where does $P$, $Q$, and $Q'$ come from? The same has to be clarified for all variables used in the model. I recommend to use notation $f^{ST}_{PQ}$ instead of $f(PQ|ST)$, first, because it is a common way to state flow along a segment $PQ$ for the commodity $ST$ in that way, and second, to avoid confusion with the determinants notation (see minor remarks below). For all introduced constraints, please introduce quantifiers and variable domains for which these constraints are imposed.
 		\end{itshape}
 		
 		\begin{tcolorbox}[breakable,enhanced,coltitle=black,colback=green!5!white,colframe=green!75!black,title=\textbf{Answer R2.\point},borderline={1pt}{0pt}{black},boxrule=0pt]
-			Done.	
+			In Section 3, we have performed a deep revision to unify the notation to be more similar to the common way of representing the variables. These changes are described in the following:
+			\begin{itemize}
+				\item $y(S)\rightarrow y^S$.
+				\item $x(ST)\rightarrow x^{ST}$.
+				\item $f(PP')\rightarrow f_{PP'}$.
+				\item $f(PP'|ST)\rightarrow f_{PP'}^{ST}$.
+				\item $\alpha(P|QR)\rightarrow \alpha_{PQR}$.
+				\item $\beta(PP'|QQ')\rightarrow \delta_{PP'QQ'}$.
+				\item $\gamma(PP'|QQ')\rightarrow \varepsilon_{PP'QQ'}$.
+				\item $\delta(PP'|QQ')\rightarrow \zeta_{PP'QQ'}$.
+				\item $\varepsilon(PP')\rightarrow \eta_{PP'}$.
+				\item $d(PP')\rightarrow d_{PP'}$.
+			\end{itemize}
+			
+			In addition, we have modified the table that describes the variables by including the domains and ranges of these variables. These domains are used to simplify the description of the $\alpha$, $\delta$, $\varepsilon$, $\zeta$ and $\eta$ constraints. Furthermore, we have inserted the ranges of all these variables in each formulation.
+			
+			
 		\end{tcolorbox}
 			
 		\begin{itshape}
-			For all introduced constraints, please introduce quantifiers and variable domains for which these constraints are imposed. The authors state that they use single-commodity flow formulation to model client-facility allocation paths, however their model is a mix between single- and multi-commodity formulation (SCF and MCF, respectively). This has to be corrected, and in addition, there are indeed two ways to model it, as described below.
+			 The authors state that they use single-commodity flow formulation to model client-facility allocation paths, however their model is a mix between single- and multi-commodity formulation (SCF and MCF, respectively). This has to be corrected, and in addition, there are indeed two ways to model it, as described below.
 			
 			\begin{itemize}
 				\item In the MCF approach, we need binary variables $f^{ST}_{PQ}$ to be set to one for each ST pair, if line segment connecting $P$ and $Q$ is used. For the constraints (f-C), what is the definition of $f(PQ)$ and what is the link between $f^{ST}_{PQ}$ and $f(PQ)$? I believe constraints (f-C) should be replaced by stronger ones: $f^{ST}_{PQ}\leq \varepsilon(PQ)$ for all $P$, $Q$ (please add the variable domain) and all $S$, $T$ (please add variable domain). Finally, there is a quantifier missing in the flow-preservation constraints (flow-in equals flow-out): for all $P$ is missing.
@@ -232,7 +287,14 @@
 
 
 		\begin{tcolorbox}[breakable,enhanced,coltitle=black,colback=green!5!white,colframe=green!75!black,title=\textbf{Answer R2.\point},borderline={1pt}{0pt}{black},boxrule=0pt]
-
+			Thanks for your contribution. We have taken into account your comments to differentiate between two formulations that can model the problem we study. In addition, we have structured Section 3 by splitting the formulation in different blocks of constraints that appear in the problem:
+			\begin{itemize}
+				\item Section 3.1 describes the classical $k$-median constraints.
+				\item Section 3.2 represents the path source-target by means of single- and multi-commodity approaches as suggested by the referee.
+				\item Section 3.3 states the second-order cone constraints defining neighbourhoods and Euclidean distances.
+				\item Section 3.4 makes use of the computational geometry results to model the visibility graph.
+				\item Section 3.5 presents the single- and multi-commodity formulations for the problem and discusses the linearisation of the objective function using McCormick's envelopes.
+			\end{itemize}
 		\end{tcolorbox}
 		
 		\begin{itshape}
@@ -240,7 +302,7 @@
 		\end{itshape}
 		
 		\begin{tcolorbox}[breakable,enhanced,coltitle=black,colback=green!5!white,colframe=green!75!black,title=\textbf{Answer R2.\point},borderline={1pt}{0pt}{black},boxrule=0pt]
-
+			We agree with the referee. In a previous version of the paper, we had considered an endurance term that bounds the total distance between each pair source-target. However, although it is possible to model this restriction, we have decided to remove it to simplify the problem.
 		\end{tcolorbox}
 		
 		\begin{itshape}
@@ -248,18 +310,24 @@
 		\end{itshape}
 		
 		\begin{tcolorbox}[breakable,enhanced,coltitle=black,colback=green!5!white,colframe=green!75!black,title=\textbf{Answer R2.\point},borderline={1pt}{0pt}{black},boxrule=0pt]
+			We agree with the referee. We have stated this result right after the problem definition. We have also included this paragraph that argues this result:
 			
+			\medskip
+			
+			Note that, once a point is fixed in each neighbourhood, the problem that results in the induced graph $G_X$ is the $k$-median with geodesic distances. This problem is a version of the discrete $k$-median in which the distances are computed beforehand by solving a shortest-path problem for each pair source-target in $G_X$. Hence, it is NP-complete (Kariv and Hakimi, 1979).
 		\end{tcolorbox}
+		
+
+		
+		\subsection*{Computational results}
 		
 		\begin{itshape}
 			It is important to make publicly available instances used in this paper.
 		\end{itshape}
-
-		\begin{tcolorbox}[breakable,enhanced,coltitle=black,colback=green!5!white,colframe=green!75!black,title=\textbf{Answer R2.\point},borderline={1pt}{0pt}{black},boxrule=0pt]
-	
-		\end{tcolorbox}
 		
-		\subsection*{Computational results}
+		\begin{tcolorbox}[breakable,enhanced,coltitle=black,colback=green!5!white,colframe=green!75!black,title=\textbf{Answer R2.\point},borderline={1pt}{0pt}{black},boxrule=0pt]
+			
+		\end{tcolorbox}
 		
 		\begin{itshape}
 			Are the authors using some kind of warm-start (sometimes called MIP-start) procedure to provide the solution found by the matheuristic to Gurobi? This should be better clarified.
@@ -270,7 +338,7 @@
  		\end{tcolorbox}
 		
 		\begin{itshape}
-			What is the major idea behind reporting $Gap_build$ - why is it important to look at this metric? Is this a solution found by Gurobi without using matheuristic? Please clarify.
+			What is the major idea behind reporting $Gap_{build}$ - why is it important to look at this metric? Is this a solution found by Gurobi without using matheuristic? Please clarify.
 		\end{itshape}
 
 		\begin{tcolorbox}[breakable,enhanced,coltitle=black,colback=green!5!white,colframe=green!75!black,title=\textbf{Answer R2.\point},borderline={1pt}{0pt}{black},boxrule=0pt]
@@ -289,8 +357,9 @@
 		
 		\end{tcolorbox}
 	
+		\subsection*{Minor concerns}
+		
 		\begin{itshape}
-			Minor concerns:
 			\begin{itemize}
 				\item Change on-the-self by off-the-shelf.
 				\item Section 3.2., line 2: replace $\in E_X$ with ``belongs to $E_X$''.
@@ -303,7 +372,16 @@
 		\end{itshape}
 	
 		\begin{tcolorbox}[breakable,enhanced,coltitle=black,colback=green!5!white,colframe=green!75!black,title=\textbf{Answer R2.\point},borderline={1pt}{0pt}{black},boxrule=0pt]
-		
+			Thanks for reading the manuscript carefully. The changes that we have made are:
+			\begin{itemize}
+				\item We have changed \textit{on-the-shelf} by \textit{off-the-shelf}.
+				\item We have replaced $\in E_X$ by \textit{belongs to $E_X$}.
+				\item We have introduced a separated subsection in the \textbf{Section 2} that summarises the notation used along the manuscript.
+				\item We have introduced a sentence for the $\varepsilon$ variables that are obtained as McCormick standard linearisation.
+				\item We have made our efforts to improve the notation to be more clear for the reader.
+				\item We have changed \textit{w.l.o.g.} by \textit{wlog}.
+				\item We have adopted the decimal point to show decimal numbers.
+			\end{itemize}
 		\end{tcolorbox}
 	\end{reviewer}
 	
