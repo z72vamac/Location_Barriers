@@ -37,7 +37,7 @@ for nn in n_Ns:
     k = [1, math.floor(0.1*nn), math.floor(0.25*nn)]
     ks.append(k)
     
-    perc_k = [1, 0.1, 0.25]
+    perc_k = [1, '10%', '25%']
     percs_k.append(perc_k)
 
 time_limit = 3600
@@ -87,8 +87,8 @@ for nn, perc_k in zip(n_Ns, percs_k):
                                 nB = len(barriers)
                                 
                                 np.random.seed(5)
-                                sublist = np.random.choice(nB, int(np.floor(perc * nB)))
-                                barriers1 = [barriers[b] for b in sublist]
+                                # sublist = np.random.choice(nB, int(np.floor(perc * nB)))
+                                # barriers1 = [barriers[b] for b in sublist]
 
                                 if counter > num_rows:
 
@@ -98,7 +98,7 @@ for nn, perc_k in zip(n_Ns, percs_k):
                                     print('k: ' + str(k))
                                     print('Lazy mode: ' + str(l))
                                     print('Init: ' + str(init))
-                                    print('Percentage of barriers: ' + str(100*perc) + '%\n\n')
+                                    print('Percentage of barriers: ' + str(perc) + '%\n\n')
 
 
                                     if perc < 1:
@@ -107,7 +107,8 @@ for nn, perc_k in zip(n_Ns, percs_k):
                                         A4 = True
 
                                     # resultados = h_kmedian_n(barriers1, sources=neighbourhoods, targets=neighbourhoods, k=k, single=single, wL=wL, lazy=l, A4=A4, init=init, time_limit=time_limit)
-                                    serie = pd.Series([instance, nn, perc, k, single, wL, l, A4, init], index=dataframe.columns)
+                                    perc2 = str(perc*100) + '%' 
+                                    serie = pd.Series([instance, nn, perc2, k, single, wL, l, A4, init], index=dataframe.columns)
 
                                     dataframe = dataframe._append(serie, ignore_index=True)
                                     dataframe.to_csv('./resultados/parameters_' + str(instance) + '.csv')
