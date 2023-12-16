@@ -1,0 +1,1 @@
+signos alternados en función de la región del plano donde te encuentres
