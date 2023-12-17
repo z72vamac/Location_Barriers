@@ -1,13 +1,13 @@
 # Fdb version 4
-["bibtex hampered-kmedian"] 1702659240 "hampered-kmedian.aux" "hampered-kmedian.bbl" "hampered-kmedian" 1702723879 0
+["bibtex hampered-kmedian"] 1702726921 "hampered-kmedian.aux" "hampered-kmedian.bbl" "hampered-kmedian" 1702727006 0
   "./location_barrier_bibliography.bib" 1702481289 41016 b7d4fe7a8d7c9789596248374450d7b7 ""
   "C:/Program Files/MiKTeX/bibtex/bst/beebe/apa.bst" 954234833 23582 e3c8338eb1efb7432441aa8861285f53 ""
-  "hampered-kmedian.aux" 1702723877 10180 823e7a77382705a3ce2fe0322b6e28b7 "pdflatex"
+  "hampered-kmedian.aux" 1702727003 10180 48ce2a14a7bcf62cbd9929e7a7983cd6 "pdflatex"
   (generated)
   "hampered-kmedian.bbl"
   "hampered-kmedian.blg"
   (rewritten before read)
-["pdflatex"] 1702723865 "c:/Users/Carlos/UNIVERSIDAD DE SEVILLA/Grupo de Trabajo con Carlos Valverde - General/Location_Barriers/tex_files/hampered-kmedian.tex" "hampered-kmedian.pdf" "hampered-kmedian" 1702723879 0
+["pdflatex"] 1702726993 "c:/Users/Carlos/UNIVERSIDAD DE SEVILLA/Grupo de Trabajo con Carlos Valverde - General/Location_Barriers/tex_files/hampered-kmedian.tex" "hampered-kmedian.pdf" "hampered-kmedian" 1702727006 0
   "C:/Program Files/MiKTeX/fonts/tfm/jknappen/ec/ecbx0500.tfm" 993061946 3212 70507fcf14da26e9fa78c7f84562ff74 ""
   "C:/Program Files/MiKTeX/fonts/tfm/jknappen/ec/ecbx0700.tfm" 993061950 3220 25e4222ac92e5aa3866f7c5aaa811a4a ""
   "C:/Program Files/MiKTeX/fonts/tfm/jknappen/ec/ecbx1000.tfm" 993061956 3200 328792ff19833a39406f06fa0555a6dc ""
@@ -112,6 +112,7 @@
   "C:/Program Files/MiKTeX/tex/generic/pgf/basiclayer/pgfcoretransformations.code.tex" 1673775190 22012 81b34a0aa8fa1a6158cc6220b00e4f10 ""
   "C:/Program Files/MiKTeX/tex/generic/pgf/basiclayer/pgfcoretransparency.code.tex" 1673775190 8893 e851de2175338fdf7c17f3e091d94618 ""
   "C:/Program Files/MiKTeX/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryarrows.code.tex" 1673775190 319 225dfe354ba678ff3c194968db39d447 ""
+  "C:/Program Files/MiKTeX/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarycalc.code.tex" 1673775190 15929 463535aa2c4268fead6674a75c0e8266 ""
   "C:/Program Files/MiKTeX/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarydecorations.code.tex" 1673775190 5628 dc0ee4ba7f3e40acae5600067ce833de ""
   "C:/Program Files/MiKTeX/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarydecorations.pathmorphing.code.tex" 1673775190 321 cdd11262840e01e25374a2d458f15e99 ""
   "C:/Program Files/MiKTeX/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarydecorations.pathreplacing.code.tex" 1673775190 1319 0b2de5126c6cbc295f0eb77f7344b34d ""
@@ -164,6 +165,7 @@
   "C:/Program Files/MiKTeX/tex/generic/pgfplots/libs/pgflibrarypgfplots.surfshading.code.tex" 1621075461 22701 5fab7b8ebb90b053dc067d1bd37e43c2 ""
   "C:/Program Files/MiKTeX/tex/generic/pgfplots/libs/pgfplotslibrary.code.tex" 1621075461 3047 aa82404aec57311271f4991c44bd71dc ""
   "C:/Program Files/MiKTeX/tex/generic/pgfplots/libs/tikzlibrarypgfplots.contourlua.code.tex" 1621075461 2931 5d52092da9e839accd7c9026062fe5c3 ""
+  "C:/Program Files/MiKTeX/tex/generic/pgfplots/libs/tikzlibrarypgfplots.groupplots.code.tex" 1621075461 21935 5271626bc899b87debfce4e0be271edc ""
   "C:/Program Files/MiKTeX/tex/generic/pgfplots/liststructure/pgfplotsarray.code.tex" 1621075461 23537 54be8160344d894595f6d145b1311658 ""
   "C:/Program Files/MiKTeX/tex/generic/pgfplots/liststructure/pgfplotsdeque.code.tex" 1621075461 4288 b8d6247899b21e3bb66bb11b24d30f2c ""
   "C:/Program Files/MiKTeX/tex/generic/pgfplots/liststructure/pgfplotsliststructure.code.tex" 1621075461 13828 11d1b09335a4a8baa693dd1e6cac3edf ""
@@ -299,18 +301,25 @@
   "C:/Users/Carlos/AppData/Local/MiKTeX/fonts/tfm/public/rsfs/rsfs5.tfm" 1701643542 684 3a51bd4fd9600428d5264cf25f04bb9a ""
   "C:/Users/Carlos/AppData/Local/MiKTeX/fonts/tfm/public/rsfs/rsfs7.tfm" 1701643541 692 1b6510779f0f05e9cbf03e0f6c8361e6 ""
   "C:/Users/Carlos/AppData/Local/MiKTeX/miktex/data/le/pdftex/pdflatex.fmt" 1701643320 24203419 f2106bfb946393d3f022d17a26bbc21b ""
-  "c:/Users/Carlos/UNIVERSIDAD DE SEVILLA/Grupo de Trabajo con Carlos Valverde - General/Location_Barriers/tex_files/hampered-kmedian.tex" 1702659763 157703 7655af8d365cd60d3928b29b852869f4 ""
+  "c:/Users/Carlos/UNIVERSIDAD DE SEVILLA/Grupo de Trabajo con Carlos Valverde - General/Location_Barriers/tex_files/hampered-kmedian.tex" 1702726755 110789 d554f65ee76c5b587b954a661e699626 ""
   "figures/Example_ H-SPP-S_ Second Figure A.tex" 1702481289 9512 79a1d746d5c6bc207816cb9d16ad935e ""
   "figures/blocks.pdf" 1702481289 4423960 cf4225ef5563f0fff5aac28d907241ff ""
+  "figures/difference_between_wL.tex" 1702726992 27828 980dd4ca8e619cae3e7f8889552ea7d2 ""
+  "figures/optimal_solution_kmphn.tex" 1702724331 15152 94d9d8640249ec8937eee5faff8a429c ""
+  "figures/optimal_solution_kmpn.tex" 1702724382 11468 953d97401f12ccb37c1d88ae41d43db4 ""
+  "figures/problem_data.tex" 1702724121 6664 62aa688e7ad5a3cd0722ce0dc125974c ""
   "figures/realmap.pdf" 1702481289 4393531 a910343b6ec363aad20c459fb5a9fb75 ""
   "figures/solution1.pdf" 1702481289 35918 3918db2d29c85402b8131fd269a85328 ""
   "figures/solution2.pdf" 1702481289 32233 ecbc4e53ae67d7a40304c13b664f28bf ""
   "figures/solution3.pdf" 1702481289 32036 d4d9294b0a1115a74698c78a48cf6b92 ""
   "figures/solution4.pdf" 1702481289 31915 46947af4b871e6e179112d97252b1eeb ""
-  "hampered-kmedian.aux" 1702723877 10180 823e7a77382705a3ce2fe0322b6e28b7 "pdflatex"
-  "hampered-kmedian.bbl" 1702659240 8584 910cf4a9a93e0f193f4cdb4f208e217e "bibtex hampered-kmedian"
-  "hampered-kmedian.spl" 1702723866 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
-  "hampered-kmedian.tex" 1702659763 157703 7655af8d365cd60d3928b29b852869f4 ""
+  "hampered-kmedian.aux" 1702727003 10180 48ce2a14a7bcf62cbd9929e7a7983cd6 "pdflatex"
+  "hampered-kmedian.bbl" 1702726921 8584 910cf4a9a93e0f193f4cdb4f208e217e "bibtex hampered-kmedian"
+  "hampered-kmedian.spl" 1702726994 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
+  "hampered-kmedian.tex" 1702726755 110789 d554f65ee76c5b587b954a661e699626 ""
+  "tables/table_big_instances.tex" 1702724608 6813 f7d06d74ca1a8b54bd1e75e2c0f50610 ""
+  "tables/table_small_instances.tex" 1702724534 7405 8674a1cccb34834117afcafec2742e8f ""
+  "tables/table_variables.tex" 1702724716 4308 be2f601485d334cae65090b917195b51 ""
   (generated)
   "hampered-kmedian.aux"
   "hampered-kmedian.log"

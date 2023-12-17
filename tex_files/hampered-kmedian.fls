@@ -314,6 +314,10 @@ INPUT C:\Program Files\MiKTeX\tex\latex\pdfpages\pppdftex.def
 INPUT C:\Program Files\MiKTeX\tex\latex\pdfpages\pppdftex.def
 INPUT C:\Program Files\MiKTeX\tex\latex\threeparttable\threeparttable.sty
 INPUT C:\Program Files\MiKTeX\tex\latex\threeparttable\threeparttable.sty
+INPUT C:\Program Files\MiKTeX\tex\generic\pgfplots\libs\tikzlibrarypgfplots.groupplots.code.tex
+INPUT C:\Program Files\MiKTeX\tex\generic\pgfplots\libs\tikzlibrarypgfplots.groupplots.code.tex
+INPUT C:\Program Files\MiKTeX\tex\generic\pgf\frontendlayer\tikz\libraries\tikzlibrarycalc.code.tex
+INPUT C:\Program Files\MiKTeX\tex\generic\pgf\frontendlayer\tikz\libraries\tikzlibrarycalc.code.tex
 INPUT .\hampered-kmedian.aux
 INPUT .\hampered-kmedian.aux
 INPUT hampered-kmedian.aux
@@ -400,6 +404,11 @@ INPUT C:\Program Files\MiKTeX\tex\latex\base\t1cmss.fd
 INPUT C:\Program Files\MiKTeX\tex\latex\base\t1cmss.fd
 INPUT C:\Program Files\MiKTeX\fonts\tfm\jknappen\ec\ecss1000.tfm
 INPUT C:\Program Files\MiKTeX\fonts\tfm\jknappen\ec\tcrm1000.tfm
+INPUT .\figures\problem_data.tex
+INPUT .\figures\problem_data.tex
+INPUT .\figures\problem_data.tex
+INPUT .\figures\problem_data.tex
+INPUT figures\problem_data.tex
 INPUT C:\Program Files\MiKTeX\tex\generic\pgf\frontendlayer\tikz\libraries\tikzlibraryarrows.code.tex
 INPUT C:\Program Files\MiKTeX\tex\generic\pgf\frontendlayer\tikz\libraries\tikzlibraryarrows.code.tex
 INPUT C:\Program Files\MiKTeX\tex\generic\pgf\libraries\pgflibraryarrows.code.tex
@@ -411,6 +420,11 @@ INPUT .\figures\Example_ H-SPP-S_ Second Figure A.tex
 INPUT .\figures\Example_ H-SPP-S_ Second Figure A.tex
 INPUT .\figures\Example_ H-SPP-S_ Second Figure A.tex
 INPUT figures\Example_ H-SPP-S_ Second Figure A.tex
+INPUT .\tables\table_variables.tex
+INPUT .\tables\table_variables.tex
+INPUT .\tables\table_variables.tex
+INPUT .\tables\table_variables.tex
+INPUT tables\table_variables.tex
 INPUT C:\Program Files\MiKTeX\fonts\tfm\jknappen\ec\ecrm0900.tfm
 INPUT C:\Program Files\MiKTeX\fonts\tfm\public\cm\cmr9.tfm
 INPUT C:\Program Files\MiKTeX\fonts\tfm\public\cm\cmmi9.tfm
@@ -422,7 +436,20 @@ INPUT C:\Users\Carlos\AppData\Local\MiKTeX\fonts\tfm\public\rsfs\rsfs10.tfm
 INPUT C:\Program Files\MiKTeX\fonts\tfm\public\cm\cmbx9.tfm
 INPUT C:\Program Files\MiKTeX\fonts\tfm\public\amsfonts\cmextra\cmmib9.tfm
 INPUT C:\Program Files\MiKTeX\fonts\tfm\public\amsfonts\cmextra\cmbsy9.tfm
+INPUT .\figures\optimal_solution_kmphn.tex
+INPUT .\figures\optimal_solution_kmphn.tex
+INPUT .\figures\optimal_solution_kmphn.tex
+INPUT .\figures\optimal_solution_kmphn.tex
+INPUT figures\optimal_solution_kmphn.tex
+INPUT .\figures\optimal_solution_kmpn.tex
+INPUT .\figures\optimal_solution_kmpn.tex
+INPUT .\figures\optimal_solution_kmpn.tex
+INPUT .\figures\optimal_solution_kmpn.tex
+INPUT figures\optimal_solution_kmpn.tex
 INPUT C:\Program Files\MiKTeX\fonts\tfm\jknappen\ec\ecbx0700.tfm
+INPUT .\figures\difference_between_wL.tex
+INPUT .\figures\difference_between_wL.tex
+INPUT figures\difference_between_wL.tex
 INPUT C:\Program Files\MiKTeX\tex\generic\pgf\frontendlayer\tikz\libraries\tikzlibrarypatterns.code.tex
 INPUT C:\Program Files\MiKTeX\tex\generic\pgf\frontendlayer\tikz\libraries\tikzlibrarypatterns.code.tex
 INPUT C:\Program Files\MiKTeX\tex\generic\pgf\libraries\pgflibrarypatterns.code.tex
@@ -431,7 +458,13 @@ INPUT C:\Program Files\MiKTeX\tex\generic\pgf\frontendlayer\tikz\libraries\tikzl
 INPUT C:\Program Files\MiKTeX\tex\generic\pgf\frontendlayer\tikz\libraries\tikzlibraryshapes.arrows.code.tex
 INPUT C:\Program Files\MiKTeX\tex\generic\pgf\libraries\shapes\pgflibraryshapes.arrows.code.tex
 INPUT C:\Program Files\MiKTeX\tex\generic\pgf\libraries\shapes\pgflibraryshapes.arrows.code.tex
+INPUT .\tables\table_small_instances.tex
+INPUT .\tables\table_small_instances.tex
+INPUT tables\table_small_instances.tex
 INPUT C:\Program Files\MiKTeX\fonts\tfm\jknappen\ec\ecbx0500.tfm
+INPUT .\tables\table_big_instances.tex
+INPUT .\tables\table_big_instances.tex
+INPUT tables\table_big_instances.tex
 INPUT .\figures\realmap.pdf
 INPUT .\figures\realmap.pdf
 INPUT .\figures\realmap.pdf

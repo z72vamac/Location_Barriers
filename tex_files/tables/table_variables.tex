@@ -1,0 +1,24 @@
+\begin{table}[h!]
+	\caption{Summary of decision variables used in the mathematical programming model}
+	\label{table:variables}
+	\resizebox{\textwidth}{!}{%
+		\CV{
+		\begin{tabular}{@{}cccl@{}}
+			\toprule
+			\multicolumn{4}{l}{\textbf{Binary and Integer Decision Variables}}                                                                                                                                                                                                                          \\ \midrule
+			\textbf{Name}       & \textbf{Domain}                                                                                & \textbf{Range}         & \textbf{Description}                                                                                                                        \\ \midrule
+			$y^S$               & $S \in \mathcal S$                                                                             & $\mathbb Z_2$          & \begin{tabular}[c]{@{}l@{}}1, if a facility is allocated in the source $S$ in the solution of the model,\\ 0, otherwise.\end{tabular}       \\ \midrule
+			$x^{ST}$            & $(S,T)\in\mathcal S\times\mathcal T$                                                           & $\mathbb Z_2$          & \begin{tabular}[c]{@{}l@{}}1,  if source $S$ and target $T$ are joined by a path in the solution of the model,\\ 0, otherwise.\end{tabular} \\ \midrule
+			$f_{PP'}$            & $(P,P')\in \EX$                                                                                 & $\mathbb Z_{|\mathcal T|}$ & number of times that edge $(P, P')$ is traversed in the solution.                                                                            \\ \midrule
+			$f_{PP'}^{ST}$       & $(P,P',S,T)\in \EX\times \mathcal S\times \mathcal T$                                           & $\mathbb Z_2$          & \begin{tabular}[c]{@{}l@{}}1, if edge $(P, P')$ is traversed in the path joining $S$ and $T$,\\ 0, otherwise.\end{tabular}                   \\ \midrule
+			$\alpha_{PQQ'}$     & $(P,Q,Q')\in \mathcal A=(\VN\times \EBint)\cup (\VB\times \EN)$     & $\mathbb Z_2$          & \begin{tabular}[c]{@{}l@{}}1, if the determinant $\det(P|QQ')$ is positive,\\ 0, otherwise.\end{tabular}                                    \\ \midrule
+			$\delta_{PP'QQ'}$   & $(P,P',Q,Q')\in \mathcal D=(\EN\times\EBint)\cup(\EBint\times\EN)$ & $\mathbb Z_2$          & \begin{tabular}[c]{@{}l@{}}1, if the determinants $\det(P|QQ')$ and $\det(P'|QQ')$ have the same sign,\\ 0, otherwise.\end{tabular}         \\ \midrule
+			$\varepsilon_{PP'QQ'}$ & $(P,P',Q,Q')\in \mathcal D$ & $\mathbb Z_2$          & \begin{tabular}[c]{@{}l@{}}1, if  the determinants $\det(P|QQ')$ and $\det(P'|QQ')$ are both positive,\\ 0, otherwise.\end{tabular}         \\ \midrule
+			$\zeta_{PP'QQ'}$    & $(P,P',Q,Q')\in \mathcal Z=\EN\times\EBint$                                      & $\mathbb Z_2$          & \begin{tabular}[c]{@{}l@{}}1, if the line segments $\overline{PP'}$ and $\overline{QQ'}$ do not intersect,\\ 0, otherwise.\end{tabular}     \\ \midrule
+			$\eta_{PP'}$         & $(P,P')\in \EN$                                                                     & $\mathbb Z_2$          & \begin{tabular}[c]{@{}l@{}}1, if the line segment $\overline{PP'}$ does not cross any barrier,\\ 0, otherwise.\end{tabular}                  \\ \midrule
+			\multicolumn{4}{l}{\textbf{Continuous Decision Variables}}                                                                                                                                                                                                                                  \\ \midrule
+			$P_N$               & $N\in \mathcal N=\mathcal S\cup\mathcal T$                                                     & $N$                    & Coordinates representing the point selected in the neighbourhood $N$.                                                                       \\ \midrule
+			$d_{PP'}$            & $(P,P')\in \EN$                                                                     & $\mathbb R^+$          & Euclidean distance between the points $P$ and $P'$.                                                                                          \\ \bottomrule
+		\end{tabular}}%
+	}
+\end{table}

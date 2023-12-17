@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 23.10.12) (preloaded format=pdflatex 2023.12.3)  16 DEC 2023 11:51
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 23.10.12) (preloaded format=pdflatex 2023.12.3)  16 DEC 2023 12:43
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -682,7 +682,13 @@ Package: threeparttable 2003/06/13  v 3.0
 \c@remark=\count340
 \c@notation=\count341
 \c@prop=\count342
-
+ (C:\Program Files\MiKTeX\tex/generic/pgfplots/libs\tikzlibrarypgfplots.groupplots.code.tex
+\pgfplots@group@current@plot=\count343
+\pgfplots@group@current@row=\count344
+\pgfplots@group@current@column=\count345
+ (C:\Program Files\MiKTeX\tex/generic/pgf/frontendlayer/tikz/libraries\tikzlibrarycalc.code.tex
+File: tikzlibrarycalc.code.tex 2023-01-15 v3.1.10 (3.1.10)
+))
 
 LaTeX Warning: Unused global option(s):
     [1p.].
@@ -690,32 +696,32 @@ LaTeX Warning: Unused global option(s):
 (hampered-kmedian.aux)
 \openout1 = `hampered-kmedian.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 113.
-LaTeX Font Info:    ... okay on input line 113.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 113.
-LaTeX Font Info:    ... okay on input line 113.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 113.
-LaTeX Font Info:    ... okay on input line 113.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 113.
-LaTeX Font Info:    ... okay on input line 113.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 113.
-LaTeX Font Info:    ... okay on input line 113.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 113.
-LaTeX Font Info:    ... okay on input line 113.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 113.
-LaTeX Font Info:    ... okay on input line 113.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 115.
+LaTeX Font Info:    ... okay on input line 115.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 115.
+LaTeX Font Info:    ... okay on input line 115.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 115.
+LaTeX Font Info:    ... okay on input line 115.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 115.
+LaTeX Font Info:    ... okay on input line 115.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 115.
+LaTeX Font Info:    ... okay on input line 115.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 115.
+LaTeX Font Info:    ... okay on input line 115.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 115.
+LaTeX Font Info:    ... okay on input line 115.
  (C:\Program Files\MiKTeX\tex/context/base/mkii\supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count343
+\scratchcounter=\count346
 \scratchdimen=\dimen328
 \scratchbox=\box93
-\nofMPsegments=\count344
-\nofMParguments=\count345
+\nofMPsegments=\count347
+\nofMParguments=\count348
 \everyMPshowfont=\toks62
-\MPscratchCnt=\count346
+\MPscratchCnt=\count349
 \MPscratchDim=\dimen329
-\MPnumerator=\count347
-\makeMPintoPDFobject=\count348
+\MPnumerator=\count350
+\makeMPintoPDFobject=\count351
 \everyMPtoPDFconversion=\toks63
 ) (C:\Program Files\MiKTeX\tex/latex/epstopdf-pkg\epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
@@ -725,7 +731,7 @@ File: epstopdf-sys.cfg 2021/03/18 v2.0 Configuration of epstopdf for MiKTeX
 ))
 
 Package pgfplots Warning: running in backwards compatibility mode (unsuitable tick labels; missing features). Consider writing \pgfplotsset{compat=1.18} into your preamble.
- on input line 113.
+ on input line 115.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -770,19 +776,19 @@ Package: lscape 2020/05/28 v3.02 Landscape Pages (DPC)
 )
 Package pdflscape Info: Auto-detected driver: pdftex on input line 81.
 ))
-LaTeX Font Info:    Trying to load font information for U+msa on input line 133.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 135.
  (C:\Program Files\MiKTeX\tex/latex/amsfonts\umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 133.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 135.
  (C:\Program Files\MiKTeX\tex/latex/amsfonts\umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-LaTeX Font Info:    Trying to load font information for U+rsfs on input line 133.
+LaTeX Font Info:    Trying to load font information for U+rsfs on input line 135.
  (C:\Program Files\MiKTeX\tex/latex/jknappen\ursfs.fd
 File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
 )
-LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 139.
+LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 141.
  (C:\Program Files\MiKTeX\tex/latex/base\t1cmtt.fd
 File: t1cmtt.fd 2023/04/13 v2.5m Standard LaTeX font definitions
 )
@@ -795,35 +801,35 @@ Overfull \hbox (2.22168pt too wide) has occurred while \output is active
 
 {C:/Users/Carlos/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}]
 
-Package natbib Warning: Citation `blanco2022' on page 2 undefined on input line 150.
+Package natbib Warning: Citation `blanco2022' on page 2 undefined on input line 152.
 
 [2]
-LaTeX Font Info:    Trying to load font information for T1+cmss on input line 158.
+LaTeX Font Info:    Trying to load font information for T1+cmss on input line 160.
  (C:\Program Files\MiKTeX\tex/latex/base\t1cmss.fd
 File: t1cmss.fd 2023/04/13 v2.5m Standard LaTeX font definitions
-) [3] [4] (C:\Program Files\MiKTeX\tex/generic/pgf/frontendlayer/tikz/libraries\tikzlibraryarrows.code.tex
+) [3] [4] (figures/problem_data.tex (C:\Program Files\MiKTeX\tex/generic/pgf/frontendlayer/tikz/libraries\tikzlibraryarrows.code.tex
 File: tikzlibraryarrows.code.tex 2023-01-15 v3.1.10 (3.1.10)
  (C:\Program Files\MiKTeX\tex/generic/pgf/libraries\pgflibraryarrows.code.tex
 File: pgflibraryarrows.code.tex 2023-01-15 v3.1.10 (3.1.10)
 \arrowsize=\dimen330
-)) [5] [6] (figures/Example_ H-SPP-S_ Second Figure A.tex)
+))) [5] [6] (figures/Example_ H-SPP-S_ Second Figure A.tex) (tables/table_variables.tex
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[7] [8] [9] [10] [11] [12] [13]
+) [7] [8] [9] [10] [11] [12] [13]
 
-LaTeX Font Warning: Command \small invalid in math mode on input line 749.
-
-
-LaTeX Font Warning: Command \small invalid in math mode on input line 749.
+LaTeX Font Warning: Command \small invalid in math mode on input line 626.
 
 
-LaTeX Font Warning: Command \small invalid in math mode on input line 763.
+LaTeX Font Warning: Command \small invalid in math mode on input line 626.
 
 
-LaTeX Font Warning: Command \small invalid in math mode on input line 763.
+LaTeX Font Warning: Command \small invalid in math mode on input line 640.
 
-[14] [15] [16] [17] [18] (C:\Program Files\MiKTeX\tex/generic/pgf/frontendlayer/tikz/libraries\tikzlibrarypatterns.code.tex
+
+LaTeX Font Warning: Command \small invalid in math mode on input line 640.
+
+[14] (figures/optimal_solution_kmphn.tex) (figures/optimal_solution_kmpn.tex) [15] [16] [17] [18] (figures/difference_between_wL.tex) (C:\Program Files\MiKTeX\tex/generic/pgf/frontendlayer/tikz/libraries\tikzlibrarypatterns.code.tex
 File: tikzlibrarypatterns.code.tex 2023-01-15 v3.1.10 (3.1.10)
  (C:\Program Files\MiKTeX\tex/generic/pgf/libraries\pgflibrarypatterns.code.tex
 File: pgflibrarypatterns.code.tex 2023-01-15 v3.1.10 (3.1.10)
@@ -831,23 +837,24 @@ File: pgflibrarypatterns.code.tex 2023-01-15 v3.1.10 (3.1.10)
 File: tikzlibraryshapes.arrows.code.tex 2023-01-15 v3.1.10 (3.1.10)
  (C:\Program Files\MiKTeX\tex/generic/pgf/libraries/shapes\pgflibraryshapes.arrows.code.tex
 File: pgflibraryshapes.arrows.code.tex 2023-01-15 v3.1.10 (3.1.10)
-))
+)) (tables/table_small_instances.tex
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
+) (tables/table_big_instances.tex
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<figures/realmap.pdf, id=94, 591.27805pt x 173.99973pt>
+) [19]
+<figures/realmap.pdf, id=98, 591.27805pt x 173.99973pt>
 File: figures/realmap.pdf Graphic file (type pdf)
 <use figures/realmap.pdf>
-Package pdftex.def Info: figures/realmap.pdf  used on input line 2441.
+Package pdftex.def Info: figures/realmap.pdf  used on input line 1780.
 (pdftex.def)             Requested size: 452.9679pt x 133.30316pt.
-[19]
 <figures/blocks.pdf, id=99, 591.27805pt x 173.99973pt>
 File: figures/blocks.pdf Graphic file (type pdf)
 <use figures/blocks.pdf>
-Package pdftex.def Info: figures/blocks.pdf  used on input line 2441.
+Package pdftex.def Info: figures/blocks.pdf  used on input line 1780.
 (pdftex.def)             Requested size: 452.9679pt x 133.30316pt.
  [20 <./figures/realmap.pdf> <./figures/blocks.pdf
 
@@ -856,22 +863,22 @@ pdfTeX warning: pdflatex (file ./figures/blocks.pdf): PDF inclusion: multiple pd
 <figures/solution1.pdf, id=287, 591.27805pt x 173.99973pt>
 File: figures/solution1.pdf Graphic file (type pdf)
 <use figures/solution1.pdf>
-Package pdftex.def Info: figures/solution1.pdf  used on input line 2441.
+Package pdftex.def Info: figures/solution1.pdf  used on input line 1780.
 (pdftex.def)             Requested size: 271.7835pt x 79.98242pt.
 <figures/solution2.pdf, id=288, 591.27805pt x 173.99973pt>
 File: figures/solution2.pdf Graphic file (type pdf)
 <use figures/solution2.pdf>
-Package pdftex.def Info: figures/solution2.pdf  used on input line 2441.
+Package pdftex.def Info: figures/solution2.pdf  used on input line 1780.
 (pdftex.def)             Requested size: 271.7835pt x 79.98242pt.
 <figures/solution3.pdf, id=289, 591.27805pt x 173.99973pt>
 File: figures/solution3.pdf Graphic file (type pdf)
 <use figures/solution3.pdf>
-Package pdftex.def Info: figures/solution3.pdf  used on input line 2441.
+Package pdftex.def Info: figures/solution3.pdf  used on input line 1780.
 (pdftex.def)             Requested size: 271.7835pt x 79.98242pt.
 <figures/solution4.pdf, id=290, 591.27805pt x 173.99973pt>
 File: figures/solution4.pdf Graphic file (type pdf)
 <use figures/solution4.pdf>
-Package pdftex.def Info: figures/solution4.pdf  used on input line 2441.
+Package pdftex.def Info: figures/solution4.pdf  used on input line 1780.
 (pdftex.def)             Requested size: 271.7835pt x 79.98242pt.
  [21 <./figures/solution1.pdf> <./figures/solution2.pdf
 
@@ -893,15 +900,15 @@ L3 programming layer <2023-11-09>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 32001 strings out of 474587
- 768907 string characters out of 5755514
- 2078558 words of memory out of 5000000
- 53567 multiletter control sequences out of 15000+600000
+ 32317 strings out of 474587
+ 780223 string characters out of 5755514
+ 2102558 words of memory out of 5000000
+ 53854 multiletter control sequences out of 15000+600000
  582958 words of font info for 104 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 94i,26n,93p,2350b,2303s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 94i,26n,93p,2350b,2550s stack positions out of 10000i,1000n,20000p,200000b,200000s
  <C:\Users\Carlos\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx0700.pk> <C:\Users\Carlos\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm0900.pk> <C:\Users\Carlos\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecss0800.pk> <C:\Users\Carlos\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm1000.pk> <C:\Users\Carlos\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecss1000.pk> <C:\Users\Carlos\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ectt0800.pk> <C:\Users\Carlos\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm0800.pk> <C:\Users\Carlos\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecti1000.pk> <C:\Users\Carlos\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1000.pk> <C:\Users\Carlos\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecti0800.pk> <C:\Users\Carlos\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecti0600.pk> <C:\Users\Carlos\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm0700.pk> <C:\Users\Carlos\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1000.pk> <C:\Users\Carlos\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1440.pk><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmbsy10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cmextra/cmbsy7.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx7.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cmextra/cmex9.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi5.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi6.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi9.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmmib10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cmextra/cmmib7.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmr9.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy5.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy6.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy9.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on hampered-kmedian.pdf (26 pages, 9443056 bytes).
+Output written on hampered-kmedian.pdf (26 pages, 9456404 bytes).
 PDF statistics:
  1565 PDF objects out of 1728 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
