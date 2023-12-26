@@ -17,6 +17,13 @@ Blanco, V., Fern{\'a}ndez, E., and Puerto, J. (2017).
   programming formulations and solution methods.
 \newblock {\em European Journal of Operational Research}, 262(3):863--878.
 
+\bibitem[\protect\astroncite{Blanco et~al.}{2022}]{blanco2022}
+Blanco, V., Gonz{\'a}lez, G., Hinojosa, Y., Ponce, D., Pozo, M.~A., and Puerto,
+  J. (2022).
+\newblock Network flow based approaches for the pipelines routing problem in
+  naval design.
+\newblock {\em Omega}, 111:102659.
+
 \bibitem[\protect\astroncite{Boyd and Vandenberghe}{2004}]{boyd2004}
 Boyd, S. and Vandenberghe, L. (2004).
 \newblock {\em Convex {{Optimization}}}.
