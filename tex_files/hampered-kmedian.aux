@@ -38,6 +38,7 @@
 \newlabel{A4}{{{\textbf  {A4}}}{4}{}{}{}}
 \citation{deberg1990,daescu2008}
 \@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Problem data of the {\sf  {H-KMPHN}}\ and {\sf  {H-KMPN}\xspace  }}}{5}{}\protected@file@percent }
+\providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}
 \newlabel{fig:initialdata}{{1}{5}{}{}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {2.2}Description of the Hampered $k$-Median Problem with Neighbourhoods}{6}{}\protected@file@percent }
 \newlabel{subsection:descriptionKMPN}{{2.2}{6}{}{}{}}
@@ -51,7 +52,7 @@
 \newlabel{section:formulations}{{3}{7}{}{}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.1}$k$-median constraints}{7}{}\protected@file@percent }
 \@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces Summary of decision variables used in the mathematical programming model}}{8}{}\protected@file@percent }
-\newlabel{table:variables}{{1}{8}{}{}{}}
+\newlabel{table:variables}{{\caption@xref {table:variables}{ on input line 23}}{8}{}{}{}}
 \newlabel{eq:k-median1C}{{{k-median-C1}}{8}{}{}{}}
 \newlabel{eq:k-median2C}{{{k-median-C2}}{8}{}{}{}}
 \newlabel{eq:k-median3C}{{{k-median-C3}}{8}{}{}{}}
@@ -100,33 +101,58 @@
 \@writefile{toc}{\contentsline {subsection}{\numberline {5.2}Configuration of the experiments}{17}{}\protected@file@percent }
 \citation{g.vanrossumguido1995}
 \citation{gurobioptimizationllc2022a}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.3}Results of the experiments {\color  {armygreen}*** Not revised yet ****}}{18}{}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces Gap and Runtime reported by Gurobi when the model is initialised by the matheuristic}}{19}{}\protected@file@percent }
-\newlabel{fig:finalgap}{{6}{19}{}{}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {6}Case study}{20}{}\protected@file@percent }
-\newlabel{section:casestudy}{{6}{20}{}{}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces Map that represents a part of Fátima, Córdoba. Scale 1:1000}}{20}{}\protected@file@percent }
-\newlabel{fig:realmap}{{7}{20}{}{}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces Buildings that are presented in this part of Fátima}}{20}{}\protected@file@percent }
-\newlabel{fig:blocks}{{8}{20}{}{}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {4}{\ignorespaces Optimal solution and runtime for each configuration}}{21}{}\protected@file@percent }
-\newlabel{tab:casestudy}{{4}{21}{}{}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {9}{\ignorespaces Solution for the case study ($k=1$)}}{21}{}\protected@file@percent }
-\newlabel{fig:solution1}{{9}{21}{}{}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {10}{\ignorespaces Solution for the case study ($k=2$)}}{21}{}\protected@file@percent }
-\newlabel{fig:solution2}{{10}{21}{}{}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {11}{\ignorespaces Solution for the case study ($k=3$)}}{21}{}\protected@file@percent }
-\newlabel{fig:solution3}{{11}{21}{}{}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {12}{\ignorespaces Solution for the case study ($k=4$)}}{21}{}\protected@file@percent }
-\newlabel{fig:solution4}{{12}{21}{}{}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {2}{\ignorespaces Table of parameters used in the experiments}}{18}{}\protected@file@percent }
+\newlabel{table:parameters}{{2}{18}{}{}{}}
+\citation{mcknight2010}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.3}Results of the experiments {\color  {armygreen}*** Not revised yet ****}}{19}{}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {3}{\ignorespaces Results depending of $\omega _L$}}{19}{}\protected@file@percent }
+\newlabel{table:wL}{{3}{19}{}{}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {4}{\ignorespaces Results depending of matheuristic initialisation}}{20}{}\protected@file@percent }
+\newlabel{table:initialisation}{{4}{20}{}{}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {5}{\ignorespaces Results depending of the percentage of barriers considered}}{20}{}\protected@file@percent }
+\newlabel{table:percB}{{5}{20}{}{}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {6}{\ignorespaces Results depending of the $k$ selected}}{20}{}\protected@file@percent }
+\newlabel{table:k}{{6}{20}{}{}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces Boxplots for \% Gap, Runtime and \% Unfound for instances with different $\omega _L$ (left side) and initialisation (right side)}}{21}{}\protected@file@percent }
+\newlabel{fig:results_wL}{{6}{21}{}{}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces Boxplots for \% Gap, Runtime and \% Unfound for instances with different $\%|\mathcal  B|$ (left side) and $k$ (right side)}}{21}{}\protected@file@percent }
+\newlabel{fig:results_percentage}{{7}{21}{}{}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {7}{\ignorespaces Table of $p$-values for gap difference}}{22}{}\protected@file@percent }
+\newlabel{table:pvalue_gap}{{7}{22}{}{}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {8}{\ignorespaces Table of $p$-values for runtime difference}}{22}{}\protected@file@percent }
+\newlabel{table:pvalue_runtime}{{8}{22}{}{}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {9}{\ignorespaces Table of $p$-values for matheuristic gap difference}}{23}{}\protected@file@percent }
+\newlabel{table:pvalue_gap_math}{{9}{23}{}{}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {10}{\ignorespaces Table of $p$-values for matheuristic runtime difference}}{23}{}\protected@file@percent }
+\newlabel{table:pvalue_runtime_h}{{10}{23}{}{}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {11}{\ignorespaces Table of $p$-values for gap difference of the solution built by the solver}}{23}{}\protected@file@percent }
+\newlabel{table:pvalue_gap_build}{{11}{23}{}{}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {12}{\ignorespaces Table of $p$-values for runtime difference of the solution built by the solver}}{24}{}\protected@file@percent }
+\newlabel{table:pvalue_runtime_h2}{{12}{24}{}{}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {6}Case study}{24}{}\protected@file@percent }
+\newlabel{section:casestudy}{{6}{24}{}{}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces Map that represents a part of Fátima, Córdoba. Scale 1:1000}}{24}{}\protected@file@percent }
+\newlabel{fig:realmap}{{8}{24}{}{}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {9}{\ignorespaces Buildings that are presented in this part of Fátima}}{25}{}\protected@file@percent }
+\newlabel{fig:blocks}{{9}{25}{}{}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {13}{\ignorespaces Optimal solution and runtime for each configuration}}{25}{}\protected@file@percent }
+\newlabel{tab:casestudy}{{13}{25}{}{}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {10}{\ignorespaces Solution for the case study ($k=1$)}}{26}{}\protected@file@percent }
+\newlabel{fig:solution1}{{10}{26}{}{}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {11}{\ignorespaces Solution for the case study ($k=2$)}}{26}{}\protected@file@percent }
+\newlabel{fig:solution2}{{11}{26}{}{}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {12}{\ignorespaces Solution for the case study ($k=3$)}}{26}{}\protected@file@percent }
+\newlabel{fig:solution3}{{12}{26}{}{}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {13}{\ignorespaces Solution for the case study ($k=4$)}}{26}{}\protected@file@percent }
+\newlabel{fig:solution4}{{13}{26}{}{}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {7}Concluding remarks}{26}{}\protected@file@percent }
+\newlabel{section:conclusion}{{7}{26}{}{}{}}
 \bibstyle{apa}
 \bibdata{location_barrier_bibliography.bib}
 \bibcite{arsanjani2013}{{1}{2013}{{Arsanjani et~al.}}{{}}}
 \bibcite{blanco2019}{{2}{2019}{{Blanco}}{{}}}
 \bibcite{blanco2017}{{3}{2017}{{Blanco et~al.}}{{}}}
 \bibcite{boyd2004}{{4}{2004}{{Boyd and Vandenberghe}}{{}}}
-\@writefile{toc}{\contentsline {section}{\numberline {7}Concluding remarks}{22}{}\protected@file@percent }
-\newlabel{section:conclusion}{{7}{22}{}{}{}}
 \bibcite{butt1996}{{5}{1996}{{Butt and Cavalier}}{{}}}
 \bibcite{daescu2008}{{6}{2008}{{Daescu et~al.}}{{}}}
 \bibcite{deberg1990}{{7}{1990}{{{de Berg} et~al.}}{{}}}
@@ -144,19 +170,16 @@
 \bibcite{lozano-perez1979}{{19}{1979}{{{Lozano-P{\'e}rez} and Wesley}}{{}}}
 \bibcite{maheshwari2000}{{20}{2000}{{Maheshwari et~al.}}{{}}}
 \bibcite{mangiameli2013}{{21}{2013}{{Mangiameli et~al.}}{{}}}
-\bibcite{mitchell2017}{{22}{2017}{{Mitchell}}{{}}}
-\bibcite{mitchell1991}{{23}{1991}{{Mitchell and Papadimitriou}}{{}}}
-\bibcite{nickel1995}{{24}{1995}{{Nickel}}{{}}}
-\bibcite{nickel2007}{{25}{2007}{{Nickel and Puerto}}{{}}}
-\bibcite{puerto2008}{{26}{2008}{{Puerto}}{{}}}
-\bibcite{puerto2022a}{{27}{2022}{{Puerto and Valverde}}{{}}}
-\bibcite{qgisdevelopmentteam2009}{{28}{2009}{{{QGIS Development Team}}}{{}}}
-\bibcite{ulukan2015}{{29}{2015}{{Ulukan and Demircio{\u g}lu}}{{}}}
-\bibcite{wangdahl1974}{{30}{1974}{{Wangdahl et~al.}}{{}}}
-\bibcite{yuan2017}{{31}{2017}{{Yuan and Zhang}}{{}}}
-\@writefile{lot}{\contentsline {table}{\numberline {2}{\ignorespaces Computational results for 10, 20 and 30 neighbourhoods}}{25}{}\protected@file@percent }
-\newlabel{tab:results1}{{2}{25}{}{}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {3}{\ignorespaces Computational results for 50 and 80 neighbourhoods}}{26}{}\protected@file@percent }
-\newlabel{tab:results2}{{3}{26}{}{}{}}
+\bibcite{mcknight2010}{{22}{2010}{{McKnight and Najab}}{{}}}
+\bibcite{mitchell2017}{{23}{2017}{{Mitchell}}{{}}}
+\bibcite{mitchell1991}{{24}{1991}{{Mitchell and Papadimitriou}}{{}}}
+\bibcite{nickel1995}{{25}{1995}{{Nickel}}{{}}}
+\bibcite{nickel2007}{{26}{2007}{{Nickel and Puerto}}{{}}}
+\bibcite{puerto2008}{{27}{2008}{{Puerto}}{{}}}
+\bibcite{puerto2022a}{{28}{2022}{{Puerto and Valverde}}{{}}}
+\bibcite{qgisdevelopmentteam2009}{{29}{2009}{{{QGIS Development Team}}}{{}}}
+\bibcite{ulukan2015}{{30}{2015}{{Ulukan and Demircio{\u g}lu}}{{}}}
+\bibcite{wangdahl1974}{{31}{1974}{{Wangdahl et~al.}}{{}}}
+\bibcite{yuan2017}{{32}{2017}{{Yuan and Zhang}}{{}}}
 \gdef\svg@ink@ver@settings{{\m@ne }{inkscape}{\m@ne }}
-\gdef \@abspage@last{26}
+\gdef \@abspage@last{29}

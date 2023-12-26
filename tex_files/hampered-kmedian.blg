@@ -6,45 +6,45 @@ The style file: apa.bst
 Reallocating 'name_of_file' (item size: 1) to 34 items.
 Database file #1: location_barrier_bibliography.bib
 Warning--I didn't find a database entry for "blanco2022"
-You've used 31 entries,
+You've used 32 entries,
             1940 wiz_defined-function locations,
-            677 strings with 9442 characters,
-and the built_in function-call counts, 12486 in all, are:
-= -- 1249
-> -- 451
-< -- 27
-+ -- 162
-- -- 142
-* -- 1082
-:= -- 2121
-add.period$ -- 96
-call.type$ -- 31
-change.case$ -- 217
-chr.to.int$ -- 31
-cite$ -- 31
-duplicate$ -- 488
-empty$ -- 895
-format.name$ -- 197
-if$ -- 2458
+            684 strings with 9594 characters,
+and the built_in function-call counts, 12950 in all, are:
+= -- 1298
+> -- 464
+< -- 29
++ -- 166
+- -- 146
+* -- 1116
+:= -- 2193
+add.period$ -- 100
+call.type$ -- 32
+change.case$ -- 224
+chr.to.int$ -- 32
+cite$ -- 32
+duplicate$ -- 511
+empty$ -- 933
+format.name$ -- 204
+if$ -- 2560
 int.to.chr$ -- 1
 int.to.str$ -- 0
-missing$ -- 31
-newline$ -- 156
-num.names$ -- 101
-pop$ -- 180
+missing$ -- 32
+newline$ -- 161
+num.names$ -- 104
+pop$ -- 189
 preamble$ -- 1
-purify$ -- 221
+purify$ -- 228
 quote$ -- 0
-skip$ -- 381
+skip$ -- 397
 stack$ -- 0
-substring$ -- 928
-swap$ -- 104
-text.length$ -- 5
+substring$ -- 956
+swap$ -- 111
+text.length$ -- 6
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 178
+type$ -- 184
 warning$ -- 0
-while$ -- 113
+while$ -- 118
 width$ -- 0
-write$ -- 408
+write$ -- 422
 (There was 1 warning)

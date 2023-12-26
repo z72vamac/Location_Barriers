@@ -124,6 +124,12 @@ Mangiameli, M., Muscato, G., Mussumeci, G., and Milazzo, C. (2013).
 \newblock A {{GIS}} application for {{UAV}} flight planning.
 \newblock {\em IFAC Proceedings Volumes}, 46(30):147--151.
 
+\bibitem[\protect\astroncite{McKnight and Najab}{2010}]{mcknight2010}
+McKnight, P.~E. and Najab, J. (2010).
+\newblock Mann-{{Whitney U Test}}.
+\newblock In {\em The {{Corsini Encyclopedia}} of {{Psychology}}}, pages 1--1.
+  {John Wiley \& Sons, Ltd}.
+
 \bibitem[\protect\astroncite{Mitchell}{2017}]{mitchell2017}
 Mitchell, J. S.~B. (2017).
 \newblock Shortest {{Paths}} and {{Networks}}.

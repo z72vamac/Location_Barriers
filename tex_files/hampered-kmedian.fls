@@ -312,6 +312,33 @@ INPUT C:\Program Files\MiKTeX\tex\latex\eso-pic\eso-pic.sty
 INPUT C:\Program Files\MiKTeX\tex\latex\pdfpages\pppdftex.def
 INPUT C:\Program Files\MiKTeX\tex\latex\pdfpages\pppdftex.def
 INPUT C:\Program Files\MiKTeX\tex\latex\pdfpages\pppdftex.def
+INPUT C:\Program Files\MiKTeX\tex\latex\caption\caption.sty
+INPUT C:\Program Files\MiKTeX\tex\latex\caption\caption.sty
+INPUT C:\Program Files\MiKTeX\tex\latex\caption\caption3.sty
+INPUT C:\Program Files\MiKTeX\tex\latex\caption\caption3.sty
+INPUT C:\Program Files\MiKTeX\tex\latex\caption\caption-elsarticle.sto
+INPUT C:\Program Files\MiKTeX\tex\latex\caption\caption-elsarticle.sto
+INPUT C:\Program Files\MiKTeX\tex\latex\caption\caption-elsarticle.sto
+INPUT C:\Program Files\MiKTeX\tex\latex\caption\subcaption.sty
+INPUT C:\Program Files\MiKTeX\tex\latex\caption\subcaption.sty
+INPUT C:\Program Files\MiKTeX\tex\latex\adjustbox\adjustbox.sty
+INPUT C:\Program Files\MiKTeX\tex\latex\adjustbox\adjustbox.sty
+INPUT C:\Program Files\MiKTeX\tex\latex\xkeyval\xkeyval.sty
+INPUT C:\Program Files\MiKTeX\tex\latex\xkeyval\xkeyval.sty
+INPUT C:\Program Files\MiKTeX\tex\generic\xkeyval\xkeyval.tex
+INPUT C:\Program Files\MiKTeX\tex\generic\xkeyval\xkvutils.tex
+INPUT C:\Program Files\MiKTeX\tex\latex\adjustbox\adjcalc.sty
+INPUT C:\Program Files\MiKTeX\tex\latex\adjustbox\adjcalc.sty
+INPUT C:\Program Files\MiKTeX\tex\latex\adjustbox\trimclip.sty
+INPUT C:\Program Files\MiKTeX\tex\latex\adjustbox\trimclip.sty
+INPUT C:\Program Files\MiKTeX\tex\latex\collectbox\collectbox.sty
+INPUT C:\Program Files\MiKTeX\tex\latex\collectbox\collectbox.sty
+INPUT C:\Program Files\MiKTeX\tex\latex\adjustbox\tc-pdftex.def
+INPUT C:\Program Files\MiKTeX\tex\latex\adjustbox\tc-pdftex.def
+INPUT C:\Program Files\MiKTeX\tex\latex\adjustbox\tc-pdftex.def
+INPUT C:\Program Files\MiKTeX\tex\latex\varwidth\varwidth.sty
+INPUT C:\Program Files\MiKTeX\tex\latex\varwidth\varwidth.sty
+INPUT C:\Program Files\MiKTeX\tex\latex\varwidth\varwidth.sty
 INPUT C:\Program Files\MiKTeX\tex\latex\threeparttable\threeparttable.sty
 INPUT C:\Program Files\MiKTeX\tex\latex\threeparttable\threeparttable.sty
 INPUT C:\Program Files\MiKTeX\tex\generic\pgfplots\libs\tikzlibrarypgfplots.groupplots.code.tex
@@ -447,24 +474,52 @@ INPUT .\figures\optimal_solution_kmpn.tex
 INPUT .\figures\optimal_solution_kmpn.tex
 INPUT figures\optimal_solution_kmpn.tex
 INPUT C:\Program Files\MiKTeX\fonts\tfm\jknappen\ec\ecbx0700.tfm
+INPUT .\tables\table_parameters.tex
+INPUT .\tables\table_parameters.tex
+INPUT tables\table_parameters.tex
+INPUT .\tables\table_wL.tex
+INPUT .\tables\table_wL.tex
+INPUT tables\table_wL.tex
+INPUT .\tables\table_init.tex
+INPUT .\tables\table_init.tex
+INPUT tables\table_init.tex
+INPUT .\tables\table_percB.tex
+INPUT .\tables\table_percB.tex
+INPUT tables\table_percB.tex
+INPUT .\tables\table_k.tex
+INPUT .\tables\table_k.tex
+INPUT tables\table_k.tex
 INPUT .\figures\difference_between_wL.tex
 INPUT .\figures\difference_between_wL.tex
 INPUT figures\difference_between_wL.tex
-INPUT C:\Program Files\MiKTeX\tex\generic\pgf\frontendlayer\tikz\libraries\tikzlibrarypatterns.code.tex
-INPUT C:\Program Files\MiKTeX\tex\generic\pgf\frontendlayer\tikz\libraries\tikzlibrarypatterns.code.tex
-INPUT C:\Program Files\MiKTeX\tex\generic\pgf\libraries\pgflibrarypatterns.code.tex
-INPUT C:\Program Files\MiKTeX\tex\generic\pgf\libraries\pgflibrarypatterns.code.tex
-INPUT C:\Program Files\MiKTeX\tex\generic\pgf\frontendlayer\tikz\libraries\tikzlibraryshapes.arrows.code.tex
-INPUT C:\Program Files\MiKTeX\tex\generic\pgf\frontendlayer\tikz\libraries\tikzlibraryshapes.arrows.code.tex
-INPUT C:\Program Files\MiKTeX\tex\generic\pgf\libraries\shapes\pgflibraryshapes.arrows.code.tex
-INPUT C:\Program Files\MiKTeX\tex\generic\pgf\libraries\shapes\pgflibraryshapes.arrows.code.tex
-INPUT .\tables\table_small_instances.tex
-INPUT .\tables\table_small_instances.tex
-INPUT tables\table_small_instances.tex
-INPUT C:\Program Files\MiKTeX\fonts\tfm\jknappen\ec\ecbx0500.tfm
-INPUT .\tables\table_big_instances.tex
-INPUT .\tables\table_big_instances.tex
-INPUT tables\table_big_instances.tex
+INPUT .\figures\difference_between_initialisation.tex
+INPUT .\figures\difference_between_initialisation.tex
+INPUT figures\difference_between_initialisation.tex
+INPUT C:\Program Files\MiKTeX\fonts\tfm\jknappen\ec\ecbx0800.tfm
+INPUT .\figures\difference_between_percentage.tex
+INPUT .\figures\difference_between_percentage.tex
+INPUT figures\difference_between_percentage.tex
+INPUT .\figures\difference_between_k.tex
+INPUT .\figures\difference_between_k.tex
+INPUT figures\difference_between_k.tex
+INPUT .\tables\table_pvalue_gap.tex
+INPUT .\tables\table_pvalue_gap.tex
+INPUT tables\table_pvalue_gap.tex
+INPUT .\tables\table_pvalue_runtime.tex
+INPUT .\tables\table_pvalue_runtime.tex
+INPUT tables\table_pvalue_runtime.tex
+INPUT .\tables\table_pvalue_gap_math.tex
+INPUT .\tables\table_pvalue_gap_math.tex
+INPUT tables\table_pvalue_gap_math.tex
+INPUT .\tables\table_pvalue_runtime_h.tex
+INPUT .\tables\table_pvalue_runtime_h.tex
+INPUT tables\table_pvalue_runtime_h.tex
+INPUT .\tables\table_pvalue_gap_build.tex
+INPUT .\tables\table_pvalue_gap_build.tex
+INPUT tables\table_pvalue_gap_build.tex
+INPUT .\tables\table_pvalue_runtime_h2.tex
+INPUT .\tables\table_pvalue_runtime_h2.tex
+INPUT tables\table_pvalue_runtime_h2.tex
 INPUT .\figures\realmap.pdf
 INPUT .\figures\realmap.pdf
 INPUT .\figures\realmap.pdf
@@ -499,6 +554,8 @@ INPUT .\hampered-kmedian.bbl
 INPUT .\hampered-kmedian.bbl
 INPUT hampered-kmedian.bbl
 INPUT hampered-kmedian.aux
+INPUT C:\Users\Carlos\AppData\Local\MiKTeX\fonts\pk\ljfour\jknappen\ec\dpi600\ecbx0800.pk
+INPUT C:\Users\Carlos\AppData\Local\MiKTeX\fonts\pk\ljfour\jknappen\ec\dpi600\ecbx0800.pk
 INPUT C:\Users\Carlos\AppData\Local\MiKTeX\fonts\pk\ljfour\jknappen\ec\dpi600\ecbx0700.pk
 INPUT C:\Users\Carlos\AppData\Local\MiKTeX\fonts\pk\ljfour\jknappen\ec\dpi600\ecbx0700.pk
 INPUT C:\Users\Carlos\AppData\Local\MiKTeX\fonts\pk\ljfour\jknappen\ec\dpi600\ecrm0900.pk
@@ -529,12 +586,14 @@ INPUT C:\Users\Carlos\AppData\Local\MiKTeX\fonts\pk\ljfour\jknappen\ec\dpi600\ec
 INPUT C:\Users\Carlos\AppData\Local\MiKTeX\fonts\pk\ljfour\jknappen\ec\dpi600\ecrm1440.pk
 INPUT C:\Program Files\MiKTeX\fonts\type1\public\amsfonts\cm\cmbsy10.pfb
 INPUT C:\Program Files\MiKTeX\fonts\type1\public\amsfonts\cm\cmbsy10.pfb
-INPUT C:\Program Files\MiKTeX\fonts\type1\public\amsfonts\cmextra\cmbsy7.pfb
-INPUT C:\Program Files\MiKTeX\fonts\type1\public\amsfonts\cmextra\cmbsy7.pfb
+INPUT C:\Program Files\MiKTeX\fonts\type1\public\amsfonts\cmextra\cmbsy8.pfb
+INPUT C:\Program Files\MiKTeX\fonts\type1\public\amsfonts\cmextra\cmbsy8.pfb
 INPUT C:\Program Files\MiKTeX\fonts\type1\public\amsfonts\cm\cmbx10.pfb
 INPUT C:\Program Files\MiKTeX\fonts\type1\public\amsfonts\cm\cmbx10.pfb
 INPUT C:\Program Files\MiKTeX\fonts\type1\public\amsfonts\cm\cmbx7.pfb
 INPUT C:\Program Files\MiKTeX\fonts\type1\public\amsfonts\cm\cmbx7.pfb
+INPUT C:\Program Files\MiKTeX\fonts\type1\public\amsfonts\cm\cmbx8.pfb
+INPUT C:\Program Files\MiKTeX\fonts\type1\public\amsfonts\cm\cmbx8.pfb
 INPUT C:\Program Files\MiKTeX\fonts\type1\public\amsfonts\cm\cmex10.pfb
 INPUT C:\Program Files\MiKTeX\fonts\type1\public\amsfonts\cm\cmex10.pfb
 INPUT C:\Program Files\MiKTeX\fonts\type1\public\amsfonts\cmextra\cmex9.pfb
@@ -553,8 +612,12 @@ INPUT C:\Program Files\MiKTeX\fonts\type1\public\amsfonts\cm\cmmi9.pfb
 INPUT C:\Program Files\MiKTeX\fonts\type1\public\amsfonts\cm\cmmi9.pfb
 INPUT C:\Program Files\MiKTeX\fonts\type1\public\amsfonts\cm\cmmib10.pfb
 INPUT C:\Program Files\MiKTeX\fonts\type1\public\amsfonts\cm\cmmib10.pfb
+INPUT C:\Program Files\MiKTeX\fonts\type1\public\amsfonts\cmextra\cmmib6.pfb
+INPUT C:\Program Files\MiKTeX\fonts\type1\public\amsfonts\cmextra\cmmib6.pfb
 INPUT C:\Program Files\MiKTeX\fonts\type1\public\amsfonts\cmextra\cmmib7.pfb
 INPUT C:\Program Files\MiKTeX\fonts\type1\public\amsfonts\cmextra\cmmib7.pfb
+INPUT C:\Program Files\MiKTeX\fonts\type1\public\amsfonts\cmextra\cmmib8.pfb
+INPUT C:\Program Files\MiKTeX\fonts\type1\public\amsfonts\cmextra\cmmib8.pfb
 INPUT C:\Program Files\MiKTeX\fonts\type1\public\amsfonts\cm\cmr10.pfb
 INPUT C:\Program Files\MiKTeX\fonts\type1\public\amsfonts\cm\cmr10.pfb
 INPUT C:\Program Files\MiKTeX\fonts\type1\public\amsfonts\cm\cmr6.pfb
@@ -573,6 +636,8 @@ INPUT C:\Program Files\MiKTeX\fonts\type1\public\amsfonts\cm\cmsy6.pfb
 INPUT C:\Program Files\MiKTeX\fonts\type1\public\amsfonts\cm\cmsy6.pfb
 INPUT C:\Program Files\MiKTeX\fonts\type1\public\amsfonts\cm\cmsy7.pfb
 INPUT C:\Program Files\MiKTeX\fonts\type1\public\amsfonts\cm\cmsy7.pfb
+INPUT C:\Program Files\MiKTeX\fonts\type1\public\amsfonts\cm\cmsy8.pfb
+INPUT C:\Program Files\MiKTeX\fonts\type1\public\amsfonts\cm\cmsy8.pfb
 INPUT C:\Program Files\MiKTeX\fonts\type1\public\amsfonts\cm\cmsy9.pfb
 INPUT C:\Program Files\MiKTeX\fonts\type1\public\amsfonts\cm\cmsy9.pfb
 INPUT C:\Program Files\MiKTeX\fonts\type1\public\amsfonts\symbols\msbm10.pfb
