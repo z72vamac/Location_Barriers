@@ -514,12 +514,6 @@ INPUT tables\table_pvalue_gap_math.tex
 INPUT .\tables\table_pvalue_runtime_h.tex
 INPUT .\tables\table_pvalue_runtime_h.tex
 INPUT tables\table_pvalue_runtime_h.tex
-INPUT .\tables\table_pvalue_gap_build.tex
-INPUT .\tables\table_pvalue_gap_build.tex
-INPUT tables\table_pvalue_gap_build.tex
-INPUT .\tables\table_pvalue_runtime_h2.tex
-INPUT .\tables\table_pvalue_runtime_h2.tex
-INPUT tables\table_pvalue_runtime_h2.tex
 INPUT .\figures\realmap.pdf
 INPUT .\figures\realmap.pdf
 INPUT .\figures\realmap.pdf

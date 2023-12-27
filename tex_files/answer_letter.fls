@@ -1,6 +1,6 @@
-PWD c:\Users\Carlos\UNIVERSIDAD DE SEVILLA\Grupo de Trabajo con Carlos Valverde - General\Location_Barriers\The Hampered K-Median Problem with Neighborhoods
+PWD c:\Users\Carlos\UNIVERSIDAD DE SEVILLA\Grupo de Trabajo con Carlos Valverde - General\Location_Barriers\tex_files
 INPUT C:\Users\Carlos\AppData\Local\MiKTeX\miktex\data\le\pdftex\pdflatex.fmt
-INPUT c:\Users\Carlos\UNIVERSIDAD DE SEVILLA\Grupo de Trabajo con Carlos Valverde - General\Location_Barriers\The Hampered K-Median Problem with Neighborhoods\answer_letter.tex
+INPUT c:\Users\Carlos\UNIVERSIDAD DE SEVILLA\Grupo de Trabajo con Carlos Valverde - General\Location_Barriers\tex_files\answer_letter.tex
 OUTPUT answer_letter.log
 INPUT C:\Program Files\MiKTeX\tex\latex\base\article.cls
 INPUT C:\Program Files\MiKTeX\tex\latex\base\article.cls
@@ -252,6 +252,8 @@ INPUT C:\Program Files\MiKTeX\tex\latex\auxhook\auxhook.sty
 INPUT C:\Program Files\MiKTeX\tex\latex\auxhook\auxhook.sty
 INPUT C:\Program Files\MiKTeX\tex\latex\zref\zref-user.sty
 INPUT C:\Program Files\MiKTeX\tex\latex\zref\zref-user.sty
+INPUT C:\Program Files\MiKTeX\tex\latex\natbib\natbib.sty
+INPUT C:\Program Files\MiKTeX\tex\latex\natbib\natbib.sty
 INPUT C:\Program Files\MiKTeX\tex\latex\xcite\xcite.sty
 INPUT C:\Program Files\MiKTeX\tex\latex\xcite\xcite.sty
 INPUT C:\Program Files\MiKTeX\tex\latex\tools\xr.sty
@@ -364,6 +366,11 @@ INPUT C:\Program Files\MiKTeX\fonts\tfm\public\amsfonts\cmextra\cmbsy7.tfm
 INPUT C:\Program Files\MiKTeX\fonts\tfm\public\amsfonts\cmextra\cmbsy5.tfm
 INPUT C:\Program Files\MiKTeX\fonts\tfm\jknappen\ec\tcrm1000.tfm
 INPUT C:\Users\Carlos\AppData\Local\MiKTeX\fonts\map\pdftex\pdftex.map
+INPUT .\answer_letter.bbl
+INPUT .\answer_letter.bbl
+INPUT answer_letter.bbl
+INPUT C:\Program Files\MiKTeX\fonts\tfm\public\cm\cmr12.tfm
+INPUT C:\Program Files\MiKTeX\fonts\tfm\public\cm\cmbx12.tfm
 INPUT answer_letter.aux
 INPUT .\answer_letter.out
 INPUT .\answer_letter.out

@@ -1,0 +1,87 @@
+\begin{thebibliography}{}
+
+\bibitem[Arsanjani et~al., 2013]{arsanjani2013}
+Arsanjani, J.~J., Helbich, M., and {de Noronha Vaz}, E. (2013).
+\newblock Spatiotemporal simulation of urban growth patterns using agent-based
+  modeling: {{The}} case of {{Tehran}}.
+\newblock {\em Cities}, 32:33--42.
+
+\bibitem[Blanco et~al., 2022]{blanco2022}
+Blanco, V., Gonz{\'a}lez, G., Hinojosa, Y., Ponce, D., Pozo, M.~A., and Puerto,
+  J. (2022).
+\newblock Network flow based approaches for the pipelines routing problem in
+  naval design.
+\newblock {\em Omega}, 111:102659.
+
+\bibitem[Butt and Cavalier, 1996]{butt1996}
+Butt, S.~E. and Cavalier, T.~M. (1996).
+\newblock An efficient algorithm for facility location in the presence of
+  forbidden regions.
+\newblock {\em European Journal of Operational Research}, 90(1):56--70.
+
+\bibitem[Hamacher and Nickel, 1995]{hamacher1995}
+Hamacher, H.~W. and Nickel, S. (1995).
+\newblock Restricted planar location problems and applications.
+\newblock {\em Naval Research Logistics (NRL)}, 42(6):967--992.
+
+\bibitem[Kariv and Hakimi, 1979]{kariv1979}
+Kariv, O. and Hakimi, S.~L. (1979).
+\newblock An {{Algorithmic Approach}} to {{Network Location Problems}}. {{II}}:
+  {{The}} p-{{Medians}}.
+\newblock {\em SIAM Journal on Applied Mathematics}, 37(3):539--560.
+
+\bibitem[Klamroth, 2002]{klamroth2002}
+Klamroth, K. (2002).
+\newblock {\em Single-{{Facility Location Problems}} with {{Barriers}}}.
+\newblock {Springer}, {New York, NY}.
+
+\bibitem[LaPaugh, 1980]{lapaugh1980}
+LaPaugh, A.~S. (1980).
+\newblock {\em Algorithms for {{Integrated Circuit Layout}}: {{An Analytic
+  Approach}}}.
+\newblock PhD thesis, Massachusetts Institute of Technology.
+
+\bibitem[{Lozano-P{\'e}rez} and Wesley, 1979]{lozano-perez1979}
+{Lozano-P{\'e}rez}, T. and Wesley, M.~A. (1979).
+\newblock An algorithm for planning collision-free paths among polyhedral
+  obstacles.
+\newblock {\em Communications of the ACM}, 22(10):560--570.
+
+\bibitem[Maheshwari et~al., 2000]{maheshwari2000}
+Maheshwari, A., Sack, J.-R., and Djidjev, H.~N. (2000).
+\newblock Chapter 12 - {{Link Distance Problems}}.
+\newblock In Sack, J.~R. and Urrutia, J., editors, {\em Handbook of
+  {{Computational Geometry}}}, pages 519--558. {North-Holland}, {Amsterdam}.
+
+\bibitem[Mangiameli et~al., 2013]{mangiameli2013}
+Mangiameli, M., Muscato, G., Mussumeci, G., and Milazzo, C. (2013).
+\newblock A {{GIS}} application for {{UAV}} flight planning.
+\newblock {\em IFAC Proceedings Volumes}, 46(30):147--151.
+
+\bibitem[Mitchell and Papadimitriou, 1991]{mitchell1991}
+Mitchell, J. S.~B. and Papadimitriou, C.~H. (1991).
+\newblock The weighted region problem: {{Finding}} shortest paths through a
+  weighted planar subdivision.
+\newblock {\em Journal of the ACM}, 38(1):18--73.
+
+\bibitem[Nickel, 1995]{nickel1995}
+Nickel, S. (1995).
+\newblock {\em Discretization of {{Planar Location Problems}}}.
+\newblock {Shaker Verlag}, {Aachen}.
+
+\bibitem[{QGIS Development Team}, 2009]{qgisdevelopmentteam2009}
+{QGIS Development Team} (2009).
+\newblock {{QGIS Geographic Information System}}.
+\newblock Open Source Geospatial Foundation.
+
+\bibitem[Valverde and Puerto, 2023]{valverde2023}
+Valverde, C. and Puerto, J. (2023).
+\newblock Instances for the {{Hampered}} k-{{Median Problem}} with
+  {{Neighbourhoods}}.
+
+\bibitem[Wangdahl et~al., 1974]{wangdahl1974}
+Wangdahl, G.~E., Pollock, S.~M., and Woodward, J.~B. (1974).
+\newblock Minimum-{{Trajectory Pipe Routing}}.
+\newblock {\em Journal of Ship Research}, 18(01):46--49.
+
+\end{thebibliography}

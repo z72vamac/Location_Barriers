@@ -14,6 +14,7 @@
 %\usepackage{subfigure}% Support for small, `sub' figures and tables
 \usepackage{nameref}
 \usepackage{zref-xr,zref-user}
+\usepackage{natbib}
 \zxrsetup{toltxlabel=true, tozreflabel=false}
 %\zexternaldocument*[original:]{TSC}
 \usepackage{xcite}
@@ -52,7 +53,7 @@
 \newcommand{\myq}{\mynum{q,i}}
 \newcommand{\myzeroi}{\mynum{0,i}}
 \newcommand{\myduei}{^{(i)\;2}}
-\newcommand{\JP}[1]{{\color{blue}#1}}
+\newcommand{\JP}[1]{{\color{black}#1}}
 \newcommand{\LA}[1]{{\color{red}#1}}
 \newcommand{\TP}[1]{{\color{orange}#1}}
 \begin{comment}
@@ -116,9 +117,9 @@
 	%said some important suff.\lipsum[2]
 	%\lipsum[3]
 	
-	We wish to thank the editors and reviewers for their valuable comments and advices which allowed us to further improve the quality and presentation of our article through this revision.
+	We wish to thank the editors and reviewers for their valuable comments and advice which allowed us to further improve the quality and presentation of our article through this revision.
 	
-	We revised the manuscript taking into account all the suggestions of Reviewers 1 and 2. We highlighted in blue all the changes in the revised manuscript. In the following, we report our changes inside the coloured textboxes.
+	We revised the manuscript taking into account all the suggestions of Reviewers 1 and 2. We highlight all the changes in the revised manuscript in blue. In the following, we report our changes inside the coloured textboxes.
 	%{\bf We outlined in bold each change made in this new version of the paper}.
 	\initresponses
 	
@@ -131,7 +132,7 @@
 		\begin{itshape}
 			This paper considers the hampered k-median problem with neighbourhoods. This is a continuous location problem on a 2-dimensional space in which there are both neighbours and barriers present. The authors claim that the problem has applications in the delivery industry and in the areas of inspection and surveillance activities.
 			
-			They develop valid mixed integer formulations for two versions of the problem, first assuming that neighbourhoods are not visible from one another, and later for the case where this assumption is dropped. They develop valid inequalities and present computational experiments that both aim to find the optimal solution and also quick solutions (of good quality) using a metaheuristic.
+			They develop valid mixed-integer formulations for two versions of the problem, first assuming that neighbourhoods are not visible from one another, and later for the case where this assumption is dropped. They develop valid inequalities and present computational experiments that both aim to find the optimal solution and also quick solutions (of good quality) using a metaheuristic.
 		\end{itshape}
 		
 		\begin{tcolorbox}[breakable,enhanced,coltitle=black,colback=red!5!white,colframe=red!75!black,title=\textbf{Answer R1.\point},borderline={1pt}{0pt}{black},boxrule=0pt]
@@ -143,18 +144,18 @@
 		\end{itshape}
 		
 		\begin{tcolorbox}[breakable,enhanced,coltitle=black,colback=red!5!white,colframe=red!75!black,title=\textbf{Answer R1.\point},borderline={1pt}{0pt}{black},boxrule=0pt]
-			To deal with the Reviewer's requirements, along the manuscript we present different real-life scenarios where these models can be adopted. In the following, we remark different paragraphs that have been included to argue the combination of neighbourhoods and barriers in the $k$-median:
+			To deal with the Reviewer's requirements, along the manuscript we present different real-life scenarios where these models can be adopted. In the following, we remark on different paragraphs that have been included to argue the combination of neighbourhoods and barriers in the $k$-median:
 			\begin{itemize}
-				\item The use of neighbourhoods has interest on drone delivery and inspection problems. Neighbourhoods can represent regions that the drone must reach and where the customers are willing to pick up the orders (they can be seen as uniform probability densities) in the delivery industry. Moreover, they can be also used for modelling some areas that must be inspected by the drone (whenever visiting a point of these areas is enough to consider them as inspected). \textbf{Section 1. Introduction: Paragraph 3.}
-				\item The use of barriers in the $k$-median, that is known as $k$-median problem with barriers are deeply studied in the literature (see Klamroth (2002)). In this case, there exist some areas that cannot be traversed, and it is necessary to compute the minimum distance between each pair of points in the graph induced by the facility locations and demand points. In the context of planar location modelling, this problem represents restrictions that appear in a real-life context. One of them can be	the case in which there are regions (called forbidden regions) in which the placement of a facility is	forbidden, but transportation is still possible. They can model state parks or regions where geographic characteristics forbid the construction of the facility. For a survey of location problems with forbidden regions, see Hamacher and Nickel (1995) or Nickel (1995). The case in which transportation is possible,
-				but only at a higher cost (called congested regions) is studied in Butt and Cavalier (1996) or Mitchell and	Papadimitriou (1991). In this case, in these regions, different travel speeds or travel costs are considered. Finally, the existence of military areas, buildings, mountain ranges, lakes, big rivers, and highways can not allow transportation. These examples of barrier regions involve circuit board design (LaPaugh, 1980), pipe network design for ships (Wangdahl et al., 1974), or location and routing with robots (Lozano-Pérez
-				and Wesley, 1979, {\color{red} Blanco et al. (2022)-Omega 2022}). \textbf{Section 1. Introduction: Paragraph 4.}
-				\item From a drone routing perspective, these barriers can simulate buildings in urban areas that drones cannot cross. Another application can be seen as obstacles pedestrian
-				must avoid in urban or rural areas. \textbf{Section 1. Introduction: Paragraph 5.}
+				\item The use of neighbourhoods has interest on drone delivery and inspection problems. Neighbourhoods can represent regions that the drone must reach and where customers are willing to pick up the orders (they can be seen as uniform probability densities) in the delivery industry. Moreover, they can also be used for modelling some areas that must be inspected by the drone (whenever visiting a point of these areas is enough to consider them as inspected). \textbf{Section 1. Introduction: Paragraph 3.}
+				\item The use of barriers in the $k$-median, that is known as $k$-median problem with barriers are deeply studied in the literature (see \cite{klamroth2002}). In this case, there exist some areas that cannot be traversed, and it is necessary to compute the minimum distance between each pair of points in the graph induced by the facility locations and demand points. In the context of planar location modelling, this problem represents restrictions that appear in a real-life context. One of them can be the case in which there are regions (called forbidden regions) in which the placement of a facility is forbidden but transportation is still possible. They can model state parks or regions where geographic characteristics forbid the construction of the facility. For a survey of location problems with forbidden regions, see \cite{hamacher1995} or \cite{nickel1995}. The case in which transport is possible, but only at higher cost (called congested regions) is studied in \cite{butt1996} or \cite{mitchell1991}. In this case, in these regions, different travel speeds or travel costs are considered. Finally, the existence of military areas, buildings, mountain ranges, lakes, large rivers, and highways cannot allow transportation. These examples of barrier regions involve circuit board design \citep{lapaugh1980}, pipe network design for ships \citep{wangdahl1974}, or location and routing with robots \citep{lozano-perez1979, blanco2022}. \textbf{Section 1. Introduction: Paragraph 4.}
+				\item From a drone routing perspective, these barriers can simulate buildings in urban areas that drones cannot cross. Another application can be seen as obstacles that pedestrians must avoid in urban or rural areas. \textbf{Section 1. Introduction: Paragraph 5.}
 			\end{itemize}
-			We describe a realistic application of the problem studied in this paper to perform last-mile delivery. We focus on the problem of allocating $k$ vans from where some drones depart to deliver some products to the population represented. In particular, we consider a neighbourhood in the city of Córdoba called Fátima, that is located in the northeast of the city. We express sources that are represented by green circles that simulate zones in which vans can park; and targets, also modelled by circles,  that define the zones in which customers are willing to pick up the delivery. The barriers represent buildings that drones cannot cross. To simplify the problem, we assume the drones have enough endurance to go from any source to any target and they cannot ascend to avoid the buildings and, once the number of vans is fixed, we can know the number of required drones assigned with each van. \textbf{Section 6. Case study. }
+			We describe a realistic application of the problem studied in this document to perform the last mile delivery. We focus on the problem of allocating $k$ vans from where some drones depart to deliver some products to the represented population. In particular, we consider a neighbourhood in the city of Córdoba called Fátima, which is located in the northeast of the city. We express sources that are represented by green circles that simulate zones in which vans can park; and targets, also modelled by circles,  that define the zones in which customers are willing to pick up the delivery. Barriers represent buildings that drones cannot cross. To simplify the problem, we assume the drones have enough endurance to go from any source to any target and they cannot ascend to avoid the buildings, and once the number of vans is fixed, we can know the number of required drones assigned with each van. \textbf{Section 6. Case study. }
 			
-			We also discuss data availability by exposing that the advance of technology permits to obtain maps with accurate representations of two-dimensional obstacles by means of various software tools designed for geographic information systems (GIS). An open-source like Quantum GIS (QGIS Development Team (2009)) provides robust capabilities for creating, editing, and exporting maps with detailed two-dimensional building footprints and attributes. These tools enable users to incorporate building information into spatial analyses, urban planning, and environmental assessments. We include some examples where QGIS has been successfully used. The work of Arsanjani et al. (2013) explores the use of open-source GIS software for mapping and analyzing urban structures, emphasizing the importance of accurate two-dimensional building data. In drone routing, the work by Mangiameli et al. (2013) proposes an innovative approach	for the construction of a map of the obstacles based on Geographic Information Systems (GIS) technologies. \textbf{Section 1. Introduction: Paragraph 6.}
+			We also discuss data availability by exposing that the advance of technology permits obtaining maps with accurate representations of two-dimensional obstacles by means of various software tools designed for geographic information systems (GIS). An open source such as Quantum GIS \citep{qgisdevelopmentteam2009} provides robust capabilities to create, edit and export maps with detailed two-dimensional building footprints and attributes. These tools enable users to incorporate building information into spatial analyses, urban planning, and environmental assessments. We include some examples where QGIS has been successfully used. The work of \cite{arsanjani2013} explores the use of open-source GIS software to map and analyse urban structures, highlighting the importance of accurate two-dimensional building data. In drone routing, the work of \cite{mangiameli2013} proposes an innovative approach to the construction of a map of obstacles based on Geographic Information Systems (GIS) technologies. \textbf{Section 1. Introduction: Paragraph 6.}
+
+			\JP{Finally, we have also restructured our computational results section including a full comparison between SCF and MCF models. In addition, we have included the analysis of the influence of the link distance in the difficulty of problem solving. Due to the large amount of tables to compare all the factors in the problem, namely different formulations, weight $\omega_L$ for the link distance, number of neighbours and barriers, use of initial solution, we have organised the results in tables comparing statistical significance ($p$-values). We believe that this presentation is much more informative and compact. \textbf{Section 5. Computational Experiments.}}	
+
 		\end{tcolorbox}
 		
 		\begin{itshape}
@@ -162,7 +163,7 @@
 		\end{itshape}
 		
 		\begin{tcolorbox}[breakable,enhanced,coltitle=black,colback=red!5!white,colframe=red!75!black,title=\textbf{Answer R1.\point},borderline={1pt}{0pt}{black},boxrule=0pt]
-\JP{ This paper analyzes the $k$-Median  problem with neighbours and polygonal barriers. This problem is new and it has important actual applications in different fields, as mentioned in the paper. Its analysis and formulation cannot be  seen as a simple incremental contribution since  the tools required to analyze and solve it go beyond any standard overlapping of techniques used in the separated problems. We present a valid formulation which  relies, apart from some already known blocks of constraints taken from $k$-median and network design,  on new tools borrowed from computational geometry. Specifically, one of our} \JP{important contributions  is presented in subsection 3.4. There, we derive a new test, representable by linear constraints, to check whether given two arbitrary, variable vertices $P, P'\in V_X$, the edge $(P, P')$ belongs to $E_X$, with $X\in\{\rm KMPHN, \rm KMPN\}$, i.e., whether the line segment $\overline{PP'}$ does not intersect with any barrier of $\mathcal B$.  The referee may note that this is a new methodological contribution to the field and that it will be used in future in different problems involving barriers. Apart from the exact method, we also propose a new matheuristic based on the knowledge obtained from the exact analysis. All together brings a new perspective to the considered problem and contributes to a better knowledge of the logistic problems with neighbors and barriers.}
+			\JP{ This paper analyzes the $k$-Median  problem with neighbours and polygonal barriers. This problem is new and has important actual applications in different fields, as mentioned in the paper. Its analysis and formulation cannot be seen as a simple incremental contribution, since the tools required to analyse and solve it go beyond any standard overlapping of techniques used in the separated problems. We present a valid formulation that relies, apart from some already known blocks of constraints taken from $k$-median and network design,  on new tools borrowed from computational geometry. Specifically, one of our} \JP{important contributions  is presented in subsection 3.4. There, we derive a new test, representable by linear constraints, to check whether given two arbitrary variable vertices $P, P'\in V_X$, the edge $(P, P')$ belongs to $E_X$, with $X\in\{\rm KMPHN, \rm KMPN\}$, i.e., whether the line segment $\overline{PP'}$ does not intersect with any barrier of $\mathcal B$.  The referee may note that this is a new methodological contribution to the field and that it will be used in the future in different problems involving barriers. Apart from the exact method, we also propose a new matheuristic based on the knowledge obtained from the exact analysis. All together, this brings a new perspective to the problem considered and contributes to a better understanding of the logistic problems with neighbours and barriers. }
 
 		\end{tcolorbox}
 		
@@ -200,7 +201,7 @@
 
 			\medskip
 			
-			In this work, the set of neighbourhoods $\mathcal N=\mathcal S\cup\mathcal T$ are assumed to be compact, closed and convex sets. These sets can be represented by second-order cone constraints as explained in Section 3.3. 
+			In this work, the set of neighbourhoods $\mathcal N=\mathcal S\cup\mathcal T$ are assumed to be compact, closed, and convex sets. These sets can be represented by second-order cone constraints, as explained in Section 3.3. 
 		\end{tcolorbox}
 		
 		\begin{itshape}
@@ -211,7 +212,7 @@
 			In the part of the manuscript in which $\alpha$ constraints are introduced, we have introduced the following paragraph:
 			\medskip
 			
-			{\color{red}The fact of considering the possibility of going directly from one neighbourhood  to another leads to include product of continuous variables, presented in the determinants of the $\alpha$ constraints of the model. Specifically, for the tuples $(P, Q, Q')\in V_\mathcal B\times E_{\mathcal S\mathcal T}$, the determinant $\det(P|QQ')$ produces bilinear terms. These products make the general H-KMPN \ to become non-convex. However, for the hidden version, since two of the three arguments of the determinant are fixed because $E_{\mathcal S\mathcal T}$ is not considered, the $\alpha$ constraints become linear. This difference justifies the comparison between the two formulations in terms of computational cost studied in Section 5.}
+			The fact of considering the possibility of going directly from one neighbourhood  to another leads to include product of continuous variables, presented in the determinants of the $\alpha$ constraints of the model. Specifically, for the tuples $(P, Q, Q')\in V_\mathcal B\times E_{\mathcal S\mathcal T}$, the determinant $\det(P|QQ')$ produces bilinear terms. These products cause the general H-KMPN to become non-convex. However, for the hidden version, since two of the three arguments of the determinant are fixed because $E_{\mathcal S\mathcal T}$ is not considered, the constraints $\alpha$ become linear. This difference justifies the comparison between the two formulations in terms of the computational cost studied in Section 5.
 		\end{tcolorbox}
 	
 		\begin{itshape}
@@ -219,10 +220,9 @@
 		\end{itshape}
 		
 		\begin{tcolorbox}[breakable,enhanced,coltitle=black,colback=green!5!white,colframe=green!75!black,title=\textbf{Answer R2.\point},borderline={1pt}{0pt}{black},boxrule=0pt]
-			We have described with more precision the objective function represented in our problem after the description of the first formulation. We have also inserted a reference that motivates the use of the link distance in this kind of problems:
-			\medskip
+			We have described with more precision the objective function represented in our problem after the description of the first formulation. We have also inserted a reference that motivates the use of the link distance in this kind of problem:\medskip
 			
-			The objective function takes into account both the Euclidean and link weighted distances to join the selected sources with their assigned targets. The term related with the Euclidean distance is split into two parts: the first accounts {\color{red} for} the variable distances, while the distances in the second are known beforehand. Inspired in a drone routing application, the link distance refers to the rotation cost of the vehicle (see Maheshwari et al. (2000) for more details).
+			The objective function takes into account both the Euclidean and link weighted distances to join the selected sources with their assigned targets. The term related to the Euclidean distance is divided into two parts. The first accounts for {\color{red} for} the variable distances, while the distances in the second are known beforehand. Inspired by a drone routing application, the link distance refers to the vehicle's rotation cost (see \cite{maheshwari2000} for more details).
 			
 		\end{tcolorbox}
 	
@@ -231,7 +231,7 @@
 		\end{itshape}
 	
 		\begin{tcolorbox}[breakable,enhanced,coltitle=black,colback=green!5!white,colframe=green!75!black,title=\textbf{Answer R2.\point},borderline={1pt}{0pt}{black},boxrule=0pt]
-			We have given details in the description of the problem by including the notation for the points selected in $\mathcal S$ and $\mathcal T$. Additionally, we have better explained how the visibility graph is built by arguing that is a ``variable'' graph that depends on the location of its vertices to determine which are its edges. \textbf{Section 2. Description of the Problem. Paragraph previous to Proposition 1.}
+			We have given details in the description of the problem by including the notation for the points selected in $\mathcal S$ and $\mathcal T$. Additionally, we have better explained how the visibility graph is built by arguing that it is a ``variable'' graph that depends on the location of its vertices to determine which are its edges. \textbf{Section 2. Description of the problem. Paragraph prior to Proposition 1.}
 		\end{tcolorbox}
 		
 		\begin{itshape}
@@ -270,16 +270,16 @@
 				\item $d(PP')\rightarrow d_{PP'}$.
 			\end{itemize}
 			
-			In addition, we have modified the table that describes the variables by including the domains and ranges of these variables. These domains are used to simplify the description of the $\alpha$, $\delta$, $\varepsilon$, $\zeta$ and $\eta$ constraints. Furthermore, we have inserted the ranges of all these variables in each formulation.
+			In addition, we have modified the table that describes the variables by including the domains and ranges of these variables. These domains are used to simplify the description of the constraints $\alpha$, $\delta$, $\varepsilon$, $\zeta$ and $\eta$. Furthermore, we have inserted the ranges of all of these variables in each formulation.
 			
 			
 		\end{tcolorbox}
 			
 		\begin{itshape}
-			 The authors state that they use single-commodity flow formulation to model client-facility allocation paths, however their model is a mix between single- and multi-commodity formulation (SCF and MCF, respectively). This has to be corrected, and in addition, there are indeed two ways to model it, as described below.
+			 The authors state that they use single-commodity flow formulation to model client-facility allocation paths, however, their model is a mix between single- and multi-commodity formulation (SCF and MCF, respectively). This has to be corrected, and, in addition, there are indeed two ways to model it, as described below.
 			
 			\begin{itemize}
-				\item In the MCF approach, we need binary variables $f^{ST}_{PQ}$ to be set to one for each ST pair, if line segment connecting $P$ and $Q$ is used. For the constraints (f-C), what is the definition of $f(PQ)$ and what is the link between $f^{ST}_{PQ}$ and $f(PQ)$? I believe constraints (f-C) should be replaced by stronger ones: $f^{ST}_{PQ}\leq \varepsilon(PQ)$ for all $P$, $Q$ (please add the variable domain) and all $S$, $T$ (please add variable domain). Finally, there is a quantifier missing in the flow-preservation constraints (flow-in equals flow-out): for all $P$ is missing.
+				\item In the MCF approach, we need binary variables $f^{ST}_{PQ}$ to be set to one for each ST pair, if line segment connecting $P$ and $Q$ is used. For constraints (f-C), what is the definition of $f(PQ)$ and what is the link between $f^{ST}_{PQ}$ and $f(PQ)$? I believe constraints (f-C) should be replaced by stronger ones: $f^{ST}_{PQ}\leq \varepsilon(PQ)$ for all $P$, $Q$ (please add the variable domain) and for all $S$, $T$ (please add variable domain). Finally, there is a quantifier missing in the flow-preservation constraints (flow-in equals flow-out): for all $P$ is missing.
 				\item In the SCF approach, we would need flow variable indexed by source nodes $S$, modeling a tree routed at $S$ and connecting all targets $T$ such that $x(ST)=1$. These variables can then be denoted as $f^S_{PQ}$ and their value is integer, counting the number of targets $T$ allocated to $S$, that use segment $PQ$. In that case, the constraints (f-C) would read $f^S_{PQ} <= |T| \varepsilon(PQ)$, for all $P$,$Q$,$S$ and in the flow preservation constraints, we will have that the RHS for the flow-preservation constraints for $P=S$ is equal to $\sum_{T \in \mathcal T} x(ST)$.
 			\end{itemize}
 		
@@ -292,7 +292,7 @@
 				\item Section 3.1 describes the classical $k$-median constraints.
 				\item Section 3.2 represents the path source-target by means of single- and multi-commodity approaches as suggested by the referee.
 				\item Section 3.3 states the second-order cone constraints defining neighbourhoods and Euclidean distances.
-				\item Section 3.4 makes use of the computational geometry results to model the visibility graph.
+				\item Section 3.4 makes use of the results of the computational geometry to model the visibility graph.
 				\item Section 3.5 presents the single- and multi-commodity formulations for the problem and discusses the linearisation of the objective function using McCormick's envelopes.
 			\end{itemize}
 		\end{tcolorbox}
@@ -302,7 +302,7 @@
 		\end{itshape}
 		
 		\begin{tcolorbox}[breakable,enhanced,coltitle=black,colback=green!5!white,colframe=green!75!black,title=\textbf{Answer R2.\point},borderline={1pt}{0pt}{black},boxrule=0pt]
-			We agree with the referee. In a previous version of the paper, we had considered an endurance term that bounds the total distance between each pair source-target. However, although it is possible to model this restriction, we have decided to remove it to simplify the problem.
+			We agree with the referee. In a previous version of the paper, we had considered an endurance term that bounds the total distance between each pair of source-targets. However, although it is possible to model this restriction, we have decided to remove it to simplify the problem.
 		\end{tcolorbox}
 		
 		\begin{itshape}
@@ -310,11 +310,11 @@
 		\end{itshape}
 		
 		\begin{tcolorbox}[breakable,enhanced,coltitle=black,colback=green!5!white,colframe=green!75!black,title=\textbf{Answer R2.\point},borderline={1pt}{0pt}{black},boxrule=0pt]
-			We agree with the referee. We have stated this result right after the problem definition. We have also included this paragraph that argues this result:
+			We agree with the referee. We have stated this result right after the problem definition. We have also included this paragraph that argues for this result:
 			
 			\medskip
 			
-			Note that, once a point is fixed in each neighbourhood, the problem that results in the induced graph $G_X$ is the $k$-median with geodesic distances. This problem is a version of the discrete $k$-median in which the distances are computed beforehand by solving a shortest-path problem for each pair source-target in $G_X$. Hence, it is NP-complete (Kariv and Hakimi, 1979).
+			Note that once a point is fixed in each neighbourhood, the problem that results in the induced graph $G_X$ is the $k$-median with geodesic distances. This problem is a version of the discrete $k$-median in which the distances are computed beforehand by solving a shortest-path problem for each pair source-target in $G_X$. Hence, it is NP-complete \citep{kariv1979}.
 		\end{tcolorbox}
 		
 
@@ -326,7 +326,7 @@
 		\end{itshape}
 		
 		\begin{tcolorbox}[breakable,enhanced,coltitle=black,colback=green!5!white,colframe=green!75!black,title=\textbf{Answer R2.\point},borderline={1pt}{0pt}{black},boxrule=0pt]
-			\JP{CARLOS ***: Explica donde se pueden encontrar las instancias ***}
+			All instances used in this work can be downloaded from \cite{valverde2023}.
 		\end{tcolorbox}
 		
 		\begin{itshape}
@@ -334,7 +334,7 @@
 		\end{itshape}
 		
 		\begin{tcolorbox}[breakable,enhanced,coltitle=black,colback=green!5!white,colframe=green!75!black,title=\textbf{Answer R2.\point},borderline={1pt}{0pt}{black},boxrule=0pt]
-
+			\JP{**** Done??? **** Carlos comprueba que lo hemos explicado en el paper***}
  		\end{tcolorbox}
 		
 		\begin{itshape}
@@ -342,19 +342,24 @@
 		\end{itshape}
 
 		\begin{tcolorbox}[breakable,enhanced,coltitle=black,colback=green!5!white,colframe=green!75!black,title=\textbf{Answer R2.\point},borderline={1pt}{0pt}{black},boxrule=0pt]
-	
+			\JP{This metric shows the improvement found by the solver over the initial solution computed by our own matheutistic. This is important to assess the quality of the matheuristic and how it may help to close the gap in difficult instances of the problem.}
 		\end{tcolorbox}
 
 		\begin{itshape}
 			On page 13 the authors state ``Note that the maximum gap between the best incumbent solution obtained by the matheuristic in a time limit of 100 seconds and the best by the exact formulation after an hour is 5.96\%.'' However, this gap is much larger in the tables provided, so this should be clarified.
 		\end{itshape}
-
+  
+		\begin{tcolorbox}[breakable,enhanced,coltitle=black,colback=green!5!white,colframe=green!75!black,title=\textbf{Answer R2.\point},borderline={1pt}{0pt}{black},boxrule=0pt]
+            Reorganisation of Section 5 has changed the results obtained.
+		\end{tcolorbox}
+  
 		\begin{itshape}
 			Finally, given that the problem is new and there are no "competitors", it would be interesting to see the difference in the performance between the SCF and MCF model mentioned above.
 		\end{itshape}
 	
 		\begin{tcolorbox}[breakable,enhanced,coltitle=black,colback=green!5!white,colframe=green!75!black,title=\textbf{Answer R2.\point},borderline={1pt}{0pt}{black},boxrule=0pt]
-		
+			\JP{
+				Following the referee's advice we have  restructured our computational results section including a full comparison between SCF and MCF models. In addition, we have included the analysis of the influence of the link distance in the difficulty of problem solving. Due to the large number of tables to compare all the factors in the problem, namely different formulations, weight $\omega_L$ for the link distance, number of neighbours and barriers, use of initial solution ..., we have organised the results in tables comparing statistical significance ($p$-values). We believe that this presentation is much more informative and compact.}
 		\end{tcolorbox}
 	
 		\subsection*{Minor concerns}
@@ -372,21 +377,21 @@
 		\end{itshape}
 	
 		\begin{tcolorbox}[breakable,enhanced,coltitle=black,colback=green!5!white,colframe=green!75!black,title=\textbf{Answer R2.\point},borderline={1pt}{0pt}{black},boxrule=0pt]
-			Thanks for reading the manuscript carefully. The changes that we have made are:
+			Thanks for carefully reading the manuscript. The changes that we have made are:
 			\begin{itemize}
 				\item We have changed \textit{on-the-shelf} by \textit{off-the-shelf}.
-				\item We have replaced $\in E_X$ by \textit{belongs to $E_X$}.
+				\item We have replaced $\in E_X$ by \textit{ that belongs to $E_X$}.
 				\item We have introduced a separated subsection in the \textbf{Section 2} that summarises the notation used along the manuscript.
-				\item We have introduced a sentence for the $\varepsilon$ variables that are obtained as McCormick standard linearisation.
-				\item We have made our efforts to improve the notation to be more clear for the reader.
+				\item We have introduced a sentence for the $\varepsilon$ variables that are obtained as a standard McCormick linearisation.
+				\item We have made our efforts to improve the notation to make it more clear to the reader.
 				\item We have changed \textit{w.l.o.g.} by \textit{wlog}.
-				\item We have adopted the decimal point to show decimal numbers.
+				\item We have adopted the decimal point to show the decimal numbers.
 			\end{itemize}
 		\end{tcolorbox}
 	\end{reviewer}
 	
-%	\bibliographystyle{apalike}
-%	\bibliography{bibliography.bib}
+	\bibliographystyle{apalike}
+	\bibliography{location_barrier_bibliography}
 	
 	
 \end{document}

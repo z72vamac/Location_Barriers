@@ -1,5 +1,13 @@
 # Fdb version 4
-["pdflatex"] 1701645475 "c:/Users/Carlos/UNIVERSIDAD DE SEVILLA/Grupo de Trabajo con Carlos Valverde - General/Location_Barriers/The Hampered K-Median Problem with Neighborhoods/answer_letter.tex" "answer_letter.pdf" "answer_letter" 1701645478 0
+["bibtex answer_letter"] 1703679709 "answer_letter.aux" "answer_letter.bbl" "answer_letter" 1703681198 0
+  "./location_barrier_bibliography.bib" 1703591450 44209 c7f26cec48fd783bfaf75ec690572e2b ""
+  "C:/Program Files/MiKTeX/bibtex/bst/bibtex/apalike.bst" 1291972791 24635 604dafcc79f521a11ea73e506e1fbd98 ""
+  "answer_letter.aux" 1703681197 1503 1b8baaaef6c54158d957067e8377875d "pdflatex"
+  (generated)
+  "answer_letter.bbl"
+  "answer_letter.blg"
+  (rewritten before read)
+["pdflatex"] 1703681194 "c:/Users/Carlos/UNIVERSIDAD DE SEVILLA/Grupo de Trabajo con Carlos Valverde - General/Location_Barriers/tex_files/answer_letter.tex" "answer_letter.pdf" "answer_letter" 1703681198 0
   "C:/Program Files/MiKTeX/fonts/tfm/jknappen/ec/tcrm1000.tfm" 993062508 1436 c7f957a372ef2fbe93c0982f96625e12 ""
   "C:/Program Files/MiKTeX/fonts/tfm/public/amsfonts/cmextra/cmbsy5.tfm" 1233951848 1120 1e8878807317373affa7f7bba4cf2f6a ""
   "C:/Program Files/MiKTeX/fonts/tfm/public/amsfonts/cmextra/cmbsy6.tfm" 1233951848 1124 14ccf5552bc7f77ca02a8a402bea8bfb ""
@@ -170,6 +178,7 @@
   "C:/Program Files/MiKTeX/tex/latex/mathtools/mathtools.sty" 1656514886 62269 5c1837a5bc5db4c0d255eedc225ca44b ""
   "C:/Program Files/MiKTeX/tex/latex/mathtools/mhsetup.sty" 1656514886 5582 a43dedf8e5ec418356f1e9dfe5d29fc3 ""
   "C:/Program Files/MiKTeX/tex/latex/multirow/multirow.sty" 1615976118 6149 2398eec4faa1ee24ff761581e580ecf1 ""
+  "C:/Program Files/MiKTeX/tex/latex/natbib/natbib.sty" 1292249081 46712 1c8843383c0bd05870c45fa0ebea6cc2 ""
   "C:/Program Files/MiKTeX/tex/latex/optidef/optidef.sty" 1556044654 24625 1f9a54f633aad013cc9fd957e79ea7ee ""
   "C:/Program Files/MiKTeX/tex/latex/pdfcol/pdfcol.sty" 1663942424 8086 ac143843b6ea88d172677dc3ed532925 ""
   "C:/Program Files/MiKTeX/tex/latex/pgf/basiclayer/pgf.sty" 1673775190 1090 bae35ef70b3168089ef166db3e66f5b2 ""
@@ -221,10 +230,11 @@
   "C:/Users/Carlos/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1701643269 80909 eab91d9745dd2edfd62a31d53cd5fe15 ""
   "C:/Users/Carlos/AppData/Local/MiKTeX/fonts/pk/ljfour/jknappen/ec/dpi600/tcrm1000.pk" 1701643559 11548 9b66de55173e55ac78f7e96cf3766459 ""
   "C:/Users/Carlos/AppData/Local/MiKTeX/miktex/data/le/pdftex/pdflatex.fmt" 1701643320 24203419 f2106bfb946393d3f022d17a26bbc21b ""
-  "answer_letter.aux" 1701645477 197 b2468e5d00e1289f2a4fd2b5a12f93dc "pdflatex"
-  "answer_letter.out" 1701645477 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
-  "answer_letter.tex" 1701296046 28932 1edf01247acda4442af4bb6098990875 ""
-  "c:/Users/Carlos/UNIVERSIDAD DE SEVILLA/Grupo de Trabajo con Carlos Valverde - General/Location_Barriers/The Hampered K-Median Problem with Neighborhoods/answer_letter.tex" 1701296046 28932 1edf01247acda4442af4bb6098990875 ""
+  "answer_letter.aux" 1703681197 1503 1b8baaaef6c54158d957067e8377875d "pdflatex"
+  "answer_letter.bbl" 1703679710 3583 7ede78562e1174e987d96e56b569ad0b "bibtex answer_letter"
+  "answer_letter.out" 1703681196 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
+  "answer_letter.tex" 1703681185 32396 2f0734a2e79c1d5f65edd69c5abd5270 ""
+  "c:/Users/Carlos/UNIVERSIDAD DE SEVILLA/Grupo de Trabajo con Carlos Valverde - General/Location_Barriers/tex_files/answer_letter.tex" 1703681185 32396 2f0734a2e79c1d5f65edd69c5abd5270 ""
   (generated)
   "answer_letter.aux"
   "answer_letter.log"
