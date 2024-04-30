@@ -1,0 +1,2 @@
+{"rule":"TOO_LONG_PARAGRAPH","sentence":"^\\QFacility location Continuous location Barriers Mixed integer Conic programming Introduction.\\E$"}
+{"rule":"COLLECTIVE_NOUN_VERB_AGREEMENT_VBP","sentence":"^\\QLocation analysis is a classical branch of operations research that studies the best way to place some facilities to satisfy the demand of customers.\\E$"}

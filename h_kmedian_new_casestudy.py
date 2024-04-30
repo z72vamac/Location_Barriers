@@ -903,7 +903,7 @@ def h_kmedian_n(barriers, sources, targets, k, single = False, wL=50, lazy=True,
     if model.SolCount == 0:
         return results
 
-    # model.write('solution.sol')
+    model.write('solution' + str(k) + '.sol')
 
     results[7] = model.getAttr('MIPGap')
     results[8] = model.getAttr('Runtime')

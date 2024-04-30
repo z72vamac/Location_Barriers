@@ -1,0 +1,3376 @@
+% This file was created with tikzplotlib v0.10.1.
+\begin{tikzpicture}[scale=0.45]
+
+\definecolor{darkgray173}{RGB}{173,173,173}
+\definecolor{darkslategray38}{RGB}{38,38,38}
+\definecolor{darkslategray66}{RGB}{66,66,66}
+\definecolor{darkslategray77}{RGB}{77,77,77}
+\definecolor{gray130}{RGB}{130,130,130}
+\definecolor{lavender234234242}{RGB}{234,234,242}
+\definecolor{lightgray209}{RGB}{209,209,209}
+
+\begin{groupplot}[group style={group size=2 by 3, vertical sep=0.5cm, horizontal sep=0pt}]
+\nextgroupplot[
+axis background/.style={fill=lavender234234242},
+axis line style={white},
+legend cell align={left},
+legend style={
+  fill opacity=1,
+  draw opacity=1,
+  text opacity=1,
+  font=\footnotesize,
+  at={(0.03,0.95)},
+  anchor=north west,
+  draw=none,
+  fill=lavender234234242
+},
+scaled x ticks=manual:{}{\pgfmathparse{#1}},
+tick align=outside,
+title={single-commodity},
+x grid style={white},
+xmajorticks=false,
+xmin=-0.5, xmax=4.5,
+xtick style={color=darkslategray38},
+xticklabels={},
+y grid style={white},
+ylabel=\textcolor{darkslategray38}{\% Gap},
+ymajorgrids,
+ymin=-1, ymax=105,
+ytick style={color=darkslategray38},
+ytick={0,20,40,60,80,100},
+yticklabels={
+  \(\displaystyle {0}\),
+  \(\displaystyle {20}\),
+  \(\displaystyle {40}\),
+  \(\displaystyle {60}\),
+  \(\displaystyle {80}\),
+  \(\displaystyle {100}\)
+}
+]
+\addlegendimage{ybar,ybar legend,draw=white!29.8039215686275!black,fill=white,line width=0.3pt}
+\addlegendimage{ybar,ybar legend,draw=white!29.8039215686275!black,fill=lightgray209,line width=0.3pt}
+\addlegendimage{ybar,ybar legend,draw=white!29.8039215686275!black,fill=darkgray173,line width=0.3pt}
+\addlegendimage{ybar,ybar legend,draw=white!29.8039215686275!black,fill=gray130,line width=0.3pt}
+\addlegendentry{$\bm{\lceil 10\%|\mathcal B|\rceil}$}
+\addlegendentry{$\bm{\lceil 20\%|\mathcal B|\rceil}$}
+\addlegendentry{$\bm{\lceil 50\%|\mathcal B|\rceil}$}
+\addlegendentry{$\bm{\lceil 100\%|\mathcal B|\rceil}$}
+\path [draw=darkslategray77, fill=white]
+(axis cs:-0.4,0.00133572006180106)
+--(axis cs:-0.2,0.00133572006180106)
+--(axis cs:-0.2,0.00684098458292766)
+--(axis cs:-0.4,0.00684098458292766)
+--(axis cs:-0.4,0.00133572006180106)
+--cycle;
+\addplot [darkslategray77, forget plot]
+table {%
+-0.3 0.00133572006180106
+-0.3 0.000120048822704826
+};
+\addplot [darkslategray77, forget plot]
+table {%
+-0.3 0.00684098458292766
+-0.3 0.00870460190524339
+};
+\addplot [darkslategray77, forget plot]
+table {%
+-0.35 0.000120048822704826
+-0.25 0.000120048822704826
+};
+\addplot [darkslategray77, forget plot]
+table {%
+-0.35 0.00870460190524339
+-0.25 0.00870460190524339
+};
+\path [draw=darkslategray77, fill=white]
+(axis cs:0.6,0.000254952071061972)
+--(axis cs:0.8,0.000254952071061972)
+--(axis cs:0.8,0.00623574733621541)
+--(axis cs:0.6,0.00623574733621541)
+--(axis cs:0.6,0.000254952071061972)
+--cycle;
+\addplot [darkslategray77, forget plot]
+table {%
+0.7 0.000254952071061972
+0.7 2.96831508052941e-06
+};
+\addplot [darkslategray77, forget plot]
+table {%
+0.7 0.00623574733621541
+0.7 0.00990114957427982
+};
+\addplot [darkslategray77, forget plot]
+table {%
+0.65 2.96831508052941e-06
+0.75 2.96831508052941e-06
+};
+\addplot [darkslategray77, forget plot]
+table {%
+0.65 0.00990114957427982
+0.75 0.00990114957427982
+};
+\path [draw=darkslategray77, fill=white]
+(axis cs:1.6,0.000562358847510353)
+--(axis cs:1.8,0.000562358847510353)
+--(axis cs:1.8,0.222906709291283)
+--(axis cs:1.6,0.222906709291283)
+--(axis cs:1.6,0.000562358847510353)
+--cycle;
+\addplot [darkslategray77, forget plot]
+table {%
+1.7 0.000562358847510353
+1.7 1.67557903244621e-05
+};
+\addplot [darkslategray77, forget plot]
+table {%
+1.7 0.222906709291283
+1.7 0.30183320999343
+};
+\addplot [darkslategray77, forget plot]
+table {%
+1.65 1.67557903244621e-05
+1.75 1.67557903244621e-05
+};
+\addplot [darkslategray77, forget plot]
+table {%
+1.65 0.30183320999343
+1.75 0.30183320999343
+};
+\addplot [black, mark=o, mark size=3, mark options={solid,fill opacity=0,draw=darkslategray77}, only marks, forget plot]
+table {%
+1.7 1.02885889281845
+1.7 0.60076572151668
+1.7 0.9805006601547
+1.7 0.9805006601547
+1.7 5.11996796876474
+1.7 9.9166998080027
+1.7 4.96888717508221
+1.7 4.96888717508221
+1.7 46.4652765282972
+1.7 5.42564185348612
+1.7 17.3591362396042
+1.7 1.35138624951427
+1.7 1.35138624951427
+1.7 4.21591215020553
+};
+\path [draw=darkslategray77, fill=white]
+(axis cs:2.6,1.53011653987422)
+--(axis cs:2.8,1.53011653987422)
+--(axis cs:2.8,59.2055750890407)
+--(axis cs:2.6,59.2055750890407)
+--(axis cs:2.6,1.53011653987422)
+--cycle;
+\addplot [darkslategray77, forget plot]
+table {%
+2.7 1.53011653987422
+2.7 0.00074350704463909
+};
+\addplot [darkslategray77, forget plot]
+table {%
+2.7 59.2055750890407
+2.7 100
+};
+\addplot [darkslategray77, forget plot]
+table {%
+2.65 0.00074350704463909
+2.75 0.00074350704463909
+};
+\addplot [darkslategray77, forget plot]
+table {%
+2.65 100
+2.75 100
+};
+\path [draw=darkslategray77, fill=white]
+(axis cs:3.6,4.25114848940175)
+--(axis cs:3.8,4.25114848940175)
+--(axis cs:3.8,100)
+--(axis cs:3.6,100)
+--(axis cs:3.6,4.25114848940175)
+--cycle;
+\addplot [darkslategray77, forget plot]
+table {%
+3.7 4.25114848940175
+3.7 0.248856019288
+};
+\addplot [darkslategray77, forget plot]
+table {%
+3.7 100
+3.7 100
+};
+\addplot [darkslategray77, forget plot]
+table {%
+3.65 0.248856019288
+3.75 0.248856019288
+};
+\addplot [darkslategray77, forget plot]
+table {%
+3.65 100
+3.75 100
+};
+\path [draw=darkslategray77, fill=lightgray209]
+(axis cs:-0.2,0.000247259719623256)
+--(axis cs:2.77555756156289e-17,0.000247259719623256)
+--(axis cs:2.77555756156289e-17,0.00468073614678733)
+--(axis cs:-0.2,0.00468073614678733)
+--(axis cs:-0.2,0.000247259719623256)
+--cycle;
+\addplot [darkslategray77, forget plot]
+table {%
+-0.1 0.000247259719623256
+-0.1 1.08533452078743e-05
+};
+\addplot [darkslategray77, forget plot]
+table {%
+-0.1 0.00468073614678733
+-0.1 0.00929787727897317
+};
+\addplot [darkslategray77, forget plot]
+table {%
+-0.15 1.08533452078743e-05
+-0.05 1.08533452078743e-05
+};
+\addplot [darkslategray77, forget plot]
+table {%
+-0.15 0.00929787727897317
+-0.05 0.00929787727897317
+};
+\addplot [black, mark=o, mark size=3, mark options={solid,fill opacity=0,draw=darkslategray77}, only marks, forget plot]
+table {%
+-0.1 0.01716686330995
+-0.1 0.02011441348994
+};
+\path [draw=darkslategray77, fill=lightgray209]
+(axis cs:0.8,0.000242995201346606)
+--(axis cs:1,0.000242995201346606)
+--(axis cs:1,0.00759412710321226)
+--(axis cs:0.8,0.00759412710321226)
+--(axis cs:0.8,0.000242995201346606)
+--cycle;
+\addplot [darkslategray77, forget plot]
+table {%
+0.9 0.000242995201346606
+0.9 1.23238990202196e-06
+};
+\addplot [darkslategray77, forget plot]
+table {%
+0.9 0.00759412710321226
+0.9 0.01703233047422
+};
+\addplot [darkslategray77, forget plot]
+table {%
+0.85 1.23238990202196e-06
+0.95 1.23238990202196e-06
+};
+\addplot [darkslategray77, forget plot]
+table {%
+0.85 0.01703233047422
+0.95 0.01703233047422
+};
+\addplot [black, mark=o, mark size=3, mark options={solid,fill opacity=0,draw=darkslategray77}, only marks, forget plot]
+table {%
+0.9 0.38095591660376
+0.9 2.22699430432005
+0.9 0.74929264773176
+0.9 0.74888508448456
+0.9 0.21258481573405
+0.9 0.20951223165075
+};
+\path [draw=darkslategray77, fill=lightgray209]
+(axis cs:1.8,0.00987989592087286)
+--(axis cs:2,0.00987989592087286)
+--(axis cs:2,5.48297297678599)
+--(axis cs:1.8,5.48297297678599)
+--(axis cs:1.8,0.00987989592087286)
+--cycle;
+\addplot [darkslategray77, forget plot]
+table {%
+1.9 0.00987989592087286
+1.9 1.73791944892168e-05
+};
+\addplot [darkslategray77, forget plot]
+table {%
+1.9 5.48297297678599
+1.9 11.9890325401032
+};
+\addplot [darkslategray77, forget plot]
+table {%
+1.85 1.73791944892168e-05
+1.95 1.73791944892168e-05
+};
+\addplot [darkslategray77, forget plot]
+table {%
+1.85 11.9890325401032
+1.95 11.9890325401032
+};
+\addplot [black, mark=o, mark size=3, mark options={solid,fill opacity=0,draw=darkslategray77}, only marks, forget plot]
+table {%
+1.9 23.4357479559391
+1.9 15.6159206199839
+1.9 58.3387306181939
+1.9 28.0140586931555
+1.9 55.0909518040008
+1.9 55.0927304097178
+1.9 35.8462454472341
+1.9 40.9101694279538
+1.9 36.1317828429306
+};
+\path [draw=darkslategray77, fill=lightgray209]
+(axis cs:2.8,9.71663753424275)
+--(axis cs:3,9.71663753424275)
+--(axis cs:3,100)
+--(axis cs:2.8,100)
+--(axis cs:2.8,9.71663753424275)
+--cycle;
+\addplot [darkslategray77, forget plot]
+table {%
+2.9 9.71663753424275
+2.9 0.12584182964922
+};
+\addplot [darkslategray77, forget plot]
+table {%
+2.9 100
+2.9 100
+};
+\addplot [darkslategray77, forget plot]
+table {%
+2.85 0.12584182964922
+2.95 0.12584182964922
+};
+\addplot [darkslategray77, forget plot]
+table {%
+2.85 100
+2.95 100
+};
+\path [draw=darkslategray77, fill=lightgray209]
+(axis cs:3.8,48.6052318998015)
+--(axis cs:4,48.6052318998015)
+--(axis cs:4,100)
+--(axis cs:3.8,100)
+--(axis cs:3.8,48.6052318998015)
+--cycle;
+\addplot [darkslategray77, forget plot]
+table {%
+3.9 48.6052318998015
+3.9 0.58106318778614
+};
+\addplot [darkslategray77, forget plot]
+table {%
+3.9 100
+3.9 100
+};
+\addplot [darkslategray77, forget plot]
+table {%
+3.85 0.58106318778614
+3.95 0.58106318778614
+};
+\addplot [darkslategray77, forget plot]
+table {%
+3.85 100
+3.95 100
+};
+\path [draw=darkslategray77, fill=darkgray173]
+(axis cs:-2.77555756156289e-17,0.0013518266019132)
+--(axis cs:0.2,0.0013518266019132)
+--(axis cs:0.2,0.00833667646345856)
+--(axis cs:-2.77555756156289e-17,0.00833667646345856)
+--(axis cs:-2.77555756156289e-17,0.0013518266019132)
+--cycle;
+\addplot [darkslategray77, forget plot]
+table {%
+0.1 0.0013518266019132
+0.1 8.51487799785397e-05
+};
+\addplot [darkslategray77, forget plot]
+table {%
+0.1 0.00833667646345856
+0.1 0.01647584015881
+};
+\addplot [darkslategray77, forget plot]
+table {%
+0.05 8.51487799785397e-05
+0.15 8.51487799785397e-05
+};
+\addplot [darkslategray77, forget plot]
+table {%
+0.05 0.01647584015881
+0.15 0.01647584015881
+};
+\path [draw=darkslategray77, fill=darkgray173]
+(axis cs:1,0.0064119401012708)
+--(axis cs:1.2,0.0064119401012708)
+--(axis cs:1.2,1.36712634094474)
+--(axis cs:1,1.36712634094474)
+--(axis cs:1,0.0064119401012708)
+--cycle;
+\addplot [darkslategray77, forget plot]
+table {%
+1.1 0.0064119401012708
+1.1 2.89466315893147e-05
+};
+\addplot [darkslategray77, forget plot]
+table {%
+1.1 1.36712634094474
+1.1 2.83799665004793
+};
+\addplot [darkslategray77, forget plot]
+table {%
+1.05 2.89466315893147e-05
+1.15 2.89466315893147e-05
+};
+\addplot [darkslategray77, forget plot]
+table {%
+1.05 2.83799665004793
+1.15 2.83799665004793
+};
+\addplot [black, mark=o, mark size=3, mark options={solid,fill opacity=0,draw=darkslategray77}, only marks, forget plot]
+table {%
+1.1 15.9186172784106
+1.1 27.8573969203345
+1.1 42.5477051126761
+1.1 19.9498585235363
+1.1 54.5096062256846
+1.1 4.30846890205483
+1.1 4.30277114543275
+};
+\path [draw=darkslategray77, fill=darkgray173]
+(axis cs:2,1.96296880409666)
+--(axis cs:2.2,1.96296880409666)
+--(axis cs:2.2,100)
+--(axis cs:2,100)
+--(axis cs:2,1.96296880409666)
+--cycle;
+\addplot [darkslategray77, forget plot]
+table {%
+2.1 1.96296880409666
+2.1 0.00130978801725279
+};
+\addplot [darkslategray77, forget plot]
+table {%
+2.1 100
+2.1 100
+};
+\addplot [darkslategray77, forget plot]
+table {%
+2.05 0.00130978801725279
+2.15 0.00130978801725279
+};
+\addplot [darkslategray77, forget plot]
+table {%
+2.05 100
+2.15 100
+};
+\path [draw=darkslategray77, fill=darkgray173]
+(axis cs:3,53.0848391812509)
+--(axis cs:3.2,53.0848391812509)
+--(axis cs:3.2,100)
+--(axis cs:3,100)
+--(axis cs:3,53.0848391812509)
+--cycle;
+\addplot [darkslategray77, forget plot]
+table {%
+3.1 53.0848391812509
+3.1 1.25858977847352
+};
+\addplot [darkslategray77, forget plot]
+table {%
+3.1 100
+3.1 100
+};
+\addplot [darkslategray77, forget plot]
+table {%
+3.05 1.25858977847352
+3.15 1.25858977847352
+};
+\addplot [darkslategray77, forget plot]
+table {%
+3.05 100
+3.15 100
+};
+\path [draw=darkslategray77, fill=darkgray173]
+(axis cs:4,100)
+--(axis cs:4.2,100)
+--(axis cs:4.2,100)
+--(axis cs:4,100)
+--(axis cs:4,100)
+--cycle;
+\addplot [darkslategray77, forget plot]
+table {%
+4.1 100
+4.1 100
+};
+\addplot [darkslategray77, forget plot]
+table {%
+4.1 100
+4.1 100
+};
+\addplot [darkslategray77, forget plot]
+table {%
+4.05 100
+4.15 100
+};
+\addplot [darkslategray77, forget plot]
+table {%
+4.05 100
+4.15 100
+};
+\addplot [black, mark=o, mark size=3, mark options={solid,fill opacity=0,draw=darkslategray77}, only marks, forget plot]
+table {%
+4.1 61.9081033537891
+4.1 35.3449139534798
+4.1 7.94402308881415
+4.1 6.43011758167309
+};
+\path [draw=darkslategray77, fill=gray130]
+(axis cs:0.2,0)
+--(axis cs:0.4,0)
+--(axis cs:0.4,0.000145827775743331)
+--(axis cs:0.2,0.000145827775743331)
+--(axis cs:0.2,0)
+--cycle;
+\addplot [darkslategray77, forget plot]
+table {%
+0.3 0
+0.3 0
+};
+\addplot [darkslategray77, forget plot]
+table {%
+0.3 0.000145827775743331
+0.3 0.000202406747495132
+};
+\addplot [darkslategray77, forget plot]
+table {%
+0.25 0
+0.35 0
+};
+\addplot [darkslategray77, forget plot]
+table {%
+0.25 0.000202406747495132
+0.35 0.000202406747495132
+};
+\addplot [black, mark=o, mark size=3, mark options={solid,fill opacity=0,draw=darkslategray77}, only marks, forget plot]
+table {%
+0.3 0.001048076830305
+0.3 0.00653361265226353
+0.3 0.00491909477271809
+0.3 0.00850280955604399
+0.3 0.00653361265226353
+0.3 0.00491909477271809
+0.3 0.00850280955604399
+0.3 0.000764676184473043
+0.3 0.000764676184473043
+0.3 0.00705493278507827
+0.3 0.00869682912931991
+0.3 0.00705493278507827
+0.3 0.00869682912931991
+};
+\path [draw=darkslategray77, fill=gray130]
+(axis cs:1.2,0.00724102763358259)
+--(axis cs:1.4,0.00724102763358259)
+--(axis cs:1.4,0.746184766073172)
+--(axis cs:1.2,0.746184766073172)
+--(axis cs:1.2,0.00724102763358259)
+--cycle;
+\addplot [darkslategray77, forget plot]
+table {%
+1.3 0.00724102763358259
+1.3 0
+};
+\addplot [darkslategray77, forget plot]
+table {%
+1.3 0.746184766073172
+1.3 1.63478411512995
+};
+\addplot [darkslategray77, forget plot]
+table {%
+1.25 0
+1.35 0
+};
+\addplot [darkslategray77, forget plot]
+table {%
+1.25 1.63478411512995
+1.35 1.63478411512995
+};
+\addplot [black, mark=o, mark size=3, mark options={solid,fill opacity=0,draw=darkslategray77}, only marks, forget plot]
+table {%
+1.3 2.3717273331677
+1.3 2.37164865736079
+1.3 4.10294448576652
+1.3 3.3082368144088
+};
+\path [draw=darkslategray77, fill=gray130]
+(axis cs:2.2,0.397819835965295)
+--(axis cs:2.4,0.397819835965295)
+--(axis cs:2.4,2.68698958808146)
+--(axis cs:2.2,2.68698958808146)
+--(axis cs:2.2,0.397819835965295)
+--cycle;
+\addplot [darkslategray77, forget plot]
+table {%
+2.3 0.397819835965295
+2.3 0.00994756655080013
+};
+\addplot [darkslategray77, forget plot]
+table {%
+2.3 2.68698958808146
+2.3 5.72650709052836
+};
+\addplot [darkslategray77, forget plot]
+table {%
+2.25 0.00994756655080013
+2.35 0.00994756655080013
+};
+\addplot [darkslategray77, forget plot]
+table {%
+2.25 5.72650709052836
+2.35 5.72650709052836
+};
+\addplot [black, mark=o, mark size=3, mark options={solid,fill opacity=0,draw=darkslategray77}, only marks, forget plot]
+table {%
+2.3 6.21202174014472
+2.3 6.21312321689917
+2.3 6.70792469350277
+2.3 27.4529522129236
+2.3 25.2965408171533
+2.3 7.4048280957732
+2.3 8.18903993807602
+};
+\path [draw=darkslategray77, fill=gray130]
+(axis cs:3.2,3.94549961223222)
+--(axis cs:3.4,3.94549961223222)
+--(axis cs:3.4,35.4346336578786)
+--(axis cs:3.2,35.4346336578786)
+--(axis cs:3.2,3.94549961223222)
+--cycle;
+\addplot [darkslategray77, forget plot]
+table {%
+3.3 3.94549961223222
+3.3 0.25207008902202
+};
+\addplot [darkslategray77, forget plot]
+table {%
+3.3 35.4346336578786
+3.3 60.2709633434356
+};
+\addplot [darkslategray77, forget plot]
+table {%
+3.25 0.25207008902202
+3.35 0.25207008902202
+};
+\addplot [darkslategray77, forget plot]
+table {%
+3.25 60.2709633434356
+3.35 60.2709633434356
+};
+\path [draw=darkslategray77, fill=gray130]
+(axis cs:4.2,6.60121078852159)
+--(axis cs:4.4,6.60121078852159)
+--(axis cs:4.4,45.4957468162656)
+--(axis cs:4.2,45.4957468162656)
+--(axis cs:4.2,6.60121078852159)
+--cycle;
+\addplot [darkslategray77, forget plot]
+table {%
+4.3 6.60121078852159
+4.3 0.41088319841366
+};
+\addplot [darkslategray77, forget plot]
+table {%
+4.3 45.4957468162656
+4.3 100
+};
+\addplot [darkslategray77, forget plot]
+table {%
+4.25 0.41088319841366
+4.35 0.41088319841366
+};
+\addplot [darkslategray77, forget plot]
+table {%
+4.25 100
+4.35 100
+};
+\addplot [darkslategray77, forget plot]
+table {%
+-0.4 0.00399222039291947
+-0.2 0.00399222039291947
+};
+\addplot [darkslategray77, forget plot]
+table {%
+0.6 0.00189081831752816
+0.8 0.00189081831752816
+};
+\addplot [darkslategray77, forget plot]
+table {%
+1.6 0.00459889079257395
+1.8 0.00459889079257395
+};
+\addplot [darkslategray77, forget plot]
+table {%
+2.6 7.9764916141835
+2.8 7.9764916141835
+};
+\addplot [darkslategray77, forget plot]
+table {%
+3.6 34.128347866323
+3.8 34.128347866323
+};
+\addplot [darkslategray77, forget plot]
+table {%
+-0.2 0.00143702542971448
+2.77555756156289e-17 0.00143702542971448
+};
+\addplot [darkslategray77, forget plot]
+table {%
+0.8 0.00193273176080315
+1 0.00193273176080315
+};
+\addplot [darkslategray77, forget plot]
+table {%
+1.8 1.22055759862991
+2 1.22055759862991
+};
+\addplot [darkslategray77, forget plot]
+table {%
+2.8 88.0832299376624
+3 88.0832299376624
+};
+\addplot [darkslategray77, forget plot]
+table {%
+3.8 100
+4 100
+};
+\addplot [darkslategray77, forget plot]
+table {%
+-2.77555756156289e-17 0.00293727312842118
+0.2 0.00293727312842118
+};
+\addplot [darkslategray77, forget plot]
+table {%
+1 0.02302980506913
+1.2 0.02302980506913
+};
+\addplot [darkslategray77, forget plot]
+table {%
+2 16.1272489208952
+2.2 16.1272489208952
+};
+\addplot [darkslategray77, forget plot]
+table {%
+3 100
+3.2 100
+};
+\addplot [darkslategray77, forget plot]
+table {%
+4 100
+4.2 100
+};
+\addplot [darkslategray77, forget plot]
+table {%
+0.2 1.93378046994071e-07
+0.4 1.93378046994071e-07
+};
+\addplot [darkslategray77, forget plot]
+table {%
+1.2 0.0099817835398677
+1.4 0.0099817835398677
+};
+\addplot [darkslategray77, forget plot]
+table {%
+2.2 1.1639221952958
+2.4 1.1639221952958
+};
+\addplot [darkslategray77, forget plot]
+table {%
+3.2 14.2988324578223
+3.4 14.2988324578223
+};
+\addplot [darkslategray77, forget plot]
+table {%
+4.2 29.3165356078277
+4.4 29.3165356078277
+};
+
+\nextgroupplot[
+axis background/.style={fill=lavender234234242},
+axis line style={white},
+scaled x ticks=manual:{}{\pgfmathparse{#1}},
+scaled y ticks=manual:{}{\pgfmathparse{#1}},
+tick align=outside,
+title={multi-commodity},
+x grid style={white},
+xmajorticks=false,
+xmin=-0.5, xmax=4.5,
+xtick style={color=darkslategray38},
+xticklabels={},
+y grid style={white},
+ymajorgrids,
+ymajorticks=false,
+ymin=-1, ymax=105,
+ytick style={color=darkslategray38},
+yticklabels={}
+]
+\path [draw=darkslategray77, fill=white]
+(axis cs:-0.4,0.000936504549970713)
+--(axis cs:-0.2,0.000936504549970713)
+--(axis cs:-0.2,0.00592060246321592)
+--(axis cs:-0.4,0.00592060246321592)
+--(axis cs:-0.4,0.000936504549970713)
+--cycle;
+\addplot [darkslategray77]
+table {%
+-0.3 0.000936504549970713
+-0.3 0
+};
+\addplot [darkslategray77]
+table {%
+-0.3 0.00592060246321592
+-0.3 0.00937719604503964
+};
+\addplot [darkslategray77]
+table {%
+-0.35 0
+-0.25 0
+};
+\addplot [darkslategray77]
+table {%
+-0.35 0.00937719604503964
+-0.25 0.00937719604503964
+};
+\path [draw=darkslategray77, fill=white]
+(axis cs:0.6,0.000407243843051177)
+--(axis cs:0.8,0.000407243843051177)
+--(axis cs:0.8,0.00591544467590321)
+--(axis cs:0.6,0.00591544467590321)
+--(axis cs:0.6,0.000407243843051177)
+--cycle;
+\addplot [darkslategray77]
+table {%
+0.7 0.000407243843051177
+0.7 3.20128139152037e-05
+};
+\addplot [darkslategray77]
+table {%
+0.7 0.00591544467590321
+0.7 0.00984005175301184
+};
+\addplot [darkslategray77]
+table {%
+0.65 3.20128139152037e-05
+0.75 3.20128139152037e-05
+};
+\addplot [darkslategray77]
+table {%
+0.65 0.00984005175301184
+0.75 0.00984005175301184
+};
+\path [draw=darkslategray77, fill=white]
+(axis cs:1.6,0.000241661653647296)
+--(axis cs:1.8,0.000241661653647296)
+--(axis cs:1.8,0.00697323839835158)
+--(axis cs:1.6,0.00697323839835158)
+--(axis cs:1.6,0.000241661653647296)
+--cycle;
+\addplot [darkslategray77]
+table {%
+1.7 0.000241661653647296
+1.7 4.57187053933903e-06
+};
+\addplot [darkslategray77]
+table {%
+1.7 0.00697323839835158
+1.7 0.00994091568627952
+};
+\addplot [darkslategray77]
+table {%
+1.65 4.57187053933903e-06
+1.75 4.57187053933903e-06
+};
+\addplot [darkslategray77]
+table {%
+1.65 0.00994091568627952
+1.75 0.00994091568627952
+};
+\addplot [black, mark=o, mark size=3, mark options={solid,fill opacity=0,draw=darkslategray77}, only marks]
+table {%
+1.7 1.90534300789556
+1.7 1.90077917324969
+1.7 0.31236388018016
+};
+\path [draw=darkslategray77, fill=white]
+(axis cs:2.6,0.0081804451944545)
+--(axis cs:2.8,0.0081804451944545)
+--(axis cs:2.8,13.3956251878068)
+--(axis cs:2.6,13.3956251878068)
+--(axis cs:2.6,0.0081804451944545)
+--cycle;
+\addplot [darkslategray77]
+table {%
+2.7 0.0081804451944545
+2.7 4.00654585343835e-05
+};
+\addplot [darkslategray77]
+table {%
+2.7 13.3956251878068
+2.7 26.9852998076058
+};
+\addplot [darkslategray77]
+table {%
+2.65 4.00654585343835e-05
+2.75 4.00654585343835e-05
+};
+\addplot [darkslategray77]
+table {%
+2.65 26.9852998076058
+2.75 26.9852998076058
+};
+\addplot [black, mark=o, mark size=3, mark options={solid,fill opacity=0,draw=darkslategray77}, only marks]
+table {%
+2.7 100
+2.7 100
+2.7 100
+2.7 100
+2.7 35.6824211954955
+2.7 100
+};
+\path [draw=darkslategray77, fill=white]
+(axis cs:3.6,1.15405524523183)
+--(axis cs:3.8,1.15405524523183)
+--(axis cs:3.8,100)
+--(axis cs:3.6,100)
+--(axis cs:3.6,1.15405524523183)
+--cycle;
+\addplot [darkslategray77]
+table {%
+3.7 1.15405524523183
+3.7 0.000638959375493919
+};
+\addplot [darkslategray77]
+table {%
+3.7 100
+3.7 100
+};
+\addplot [darkslategray77]
+table {%
+3.65 0.000638959375493919
+3.75 0.000638959375493919
+};
+\addplot [darkslategray77]
+table {%
+3.65 100
+3.75 100
+};
+\path [draw=darkslategray77, fill=lightgray209]
+(axis cs:-0.2,0.00154861461287121)
+--(axis cs:2.77555756156289e-17,0.00154861461287121)
+--(axis cs:2.77555756156289e-17,0.00656948554448497)
+--(axis cs:-0.2,0.00656948554448497)
+--(axis cs:-0.2,0.00154861461287121)
+--cycle;
+\addplot [darkslategray77]
+table {%
+-0.1 0.00154861461287121
+-0.1 6.88867011275165e-05
+};
+\addplot [darkslategray77]
+table {%
+-0.1 0.00656948554448497
+-0.1 0.00977473330891838
+};
+\addplot [darkslategray77]
+table {%
+-0.15 6.88867011275165e-05
+-0.05 6.88867011275165e-05
+};
+\addplot [darkslategray77]
+table {%
+-0.15 0.00977473330891838
+-0.05 0.00977473330891838
+};
+\addplot [black, mark=o, mark size=3, mark options={solid,fill opacity=0,draw=darkslategray77}, only marks]
+table {%
+-0.1 0.01590952346553
+};
+\path [draw=darkslategray77, fill=lightgray209]
+(axis cs:0.8,0.000260778705829717)
+--(axis cs:1,0.000260778705829717)
+--(axis cs:1,0.00768718128643697)
+--(axis cs:0.8,0.00768718128643697)
+--(axis cs:0.8,0.000260778705829717)
+--cycle;
+\addplot [darkslategray77]
+table {%
+0.9 0.000260778705829717
+0.9 3.6778828221793e-06
+};
+\addplot [darkslategray77]
+table {%
+0.9 0.00768718128643697
+0.9 0.00998124249766156
+};
+\addplot [darkslategray77]
+table {%
+0.85 3.6778828221793e-06
+0.95 3.6778828221793e-06
+};
+\addplot [darkslategray77]
+table {%
+0.85 0.00998124249766156
+0.95 0.00998124249766156
+};
+\addplot [black, mark=o, mark size=3, mark options={solid,fill opacity=0,draw=darkslategray77}, only marks]
+table {%
+0.9 0.0199753180264
+};
+\path [draw=darkslategray77, fill=lightgray209]
+(axis cs:1.8,0.00248497636587316)
+--(axis cs:2,0.00248497636587316)
+--(axis cs:2,0.74230702775802)
+--(axis cs:1.8,0.74230702775802)
+--(axis cs:1.8,0.00248497636587316)
+--cycle;
+\addplot [darkslategray77]
+table {%
+1.9 0.00248497636587316
+1.9 1.23694643955478e-08
+};
+\addplot [darkslategray77]
+table {%
+1.9 0.74230702775802
+1.9 1.64584896522266
+};
+\addplot [darkslategray77]
+table {%
+1.85 1.23694643955478e-08
+1.95 1.23694643955478e-08
+};
+\addplot [darkslategray77]
+table {%
+1.85 1.64584896522266
+1.95 1.64584896522266
+};
+\addplot [black, mark=o, mark size=3, mark options={solid,fill opacity=0,draw=darkslategray77}, only marks]
+table {%
+1.9 5.50118923455796
+1.9 5.50118923455796
+1.9 53.5661945854495
+1.9 53.5660174944889
+1.9 13.5254016361461
+1.9 13.5254016361461
+1.9 2.93672402541584
+1.9 6.70614284710501
+1.9 6.70614284710501
+1.9 100
+};
+\path [draw=darkslategray77, fill=lightgray209]
+(axis cs:2.8,5.56352097973851)
+--(axis cs:3,5.56352097973851)
+--(axis cs:3,100)
+--(axis cs:2.8,100)
+--(axis cs:2.8,5.56352097973851)
+--cycle;
+\addplot [darkslategray77]
+table {%
+2.9 5.56352097973851
+2.9 0.09867883290345
+};
+\addplot [darkslategray77]
+table {%
+2.9 100
+2.9 100
+};
+\addplot [darkslategray77]
+table {%
+2.85 0.09867883290345
+2.95 0.09867883290345
+};
+\addplot [darkslategray77]
+table {%
+2.85 100
+2.95 100
+};
+\path [draw=darkslategray77, fill=lightgray209]
+(axis cs:3.8,5.11837783070905)
+--(axis cs:4,5.11837783070905)
+--(axis cs:4,100)
+--(axis cs:3.8,100)
+--(axis cs:3.8,5.11837783070905)
+--cycle;
+\addplot [darkslategray77]
+table {%
+3.9 5.11837783070905
+3.9 0.00871839567541549
+};
+\addplot [darkslategray77]
+table {%
+3.9 100
+3.9 100
+};
+\addplot [darkslategray77]
+table {%
+3.85 0.00871839567541549
+3.95 0.00871839567541549
+};
+\addplot [darkslategray77]
+table {%
+3.85 100
+3.95 100
+};
+\path [draw=darkslategray77, fill=darkgray173]
+(axis cs:-2.77555756156289e-17,0.00114440762850478)
+--(axis cs:0.2,0.00114440762850478)
+--(axis cs:0.2,0.00710276699396135)
+--(axis cs:-2.77555756156289e-17,0.00710276699396135)
+--(axis cs:-2.77555756156289e-17,0.00114440762850478)
+--cycle;
+\addplot [darkslategray77]
+table {%
+0.1 0.00114440762850478
+0.1 7.91082337593064e-05
+};
+\addplot [darkslategray77]
+table {%
+0.1 0.00710276699396135
+0.1 0.01413024739351
+};
+\addplot [darkslategray77]
+table {%
+0.05 7.91082337593064e-05
+0.15 7.91082337593064e-05
+};
+\addplot [darkslategray77]
+table {%
+0.05 0.01413024739351
+0.15 0.01413024739351
+};
+\addplot [black, mark=o, mark size=3, mark options={solid,fill opacity=0,draw=darkslategray77}, only marks]
+table {%
+0.1 0.01799198308724
+};
+\path [draw=darkslategray77, fill=darkgray173]
+(axis cs:1,0.00533362081853075)
+--(axis cs:1.2,0.00533362081853075)
+--(axis cs:1.2,0.026265792848975)
+--(axis cs:1,0.026265792848975)
+--(axis cs:1,0.00533362081853075)
+--cycle;
+\addplot [darkslategray77]
+table {%
+1.1 0.00533362081853075
+1.1 6.6745668083e-06
+};
+\addplot [darkslategray77]
+table {%
+1.1 0.026265792848975
+1.1 0.03740799805625
+};
+\addplot [darkslategray77]
+table {%
+1.05 6.6745668083e-06
+1.15 6.6745668083e-06
+};
+\addplot [darkslategray77]
+table {%
+1.05 0.03740799805625
+1.15 0.03740799805625
+};
+\addplot [black, mark=o, mark size=3, mark options={solid,fill opacity=0,draw=darkslategray77}, only marks]
+table {%
+1.1 0.61388790345455
+1.1 0.62384437181204
+1.1 1.91938548962605
+1.1 1.91938548962605
+1.1 8.62113243239045
+1.1 0.23583848829861
+1.1 12.1129478137183
+1.1 1.96255133639009
+1.1 2.35062797140051
+1.1 44.3304667808476
+1.1 0.30945342925767
+1.1 0.53387621696224
+1.1 0.39679228038132
+1.1 0.39317800201087
+};
+\path [draw=darkslategray77, fill=darkgray173]
+(axis cs:2,0.95183679858894)
+--(axis cs:2.2,0.95183679858894)
+--(axis cs:2.2,100)
+--(axis cs:2,100)
+--(axis cs:2,0.95183679858894)
+--cycle;
+\addplot [darkslategray77]
+table {%
+2.1 0.95183679858894
+2.1 0.00234961721279486
+};
+\addplot [darkslategray77]
+table {%
+2.1 100
+2.1 100
+};
+\addplot [darkslategray77]
+table {%
+2.05 0.00234961721279486
+2.15 0.00234961721279486
+};
+\addplot [darkslategray77]
+table {%
+2.05 100
+2.15 100
+};
+\path [draw=darkslategray77, fill=darkgray173]
+(axis cs:3,34.0822784576997)
+--(axis cs:3.2,34.0822784576997)
+--(axis cs:3.2,100)
+--(axis cs:3,100)
+--(axis cs:3,34.0822784576997)
+--cycle;
+\addplot [darkslategray77]
+table {%
+3.1 34.0822784576997
+3.1 1.2567769263594
+};
+\addplot [darkslategray77]
+table {%
+3.1 100
+3.1 100
+};
+\addplot [darkslategray77]
+table {%
+3.05 1.2567769263594
+3.15 1.2567769263594
+};
+\addplot [darkslategray77]
+table {%
+3.05 100
+3.15 100
+};
+\path [draw=darkslategray77, fill=darkgray173]
+(axis cs:4,100)
+--(axis cs:4.2,100)
+--(axis cs:4.2,100)
+--(axis cs:4,100)
+--(axis cs:4,100)
+--cycle;
+\addplot [darkslategray77]
+table {%
+4.1 100
+4.1 100
+};
+\addplot [darkslategray77]
+table {%
+4.1 100
+4.1 100
+};
+\addplot [darkslategray77]
+table {%
+4.05 100
+4.15 100
+};
+\addplot [darkslategray77]
+table {%
+4.05 100
+4.15 100
+};
+\addplot [black, mark=o, mark size=3, mark options={solid,fill opacity=0,draw=darkslategray77}, only marks]
+table {%
+4.1 13.2599453371266
+4.1 2.26308473023633
+4.1 43.9660512515118
+4.1 13.5842873266244
+};
+\path [draw=darkslategray77, fill=gray130]
+(axis cs:0.2,1.0049557904745e-07)
+--(axis cs:0.4,1.0049557904745e-07)
+--(axis cs:0.4,0.00109313773159634)
+--(axis cs:0.2,0.00109313773159634)
+--(axis cs:0.2,1.0049557904745e-07)
+--cycle;
+\addplot [darkslategray77]
+table {%
+0.3 1.0049557904745e-07
+0.3 0
+};
+\addplot [darkslategray77]
+table {%
+0.3 0.00109313773159634
+0.3 0.00163121067277202
+};
+\addplot [darkslategray77]
+table {%
+0.25 0
+0.35 0
+};
+\addplot [darkslategray77]
+table {%
+0.25 0.00163121067277202
+0.35 0.00163121067277202
+};
+\addplot [black, mark=o, mark size=3, mark options={solid,fill opacity=0,draw=darkslategray77}, only marks]
+table {%
+0.3 0.00768620894099423
+0.3 0.00786959194415094
+0.3 0.00768620894099423
+0.3 0.00786959194415094
+0.3 0.00364254781490621
+0.3 0.00734107102951364
+0.3 0.00364254781490621
+0.3 0.00734107102951364
+0.3 0.00943206025384057
+0.3 0.0037125738539398
+0.3 0.00951963296112049
+0.3 0.00951963296112049
+};
+\path [draw=darkslategray77, fill=gray130]
+(axis cs:1.2,0.00471202400607463)
+--(axis cs:1.4,0.00471202400607463)
+--(axis cs:1.4,0.0533162847191675)
+--(axis cs:1.2,0.0533162847191675)
+--(axis cs:1.2,0.00471202400607463)
+--cycle;
+\addplot [darkslategray77]
+table {%
+1.3 0.00471202400607463
+1.3 0
+};
+\addplot [darkslategray77]
+table {%
+1.3 0.0533162847191675
+1.3 0.09435639153841
+};
+\addplot [darkslategray77]
+table {%
+1.25 0
+1.35 0
+};
+\addplot [darkslategray77]
+table {%
+1.25 0.09435639153841
+1.35 0.09435639153841
+};
+\addplot [black, mark=o, mark size=3, mark options={solid,fill opacity=0,draw=darkslategray77}, only marks]
+table {%
+1.3 1.29757129646422
+1.3 1.37785897890718
+1.3 2.34491626469436
+1.3 2.56029347961817
+1.3 0.52348045158277
+1.3 0.62805717715904
+1.3 0.14930669918111
+1.3 0.18530927827884
+1.3 0.26247043734633
+1.3 0.37572560617582
+1.3 0.39094093914639
+};
+\path [draw=darkslategray77, fill=gray130]
+(axis cs:2.2,0.021477626805395)
+--(axis cs:2.4,0.021477626805395)
+--(axis cs:2.4,0.409402661032715)
+--(axis cs:2.2,0.409402661032715)
+--(axis cs:2.2,0.021477626805395)
+--cycle;
+\addplot [darkslategray77]
+table {%
+2.3 0.021477626805395
+2.3 0.00106314200838244
+};
+\addplot [darkslategray77]
+table {%
+2.3 0.409402661032715
+2.3 0.70966022681049
+};
+\addplot [darkslategray77]
+table {%
+2.25 0.00106314200838244
+2.35 0.00106314200838244
+};
+\addplot [darkslategray77]
+table {%
+2.25 0.70966022681049
+2.35 0.70966022681049
+};
+\addplot [black, mark=o, mark size=3, mark options={solid,fill opacity=0,draw=darkslategray77}, only marks]
+table {%
+2.3 5.64452209279346
+2.3 5.78034398464468
+2.3 3.12081731261197
+2.3 2.97995329446986
+2.3 3.36369177194993
+2.3 3.36369177194993
+2.3 1.25531680705684
+2.3 1.25665177062541
+2.3 2.02327688549173
+2.3 1.03314121672981
+2.3 1.28736985216044
+2.3 1.25983011206012
+};
+\path [draw=darkslategray77, fill=gray130]
+(axis cs:3.2,3.80163321363401)
+--(axis cs:3.4,3.80163321363401)
+--(axis cs:3.4,42.155290083801)
+--(axis cs:3.2,42.155290083801)
+--(axis cs:3.2,3.80163321363401)
+--cycle;
+\addplot [darkslategray77]
+table {%
+3.3 3.80163321363401
+3.3 0.05551999703634
+};
+\addplot [darkslategray77]
+table {%
+3.3 42.155290083801
+3.3 46.9113227056868
+};
+\addplot [darkslategray77]
+table {%
+3.25 0.05551999703634
+3.35 0.05551999703634
+};
+\addplot [darkslategray77]
+table {%
+3.25 46.9113227056868
+3.35 46.9113227056868
+};
+\path [draw=darkslategray77, fill=gray130]
+(axis cs:4.2,12.8256961396406)
+--(axis cs:4.4,12.8256961396406)
+--(axis cs:4.4,49.6067742095386)
+--(axis cs:4.2,49.6067742095386)
+--(axis cs:4.2,12.8256961396406)
+--cycle;
+\addplot [darkslategray77]
+table {%
+4.3 12.8256961396406
+4.3 7.3079891542194
+};
+\addplot [darkslategray77]
+table {%
+4.3 49.6067742095386
+4.3 100
+};
+\addplot [darkslategray77]
+table {%
+4.25 7.3079891542194
+4.35 7.3079891542194
+};
+\addplot [darkslategray77]
+table {%
+4.25 100
+4.35 100
+};
+\addplot [darkslategray77]
+table {%
+-0.4 0.00282784718606901
+-0.2 0.00282784718606901
+};
+\addplot [darkslategray77]
+table {%
+0.6 0.0014078728965809
+0.8 0.0014078728965809
+};
+\addplot [darkslategray77]
+table {%
+1.6 0.00398310359421022
+1.8 0.00398310359421022
+};
+\addplot [darkslategray77]
+table {%
+2.6 2.21044658750946
+2.8 2.21044658750946
+};
+\addplot [darkslategray77]
+table {%
+3.6 100
+3.8 100
+};
+\addplot [darkslategray77]
+table {%
+-0.2 0.00411323950857388
+2.77555756156289e-17 0.00411323950857388
+};
+\addplot [darkslategray77]
+table {%
+0.8 0.00161996474003499
+1 0.00161996474003499
+};
+\addplot [darkslategray77]
+table {%
+1.8 0.00781476341704454
+2 0.00781476341704454
+};
+\addplot [darkslategray77]
+table {%
+2.8 16.7237582410889
+3 16.7237582410889
+};
+\addplot [darkslategray77]
+table {%
+3.8 100
+4 100
+};
+\addplot [darkslategray77]
+table {%
+-2.77555756156289e-17 0.00416158128801503
+0.2 0.00416158128801503
+};
+\addplot [darkslategray77]
+table {%
+1 0.00938617390992538
+1.2 0.00938617390992538
+};
+\addplot [darkslategray77]
+table {%
+2 100
+2.2 100
+};
+\addplot [darkslategray77]
+table {%
+3 100
+3.2 100
+};
+\addplot [darkslategray77]
+table {%
+4 100
+4.2 100
+};
+\addplot [darkslategray77]
+table {%
+0.2 7.42815763539642e-05
+0.4 7.42815763539642e-05
+};
+\addplot [darkslategray77]
+table {%
+1.2 0.00906736618510651
+1.4 0.00906736618510651
+};
+\addplot [darkslategray77]
+table {%
+2.2 0.191838012860425
+2.4 0.191838012860425
+};
+\addplot [darkslategray77]
+table {%
+3.2 15.0745383364631
+3.4 15.0745383364631
+};
+\addplot [darkslategray77]
+table {%
+4.2 41.4203741441358
+4.4 41.4203741441358
+};
+
+\nextgroupplot[
+axis background/.style={fill=lavender234234242},
+axis line style={white},
+log basis y={10},
+scaled x ticks=manual:{}{\pgfmathparse{#1}},
+scaled y ticks=manual:{}{\pgfmathparse{#1}},
+tick align=outside,
+x grid style={white},
+xmajorticks=false,
+xmin=-0.5, xmax=4.5,
+xtick style={color=darkslategray38},
+xticklabels={},
+y grid style={white},
+ylabel=\textcolor{darkslategray38}{Runtime (log scale)},
+ymajorgrids,
+ymajorticks,
+ymin=0.036, ymax=6000,
+ymode=log,
+ytick style={color=darkslategray38},
+ytick={0.036,0.36,3.6,36,360,3600},
+yticklabels={
+  \(\displaystyle 3.6\times 10^{-2}\),
+  \(\displaystyle 3.6\times 10^{-1}\),
+  \(\displaystyle 3.6\times 10^{0}\),
+  \(\displaystyle 3.6\times 10^{1}\),
+  \(\displaystyle 3.6\times 10^{2}\),
+  \(\displaystyle 3.6\times 10^{3}\)
+}
+]
+\path [draw=darkslategray77, fill=white]
+(axis cs:-0.4,2.26871116595419)
+--(axis cs:-0.2,2.26871116595419)
+--(axis cs:-0.2,4.76754151291447)
+--(axis cs:-0.4,4.76754151291447)
+--(axis cs:-0.4,2.26871116595419)
+--cycle;
+\addplot [darkslategray77]
+table {%
+-0.3 2.26871116595419
+-0.3 1.09869289398193
+};
+\addplot [darkslategray77]
+table {%
+-0.3 4.76754151291447
+-0.3 9.1506199836731
+};
+\addplot [darkslategray77]
+table {%
+-0.35 1.09869289398193
+-0.25 1.09869289398193
+};
+\addplot [darkslategray77]
+table {%
+-0.35 9.1506199836731
+-0.25 9.1506199836731
+};
+\addplot [black, mark=o, mark size=3, mark options={solid,fill opacity=0,draw=darkslategray77}, only marks]
+table {%
+-0.3 0.617192983627319
+-0.3 0.473899841308594
+-0.3 0.620143175125122
+-0.3 0.477431058883667
+-0.3 30.2641580104828
+-0.3 14.7258040904999
+};
+\path [draw=darkslategray77, fill=white]
+(axis cs:0.6,77.3099636662638)
+--(axis cs:0.8,77.3099636662638)
+--(axis cs:0.8,260.445650918301)
+--(axis cs:0.6,260.445650918301)
+--(axis cs:0.6,77.3099636662638)
+--cycle;
+\addplot [darkslategray77]
+table {%
+0.7 77.3099636662638
+0.7 15.6860361099243
+};
+\addplot [darkslategray77]
+table {%
+0.7 260.445650918301
+0.7 1144.18928813934
+};
+\addplot [darkslategray77]
+table {%
+0.65 15.6860361099243
+0.75 15.6860361099243
+};
+\addplot [darkslategray77]
+table {%
+0.65 1144.18928813934
+0.75 1144.18928813934
+};
+\path [draw=darkslategray77, fill=white]
+(axis cs:1.6,887.369805222838)
+--(axis cs:1.8,887.369805222838)
+--(axis cs:1.8,3600.09827303535)
+--(axis cs:1.6,3600.09827303535)
+--(axis cs:1.6,887.369805222838)
+--cycle;
+\addplot [darkslategray77]
+table {%
+1.7 887.369805222838
+1.7 196.345447063446
+};
+\addplot [darkslategray77]
+table {%
+1.7 3600.09827303535
+1.7 3600.38953495026
+};
+\addplot [darkslategray77]
+table {%
+1.65 196.345447063446
+1.75 196.345447063446
+};
+\addplot [darkslategray77]
+table {%
+1.65 3600.38953495026
+1.75 3600.38953495026
+};
+\path [draw=darkslategray77, fill=white]
+(axis cs:2.6,3600.22683791576)
+--(axis cs:2.8,3600.22683791576)
+--(axis cs:2.8,3600.38084149105)
+--(axis cs:2.6,3600.38084149105)
+--(axis cs:2.6,3600.22683791576)
+--cycle;
+\addplot [darkslategray77]
+table {%
+2.7 3600.22683791576
+2.7 3600.03791594505
+};
+\addplot [darkslategray77]
+table {%
+2.7 3600.38084149105
+2.7 3600.42983412743
+};
+\addplot [darkslategray77]
+table {%
+2.65 3600.03791594505
+2.75 3600.03791594505
+};
+\addplot [darkslategray77]
+table {%
+2.65 3600.42983412743
+2.75 3600.42983412743
+};
+\addplot [black, mark=o, mark size=3, mark options={solid,fill opacity=0,draw=darkslategray77}, only marks]
+table {%
+2.7 1945.18206906319
+};
+\path [draw=darkslategray77, fill=white]
+(axis cs:3.6,3600.22122492673)
+--(axis cs:3.8,3600.22122492673)
+--(axis cs:3.8,3600.79170381084)
+--(axis cs:3.6,3600.79170381084)
+--(axis cs:3.6,3600.22122492673)
+--cycle;
+\addplot [darkslategray77]
+table {%
+3.7 3600.22122492673
+3.7 3600.10244584084
+};
+\addplot [darkslategray77]
+table {%
+3.7 3600.79170381084
+3.7 3600.94338703156
+};
+\addplot [darkslategray77]
+table {%
+3.65 3600.10244584084
+3.75 3600.10244584084
+};
+\addplot [darkslategray77]
+table {%
+3.65 3600.94338703156
+3.75 3600.94338703156
+};
+\path [draw=darkslategray77, fill=lightgray209]
+(axis cs:-0.2,8.33520474274839)
+--(axis cs:2.77555756156289e-17,8.33520474274839)
+--(axis cs:2.77555756156289e-17,25.3832988478104)
+--(axis cs:-0.2,25.3832988478104)
+--(axis cs:-0.2,8.33520474274839)
+--cycle;
+\addplot [darkslategray77]
+table {%
+-0.1 8.33520474274839
+-0.1 2.46667194366455
+};
+\addplot [darkslategray77]
+table {%
+-0.1 25.3832988478104
+-0.1 59.106782913208
+};
+\addplot [darkslategray77]
+table {%
+-0.15 2.46667194366455
+-0.05 2.46667194366455
+};
+\addplot [darkslategray77]
+table {%
+-0.15 59.106782913208
+-0.05 59.106782913208
+};
+\addplot [black, mark=o, mark size=3, mark options={solid,fill opacity=0,draw=darkslategray77}, only marks]
+table {%
+-0.1 1.01596307754517
+-0.1 1.00122499465942
+-0.1 167.959690093994
+-0.1 175.893085956574
+-0.1 3600.01144719124
+-0.1 3600.01951599121
+};
+\path [draw=darkslategray77, fill=lightgray209]
+(axis cs:0.8,237.878643921998)
+--(axis cs:1,237.878643921998)
+--(axis cs:1,1472.45856363723)
+--(axis cs:0.8,1472.45856363723)
+--(axis cs:0.8,237.878643921998)
+--cycle;
+\addplot [darkslategray77]
+table {%
+0.9 237.878643921998
+0.9 73.853630065918
+};
+\addplot [darkslategray77]
+table {%
+0.9 1472.45856363723
+0.9 3600.1668870449
+};
+\addplot [darkslategray77]
+table {%
+0.85 73.853630065918
+0.95 73.853630065918
+};
+\addplot [darkslategray77]
+table {%
+0.85 3600.1668870449
+0.95 3600.1668870449
+};
+\path [draw=darkslategray77, fill=lightgray209]
+(axis cs:1.8,3157.52907811968)
+--(axis cs:2,3157.52907811968)
+--(axis cs:2,3600.21001505835)
+--(axis cs:1.8,3600.21001505835)
+--(axis cs:1.8,3157.52907811968)
+--cycle;
+\addplot [darkslategray77]
+table {%
+1.9 3157.52907811968
+1.9 3154.87415504456
+};
+\addplot [darkslategray77]
+table {%
+1.9 3600.21001505835
+1.9 3600.2913839817
+};
+\addplot [darkslategray77]
+table {%
+1.85 3154.87415504456
+1.95 3154.87415504456
+};
+\addplot [darkslategray77]
+table {%
+1.85 3600.2913839817
+1.95 3600.2913839817
+};
+\addplot [black, mark=o, mark size=3, mark options={solid,fill opacity=0,draw=darkslategray77}, only marks]
+table {%
+1.9 2046.05478405952
+1.9 1579.55667614937
+1.9 1609.09844398499
+1.9 1892.75414299965
+1.9 695.234676837921
+1.9 493.595369815826
+1.9 1993.0731189251
+1.9 1966.48952293396
+1.9 1607.5165450573
+1.9 2288.26890802384
+1.9 2228.46240711212
+1.9 2190.32612490654
+1.9 891.37403512001
+1.9 2482.00583004951
+};
+\path [draw=darkslategray77, fill=lightgray209]
+(axis cs:2.8,3600.17615949141)
+--(axis cs:3,3600.17615949141)
+--(axis cs:3,3600.53815602007)
+--(axis cs:2.8,3600.53815602007)
+--(axis cs:2.8,3600.17615949141)
+--cycle;
+\addplot [darkslategray77]
+table {%
+2.9 3600.17615949141
+2.9 3600.09494209289
+};
+\addplot [darkslategray77]
+table {%
+2.9 3600.53815602007
+2.9 3600.98611402512
+};
+\addplot [darkslategray77]
+table {%
+2.85 3600.09494209289
+2.95 3600.09494209289
+};
+\addplot [darkslategray77]
+table {%
+2.85 3600.98611402512
+2.95 3600.98611402512
+};
+\path [draw=darkslategray77, fill=lightgray209]
+(axis cs:3.8,3600.39331817627)
+--(axis cs:4,3600.39331817627)
+--(axis cs:4,3601.03802800179)
+--(axis cs:3.8,3601.03802800179)
+--(axis cs:3.8,3600.39331817627)
+--cycle;
+\addplot [darkslategray77]
+table {%
+3.9 3600.39331817627
+3.9 3600.2157459259
+};
+\addplot [darkslategray77]
+table {%
+3.9 3601.03802800179
+3.9 3601.09951591492
+};
+\addplot [darkslategray77]
+table {%
+3.85 3600.2157459259
+3.95 3600.2157459259
+};
+\addplot [darkslategray77]
+table {%
+3.85 3601.09951591492
+3.95 3601.09951591492
+};
+\path [draw=darkslategray77, fill=darkgray173]
+(axis cs:-2.77555756156289e-17,20.2039631270003)
+--(axis cs:0.2,20.2039631270003)
+--(axis cs:0.2,124.006682726397)
+--(axis cs:-2.77555756156289e-17,124.006682726397)
+--(axis cs:-2.77555756156289e-17,20.2039631270003)
+--cycle;
+\addplot [darkslategray77]
+table {%
+0.1 20.2039631270003
+0.1 2.59157299995422
+};
+\addplot [darkslategray77]
+table {%
+0.1 124.006682726397
+0.1 340.912337779999
+};
+\addplot [darkslategray77]
+table {%
+0.05 2.59157299995422
+0.15 2.59157299995422
+};
+\addplot [darkslategray77]
+table {%
+0.05 340.912337779999
+0.15 340.912337779999
+};
+\addplot [black, mark=o, mark size=3, mark options={solid,fill opacity=0,draw=darkslategray77}, only marks]
+table {%
+0.1 3600.02227306366
+0.1 3600.0270459652
+};
+\path [draw=darkslategray77, fill=darkgray173]
+(axis cs:1,1689.99149130065)
+--(axis cs:1.2,1689.99149130065)
+--(axis cs:1.2,3600.16391092539)
+--(axis cs:1,3600.16391092539)
+--(axis cs:1,1689.99149130065)
+--cycle;
+\addplot [darkslategray77]
+table {%
+1.1 1689.99149130065
+1.1 795.696887016297
+};
+\addplot [darkslategray77]
+table {%
+1.1 3600.16391092539
+1.1 3600.36510300636
+};
+\addplot [darkslategray77]
+table {%
+1.05 795.696887016297
+1.15 795.696887016297
+};
+\addplot [darkslategray77]
+table {%
+1.05 3600.36510300636
+1.15 3600.36510300636
+};
+\addplot [black, mark=o, mark size=3, mark options={solid,fill opacity=0,draw=darkslategray77}, only marks]
+table {%
+1.1 430.655117034912
+1.1 375.4549908638
+1.1 424.614044904709
+1.1 428.012333869934
+1.1 543.191950082779
+1.1 455.883782148361
+};
+\path [draw=darkslategray77, fill=darkgray173]
+(axis cs:2,3600.29157740917)
+--(axis cs:2.2,3600.29157740917)
+--(axis cs:2.2,3600.38892006606)
+--(axis cs:2,3600.38892006606)
+--(axis cs:2,3600.29157740917)
+--cycle;
+\addplot [darkslategray77]
+table {%
+2.1 3600.29157740917
+2.1 3600.24243617058
+};
+\addplot [darkslategray77]
+table {%
+2.1 3600.38892006606
+2.1 3600.51521015167
+};
+\addplot [darkslategray77]
+table {%
+2.05 3600.24243617058
+2.15 3600.24243617058
+};
+\addplot [darkslategray77]
+table {%
+2.05 3600.51521015167
+2.15 3600.51521015167
+};
+\addplot [black, mark=o, mark size=3, mark options={solid,fill opacity=0,draw=darkslategray77}, only marks]
+table {%
+2.1 3047.2943880558
+2.1 3008.49679899216
+2.1 3133.10526418686
+2.1 3600.53529310226
+};
+\path [draw=darkslategray77, fill=darkgray173]
+(axis cs:3,3600.189507067)
+--(axis cs:3.2,3600.189507067)
+--(axis cs:3.2,3600.83749113805)
+--(axis cs:3,3600.83749113805)
+--(axis cs:3,3600.189507067)
+--cycle;
+\addplot [darkslategray77]
+table {%
+3.1 3600.189507067
+3.1 3600.13245105743
+};
+\addplot [darkslategray77]
+table {%
+3.1 3600.83749113805
+3.1 3601.18598079682
+};
+\addplot [darkslategray77]
+table {%
+3.05 3600.13245105743
+3.15 3600.13245105743
+};
+\addplot [darkslategray77]
+table {%
+3.05 3601.18598079682
+3.15 3601.18598079682
+};
+\path [draw=darkslategray77, fill=darkgray173]
+(axis cs:4,3600.31053116961)
+--(axis cs:4.2,3600.31053116961)
+--(axis cs:4.2,3600.66944265287)
+--(axis cs:4,3600.66944265287)
+--(axis cs:4,3600.31053116961)
+--cycle;
+\addplot [darkslategray77]
+table {%
+4.1 3600.31053116961
+4.1 3600.25388002396
+};
+\addplot [darkslategray77]
+table {%
+4.1 3600.66944265287
+4.1 3600.66944265287
+};
+\addplot [darkslategray77]
+table {%
+4.05 3600.25388002396
+4.15 3600.25388002396
+};
+\addplot [darkslategray77]
+table {%
+4.05 3600.66944265287
+4.15 3600.66944265287
+};
+\addplot [black, mark=o, mark size=3, mark options={solid,fill opacity=0,draw=darkslategray77}, only marks]
+table {%
+4.1 3601.6182858944
+};
+\path [draw=darkslategray77, fill=gray130]
+(axis cs:0.2,19.9925807385774)
+--(axis cs:0.4,19.9925807385774)
+--(axis cs:0.4,70.4890854878717)
+--(axis cs:0.2,70.4890854878717)
+--(axis cs:0.2,19.9925807385774)
+--cycle;
+\addplot [darkslategray77]
+table {%
+0.3 19.9925807385774
+0.3 4.37386703491211
+};
+\addplot [darkslategray77]
+table {%
+0.3 70.4890854878717
+0.3 186.300193071365
+};
+\addplot [darkslategray77]
+table {%
+0.25 4.37386703491211
+0.35 4.37386703491211
+};
+\addplot [darkslategray77]
+table {%
+0.25 186.300193071365
+0.35 186.300193071365
+};
+\path [draw=darkslategray77, fill=gray130]
+(axis cs:1.2,891.933046481747)
+--(axis cs:1.4,891.933046481747)
+--(axis cs:1.4,3600.23272299543)
+--(axis cs:1.2,3600.23272299543)
+--(axis cs:1.2,891.933046481747)
+--cycle;
+\addplot [darkslategray77]
+table {%
+1.3 891.933046481747
+1.3 148.55437707901
+};
+\addplot [darkslategray77]
+table {%
+1.3 3600.23272299543
+1.3 3600.70693778992
+};
+\addplot [darkslategray77]
+table {%
+1.25 148.55437707901
+1.35 148.55437707901
+};
+\addplot [darkslategray77]
+table {%
+1.25 3600.70693778992
+1.35 3600.70693778992
+};
+\addplot [black, mark=o, mark size=3, mark options={solid,fill opacity=0,draw=darkslategray77}, only marks]
+table {%
+1.3 72.8485679626465
+1.3 106.469903945923
+};
+\path [draw=darkslategray77, fill=gray130]
+(axis cs:2.2,3600.47040903564)
+--(axis cs:2.4,3600.47040903564)
+--(axis cs:2.4,3600.6082916254)
+--(axis cs:2.2,3600.6082916254)
+--(axis cs:2.2,3600.47040903564)
+--cycle;
+\addplot [darkslategray77]
+table {%
+2.3 3600.47040903564
+2.3 3600.27964997291
+};
+\addplot [darkslategray77]
+table {%
+2.3 3600.6082916254
+2.3 3600.79825806618
+};
+\addplot [darkslategray77]
+table {%
+2.25 3600.27964997291
+2.35 3600.27964997291
+};
+\addplot [darkslategray77]
+table {%
+2.25 3600.79825806618
+2.35 3600.79825806618
+};
+\addplot [black, mark=o, mark size=3, mark options={solid,fill opacity=0,draw=darkslategray77}, only marks]
+table {%
+2.3 1504.11519217491
+2.3 1507.44776201248
+2.3 3600.16198086738
+2.3 3600.19200992584
+2.3 3600.06376719475
+2.3 3600.19898104668
+2.3 3600.20985507965
+2.3 3600.22050404549
+};
+\path [draw=darkslategray77, fill=gray130]
+(axis cs:3.2,3600.23490470632)
+--(axis cs:3.4,3600.23490470632)
+--(axis cs:3.4,3600.8230783907)
+--(axis cs:3.2,3600.8230783907)
+--(axis cs:3.2,3600.23490470632)
+--cycle;
+\addplot [darkslategray77]
+table {%
+3.3 3600.23490470632
+3.3 3600.14831185341
+};
+\addplot [darkslategray77]
+table {%
+3.3 3600.8230783907
+3.3 3601.67202591896
+};
+\addplot [darkslategray77]
+table {%
+3.25 3600.14831185341
+3.35 3600.14831185341
+};
+\addplot [darkslategray77]
+table {%
+3.25 3601.67202591896
+3.35 3601.67202591896
+};
+\addplot [black, mark=o, mark size=3, mark options={solid,fill opacity=0,draw=darkslategray77}, only marks]
+table {%
+3.3 3602.1657140255
+3.3 3602.01010799408
+3.3 3602.0576851368
+};
+\path [draw=darkslategray77, fill=gray130]
+(axis cs:4.2,3600.33009362113)
+--(axis cs:4.4,3600.33009362113)
+--(axis cs:4.4,3600.70736963635)
+--(axis cs:4.2,3600.70736963635)
+--(axis cs:4.2,3600.33009362113)
+--cycle;
+\addplot [darkslategray77]
+table {%
+4.3 3600.33009362113
+4.3 3600.25183296204
+};
+\addplot [darkslategray77]
+table {%
+4.3 3600.70736963635
+4.3 3600.93824100495
+};
+\addplot [darkslategray77]
+table {%
+4.25 3600.25183296204
+4.35 3600.25183296204
+};
+\addplot [darkslategray77]
+table {%
+4.25 3600.93824100495
+4.35 3600.93824100495
+};
+\addplot [black, mark=o, mark size=3, mark options={solid,fill opacity=0,draw=darkslategray77}, only marks]
+table {%
+4.3 3601.64351320267
+4.3 3602.11490511894
+4.3 3602.00066804886
+4.3 3602.1009991169
+4.3 3602.09011697769
+4.3 3602.36336708069
+4.3 3602.28519511223
+};
+\addplot [darkslategray77]
+table {%
+-0.4 3.6056476196462
+-0.2 3.6056476196462
+};
+\addplot [darkslategray77]
+table {%
+0.6 166.664444040308
+0.8 166.664444040308
+};
+\addplot [darkslategray77]
+table {%
+1.6 1716.42885116645
+1.8 1716.42885116645
+};
+\addplot [darkslategray77]
+table {%
+2.6 3600.32218909264
+2.8 3600.32218909264
+};
+\addplot [darkslategray77]
+table {%
+3.6 3600.66458171437
+3.8 3600.66458171437
+};
+\addplot [darkslategray77]
+table {%
+-0.2 14.4671122981635
+2.77555756156289e-17 14.4671122981635
+};
+\addplot [darkslategray77]
+table {%
+0.8 596.491250781597
+1 596.491250781597
+};
+\addplot [darkslategray77]
+table {%
+1.8 3600.1533004045
+2 3600.1533004045
+};
+\addplot [darkslategray77]
+table {%
+2.8 3600.46402108669
+3 3600.46402108669
+};
+\addplot [darkslategray77]
+table {%
+3.8 3600.83071613312
+4 3600.83071613312
+};
+\addplot [darkslategray77]
+table {%
+-2.77555756156289e-17 38.2205729143933
+0.2 38.2205729143933
+};
+\addplot [darkslategray77]
+table {%
+1 3600.09671509239
+1.2 3600.09671509239
+};
+\addplot [darkslategray77]
+table {%
+2 3600.35353684425
+2.2 3600.35353684425
+};
+\addplot [darkslategray77]
+table {%
+3 3600.29625365241
+3.2 3600.29625365241
+};
+\addplot [darkslategray77]
+table {%
+4 3600.34131608426
+4.2 3600.34131608426
+};
+\addplot [darkslategray77]
+table {%
+0.2 41.5353568327845
+0.4 41.5353568327845
+};
+\addplot [darkslategray77]
+table {%
+1.2 3343.72855783628
+1.4 3343.72855783628
+};
+\addplot [darkslategray77]
+table {%
+2.2 3600.55324053568
+2.4 3600.55324053568
+};
+\addplot [darkslategray77]
+table {%
+3.2 3600.31977401642
+3.4 3600.31977401642
+};
+\addplot [darkslategray77]
+table {%
+4.2 3600.46259295886
+4.4 3600.46259295886
+};
+
+\nextgroupplot[
+axis background/.style={fill=lavender234234242},
+axis line style={white},
+log basis y={10},
+scaled x ticks=manual:{}{\pgfmathparse{#1}},
+tick align=outside,
+x grid style={white},
+xmin=-0.5, xmax=4.5,
+xmajorticks=false,
+xtick style={color=darkslategray38},
+xticklabels={},
+y grid style={white},
+ymajorgrids,
+ymode=log,
+ymajorticks=false,
+ymin=0.036, ymax=6000,
+ytick={0.036,0.36,3.6,36,360,3600},
+yticklabels={}
+]
+\path [draw=darkslategray77, fill=white]
+(axis cs:-0.4,0.995811746235593)
+--(axis cs:-0.2,0.995811746235593)
+--(axis cs:-0.2,2.95458564050697)
+--(axis cs:-0.4,2.95458564050697)
+--(axis cs:-0.4,0.995811746235593)
+--cycle;
+\addplot [darkslategray77]
+table {%
+-0.3 0.995811746235593
+-0.3 0.246875047683716
+};
+\addplot [darkslategray77]
+table {%
+-0.3 2.95458564050697
+-0.3 14.2064368724823
+};
+\addplot [darkslategray77]
+table {%
+-0.35 0.246875047683716
+-0.25 0.246875047683716
+};
+\addplot [darkslategray77]
+table {%
+-0.35 14.2064368724823
+-0.25 14.2064368724823
+};
+\path [draw=darkslategray77, fill=white]
+(axis cs:0.6,30.003081895177)
+--(axis cs:0.8,30.003081895177)
+--(axis cs:0.8,87.0734531625573)
+--(axis cs:0.6,87.0734531625573)
+--(axis cs:0.6,30.003081895177)
+--cycle;
+\addplot [darkslategray77]
+table {%
+0.7 30.003081895177
+0.7 6.96419501304626
+};
+\addplot [darkslategray77]
+table {%
+0.7 87.0734531625573
+0.7 327.344153165817
+};
+\addplot [darkslategray77]
+table {%
+0.65 6.96419501304626
+0.75 6.96419501304626
+};
+\addplot [darkslategray77]
+table {%
+0.65 327.344153165817
+0.75 327.344153165817
+};
+\addplot [black, mark=o, mark size=3, mark options={solid,fill opacity=0,draw=darkslategray77}, only marks]
+table {%
+0.7 5.07674598693848
+};
+\path [draw=darkslategray77, fill=white]
+(axis cs:1.6,259.51241860013)
+--(axis cs:1.8,259.51241860013)
+--(axis cs:1.8,1335.59472626584)
+--(axis cs:1.6,1335.59472626584)
+--(axis cs:1.6,259.51241860013)
+--cycle;
+\addplot [darkslategray77]
+table {%
+1.7 259.51241860013
+1.7 87.5220141410828
+};
+\addplot [darkslategray77]
+table {%
+1.7 1335.59472626584
+1.7 3600.19502902031
+};
+\addplot [darkslategray77]
+table {%
+1.65 87.5220141410828
+1.75 87.5220141410828
+};
+\addplot [darkslategray77]
+table {%
+1.65 3600.19502902031
+1.75 3600.19502902031
+};
+\addplot [black, mark=o, mark size=3, mark options={solid,fill opacity=0,draw=darkslategray77}, only marks]
+table {%
+1.7 21.8359971046448
+};
+\path [draw=darkslategray77, fill=white]
+(axis cs:2.6,3025.23166489601)
+--(axis cs:2.8,3025.23166489601)
+--(axis cs:2.8,3600.76023507118)
+--(axis cs:2.6,3600.76023507118)
+--(axis cs:2.6,3025.23166489601)
+--cycle;
+\addplot [darkslategray77]
+table {%
+2.7 3025.23166489601
+2.7 2583.48386907577
+};
+\addplot [darkslategray77]
+table {%
+2.7 3600.76023507118
+2.7 3601.17034387588
+};
+\addplot [darkslategray77]
+table {%
+2.65 2583.48386907577
+2.75 2583.48386907577
+};
+\addplot [darkslategray77]
+table {%
+2.65 3601.17034387588
+2.75 3601.17034387588
+};
+\addplot [black, mark=o, mark size=3, mark options={solid,fill opacity=0,draw=darkslategray77}, only marks]
+table {%
+2.7 1317.69056892395
+2.7 1544.80308794975
+2.7 2014.08719205856
+2.7 1233.39130401611
+2.7 843.003814935684
+2.7 1731.30000901222
+2.7 1179.12459301949
+2.7 1223.93626594543
+};
+\path [draw=darkslategray77, fill=white]
+(axis cs:3.6,3451.4190675372)
+--(axis cs:3.8,3451.4190675372)
+--(axis cs:3.8,3601.55107706472)
+--(axis cs:3.6,3601.55107706472)
+--(axis cs:3.6,3451.4190675372)
+--cycle;
+\addplot [darkslategray77]
+table {%
+3.7 3451.4190675372
+3.7 3308.72085189819
+};
+\addplot [darkslategray77]
+table {%
+3.7 3601.55107706472
+3.7 3602.57551383972
+};
+\addplot [darkslategray77]
+table {%
+3.65 3308.72085189819
+3.75 3308.72085189819
+};
+\addplot [darkslategray77]
+table {%
+3.65 3602.57551383972
+3.75 3602.57551383972
+};
+\addplot [black, mark=o, mark size=3, mark options={solid,fill opacity=0,draw=darkslategray77}, only marks]
+table {%
+3.7 2824.21988511085
+3.7 2819.04159998894
+3.7 1257.64522385597
+};
+\path [draw=darkslategray77, fill=lightgray209]
+(axis cs:-0.2,2.64996218641356)
+--(axis cs:2.77555756156289e-17,2.64996218641356)
+--(axis cs:2.77555756156289e-17,13.6753806211111)
+--(axis cs:-0.2,13.6753806211111)
+--(axis cs:-0.2,2.64996218641356)
+--cycle;
+\addplot [darkslategray77]
+table {%
+-0.1 2.64996218641356
+-0.1 1.08677291870117
+};
+\addplot [darkslategray77]
+table {%
+-0.1 13.6753806211111
+-0.1 76.4368309974671
+};
+\addplot [darkslategray77]
+table {%
+-0.15 1.08677291870117
+-0.05 1.08677291870117
+};
+\addplot [darkslategray77]
+table {%
+-0.15 76.4368309974671
+-0.05 76.4368309974671
+};
+\addplot [black, mark=o, mark size=3, mark options={solid,fill opacity=0,draw=darkslategray77}, only marks]
+table {%
+-0.1 3600.01775693893
+};
+\path [draw=darkslategray77, fill=lightgray209]
+(axis cs:0.8,110.486435250824)
+--(axis cs:1,110.486435250824)
+--(axis cs:1,327.178701433456)
+--(axis cs:0.8,327.178701433456)
+--(axis cs:0.8,110.486435250824)
+--cycle;
+\addplot [darkslategray77]
+table {%
+0.9 110.486435250824
+0.9 28.5623099803924
+};
+\addplot [darkslategray77]
+table {%
+0.9 327.178701433456
+0.9 1566.63360595703
+};
+\addplot [darkslategray77]
+table {%
+0.85 28.5623099803924
+0.95 28.5623099803924
+};
+\addplot [darkslategray77]
+table {%
+0.85 1566.63360595703
+0.95 1566.63360595703
+};
+\addplot [black, mark=o, mark size=3, mark options={solid,fill opacity=0,draw=darkslategray77}, only marks]
+table {%
+0.9 3600.06074905395
+};
+\path [draw=darkslategray77, fill=lightgray209]
+(axis cs:1.8,1723.65892997313)
+--(axis cs:2,1723.65892997313)
+--(axis cs:2,3600.4346689571)
+--(axis cs:1.8,3600.4346689571)
+--(axis cs:1.8,1723.65892997313)
+--cycle;
+\addplot [darkslategray77]
+table {%
+1.9 1723.65892997313
+1.9 769.512356042862
+};
+\addplot [darkslategray77]
+table {%
+1.9 3600.4346689571
+1.9 3600.72716808319
+};
+\addplot [darkslategray77]
+table {%
+1.85 769.512356042862
+1.95 769.512356042862
+};
+\addplot [darkslategray77]
+table {%
+1.85 3600.72716808319
+1.95 3600.72716808319
+};
+\addplot [black, mark=o, mark size=3, mark options={solid,fill opacity=0,draw=darkslategray77}, only marks]
+table {%
+1.9 527.107619047165
+1.9 569.166436910629
+1.9 314.561191082001
+1.9 317.324247121811
+1.9 303.693960905075
+1.9 308.628530025482
+1.9 378.494798898697
+};
+\path [draw=darkslategray77, fill=lightgray209]
+(axis cs:2.8,3600.33574401267)
+--(axis cs:3,3600.33574401267)
+--(axis cs:3,3602.01986088447)
+--(axis cs:2.8,3602.01986088447)
+--(axis cs:2.8,3600.33574401267)
+--cycle;
+\addplot [darkslategray77]
+table {%
+2.9 3600.33574401267
+2.9 3600.18250203133
+};
+\addplot [darkslategray77]
+table {%
+2.9 3602.01986088447
+2.9 3603.21636295318
+};
+\addplot [darkslategray77]
+table {%
+2.85 3600.18250203133
+2.95 3600.18250203133
+};
+\addplot [darkslategray77]
+table {%
+2.85 3603.21636295318
+2.95 3603.21636295318
+};
+\path [draw=darkslategray77, fill=lightgray209]
+(axis cs:3.8,3600.54370075275)
+--(axis cs:4,3600.54370075275)
+--(axis cs:4,3601.23711993424)
+--(axis cs:3.8,3601.23711993424)
+--(axis cs:3.8,3600.54370075275)
+--cycle;
+\addplot [darkslategray77]
+table {%
+3.9 3600.54370075275
+3.9 3600.52155804634
+};
+\addplot [darkslategray77]
+table {%
+3.9 3601.23711993424
+3.9 3601.30001807213
+};
+\addplot [darkslategray77]
+table {%
+3.85 3600.52155804634
+3.95 3600.52155804634
+};
+\addplot [darkslategray77]
+table {%
+3.85 3601.30001807213
+3.95 3601.30001807213
+};
+\addplot [black, mark=o, mark size=3, mark options={solid,fill opacity=0,draw=darkslategray77}, only marks]
+table {%
+3.9 2916.80854105949
+3.9 3605.96362185478
+3.9 3607.66584300995
+};
+\path [draw=darkslategray77, fill=darkgray173]
+(axis cs:-2.77555756156289e-17,7.06946634011477)
+--(axis cs:0.2,7.06946634011477)
+--(axis cs:0.2,51.0352051935965)
+--(axis cs:-2.77555756156289e-17,51.0352051935965)
+--(axis cs:-2.77555756156289e-17,7.06946634011477)
+--cycle;
+\addplot [darkslategray77]
+table {%
+0.1 7.06946634011477
+0.1 2.41023993492126
+};
+\addplot [darkslategray77]
+table {%
+0.1 51.0352051935965
+0.1 118.494157075882
+};
+\addplot [darkslategray77]
+table {%
+0.05 2.41023993492126
+0.15 2.41023993492126
+};
+\addplot [darkslategray77]
+table {%
+0.05 118.494157075882
+0.15 118.494157075882
+};
+\addplot [black, mark=o, mark size=3, mark options={solid,fill opacity=0,draw=darkslategray77}, only marks]
+table {%
+0.1 3600.0360789299
+0.1 3600.04679107666
+};
+\path [draw=darkslategray77, fill=darkgray173]
+(axis cs:1,676.697288364921)
+--(axis cs:1.2,676.697288364921)
+--(axis cs:1.2,3600.28414367343)
+--(axis cs:1,3600.28414367343)
+--(axis cs:1,676.697288364921)
+--cycle;
+\addplot [darkslategray77]
+table {%
+1.1 676.697288364921
+1.1 92.30189204216
+};
+\addplot [darkslategray77]
+table {%
+1.1 3600.28414367343
+1.1 3600.52504897118
+};
+\addplot [darkslategray77]
+table {%
+1.05 92.30189204216
+1.15 92.30189204216
+};
+\addplot [darkslategray77]
+table {%
+1.05 3600.52504897118
+1.15 3600.52504897118
+};
+\addplot [black, mark=o, mark size=3, mark options={solid,fill opacity=0,draw=darkslategray77}, only marks]
+table {%
+1.1 54.4321930408478
+};
+\path [draw=darkslategray77, fill=darkgray173]
+(axis cs:2,3601.08086673733)
+--(axis cs:2.2,3601.08086673733)
+--(axis cs:2.2,3601.48609602062)
+--(axis cs:2,3601.48609602062)
+--(axis cs:2,3601.08086673733)
+--cycle;
+\addplot [darkslategray77]
+table {%
+2.1 3601.08086673733
+2.1 3600.75506997108
+};
+\addplot [darkslategray77]
+table {%
+2.1 3601.48609602062
+2.1 3601.53252792358
+};
+\addplot [darkslategray77]
+table {%
+2.05 3600.75506997108
+2.15 3600.75506997108
+};
+\addplot [darkslategray77]
+table {%
+2.05 3601.53252792358
+2.15 3601.53252792358
+};
+\addplot [black, mark=o, mark size=3, mark options={solid,fill opacity=0,draw=darkslategray77}, only marks]
+table {%
+2.1 3600.3885769844
+2.1 3600.35355997086
+2.1 3179.62032914162
+2.1 3603.19415307045
+};
+\path [draw=darkslategray77, fill=darkgray173]
+(axis cs:3,3600.87779402733)
+--(axis cs:3.2,3600.87779402733)
+--(axis cs:3.2,3608.65631294251)
+--(axis cs:3,3608.65631294251)
+--(axis cs:3,3600.87779402733)
+--cycle;
+\addplot [darkslategray77]
+table {%
+3.1 3600.87779402733
+3.1 3600.59979200363
+};
+\addplot [darkslategray77]
+table {%
+3.1 3608.65631294251
+3.1 3614.58241891861
+};
+\addplot [darkslategray77]
+table {%
+3.05 3600.59979200363
+3.15 3600.59979200363
+};
+\addplot [darkslategray77]
+table {%
+3.05 3614.58241891861
+3.15 3614.58241891861
+};
+\addplot [black, mark=o, mark size=3, mark options={solid,fill opacity=0,draw=darkslategray77}, only marks]
+table {%
+3.1 3623.25844597816
+};
+\path [draw=darkslategray77, fill=darkgray173]
+(axis cs:4,3612.27144878399)
+--(axis cs:4.2,3612.27144878399)
+--(axis cs:4.2,3617.64443446399)
+--(axis cs:4,3617.64443446399)
+--(axis cs:4,3612.27144878399)
+--cycle;
+\addplot [darkslategray77]
+table {%
+4.1 3612.27144878399
+4.1 3612.27144878399
+};
+\addplot [darkslategray77]
+table {%
+4.1 3617.64443446399
+4.1 3621.24574995041
+};
+\addplot [darkslategray77]
+table {%
+4.05 3612.27144878399
+4.15 3612.27144878399
+};
+\addplot [darkslategray77]
+table {%
+4.05 3621.24574995041
+4.15 3621.24574995041
+};
+\addplot [black, mark=o, mark size=3, mark options={solid,fill opacity=0,draw=darkslategray77}, only marks]
+table {%
+4.1 3602.41061186791
+};
+\path [draw=darkslategray77, fill=gray130]
+(axis cs:0.2,7.46105617714877)
+--(axis cs:0.4,7.46105617714877)
+--(axis cs:0.4,26.7777534562399)
+--(axis cs:0.2,26.7777534562399)
+--(axis cs:0.2,7.46105617714877)
+--cycle;
+\addplot [darkslategray77]
+table {%
+0.3 7.46105617714877
+0.3 2.70591688156128
+};
+\addplot [darkslategray77]
+table {%
+0.3 26.7777534562399
+0.3 130.226570129395
+};
+\addplot [darkslategray77]
+table {%
+0.25 2.70591688156128
+0.35 2.70591688156128
+};
+\addplot [darkslategray77]
+table {%
+0.25 130.226570129395
+0.35 130.226570129395
+};
+\path [draw=darkslategray77, fill=gray130]
+(axis cs:1.2,222.245644270498)
+--(axis cs:1.4,222.245644270498)
+--(axis cs:1.4,3600.71270157619)
+--(axis cs:1.2,3600.71270157619)
+--(axis cs:1.2,222.245644270498)
+--cycle;
+\addplot [darkslategray77]
+table {%
+1.3 222.245644270498
+1.3 84.8447868824005
+};
+\addplot [darkslategray77]
+table {%
+1.3 3600.71270157619
+1.3 3601.53769183159
+};
+\addplot [darkslategray77]
+table {%
+1.25 84.8447868824005
+1.35 84.8447868824005
+};
+\addplot [darkslategray77]
+table {%
+1.25 3601.53769183159
+1.35 3601.53769183159
+};
+\path [draw=darkslategray77, fill=gray130]
+(axis cs:2.2,3601.77311209825)
+--(axis cs:2.4,3601.77311209825)
+--(axis cs:2.4,3604.09811931746)
+--(axis cs:2.2,3604.09811931746)
+--(axis cs:2.2,3601.77311209825)
+--cycle;
+\addplot [darkslategray77]
+table {%
+2.3 3601.77311209825
+2.3 3600.33393001556
+};
+\addplot [darkslategray77]
+table {%
+2.3 3604.09811931746
+2.3 3606.43901586532
+};
+\addplot [darkslategray77]
+table {%
+2.25 3600.33393001556
+2.35 3600.33393001556
+};
+\addplot [darkslategray77]
+table {%
+2.25 3606.43901586532
+2.35 3606.43901586532
+};
+\addplot [black, mark=o, mark size=3, mark options={solid,fill opacity=0,draw=darkslategray77}, only marks]
+table {%
+2.3 1629.16255497933
+2.3 2211.97392892838
+2.3 1267.36977910996
+2.3 1153.20774507523
+2.3 810.7032289505
+2.3 1135.08328104019
+2.3 734.372200012207
+2.3 697.478585004807
+2.3 3092.26857686043
+2.3 1578.34558677673
+2.3 1596.57006287575
+2.3 3608.29213500023
+};
+\path [draw=darkslategray77, fill=gray130]
+(axis cs:3.2,3602.1213305591)
+--(axis cs:3.4,3602.1213305591)
+--(axis cs:3.4,3615.88309465765)
+--(axis cs:3.2,3615.88309465765)
+--(axis cs:3.2,3602.1213305591)
+--cycle;
+\addplot [darkslategray77]
+table {%
+3.3 3602.1213305591
+3.3 3601.50542616844
+};
+\addplot [darkslategray77]
+table {%
+3.3 3615.88309465765
+3.3 3634.61925387383
+};
+\addplot [darkslategray77]
+table {%
+3.25 3601.50542616844
+3.35 3601.50542616844
+};
+\addplot [darkslategray77]
+table {%
+3.25 3634.61925387383
+3.35 3634.61925387383
+};
+\addplot [black, mark=o, mark size=3, mark options={solid,fill opacity=0,draw=darkslategray77}, only marks]
+table {%
+3.3 3638.05164408684
+3.3 3684.35771584511
+};
+\path [draw=darkslategray77, fill=gray130]
+(axis cs:4.2,3606.18569754901)
+--(axis cs:4.4,3606.18569754901)
+--(axis cs:4.4,3622.61436393381)
+--(axis cs:4.2,3622.61436393381)
+--(axis cs:4.2,3606.18569754901)
+--cycle;
+\addplot [darkslategray77]
+table {%
+4.3 3606.18569754901
+4.3 3605.09243822098
+};
+\addplot [darkslategray77]
+table {%
+4.3 3622.61436393381
+4.3 3644.57307600975
+};
+\addplot [darkslategray77]
+table {%
+4.25 3605.09243822098
+4.35 3605.09243822098
+};
+\addplot [darkslategray77]
+table {%
+4.25 3644.57307600975
+4.35 3644.57307600975
+};
+\addplot [black, mark=o, mark size=3, mark options={solid,fill opacity=0,draw=darkslategray77}, only marks]
+table {%
+4.3 3728.39492583275
+4.3 3755.53850603104
+};
+\addplot [darkslategray77]
+table {%
+-0.4 1.81670742302915
+-0.2 1.81670742302915
+};
+\addplot [darkslategray77]
+table {%
+0.6 55.6552663545003
+0.8 55.6552663545003
+};
+\addplot [darkslategray77]
+table {%
+1.6 594.373955562381
+1.8 594.373955562381
+};
+\addplot [darkslategray77]
+table {%
+2.6 3600.20086097717
+2.8 3600.20086097717
+};
+\addplot [darkslategray77]
+table {%
+3.6 3600.41800498962
+3.8 3600.41800498962
+};
+\addplot [darkslategray77]
+table {%
+-0.2 6.19903540230867
+2.77555756156289e-17 6.19903540230867
+};
+\addplot [darkslategray77]
+table {%
+0.8 194.986547971282
+1 194.986547971282
+};
+\addplot [darkslategray77]
+table {%
+1.8 2809.24715532234
+2 2809.24715532234
+};
+\addplot [darkslategray77]
+table {%
+2.8 3600.53103804588
+3 3600.53103804588
+};
+\addplot [darkslategray77]
+table {%
+3.8 3600.63405434896
+4 3600.63405434896
+};
+\addplot [darkslategray77]
+table {%
+-2.77555756156289e-17 24.6090842194527
+0.2 24.6090842194527
+};
+\addplot [darkslategray77]
+table {%
+1 1752.51248337756
+1.2 1752.51248337756
+};
+\addplot [darkslategray77]
+table {%
+2 3601.45377993584
+2.2 3601.45377993584
+};
+\addplot [darkslategray77]
+table {%
+3 3601.5604391098
+3.2 3601.5604391098
+};
+\addplot [darkslategray77]
+table {%
+4 3616.00456371692
+4.2 3616.00456371692
+};
+\addplot [darkslategray77]
+table {%
+0.2 15.6355512078251
+0.4 15.6355512078251
+};
+\addplot [darkslategray77]
+table {%
+1.2 416.218223428451
+1.4 416.218223428451
+};
+\addplot [darkslategray77]
+table {%
+2.2 3603.25540803937
+2.4 3603.25540803937
+};
+\addplot [darkslategray77]
+table {%
+3.2 3609.03348085698
+3.4 3609.03348085698
+};
+\addplot [darkslategray77]
+table {%
+4.2 3608.43796630073
+4.4 3608.43796630073
+};
+
+\nextgroupplot[
+axis background/.style={fill=lavender234234242},
+axis line style={white},
+tick align=outside,
+unbounded coords=jump,
+x grid style={white},
+xtick pos=left,
+ytick pos=left,
+xlabel=\textcolor{darkslategray38}{\(\displaystyle |\mathcal{N}|\)},
+xmin=-0.5, xmax=4.5,
+xtick style={color=darkslategray38},
+xtick={0,1,2,3,4},
+xticklabels={10,20,30,50,70},
+y grid style={white},
+ylabel=\textcolor{darkslategray38}{\% Problems without solution},
+ymajorgrids,
+ymin=-1, ymax=105,
+ytick style={color=darkslategray38},
+ytick={0,20,40,60,80,100},
+yticklabels={
+  \(\displaystyle {0}\),
+  \(\displaystyle {20}\),
+  \(\displaystyle {40}\),
+  \(\displaystyle {60}\),
+  \(\displaystyle {80}\),
+  \(\displaystyle {100}\)
+}
+]
+\draw[draw=black,fill=white,very thin] (axis cs:-0.4,0) rectangle (axis cs:-0.2,0);
+\draw[draw=black,fill=white,very thin] (axis cs:0.6,0) rectangle (axis cs:0.8,0);
+\draw[draw=black,fill=white,very thin] (axis cs:1.6,0) rectangle (axis cs:1.8,0);
+\draw[draw=black,fill=white,very thin] (axis cs:2.6,0) rectangle (axis cs:2.8,41.6666666666667);
+\draw[draw=black,fill=white,very thin] (axis cs:3.6,0) rectangle (axis cs:3.8,50);
+\draw[draw=black,fill=lightgray209,very thin] (axis cs:-0.2,0) rectangle (axis cs:2.77555756156289e-17,0);
+\draw[draw=black,fill=lightgray209,very thin] (axis cs:0.8,0) rectangle (axis cs:1,0);
+\draw[draw=black,fill=lightgray209,very thin] (axis cs:1.8,0) rectangle (axis cs:2,0);
+\draw[draw=black,fill=lightgray209,very thin] (axis cs:2.8,0) rectangle (axis cs:3,46.6666666666667);
+\draw[draw=black,fill=lightgray209,very thin] (axis cs:3.8,0) rectangle (axis cs:4,50);
+\draw[draw=black,fill=darkgray173,very thin] (axis cs:-2.77555756156289e-17,0) rectangle (axis cs:0.2,0);
+\draw[draw=black,fill=darkgray173,very thin] (axis cs:1,0) rectangle (axis cs:1.2,0);
+\draw[draw=black,fill=darkgray173,very thin] (axis cs:2,0) rectangle (axis cs:2.2,25);
+\draw[draw=black,fill=darkgray173,very thin] (axis cs:3,0) rectangle (axis cs:3.2,50);
+\draw[draw=black,fill=darkgray173,very thin] (axis cs:4,0) rectangle (axis cs:4.2,50);
+\draw[draw=black,fill=gray130,very thin] (axis cs:0.2,0) rectangle (axis cs:0.4,0);
+\draw[draw=black,fill=gray130,very thin] (axis cs:1.2,0) rectangle (axis cs:1.4,0);
+\draw[draw=black,fill=gray130,very thin] (axis cs:2.2,0) rectangle (axis cs:2.4,0);
+\draw[draw=black,fill=gray130,very thin] (axis cs:3.2,0) rectangle (axis cs:3.4,0);
+\draw[draw=black,fill=gray130,very thin] (axis cs:4.2,0) rectangle (axis cs:4.4,1.66666666666667);
+\addplot [line width=0.9pt, darkslategray66]
+table {%
+-0.3 nan
+-0.3 nan
+};
+\addplot [line width=0.9pt, darkslategray66]
+table {%
+0.7 nan
+0.7 nan
+};
+\addplot [line width=0.9pt, darkslategray66]
+table {%
+1.7 nan
+1.7 nan
+};
+\addplot [line width=0.9pt, darkslategray66]
+table {%
+2.7 nan
+2.7 nan
+};
+\addplot [line width=0.9pt, darkslategray66]
+table {%
+3.7 nan
+3.7 nan
+};
+\addplot [line width=0.9pt, darkslategray66]
+table {%
+-0.1 nan
+-0.1 nan
+};
+\addplot [line width=0.9pt, darkslategray66]
+table {%
+0.9 nan
+0.9 nan
+};
+\addplot [line width=0.9pt, darkslategray66]
+table {%
+1.9 nan
+1.9 nan
+};
+\addplot [line width=0.9pt, darkslategray66]
+table {%
+2.9 nan
+2.9 nan
+};
+\addplot [line width=0.9pt, darkslategray66]
+table {%
+3.9 nan
+3.9 nan
+};
+\addplot [line width=0.9pt, darkslategray66]
+table {%
+0.1 nan
+0.1 nan
+};
+\addplot [line width=0.9pt, darkslategray66]
+table {%
+1.1 nan
+1.1 nan
+};
+\addplot [line width=0.9pt, darkslategray66]
+table {%
+2.1 nan
+2.1 nan
+};
+\addplot [line width=0.9pt, darkslategray66]
+table {%
+3.1 nan
+3.1 nan
+};
+\addplot [line width=0.9pt, darkslategray66]
+table {%
+4.1 nan
+4.1 nan
+};
+\addplot [line width=0.9pt, darkslategray66]
+table {%
+0.3 nan
+0.3 nan
+};
+\addplot [line width=0.9pt, darkslategray66]
+table {%
+1.3 nan
+1.3 nan
+};
+\addplot [line width=0.9pt, darkslategray66]
+table {%
+2.3 nan
+2.3 nan
+};
+\addplot [line width=0.9pt, darkslategray66]
+table {%
+3.3 nan
+3.3 nan
+};
+\addplot [line width=0.9pt, darkslategray66]
+table {%
+4.3 nan
+4.3 nan
+};
+
+\nextgroupplot[
+axis background/.style={fill=lavender234234242},
+axis line style={white},
+scaled y ticks=manual:{}{\pgfmathparse{#1}},
+tick align=outside,
+unbounded coords=jump,
+xtick pos = left,
+ytick pos = left,
+x grid style={white},
+xlabel=\textcolor{darkslategray38}{\(\displaystyle |\mathcal{N}|\)},
+xmin=-0.5, xmax=4.5,
+xtick style={color=darkslategray38},
+xtick={0,1,2,3,4},
+xticklabels={10,20,30,50,70},
+y grid style={white},
+ymajorgrids,
+ymajorticks=false,
+ymin=-1, ymax=105,
+ytick style={color=darkslategray38},
+yticklabels={}
+]
+\draw[draw=black,fill=white,very thin] (axis cs:-0.4,0) rectangle (axis cs:-0.2,0);
+\draw[draw=black,fill=white,very thin] (axis cs:0.6,0) rectangle (axis cs:0.8,0);
+\draw[draw=black,fill=white,very thin] (axis cs:1.6,0) rectangle (axis cs:1.8,0);
+\draw[draw=black,fill=white,very thin] (axis cs:2.6,0) rectangle (axis cs:2.8,23.3333333333333);
+\draw[draw=black,fill=white,very thin] (axis cs:3.6,0) rectangle (axis cs:3.8,46.6666666666667);
+\draw[draw=black,fill=lightgray209,very thin] (axis cs:-0.2,0) rectangle (axis cs:2.77555756156289e-17,0);
+\draw[draw=black,fill=lightgray209,very thin] (axis cs:0.8,0) rectangle (axis cs:1,0);
+\draw[draw=black,fill=lightgray209,very thin] (axis cs:1.8,0) rectangle (axis cs:2,1.66666666666667);
+\draw[draw=black,fill=lightgray209,very thin] (axis cs:2.8,0) rectangle (axis cs:3,41.6666666666667);
+\draw[draw=black,fill=lightgray209,very thin] (axis cs:3.8,0) rectangle (axis cs:4,50);
+\draw[draw=black,fill=darkgray173,very thin] (axis cs:-2.77555756156289e-17,0) rectangle (axis cs:0.2,0);
+\draw[draw=black,fill=darkgray173,very thin] (axis cs:1,0) rectangle (axis cs:1.2,0);
+\draw[draw=black,fill=darkgray173,very thin] (axis cs:2,0) rectangle (axis cs:2.2,38.3333333333333);
+\draw[draw=black,fill=darkgray173,very thin] (axis cs:3,0) rectangle (axis cs:3.2,50);
+\draw[draw=black,fill=darkgray173,very thin] (axis cs:4,0) rectangle (axis cs:4.2,50);
+\draw[draw=black,fill=gray130,very thin] (axis cs:0.2,0) rectangle (axis cs:0.4,0);
+\draw[draw=black,fill=gray130,very thin] (axis cs:1.2,0) rectangle (axis cs:1.4,0);
+\draw[draw=black,fill=gray130,very thin] (axis cs:2.2,0) rectangle (axis cs:2.4,0);
+\draw[draw=black,fill=gray130,very thin] (axis cs:3.2,0) rectangle (axis cs:3.4,0);
+\draw[draw=black,fill=gray130,very thin] (axis cs:4.2,0) rectangle (axis cs:4.4,15);
+\addplot [line width=0.9pt, darkslategray66]
+table {%
+-0.3 nan
+-0.3 nan
+};
+\addplot [line width=0.9pt, darkslategray66]
+table {%
+0.7 nan
+0.7 nan
+};
+\addplot [line width=0.9pt, darkslategray66]
+table {%
+1.7 nan
+1.7 nan
+};
+\addplot [line width=0.9pt, darkslategray66]
+table {%
+2.7 nan
+2.7 nan
+};
+\addplot [line width=0.9pt, darkslategray66]
+table {%
+3.7 nan
+3.7 nan
+};
+\addplot [line width=0.9pt, darkslategray66]
+table {%
+-0.1 nan
+-0.1 nan
+};
+\addplot [line width=0.9pt, darkslategray66]
+table {%
+0.9 nan
+0.9 nan
+};
+\addplot [line width=0.9pt, darkslategray66]
+table {%
+1.9 nan
+1.9 nan
+};
+\addplot [line width=0.9pt, darkslategray66]
+table {%
+2.9 nan
+2.9 nan
+};
+\addplot [line width=0.9pt, darkslategray66]
+table {%
+3.9 nan
+3.9 nan
+};
+\addplot [line width=0.9pt, darkslategray66]
+table {%
+0.1 nan
+0.1 nan
+};
+\addplot [line width=0.9pt, darkslategray66]
+table {%
+1.1 nan
+1.1 nan
+};
+\addplot [line width=0.9pt, darkslategray66]
+table {%
+2.1 nan
+2.1 nan
+};
+\addplot [line width=0.9pt, darkslategray66]
+table {%
+3.1 nan
+3.1 nan
+};
+\addplot [line width=0.9pt, darkslategray66]
+table {%
+4.1 nan
+4.1 nan
+};
+\addplot [line width=0.9pt, darkslategray66]
+table {%
+0.3 nan
+0.3 nan
+};
+\addplot [line width=0.9pt, darkslategray66]
+table {%
+1.3 nan
+1.3 nan
+};
+\addplot [line width=0.9pt, darkslategray66]
+table {%
+2.3 nan
+2.3 nan
+};
+\addplot [line width=0.9pt, darkslategray66]
+table {%
+3.3 nan
+3.3 nan
+};
+\addplot [line width=0.9pt, darkslategray66]
+table {%
+4.3 nan
+4.3 nan
+};
+\end{groupplot}
+
+\end{tikzpicture}
