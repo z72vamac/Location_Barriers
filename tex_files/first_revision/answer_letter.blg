@@ -1,0 +1,48 @@
+This is BibTeX, Version 0.99d
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: answer_letter.aux
+Reallocating 'name_of_file' (item size: 1) to 8 items.
+The style file: apalike.bst
+Reallocating 'name_of_file' (item size: 1) to 30 items.
+Database file #1: location_barrier_bibliography.bib
+You've used 15 entries,
+            1935 wiz_defined-function locations,
+            571 strings with 6271 characters,
+and the built_in function-call counts, 5744 in all, are:
+= -- 572
+> -- 224
+< -- 11
++ -- 82
+- -- 72
+* -- 485
+:= -- 1011
+add.period$ -- 45
+call.type$ -- 15
+change.case$ -- 107
+chr.to.int$ -- 15
+cite$ -- 15
+duplicate$ -- 213
+empty$ -- 398
+format.name$ -- 99
+if$ -- 1109
+int.to.chr$ -- 1
+int.to.str$ -- 0
+missing$ -- 14
+newline$ -- 77
+num.names$ -- 47
+pop$ -- 84
+preamble$ -- 1
+purify$ -- 110
+quote$ -- 0
+skip$ -- 166
+stack$ -- 0
+substring$ -- 416
+swap$ -- 22
+text.length$ -- 1
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 86
+warning$ -- 0
+while$ -- 51
+width$ -- 0
+write$ -- 195

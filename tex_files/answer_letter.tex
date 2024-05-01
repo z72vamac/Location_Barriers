@@ -98,7 +98,7 @@
 
 \hyphenation{dif-fe-rent}
 
-\title{CAOR-D-22-01397
+\title{CAOR-D-22-01397R1
 	\\
 	"The Hampered K-Median Problem with Neighbourhoods"}
 \author{Answer to Reviewers' Comments}
@@ -119,7 +119,7 @@
 	
 	We wish to thank the editors and reviewers for their valuable comments and advice which allowed us to further improve the quality and presentation of our article through this revision.
 	
-	We revised the manuscript taking into account all the suggestions of Reviewers 1 and 2. We highlight all the changes in the revised manuscript in blue. In the following, we report our changes inside the coloured textboxes.
+	We revised the manuscript taking into account all the suggestions of Reviewers 1 and 3. We highlight all the changes in the revised manuscript in blue. In the following, we report our changes inside the coloured textboxes.
 	%{\bf We outlined in bold each change made in this new version of the paper}.
 	\initresponses
 	
@@ -130,40 +130,21 @@
 		\end{tcolorbox}
 		
 		\begin{itshape}
-			This paper considers the hampered k-median problem with neighbourhoods. This is a continuous location problem on a 2-dimensional space in which there are both neighbours and barriers present. The authors claim that the problem has applications in the delivery industry and in the areas of inspection and surveillance activities.
-			
-			They develop valid mixed-integer formulations for two versions of the problem, first assuming that neighbourhoods are not visible from one another, and later for the case where this assumption is dropped. They develop valid inequalities and present computational experiments that both aim to find the optimal solution and also quick solutions (of good quality) using a metaheuristic.
-		\end{itshape}
-		
-		\begin{tcolorbox}[breakable,enhanced,coltitle=black,colback=red!5!white,colframe=red!75!black,title=\textbf{Answer R1.\point},borderline={1pt}{0pt}{black},boxrule=0pt]
-			We appreciate your comments that summarise our work.
-		\end{tcolorbox}
-		
-		\begin{itshape}
-			From an applications perspective, the contribution is minimal as the applications have not been explored. There is no case study presented, and no effort made to speak to data requirements and availability.
-		\end{itshape}
-		
-		\begin{tcolorbox}[breakable,enhanced,coltitle=black,colback=red!5!white,colframe=red!75!black,title=\textbf{Answer R1.\point},borderline={1pt}{0pt}{black},boxrule=0pt]
-			To deal with the Reviewer's requirements, along the manuscript we present different real-life scenarios where these models can be adopted. In the following, we remark on different paragraphs that have been included to argue the combination of neighbourhoods and barriers in the $k$-median:
-			\begin{itemize}
-				\item The use of neighbourhoods has interest on drone delivery and inspection problems. Neighbourhoods can represent regions that the drone must reach and where customers are willing to pick up the orders (they can be seen as uniform probability densities) in the delivery industry. Moreover, they can also be used for modelling some areas that must be inspected by the drone (whenever visiting a point of these areas is enough to consider them as inspected). \textbf{Section 1. Introduction: Paragraph 3.}
-				\item The use of barriers in the $k$-median, that is known as $k$-median problem with barriers are deeply studied in the literature (see \cite{klamroth2002}). In this case, there exist some areas that cannot be traversed, and it is necessary to compute the minimum distance between each pair of points in the graph induced by the facility locations and demand points. In the context of planar location modelling, this problem represents restrictions that appear in a real-life context. One of them can be the case in which there are regions (called forbidden regions) in which the placement of a facility is forbidden but transportation is still possible. They can model state parks or regions where geographic characteristics forbid the construction of the facility. For a survey of location problems with forbidden regions, see \cite{hamacher1995} or \cite{nickel1995}. The case in which transport is possible, but only at higher cost (called congested regions) is studied in \cite{butt1996} or \cite{mitchell1991}. In this case, in these regions, different travel speeds or travel costs are considered. Finally, the existence of military areas, buildings, mountain ranges, lakes, large rivers, and highways cannot allow transportation. These examples of barrier regions involve circuit board design \citep{lapaugh1980}, pipe network design for ships \citep{wangdahl1974}, or location and routing with robots \citep{lozano-perez1979, blanco2022}. \textbf{Section 1. Introduction: Paragraph 4.}
-				\item From a drone routing perspective, these barriers can simulate buildings in urban areas that drones cannot cross. Another application can be seen as obstacles that pedestrians must avoid in urban or rural areas. \textbf{Section 1. Introduction: Paragraph 5.}
-			\end{itemize}
-			We describe a realistic application of the problem studied in this document to perform the last mile delivery. We focus on the problem of allocating $k$ vans from where some drones depart to deliver some products to the represented population. In particular, we consider a neighbourhood in the city of Córdoba called Fátima, which is located in the northeast of the city. We express sources that are represented by green circles that simulate zones in which vans can park; and targets, also modelled by circles,  that define the zones in which customers are willing to pick up the delivery. Barriers represent buildings that drones cannot cross. To simplify the problem, we assume the drones have enough endurance to go from any source to any target and they cannot ascend to avoid the buildings, and once the number of vans is fixed, we can know the number of required drones assigned with each van. \textbf{Section 6. Case study. }
-			
-			We also discuss data availability by exposing that the advance of technology permits obtaining maps with accurate representations of two-dimensional obstacles by means of various software tools designed for geographic information systems (GIS). An open source such as Quantum GIS \citep{qgisdevelopmentteam2009} provides robust capabilities to create, edit and export maps with detailed two-dimensional building footprints and attributes. These tools enable users to incorporate building information into spatial analyses, urban planning, and environmental assessments. We include some examples where QGIS has been successfully used. The work of \cite{arsanjani2013} explores the use of open-source GIS software to map and analyse urban structures, highlighting the importance of accurate two-dimensional building data. In drone routing, the work of \cite{mangiameli2013} proposes an innovative approach to the construction of a map of obstacles based on Geographic Information Systems (GIS) technologies. \textbf{Section 1. Introduction: Paragraph 6.}
+			I very much appreciate the effort that the authors have made to clarify the application potential of this paper.
 
-			\JP{Finally, we have also restructured our computational results section including a full comparison between SCF and MCF models. In addition, we have included the analysis of the influence of the link distance in the difficulty of problem solving. Due to the large amount of tables to compare all the factors in the problem, namely different formulations, weight $\omega_L$ for the link distance, number of neighbours and barriers, use of initial solution, we have organised the results in tables comparing statistical significance ($p$-values). We believe that this presentation is much more informative and compact. \textbf{Section 5. Computational Experiments.}}	
+			I would like the case study to include more explanation of the implications of the results to both the delivery company as well as to the population receiving the service.
 
-		\end{tcolorbox}
-		
-		\begin{itshape}
-			From a theory perspective, the contribution is better but in my opinion is not significant enough to justify publication in C\&OR. It is in my view a good incremental paper in this area of research, but I don't think that is good enough for a journal like C\&OR.
+			As the number of vans is increased, clearly the results get better and there is a concave effect in the objective function value (decreasing marginal return). However, the relationship to the number of drones needed to achieve the delivery is not explored. If there is only one van it may need seven drones to achieve the delivery volume for that day. If there are three vans, between them maybe they can use just five drones to achieve the same service level.
+
+			I don't want the authors to do any complicated modeling or change what they have in other sections, but would like them to expand the case study to include the implications of number of vans and number of drones for various situations. The situations of course relate to the volume of delivery (which is not captured in the median context but these numbers can be developed for illustrative purposes).
+
+			Ideally, the analysis would spell out implications for the delivery company (which aims to minimize van/drone cost while achieving a desired service level) and for the population (which wants to see a desired service level as a whole and more specifically for customers that live in the defined neighborhoods).
+
+			Please note that the above comments are aimed at improving the linkage of the model to a real delivery application, which I think is significant and needs further exploration.
+
 		\end{itshape}
 		
 		\begin{tcolorbox}[breakable,enhanced,coltitle=black,colback=red!5!white,colframe=red!75!black,title=\textbf{Answer R1.\point},borderline={1pt}{0pt}{black},boxrule=0pt]
-			\JP{ This paper analyzes the $k$-Median  problem with neighbours and polygonal barriers. This problem is new and has important actual applications in different fields, as mentioned in the paper. Its analysis and formulation cannot be seen as a simple incremental contribution, since the tools required to analyse and solve it go beyond any standard overlapping of techniques used in the separated problems. We present a valid formulation that relies, apart from some already known blocks of constraints taken from $k$-median and network design,  on new tools borrowed from computational geometry. Specifically, one of our} \JP{important contributions  is presented in subsection 3.4. There, we derive a new test, representable by linear constraints, to check whether given two arbitrary variable vertices $P, P'\in V_X$, the edge $(P, P')$ belongs to $E_X$, with $X\in\{\rm KMPHN, \rm KMPN\}$, i.e., whether the line segment $\overline{PP'}$ does not intersect with any barrier of $\mathcal B$.  The referee may note that this is a new methodological contribution to the field and that it will be used in the future in different problems involving barriers. Apart from the exact method, we also propose a new matheuristic based on the knowledge obtained from the exact analysis. All together, this brings a new perspective to the problem considered and contributes to a better understanding of the logistic problems with neighbours and barriers. }
 
 		\end{tcolorbox}
 		
@@ -173,15 +154,12 @@
 	\begin{reviewer}
 		
 		\begin{tcolorbox}[breakable,enhanced,coltitle=black,colback=green!75!black,colframe=green!75!black,borderline={1pt}{0pt}{black},boxrule=0pt]
-			\textbf{Reviewer 2}
+			\textbf{Reviewer 3}
 		\end{tcolorbox}
 		
 		\begin{itshape}
-			The authors propose a new variant of the k-median problem in which potential facility and client locations are given as neighborhoods (compact regions that can be described using second order cone constraints). In addition, there are line segments representing barriers, and allocations between clients and open facilities should not cross a barrier - instead, they can "touch" the end-points of these line segments, forming barrier-free paths between each allocated client-facility pair. The authors consider two versions of the problem - with and without "hidden neighborhoods".
-			
-			The authors propose a MINLP problem formulation with bilinear constraints using binary variables. Then, they use standard linearization techniques, to obtain a mixed integer SOCP (for one problem variant). They use the concept of single-commodity flows to model the client-facility paths. They propose a simple initialization heuristic as well and then they evaluate the new model with and without this initialization heuristic on a set of instances with up to 80 nodes.
-			
-			The content is interesting and relevant for the readership of COR, however, there are several major points that need to be improved before the article can be considered for publication. These points are listed below.
+			The authors have significanty improved their manuscript, and they have properly addresssed all my comments.
+			I therefore recommend acceptance, after correcting some minor issues mentioned below.
 
 		\end{itshape}
 		
@@ -190,10 +168,14 @@
 			
 		\end{tcolorbox}
 		
-		\subsection*{Clarity of problem definition}
+		\subsection*{Minor issues}
 				
 		\begin{itshape}
-			On page 3, Section 3.1: please provide major assumptions regarding the neighborhoods. Are they supposed to be compact, closed, convex sets? Maybe already here you should emphasize that these sets should be such that one can describe them using SOCP constraints?
+			In the single commodity flow formulation, the authors omit superscript $S$ in the definition of flow variables.
+I believe that this can be done in networks only if the set of sources and targets are disjoint (is this condition guaranteed in the given setting)?
+- Table 1: I would change the description of f_PP' variables into "number of commodities routed through edge PP'..." (the same holds for the text on page 9 just above the formulas for SCF)
+- page 9: In the formula (single-flow-C) "if P in V_S" should be changed into "if P=S \in \mathcal{S}" and in the third line "if P in V_T" should be changed into "if P \in \mathcal{T}"
+- page 9: in the (multi-flow-C) please replace S and T with their caligraphic versions in the "if" conditions
 		\end{itshape}
 		
 		\begin{tcolorbox}[breakable,enhanced,coltitle=black,colback=green!5!white,colframe=green!75!black,title=\textbf{Answer R2.\point},borderline={1pt}{0pt}{black},boxrule=0pt]
